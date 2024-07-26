@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ATMC.Common</name>
+    </assembly>
+    <members>
+        <member name="F:ATMC.Common.BiPieChart.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BiPieChart.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.BiPieChart.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.BiStackCounterChart.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BiStackCounterChart.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.BiStackCounterChart.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.ResultCounterView">
+            <summary>
+            Result counter control
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.UpdateCounters(System.Int32,System.Int32)">
+            <summary>
+            Update counter with given values
+            </summary>
+            <param name="ok_cnt">OK count</param>
+            <param name="ng_cnt">NG count</param>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.UpdateCounters(LotusAPI.Data.CommonQuery,System.String)">
+            <summary>
+            Update counter value
+            </summary>
+            <param name="db_query">DB query object</param>
+            <param name="reset_time">Counter starting time</param>
+        </member>
+        <member name="F:ATMC.Common.ResultCounterView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

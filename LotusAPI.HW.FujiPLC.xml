@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LotusAPI.HW.FujiPLC</name>
+    </assembly>
+    <members>
+        <member name="M:LotusAPI.HW.PlcFuji.Start">
+            <summary>
+            Start polling thread in highest priority, automatic connect if PLC has not been not connected yet.
+            </summary>
+            <returns>true if started</returns>
+        </member>
+    </members>
+</doc>

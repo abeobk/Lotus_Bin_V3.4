@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LotusAPI.Data</name>
+    </assembly>
+    <members>
+        <member name="F:LotusAPI.Data.ConditionEditor.ConditionEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.ConditionEditor.ConditionEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.ConditionEditor.ConditionEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.DialogConditionEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DialogConditionEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.DialogConditionEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.DialogSelectSampleRange.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DialogSelectSampleRange.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.DialogSelectSampleRange.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.SimpleDashboardView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.SimpleDashboardView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.SimpleDashboardView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.SimpleDatabaseView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.SimpleDatabaseView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.SimpleDatabaseView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.DialogDatePicker.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DialogDatePicker.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.DialogDatePicker.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.SimpleStatView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.SimpleStatView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Data.SimpleStatView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

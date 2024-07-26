@@ -1,0 +1,505 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LotusAPI.Controls</name>
+    </assembly>
+    <members>
+        <member name="F:LotusAPI.Controls.AdvancedLogView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.AdvancedLogView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.AdvancedLogView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FastImageView.SetImage(LotusAPI.MV.Image,System.Boolean)">
+            <summary>
+            Set image (this method is thread safe)
+            </summary>
+            <param name="img">Input image</param>
+            <param name="auto_fit">Apply auto fit?</param>
+        </member>
+        <member name="F:LotusAPI.Controls.FormJsonSchema.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormJsonSchema.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormJsonSchema.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.AlarmDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.AlarmDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.AlarmDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormConnectIntelRealsense.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormConnectIntelRealsense.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormConnectIntelRealsense.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormConnectPhotoneo.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormConnectPhotoneo.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormConnectPhotoneo.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormHelpView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormHelpView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormHelpView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormImageView.ShowImageInDir(System.String,System.String)">
+            <summary>
+             Show images in directory
+            </summary>
+            <param name="dir">directory</param>
+            <param name="ext">extension filter (ex: *.png)</param>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormImageView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormImageView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormImageView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormMultiPatternSearch2DEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormMultiPatternSearch2DEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormMultiPatternSearch2DEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormMultiPatternSetGlobalParams.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormMultiPatternSetGlobalParams.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormMultiPatternSetGlobalParams.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Dialogs.FormPatternSearch2DEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormPatternSearch2DEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Dialogs.FormPatternSearch2DEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.FormAbeoscanConnect">
+            <summary>   A form abeo scanner connect. </summary>
+            <seealso cref="T:System.Windows.Forms.Form"/>
+        </member>
+        <member name="F:LotusAPI.Controls.FormAbeoscanConnect.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormAbeoscanConnect.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormAbeoscanConnect.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.FormAddJsonNode.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormAddJsonNode.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormAddJsonNode.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.FormCameraConnect.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormCameraConnect.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormCameraConnect.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.FormJsonNodePicker.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormJsonNodePicker.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormJsonNodePicker.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.FormObjectProperty.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormObjectProperty.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormObjectProperty.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.FormProperty.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormProperty.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormProperty.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.FormSettingEditor">
+            <summary>   Editor for form setting. </summary>
+            <seealso cref="T:System.Windows.Forms.Form"/>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.#ctor">
+            <summary>   Default constructor. </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.#ctor(System.String,System.String,System.Object)">
+            <summary>   Constructor. </summary>
+            <param name="title">    The title. </param>
+            <param name="rootLink"> The root link. </param>
+            <param name="obj">      The object. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.#ctor(System.String,System.String,System.String,System.Object)">
+            <summary>   Constructor. </summary>
+            <param name="title">    The title. </param>
+            <param name="rootLink"> The root link. </param>
+            <param name="obj">      The object. </param>
+        </member>
+        <member name="P:LotusAPI.Controls.FormSettingEditor.JsonRootLink">
+            <summary>   Gets or sets the JSON root link. </summary>
+            <value> The JSON root link. </value>
+        </member>
+        <member name="P:LotusAPI.Controls.FormSettingEditor.Object">
+            <summary>   Gets or sets the object. </summary>
+            <value> The object. </value>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.btOK_Click(System.Object,System.EventArgs)">
+            <summary>   Event handler. Called by btOK for click events. </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.btCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+                Event handler. Called by btCancel for click events.
+            </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.pgrid_Click(System.Object,System.EventArgs)">
+            <summary>   Event handler. Called by pgrid for click events. </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.pgrid_PropertyValueChanged(System.Object,System.Windows.Forms.PropertyValueChangedEventArgs)">
+            <summary>
+                Event handler. Called by pgrid for property value changed events.
+            </summary>
+            <param name="s">    The object to process. </param>
+            <param name="e">    Property value changed event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.btSave_Click(System.Object,System.EventArgs)">
+            <summary>   Event handler. Called by btSave for click events. </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.btLoad_Click(System.Object,System.EventArgs)">
+            <summary>   Event handler. Called by btLoad for click events. </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.FormSettingEditor_Load(System.Object,System.EventArgs)">
+            <summary>
+                Event handler. Called by FormSettingEditor for load events.
+            </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="F:LotusAPI.Controls.FormSettingEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.FormSettingEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Editors.FormQueryEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Editors.FormQueryEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Editors.FormQueryEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.Graph.GraphView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.GraphView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.GraphView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.#ctor">
+            <summary>   Default constructor. </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.SerialPortConnector_Load(System.Object,System.EventArgs)">
+            <summary>
+                Event handler. Called by SerialPortConnector for load events.
+            </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="P:LotusAPI.Controls.SerialPortConnector.Port">
+            <summary>   Gets or sets the port. </summary>
+            <value> The port. </value>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.cbbPortNames_DropDown(System.Object,System.EventArgs)">
+            <summary>
+                Event handler. Called by cbbPortNames for drop down events.
+            </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.btConnect_Click(System.Object,System.EventArgs)">
+            <summary>
+                Event handler. Called by btConnect for click events.
+            </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.btRefresh_Click(System.Object,System.EventArgs)">
+            <summary>
+                Event handler. Called by btRefresh for click events.
+            </summary>
+            <param name="sender">   Source of the event. </param>
+            <param name="e">        Event information. </param>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.RefreshHardwareList">
+            <summary>   Refresh hardware list. </summary>
+        </member>
+        <member name="F:LotusAPI.Controls.SerialPortConnector.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Controls.SerialPortConnector.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.App.Controls.SQLQueryEditor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.App.Controls.SQLQueryEditor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.App.Controls.SQLQueryEditor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

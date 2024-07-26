@@ -1,0 +1,568 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LotusAPI.Robotics</name>
+    </assembly>
+    <members>
+        <member name="F:LotusAPI.Robotics.Editor.FormPoseEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.Editor.FormPoseEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.Editor.FormPoseEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.FastShiftOffsetView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.FastShiftOffsetView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.FastShiftOffsetView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.FormConvertToBase.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.FormConvertToBase.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.FormConvertToBase.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.HandEyeManager.Count">
+            <summary>
+            Get number of hand-eyes
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.HandEyeSystemConfigurator.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.HandEyeSystemConfigurator.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.HandEyeSystemConfigurator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Robotics.RobotStatus">
+            <summary>
+            Robot status
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.RobotStatus.Item(System.String)">
+            <summary>
+            Accquire a status
+            </summary>
+            <param name="key">Status key</param>
+            <returns>status value</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.RobotStatus.ToString">
+            <summary>
+            Get the string representation of the robot status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LotusAPI.Robotics.RobotConnectedEventhandler">
+            <summary>
+            Robot connected event handler
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Robotics.RobotDisconnectedEventHandler">
+            <summary>
+            Reobot disconnected event handler
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Robotics.IRobotController">
+            <summary>
+            An interface for robot controller
+            </summary>
+        </member>
+        <member name="E:LotusAPI.Robotics.IRobotController.RobotConnectedEvent">
+            <summary>
+            Robot connected event
+            </summary>
+        </member>
+        <member name="E:LotusAPI.Robotics.IRobotController.RobotDisconnectedEvent">
+            <summary>
+            Robot disconnected event
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.IRobotController.Setting">
+            <summary>
+            Robot setting object
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.IRobotController.Name">
+            <summary>
+            Robot name
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.Send(System.String,System.String)">
+            <summary>
+            Send command to robot with args
+            </summary>
+            <param name="cmd">The command</param>
+            <param name="args">The arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.Send(System.String,System.String[],System.Char)">
+            <summary>
+            Send command to robot with args 
+            </summary>
+            <param name="cmd">The command</param>
+            <param name="args">The arguments</param>
+            <param name="delim">The argument delim</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetCurrentPose">
+            <summary>
+            Get current position
+            </summary>
+            <param name="coordinate">The robot coordinate</param>
+            <param name="with_external_axis">True to read also the external axis</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.MoveL(LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Linear move
+            </summary>
+            <param name="pose">The destination pose to move to</param>
+            <param name="speed_type">Speed type</param>
+            <param name="speed_mm_s">speed</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.MoveJ(LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Joint move
+            </summary>
+            <param name="pose">The destination pose to move to</param>
+            <param name="speed_percent">Speed rate</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.WaitRobotMove">
+            <summary>
+            Wait robot to complete its movement
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetStatus">
+            <summary>
+            Get current robot status
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.SetByteValue(System.Int32,System.Byte)">
+            <summary>
+            Set byte value
+            </summary>
+            <param name="var_num"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.SetInt16Value(System.Int32,System.Int16)">
+            <summary>
+            Set int16 value
+            </summary>
+            <param name="var_num">value number</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.SetInt32Value(System.Int32,System.Int32)">
+            <summary>
+            set int32 value
+            </summary>
+            <param name="var_num"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.SetRealValue(System.Int32,System.Double)">
+            <summary>
+            Set real value
+            </summary>
+            <param name="var_num">value number</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.SetPoseValue(System.Int32,LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Set pose value
+            </summary>
+            <param name="var_num">value number</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetByteValue(System.Int32)">
+            <summary>
+            Get byte value
+            </summary>
+            <param name="var_num">value number</param>
+            <returns>Result value</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetInt16Value(System.Int32)">
+            <summary>
+            Get int16 value
+            </summary>
+            <param name="var_num">value number</param>
+            <returns>Result value</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetInt32Value(System.Int32)">
+            <summary>
+            Get int32 value
+            </summary>
+            <param name="var_num">value number</param>
+            <returns>Result value</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetRealValue(System.Int32)">
+            <summary>
+            Get real value
+            </summary>
+            <param name="var_num">value number</param>
+            <returns>Result value</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetPoseValue(System.Int32)">
+            <summary>
+            Get pose value
+            </summary>
+            <param name="var_num">value number</param>
+            <param name="coordinate">Robot coordinate</param>
+            <returns>Result value</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.GetShiftValue(System.Int32)">
+            <summary>
+            Get shift pose value
+            </summary>
+            <param name="var_num">var number</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.SetShiftValue(System.Int32,LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Set shift pose value
+            </summary>
+            <param name="var_num">var number</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.ReadIO(System.Int32,System.Int32)">
+            <summary>
+            Read IO data
+            </summary>
+            <param name="io_number">bit index</param>
+            <param name="byte_count">byte count</param>
+            <returns>result</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.WriteIO(System.Int32,System.Byte[])">
+            <summary>
+            Write io data
+            </summary>
+            <param name="io_number">bit index</param>
+            <param name="data">data</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.Connect">
+            <summary>
+            Connect to robot
+            </summary>
+            <returns>true if successful</returns>
+        </member>
+        <member name="P:LotusAPI.Robotics.IRobotController.IsConnected">
+            <summary>
+            Check if robot is connected
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.IRobotController.Disconnect">
+            <summary>
+            Disconnect
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.RobotControllerBase.AsyncMoveL(LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Linear move asynchronously
+            </summary>
+            <param name="pose">The destination pose to move to</param>
+            <param name="speed_type">Speed type</param>
+            <param name="speed_mm_s">speed</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.RobotControllerBase.AsyncMoveJ(LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Joint move asynchronously
+            </summary>
+            <param name="pose">The destination pose to move to</param>
+            <param name="motion_speed_percent">Speed rate</param>
+            <returns></returns>
+        </member>
+        <member name="F:LotusAPI.Robotics.RobotControllerBase.locker">
+            <summary>
+            Sync object
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.Kawasaki.KawasakiRobotClient.GetProgramList">
+            <summary>
+            Get program list
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:LotusAPI.Robotics.NumberRange.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.NumberRange.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.NumberRange.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Robotics.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.opened_folder_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.save_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.save_as_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.TLH_EOH">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.TLH_FE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.XYZ_EOH">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Robotics.Properties.Resources.XYZ_FE">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetItemStrings(System.String[])">
+            <summary>
+            Set item strings
+            </summary>
+            <param name="strs"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetItemValues(System.Double[])">
+            <summary>
+            Set item values
+            </summary>
+            <param name="vals"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetItemValues(System.Single[])">
+            <summary>
+            Set item values
+            </summary>
+            <param name="vals"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetAll(System.String)">
+            <summary>
+            Set all string
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetAll(System.Single)">
+            <summary>
+            Set all value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetAll(System.Double)">
+            <summary>
+            Set all value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.Reset">
+            <summary>
+            Reset view reset all to 0
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetShiftPose(LotusAPI.Robotics.RobotPose)">
+            <summary>
+            Set shift pose value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.SetShiftPose(LotusAPI.Robotics.RobotPose,LotusAPI.Robotics.ShiftLimit)">
+            <summary>
+            Set shift pose value and change fore color of each item based on given shift pose limit
+            </summary>
+            <param name="value">Shift pose</param>
+            <param name="limit">Shift limit</param>
+        </member>
+        <member name="F:LotusAPI.Robotics.ShiftDataView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftDataView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.ShiftOffsetEdit.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetEdit.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetEdit.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.ShiftLimitEdit.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftLimitEdit.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftLimitEdit.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetView.SetShiftPose(LotusAPI.Robotics.RobotPose,LotusAPI.Robotics.ShiftLimit)">
+            <summary>
+            Set shift pose value and change fore color of each item based on given shift pose limit
+            </summary>
+            <param name="value">Shift pose</param>
+            <param name="limit">Shift limit</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetView.SetShiftPose(LotusAPI.Robotics.RobotPose)">
+            <summary>
+            Set shift pose value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetView.SetOffset(LotusAPI.Robotics.ShiftOffset)">
+            <summary>
+            Set offset value
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetView.Reset">
+            <summary>
+            Reset view
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.ShiftOffsetView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.ShiftOffsetView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.UF_Editor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.UF_Editor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.UF_Editor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.Yaskawa.Utils.CalculateShiftValue(LotusAPI.Math.Matrix44d,LotusAPI.Math.Point3d)">
+            <summary>
+            Compute shift data used in SFTON function
+            </summary>
+            <param name="H_frame">Frame transformation matrix</param>
+            <param name="ref_point">Reference point</param>
+            <returns>Shift pose</returns>
+        </member>
+    </members>
+</doc>

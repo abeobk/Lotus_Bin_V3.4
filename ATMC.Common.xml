@@ -1,0 +1,1384 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ATMC.Common</name>
+    </assembly>
+    <members>
+        <member name="F:ATMC.Common.CycleInfoView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.CycleInfoView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.CycleInfoView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.DBView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.DBView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.DBView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.ErrorIndicator">
+            <summary>
+            Linear Error indicator, assumps OK
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ErrorIndicator.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ErrorIndicator.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ErrorIndicator.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.GlassInstall.FormGapMesureConfigEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.GlassInstall.FormGapMesureConfigEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.GlassInstall.FormGapMesureConfigEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.GlassInstall.GapMeasureConfig.Valid">
+            <summary>
+            Return true if valid
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.LaserSealer.FormModelConfigurator.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.FormModelConfigurator.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.FormModelConfigurator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.InitSurfaceRef(System.Double)">
+            <summary>
+            Initialize surface inspection reference
+            </summary>
+            <param name="fps"></param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.Inspect(System.Double,LotusAPI.MV.Pointcloud,System.Int32)">
+            <summary>
+            Inspect pointcloud
+            </summary>
+            <param name="fps">FPS</param>
+            <param name="pc">Input cloud</param>
+            <param name="end_pos">End position</param>
+            <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f)">
+            <summary>
+            Calc height map
+            </summary>
+            <param name="fps">FPS</param>
+            <param name="pc">Input cloud</param>
+            <param name="height_range">Height range</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.InspectSurface(ATMC.Common.LaserSealer.InspectionResult)">
+            <summary>
+            Inspect surface
+            </summary>
+            <param name="res">Inpsection result</param>
+            <returns>Surface OK Percentage</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.GetAlignOffset(System.Int32)">
+            <summary>
+            Get align offset
+            </summary>
+            <param name="align_pos">Align pos</param>
+            <returns>Align offset</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.FindSpecs(System.Int32,System.Int32)">
+            <summary>
+            Find a spec list that match a row and align position
+            </summary>
+            <param name="row"></param>
+            <param name="align_pos"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ATMC.Common.LaserSealer.ToolPositionTiming">
+            <summary>
+            Tool position and timing
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.LaserSealer.RobotPathInterval">
+            <summary>
+            Robot path interval
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.LaserSealer.RobotPathInterval.P0">
+            <summary>
+            Starting point
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.LaserSealer.RobotPathInterval.P1">
+            <summary>
+            Ending point
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.LaserSealer.RobotPathInterval.Fraction">
+            <summary>
+            Fraction from P0 to P1
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.LaserSealer.RobotPathInterval.Pos">
+            <summary>
+            Get the robot position in the interval
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.LaserSealer.RobotPathInterval.Valid">
+            <summary>
+            Valid if Direction vector is valid
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SealerSpec.CalcBaseLine(LotusAPI.Math.Point2f[],LotusAPI.Math.Point2f[])">
+            <summary>
+            Calculate base line
+            </summary>
+            <param name="left_pnts"></param>
+            <param name="right_pnts"></param>
+            <returns>Return null if not success</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.GetRobotPathInterval(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Double)">
+            <summary>
+            Given a robot path as a sequence of timed tool positions, find a position that match with the given time 
+            </summary>
+            <param name="robot_path">Robot path</param>
+            <param name="t_ms">time</param>
+            <returns>The robot path interval, null if failed</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.GetPathCloud(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming})">
+            <summary>
+            Get robot path pointcloud
+            </summary>
+            <param name="robot_path">Robot path</param>
+            <returns>Robot path pointcloud</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.GetSealerPathCloud(System.Double,LotusAPI.MV.Pointcloud,System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Single[])">
+            <summary>
+            Get Sealer path pointcloud
+            </summary>
+            <param name="profile_cloud">Sealer profile cloud</param>
+            <param name="robot_path">Robot path list</param>
+            <param name="filtered_ok_chain">Filtered ok chain</param>
+            <returns>Sealer ok cloud</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SealerModelConfigBase,System.Int32)">
+            <summary>
+            Sealer inspection
+            </summary>
+            <param name="fps">Sealer fps</param>
+            <param name="end_pos">End position (-1 => inspect all)</param>
+            <param name="pc">Sealer data  cloud</param>
+            <param name="model">Model config</param>
+            <param name="align_pos">Starting position</param>
+            <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f,ATMC.Common.LaserSealer.SealerModelConfigBase)">
+            <summary>
+            Calculate height map
+            </summary>
+            <param name="fps">Sealer fps</param>
+            <param name="pc">Sealer data cloud</param>
+            <param name="height_range">Height range</param>
+            <param name="model">Model config</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.UpdateHeightMap(System.Collections.Generic.List{LotusAPI.HW.LaserProfiler.ProfileData},LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f)">
+            <summary>
+            Update data and height map partially
+            </summary>
+            <param name="dq">Laser profile data queue</param>
+            <param name="pc">Pointcloud whose color channel will be updated</param>
+            <param name="height_range">Height range</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.FindAlignPos(System.Double,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SealerModelConfigBase,System.Boolean)">
+            <summary>
+            Find alignment position
+            </summary>
+            <param name="fps">Sealer FPS</param>
+            <param name="pc">Sealer cloud</param>
+            <param name="model">Model config</param>
+            <returns>Starting position if found, -1 otherwise</returns>
+        </member>
+        <member name="M:ATMC.Common.ModelConfigBase.Match(System.Int32)">
+            <summary>
+            Return true if the given id is in the  ID list
+            </summary>
+            <param name="id">id number</param>
+            <returns>True if the ID list contains the given id</returns>
+        </member>
+        <member name="P:ATMC.Common.ModelConfigBase.Name">
+            <summary>
+            Model name
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ModelConfigBase.ModelDir">
+            <summary>
+            Model directory
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ModelConfigBase.Init">
+            <summary>
+            Initialize the model
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.CoarseAligner">
+            <summary>
+            Coarse aligner
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.FineAligner">
+            <summary>
+            Fine aligner
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.Finder">
+            <summary>
+            3D Pattern finder
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.EnableFinder">
+            <summary>
+            Enable/disable 3D pattern finder
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.ShiftOffset">
+            <summary>
+            Shift offset
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.MaxFitness">
+            <summary>
+            Maximum fitness value
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.MinOverlap">
+            <summary>
+            Minimum overlap ratio (0~1)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.OverlapRadius">
+            <summary>
+            Overlap radius (model->scene)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.ShiftLimit">
+            <summary>
+            Shift limit
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.ScanPoses">
+            <summary>
+            Scan poses
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.CoarseSamples">
+            <summary>
+            Coarse samples for coarse ICP aligner
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.FineSamples">
+            <summary>
+            Fine samples for fine ICP aligner
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.Model">
+            <summary>
+            Model cloud file = {prefix}model{suffix}.ply
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.CadModel">
+            <summary>
+            Cad model mesh file = {prefix}cad{suffix}.stl
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationConfig.Valid">
+            <summary>
+            Check if data is valid or not
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RegistrationConfig.AssertFile(System.String)">
+            <summary>
+            Check if file exist
+            </summary>
+            <param name="file">file path</param>
+            <exception cref="T:System.Exception">throw exception if file does not exist</exception>
+        </member>
+        <member name="M:ATMC.Common.RegistrationConfig.Init(System.String,System.String,System.String)">
+            <summary>
+            Initialize registration model
+            model file name      =   [prefix]_model_[suffix].ply
+            cad file name        =   [prefix]_cad_[suffix].stl
+            robot pose file name =   [prefix]_scan_poses.json
+            Ex.: 
+               - prefix: front, rear, left, right ...
+               - suffix: base, uf, cc
+            </summary>
+            <param name="model_dir">Model directory</param>
+            <param name="prefix">prefix</param>
+            <param name="suffix">suffix</param>
+        </member>
+        <member name="M:ATMC.Common.RegistrationConfig.Align(LotusAPI.MV.Pointcloud,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Find a match using 3D finder
+            </summary>
+            <param name="scene">scene cloud</param>
+            <returns>Registration result</returns>
+        </member>
+        <member name="M:ATMC.Common.RegistrationConfig.FindAll(LotusAPI.MV.Pointcloud,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Find all result and align
+            </summary>
+            <param name="scene">Scene cloud</param>
+            <param name="check_fitness">check fitness</param>
+            <param name="check_overlap">check overlap</param>
+            <param name="check_limit">check limit</param>
+            <returns>list of result</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ATMC.Common.RegistrationConfig.ToString">
+            <summary>
+            Convert to string
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Fitness">
+            <summary>
+            Registration fitness
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Overlap">
+            <summary>
+            Registration overlap
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Matrix">
+            <summary>
+            Align matrix
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.TryCount">
+            <summary>
+            Number of tries
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.FitnessOK">
+            <summary>
+            Fitness value ok?
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.OverlapOK">
+            <summary>
+            Overlap value ok?
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.LimitOK">
+            <summary>
+            Limit ok?
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.OK">
+            <summary>
+            Is the result OK or not
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Valid">
+            <summary>
+            Is the result valid?
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Scene">
+            <summary>
+            Scene cloud
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Aligned">
+            <summary>
+            Alinged cloud
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.SceneImgs">
+            <summary>
+            Scene images
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RegistrationResult.#ctor(System.Int32)">
+            <summary>
+            Construct a regiastration result
+            </summary>
+            <param name="img_cnt">number of scan image</param>
+        </member>
+        <member name="M:ATMC.Common.RegistrationResult.#ctor">
+            <summary>
+            Construct a registration result with 1 scan image
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RegistrationResult.Save(System.String,System.String,System.String)">
+            <summary>
+            Save data
+            </summary>
+            <param name="dir">Directory to save</param>
+            <param name="prefix">File prefix</param>
+        </member>
+        <member name="T:ATMC.Common.ResultBase">
+            <summary>
+            Base class for ATM app result
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ResultBase.Model">
+            <summary>
+            The model
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ResultBase.BodyNo">
+            <summary>
+            Body number
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ResultBase.SeqNo">
+            <summary>
+            Sequence number
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ResultBase.Date">
+            <summary>
+            Date
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ResultBase.OK">
+            <summary>
+            OK/NG
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ResultBase.ScreenShot">
+            <summary>
+            Screenshot
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultBase.SaveDB">
+            <summary>
+            Add a new record to DB 
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ResultSignalLogView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultSignalLogView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ResultSignalLogView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.RobotTypeEnum">
+            <summary>
+            Robot type enumeration
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.RobotManager">
+            <summary>
+            Manage array of robots
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RobotManager.Init(ATMC.Common.RobotTypeEnum,System.Int32,System.String)">
+            <summary>
+            Initialize and connect all robots
+            </summary>
+            <param name="robot_type">robot type</param>
+            <param name="num_robots">number of robots</param>
+            <param name="setting_dir">setting directory</param>
+        </member>
+        <member name="E:ATMC.Common.ShiftOffsetResultViewCard.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ShiftOffsetResultViewCard.ShiftButtonClickEvent">
+            <summary>
+            This event will be fired when user click Shift button
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ShiftOffsetResultViewCard.OffsetButtonClickEvent">
+            <summary>
+            This event will be fired when user click Offset button
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.Reset">
+            <summary>
+            Reset the view
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.SetResult(System.Boolean)">
+            <summary>
+            Set result label
+            </summary>
+            <param name="ok"></param>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.SetShift(LotusAPI.Math.Matrix44d,LotusAPI.Robotics.ShiftLimit)">
+            <summary>
+            Set shift result
+            </summary>
+            <param name="H">Shift matrix</param>
+            <param name="shift_limit">Shift limit</param>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.SetFitness(System.Double,System.Boolean)">
+            <summary>
+            Set Fitness value
+            </summary>
+            <param name="fitness">Fitness value</param>
+            <param name="fitness_ok">Fitness ok/ng</param>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.SetOverlap(System.Double,System.Boolean)">
+            <summary>
+            Set Overlap value
+            </summary>
+            <param name="overlap">Overlap value</param>
+            <param name="overlap_ok">Overlap ok/ng</param>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.SetOffset(LotusAPI.Robotics.ShiftOffset)">
+            <summary>
+            Set Offset value
+            </summary>
+            <param name="offset">Offset value</param>
+        </member>
+        <member name="F:ATMC.Common.ShiftOffsetResultViewCard.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ShiftOffsetResultViewCard.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.TabBar.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.TabBar.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.TabBar.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.TCView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.TCView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.TCView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.TitleBar.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.TitleBar.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.TitleBar.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.Utils.UpdateHwStatus(Abeo.Controls.ZeroCode.FlatStatusBar,System.Boolean,ATMC.Common.PLCManager,ATMC.Common.RobotManager,LotusAPI.HW.AbeoScanManager,ATMC.Common.CameraManager,LotusAPI.HW.LZManager)">
+            <summary>
+            Update hw status and display on statusbar, output PLC.DO.HW_ERR if HW_ERR signal is defined
+            </summary>
+            <param name="statusbar">The status bar</param>
+            <param name="show_alarm">Show alarm dialog if set to true</param>
+            <param name="plc_man">Plc manager</param>
+            <param name="robot_man">Robot manager</param>
+            <param name="scanner_man">Scanner manager</param>
+            <param name="cam_man">Camera manager</param>
+            <param name="lz_man">Lz manager</param>
+        </member>
+        <member name="M:ATMC.Common.Utils.CreateWithNewUFCenter(LotusAPI.Robotics.HandEyeSystem,LotusAPI.Math.Point3f)">
+            <summary>
+            Create hand-eye with new UF center
+            </summary>
+            <param name="base_he"></param>
+            <param name="new_uf_cen">New uf center</param>
+            <returns>New hand-eye system</returns>
+        </member>
+        <member name="M:ATMC.Common.Utils.Scan(LotusAPI.MV.AbeoScan,LotusAPI.Robotics.IRobotController,LotusAPI.Robotics.HandEyeSystem,ATMC.Common.TargetCoordEnum)">
+            <summary>
+            Capture a pointcloud and convert to target coordinate, RobotPose and Coord info are embedded to the returned cloud
+            </summary>
+            <param name="scanner">Scanner</param>
+            <param name="robot">Robot</param>
+            <param name="handeye">Handeye config</param>
+            <param name="coord">Target coordinate</param>
+            <returns>Pointcloud</returns>
+        </member>
+        <member name="M:ATMC.Common.Utils.Scan(LotusAPI.MV.AbeoScan,LotusAPI.Robotics.RobotPose,LotusAPI.Robotics.HandEyeSystem,ATMC.Common.TargetCoordEnum)">
+            <summary>
+            Capture a pointcloud and convert to target coordinate, RobotPose and Coord info are embedded to the returned cloud
+            </summary>
+            <param name="scanner">Scanner</param>
+            <param name="handeye">Handeye config</param>
+            <param name="coord">Target coordinate</param>
+            <returns>Pointcloud</returns>
+        </member>
+        <member name="M:ATMC.Common.Utils.GetRobotPose(LotusAPI.MV.Pointcloud)">
+            <summary>
+            Get robot pose info
+            </summary>
+            <param name="cloud">input cloud</param>
+            <returns>Robot pose</returns>
+        </member>
+        <member name="M:ATMC.Common.VideoViewer.SetPosition(System.Double)">
+            <summary>
+            Set frame position
+            </summary>
+            <param name="pos">normalized position (0->1)</param>
+        </member>
+        <member name="F:ATMC.Common.VideoViewer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.VideoViewer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.VideoViewer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ViewCard3D.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ViewCard3D.ShiftButtonClickEvent">
+            <summary>
+            This event will be fired when user click Shift button
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ViewCard3D.OffsetButtonClickEvent">
+            <summary>
+            This event will be fired when user click Offset button
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.Init(System.String)">
+            <summary>
+            Init the registry key name for Pointcloud view
+            </summary>
+            <param name="key">Registry key name</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.Reset">
+            <summary>
+            Reset the view
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.SetResult(System.Boolean)">
+            <summary>
+            Set result label
+            </summary>
+            <param name="ok"></param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.SetShift(LotusAPI.Math.Matrix44d,LotusAPI.Robotics.ShiftLimit)">
+            <summary>
+            Set shift result
+            </summary>
+            <param name="H">Shift matrix</param>
+            <param name="shift_limit">Shift limit</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.SetFitness(System.Double,System.Boolean)">
+            <summary>
+            Set Fitness value
+            </summary>
+            <param name="fitness">Fitness value</param>
+            <param name="fitness_ok">Fitness ok/ng</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.SetOverlap(System.Double,System.Boolean)">
+            <summary>
+            Set Overlap value
+            </summary>
+            <param name="overlap">Overlap value</param>
+            <param name="overlap_ok">Overlap ok/ng</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.SetOffset(LotusAPI.Robotics.ShiftOffset)">
+            <summary>
+            Set Offset value
+            </summary>
+            <param name="offset">Offset value</param>
+        </member>
+        <member name="F:ATMC.Common.ViewCard3D.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3D.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.BiPieChart.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BiPieChart.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.BiPieChart.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.BiStackCounterChart.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BiStackCounterChart.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.BiStackCounterChart.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ImageViewCard.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ImageViewCard.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ImageViewCard.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ImageViewCard.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.PLCManager.PCRUNToggleInterval">
+            <summary>
+            PCRUN toggle interval (ms)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.PLCManager.EnablePCRUN">
+            <summary>
+            Enable/disable PCRUN togle
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.PLCManager.PCRUNMethod">
+            <summary>
+            PCRUN method
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.PLCManager.Plc">
+            <summary>
+            PLC device
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.PLCManager.PlcConnected">
+            <summary>
+            Return true if plc is connected
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.AssertPlc">
+            <summary>
+            Check if PLC is not null
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.PLCManager.IsConnected">
+            <summary>
+            Return true if PLC is connected
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.AssertPlcConnected">
+            <summary>
+            Check if PLC is connected
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.#ctor(ATMC.Common.PlcTypeEnum,System.String)">
+            <summary>
+            Construct PLC manager
+            </summary>
+            <param name="type">Plc type</param>
+            <param name="setting_file">setting file</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.Init(ATMC.Common.PlcTypeEnum,System.String)">
+            <summary>
+            Initialize plc
+            </summary>
+            <param name="type"></param>
+            <param name="setting_file"></param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.Reconnect">
+            <summary>
+            Reconnect to PLC device (disconnect if currently connected, then connect again)
+            Start PCRUN toggle thread if not already started
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.Connect">
+            <summary>
+            Connect to PLC device, do nothing if PLC is already connected
+            Start PCRUN toggle thread if not already started
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.Disconnect">
+            <summary>
+            Disconnect PLC device, stop PLCRUN toggle thread
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.StartPCRUNThread">
+            <summary>
+            Start PCRUN thread
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetMemoryBlock(System.String)">
+            <summary>
+            Get memory block, throw if failed to find block
+            </summary>
+            <param name="name"></param>
+            <returns>Memory block</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetMemoryBlock(System.Enum)">
+            <summary>
+            Get memory block, throw if failed to find block
+            </summary>
+            <param name="block_enum">Block name</param>
+            <returns>Memory block</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDOPin(System.String)">
+            <summary>
+            Get DO pin, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <returns>Pin</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDOPin(System.Enum)">
+            <summary>
+            Get DO pin, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <returns>Pin</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDIPin(System.String)">
+            <summary>
+            Get DI pin, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <returns>Pin</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDIPin(System.Enum)">
+            <summary>
+            Get DI pin, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <returns>Pin</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDOBit(System.String)">
+            <summary>
+            Get DO bit value, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <returns>bit value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDOBit(System.Enum)">
+            <summary>
+            Get DO bit value, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <returns>bit value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteDOBit(System.String,System.Boolean)">
+            <summary>
+            Write DO bit value, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <param name="value">Pin value</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteDOBit(System.Enum,System.Boolean)">
+            <summary>
+            Write DO bit value, throw if failed to find pin
+            </summary>
+            <param name="name">Pin name</param>
+            <param name="value">Pin value</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ToggleDOBit(System.String)">
+            <summary>
+            Toggle DO bit, throw if failed to find pin
+            </summary>
+            <param name="pin_name"></param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ToggleDOBit(System.Enum)">
+            <summary>
+            Toggle DO bit, throw if failed to find pin
+            </summary>
+            <param name="pin_name"></param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ClearDO">
+            <summary>
+            Clear all DO pins
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockAscii(System.String)">
+            <summary>
+            Read memory block ascii content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>Ascii string</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockAscii(System.Enum)">
+            <summary>
+            Read memory block ascii content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>Ascii string</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockUserString(System.String)">
+            <summary>
+            Read memory block user string contents, throw if block not found
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>User string</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockUserString(System.Enum)">
+            <summary>
+            Read memory block user string contents, throw if block not found
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>User string</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockInt16(System.String,System.Int32)">
+            <summary>
+            Read memory block int16 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>int16 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockInt16(System.Enum,System.Int32)">
+            <summary>
+            Read memory block int16 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>int16 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockUInt16(System.String,System.Int32)">
+            <summary>
+            Read memory block uint16 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>uint16 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockUInt16(System.Enum,System.Int32)">
+            <summary>
+            Read memory block uint16 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>uint16 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockInt32(System.String,System.Int32)">
+            <summary>
+            Read memory block int32 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>int32 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockInt32(System.Enum,System.Int32)">
+            <summary>
+            Read memory block int32 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>int32 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockUInt32(System.String,System.Int32)">
+            <summary>
+            Read memory block uint32 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>uint32 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlockUInt32(System.Enum,System.Int32)">
+            <summary>
+            Read memory block uint32 content, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>uint32 value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlock(System.String)">
+            <summary>
+            Read byte array from block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>Byte array</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.ReadBlock(System.Enum)">
+            <summary>
+            Read byte array from block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <returns>Byte array</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlock(System.String,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Write byte array to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">Byte array data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlock(System.Enum,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Write byte array to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">Byte array data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockAscii(System.String,System.String,System.Int32)">
+            <summary>
+            Write ascii string to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">string data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockAscii(System.Enum,System.String,System.Int32)">
+            <summary>
+            Write ascii string to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">string data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockInt16(System.String,System.Int16,System.Int32)">
+            <summary>
+            Write int16 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">int16 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockInt16(System.Enum,System.Int16,System.Int32)">
+            <summary>
+            Write int16 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">int16 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockUInt16(System.String,System.UInt16,System.Int32)">
+            <summary>
+            Write uint16 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">uint16 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockUInt16(System.Enum,System.UInt16,System.Int32)">
+            <summary>
+            Write uint16 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">uint16 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockInt32(System.String,System.Int32,System.Int32)">
+            <summary>
+            Write int32 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">int32 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockInt32(System.Enum,System.Int32,System.Int32)">
+            <summary>
+            Write int32 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">int32 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockUInt32(System.String,System.UInt32,System.Int32)">
+            <summary>
+            Write uint32 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">uint32 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteBlockUInt32(System.Enum,System.UInt32,System.Int32)">
+            <summary>
+            Write uint32 value to block, throw if failed to find block
+            </summary>
+            <param name="block_name">Block name</param>
+            <param name="data">uint32 data</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDIBit(System.String)">
+            <summary>
+            Get DI bit
+            </summary>
+            <param name="name">bit name</param>
+            <returns>bit value</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDIBit(System.Enum)">
+            <summary>
+            Get DI bit
+            </summary>
+            <param name="name">bit name</param>
+            <returns>bit value</returns>
+        </member>
+        <member name="T:ATMC.Common.ResultCounterView">
+            <summary>
+            Result counter control
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ResultCounterView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ResultCounterView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ViewCard3DSimple.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ViewCard3DSimple.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3DSimple.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCard3DSimple.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.ViewCardLZ.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ViewCardLZ.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCardLZ.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCardLZ.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.Vision3DResultView.ShiftButtonClickEvent">
+            <summary>
+            This event will be fired when user click Shift button
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.Vision3DResultView.OffsetButtonClickEvent">
+            <summary>
+            This event will be fired when user click Offset button
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.Reset">
+            <summary>
+            Reset the view
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.SetResult(System.Boolean)">
+            <summary>
+            Set result label
+            </summary>
+            <param name="ok"></param>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.SetShift(LotusAPI.Math.Matrix44d,LotusAPI.Robotics.ShiftLimit)">
+            <summary>
+            Set shift result
+            </summary>
+            <param name="H">Shift matrix</param>
+            <param name="shift_limit">Shift limit</param>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.SetFitness(System.Double,System.Boolean)">
+            <summary>
+            Set Fitness value
+            </summary>
+            <param name="fitness">Fitness value</param>
+            <param name="fitness_ok">Fitness ok/ng</param>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.SetOverlap(System.Double,System.Boolean)">
+            <summary>
+            Set Overlap value
+            </summary>
+            <param name="overlap">Overlap value</param>
+            <param name="overlap_ok">Overlap ok/ng</param>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.SetOffset(LotusAPI.Robotics.ShiftOffset)">
+            <summary>
+            Set Offset value
+            </summary>
+            <param name="offset">Offset value</param>
+        </member>
+        <member name="F:ATMC.Common.Vision3DResultView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.Vision3DResultView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
