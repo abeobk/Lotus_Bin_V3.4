@@ -12,8 +12,7 @@ c22e9aaad0649e09df6e6460750acc71cd62a10b *./Automation.BDaq4.dll
 123fe310d1d035932b65fac5006209c4dcd692bf *./EntityFramework.dll
 61af24fd0248e322dbd61541b9a495e54837cc3f *./FastColoredTextBox.dll
 b6ba59c8a5e4a516ee56e7c3e458195845a7cc85 *./firmware/AbeoScan_V4.4.img
-9c112b4eb19fdbba82e6a0837b965a4c98a4234d *./firmware/lc4500_server_armhf_api_3_4_v2.1.0
-394a44cbe608fe123862983c38d37db0747470de *./firmware/lc4500_server_armhf_api_3_4_v2.1.1
+4cead8c4b92467562f67168d62029401f17d6cb3 *./firmware/lc4500_server_armhf_api_3_4_v2.1.1
 54522ecf8246ca4ef24e6174f69c0847a43e3cc4 *./FirmwareUpdate_MD_VC141_v3_1_Basler_pylon.dll
 30ed1fb26524dad0311e5ff278ca6116fc77f271 *./FLIR_GenTL_v140.cti
 68a08633dfdb2faffa7db82507752f1620556efd *./ftbusui.dll
@@ -74,10 +73,10 @@ cf73a66d09689d5beb8de756f28bb9aca3fcdc99 *./lotus_hw_basler_v142_x64.dll
 f8bdd8e794b55acfbe1753202aba7469c7bfac8c *./lotus_hw_intel_rs_v142_x64.dll
 d37782d452052ed50254b60bd3b8b0916515881a *./lotus_hw_photoneo_v142_x64.dll
 4754dd804a35599d26106cc12e3df2ccd8ec9417 *./lotus_hw_ptgrey_v142_x64.dll
-dd8e8b120806a4978c906fcac3a36e2df7c1a68f *./lotus_hw_ti_v142_x64.dll
+50610fe714dfd7b4e05be99b6126a5e25cd35364 *./lotus_hw_ti_v142_x64.dll
 e611f2c45ed206cb03e9954893644f9e45d8199b *./lotus_ml.dll
 c8905cd0937fe59ccf2c2ef994f255d5389d7582 *./lotus_ml_v142_x64.dll
-6c9747341df85f7d3ea0d9959aa854ab7a51c039 *./lotus_mv_v142_x64.dll
+6fbfb8760145be3874f9108a1d415765b3aa10a0 *./lotus_mv_v142_x64.dll
 79e6de04947345933a5c14ae4057a6f1ed9d111d *./lotus_sim_v142_x64.dll
 2d571caee87e7bcd55d753fda72803e83291ed17 *./lotus_v142_x64.dll
 a8372165ff6bac756dc2d02c6932f369c234f0a2 *./MathParser_MD_VC140_v3_0.dll
