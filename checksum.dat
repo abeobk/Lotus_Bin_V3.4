@@ -135,5 +135,6 @@ ca0fb6e96c39c955365db0ee5e9084a472684030 *./vcamp140.dll
 4fee261457681c7002c30277d1cb5f5dfa4b7422 *./vcomp140.dll
 30a2719d4b8667fd237bcfb781660901c993d9fc *./vcruntime140.dll
 5f87f28835c89cb0d89760a1ace150af7b090c00 *./WinFormsUI.Docking.dll
+0b48adb86f702deaf1d559e8a4e72ae02f7d4c6a *./WrapperCSharp_msvc14_Release_1.13.1.dll
 2f9998a045df5201c0bd3920b8b57818968337ae *./XMLParser_MD_VC140_v3_0.dll
 b364b6e5e96cd8a69669e605ce4ebdf3371dc541 *./XmlParser_MD_VC141_v3_1_Basler_pylon.dll
