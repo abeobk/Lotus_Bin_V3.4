@@ -599,6 +599,46 @@ Read a mesh from STL file
             <param name="filename">file name</param>
             <returns>Mesh</returns>
         </member>
+        <member name="M:LotusAPI.MV.Utils.PointPolygonTest(LotusAPI.Math.Point2f[],LotusAPI.Math.Point2f)">
+            <summary>
+Test if point inside polygon inside=+1, outside=-1, on-edge=0
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.PointPolygonTest(LotusAPI.Math.Point2i[],LotusAPI.Math.Point2i)">
+            <summary>
+Test if point inside polygon inside=+1, outside=-1, on-edge=0
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.ApproxPolyDP(LotusAPI.Math.Point2f[],System.Double,System.Boolean)">
+            <summary>
+Approximate polygon
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.ApproxPolyDP(LotusAPI.Math.Point2i[],System.Double,System.Boolean)">
+            <summary>
+Approximate polygon
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.ContourArea(LotusAPI.Math.Point2f[])">
+            <summary>
+Compute arc len
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.ContourArea(LotusAPI.Math.Point2i[])">
+            <summary>
+Compute arc len
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.ArcLength(LotusAPI.Math.Point2f[],System.Boolean)">
+            <summary>
+Compute arc len
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.ArcLength(LotusAPI.Math.Point2i[],System.Boolean)">
+            <summary>
+Compute arc len
+</summary>
+        </member>
         <member name="M:LotusAPI.MV.Utils.CreateCalibBoard(System.String,LotusAPI.Math.Size2f,System.Single,System.Single,System.Single)">
             <summary>
 Create calibration board and save to file
