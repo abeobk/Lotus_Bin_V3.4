@@ -105,6 +105,24 @@
             Reobot disconnected event handler
             </summary>
         </member>
+        <member name="T:LotusAPI.Robotics.InputChangedEventHandler">
+            <summary>
+            Input changed event handler
+            </summary>
+            <param name="pin"></param>
+        </member>
+        <member name="T:LotusAPI.Robotics.OutputChangedEventHandler">
+            <summary>
+            Output changed event handler
+            </summary>
+            <param name="pin"></param>
+        </member>
+        <member name="T:LotusAPI.Robotics.PoseChangedEventHandler">
+            <summary>
+            Pose changed event handler
+            </summary>
+            <param name="pin"></param>
+        </member>
         <member name="T:LotusAPI.Robotics.IRobotController">
             <summary>
             An interface for robot controller
@@ -118,6 +136,21 @@
         <member name="E:LotusAPI.Robotics.IRobotController.RobotDisconnectedEvent">
             <summary>
             Robot disconnected event
+            </summary>
+        </member>
+        <member name="E:LotusAPI.Robotics.IRobotController.InputChangedEvent">
+            <summary>
+            Input chagned event
+            </summary>
+        </member>
+        <member name="E:LotusAPI.Robotics.IRobotController.OutputChangedEvent">
+            <summary>
+            Output changed event
+            </summary>
+        </member>
+        <member name="E:LotusAPI.Robotics.IRobotController.PoseChangedEvent">
+            <summary>
+            Pose changed event
             </summary>
         </member>
         <member name="P:LotusAPI.Robotics.IRobotController.Setting">
