@@ -43,7 +43,7 @@ c86d21f719869b197a55fd86ed59e9323c20fc86 *./libplctag.dll
 66fd26a3c25afdd7dc7e78443777623b31169bcc *./LogViewer.exe
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
-54a35dca8913f19ac0b7dcbfee28c674eda92470 *./LotusAPI.App.exe
+c28d3d619364fb4899d50255182c3383f38ec314 *./LotusAPI.App.exe
 909828d6804140b2787d2fb4647c0f399ad36ded *./LotusAPI.Controls.dll
 551f8793e534a3551ede38329bdd93f713edbbc3 *./LotusAPI.Controls.xml
 c60956668b249f6034632f9273f4e29367342a10 *./LotusAPI.Data.dll
@@ -111,7 +111,7 @@ c4b621df2f55b09f618579e36946e91767d818e5 *./PylonUtility_v7_2.dll
 9707812baa82de0a3b73df14d802b5bbb78220fd *./PylonViewerComponents6.dll
 c8a7509dfd76499f48e259df221b0e2479601a97 *./PylonViewerHelper6.dll
 2ef23358007cb5bca278b701697a220a55cf5487 *./realsense2.dll
-642c236c588bc9e26d1d7616d34ed18d98f9e5b3 *./RobotController.exe
+91fc1b53b3f27e2520146e4349bfd8ff98bb8744 *./RobotController.exe
 bd11f8e5fd781106ab00ea779ff823f665ec7abe *./RobotStudio.Services.RobApi.Desktop.dll
 2a6bfa09dffedaff6fb6ad8585eb0b35c3fe185e *./RobotStudio.Services.RobApi.dll
 6e583ad59ba4181b0bc66843379cf7a1884fca2e *./S7.Net.dll
