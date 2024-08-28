@@ -503,7 +503,7 @@
         </member>
         <member name="P:LotusAPI.HW.LaserProfiler.IsValid">
             <summary>
-            Check if device is connected and is calibrated
+            Check if device is connected and is calibratedw
             </summary>
         </member>
         <member name="M:LotusAPI.HW.LaserProfiler.ApplyROI">
