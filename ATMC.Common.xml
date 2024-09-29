@@ -558,6 +558,14 @@
             <param name="num_robots">number of robots</param>
             <param name="setting_dir">setting directory</param>
         </member>
+        <member name="M:ATMC.Common.RobotManager.Init(ATMC.Common.RobotTypeEnum[],System.String)">
+            <summary>
+            Initialize and connect all robots
+            </summary>
+            <param name="robot_type">robot type</param>
+            <param name="num_robots">number of robots</param>
+            <param name="setting_dir">setting directory</param>
+        </member>
         <member name="E:ATMC.Common.ShiftOffsetResultViewCard.TitleDoubleClickEvent">
             <summary>
             This is event will be fired when user double click the title label
