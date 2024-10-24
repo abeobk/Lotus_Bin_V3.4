@@ -659,12 +659,28 @@ Extract low curvature pointcloud
 Extract low curvature pointcloud
 </summary>
         </member>
+        <member name="M:LotusAPI.MV.Utils.BoundingBoxCollisionCheck(LotusAPI.MV.GObject,LotusAPI.MV.GObject[])">
+            <summary>
+Check if bounding box of obj collides with any of the bounding boxes of the meshes other_objs
+</summary>
+            <param name="obj">mesh</param>
+            <param name="other_objs">other mesh array</param>
+            <returns>True if collision found</returns>
+        </member>
         <member name="M:LotusAPI.MV.Utils.CollisionCheck(LotusAPI.MV.GObject,LotusAPI.MV.GObject[])">
             <summary>
 Check if obj collides with any of the meshes in other_objs
 </summary>
             <param name="obj">mesh</param>
             <param name="other_objs">other mesh array</param>
+            <returns>True if collision found</returns>
+        </member>
+        <member name="M:LotusAPI.MV.Utils.BoundingBoxCollisionCheck(LotusAPI.MV.GObject[],LotusAPI.MV.GObject[])">
+            <summary>
+Check if any of the bounding boxes of the meshes objs1 collides with any of the bounding boxes of the meshes objs2
+</summary>
+            <param name="objs1">mesh array 1</param>
+            <param name="objs2">mesh array 2</param>
             <returns>True if collision found</returns>
         </member>
         <member name="M:LotusAPI.MV.Utils.CollisionCheck(LotusAPI.MV.GObject[],LotusAPI.MV.GObject[])">
@@ -834,74 +850,6 @@ Estimate plane with normal align
 Get valid point count
 </summary>
         </member>
-        <member name="M:LotusAPI.MV.Pointcloud.GetNormalMap">
-            <summary>
-Get Normal map image
-</summary>
-            <returns />
-        </member>
-        <member name="M:LotusAPI.MV.Pointcloud.GetImage(System.String)">
-            <summary>
-Get layer image
-</summary>
-            <param name="layer_name">Layer name</param>
-            <returns>Layer image</returns>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.ShadeImage">
-            <summary>
-Get Shade image
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.FaceMat">
-            <summary>
-Get Face image
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.ColorMat">
-            <summary>
-Get Color image
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.StateMat">
-            <summary>
-Get State image
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.NormalMat">
-            <summary>
-Get State image
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.VertexMat">
-            <summary>
-Get Vertex image
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.HasFace">
-            <summary>
-Return true if pointcloud has Face component
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.HasShade">
-            <summary>
-Return true if pointcloud has Shade component
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.HasState">
-            <summary>
-Return true if pointcloud has State component
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.HasColor">
-            <summary>
-Return true if pointcloud has Color component
-</summary>
-        </member>
-        <member name="P:LotusAPI.MV.Pointcloud.HasNormal">
-            <summary>
-Return true if pointcloud has Normal component
-</summary>
-        </member>
         <member name="M:LotusAPI.MV.Pointcloud.MakeClone">
             <summary>
 Make a cloned pointcloud 
@@ -1051,6 +999,74 @@ Read an info, return null if not found
 </summary>
             <param name="key">Info name</param>
             <returns>Info string, null if not found</returns>
+        </member>
+        <member name="M:LotusAPI.MV.GObject.GetNormalMap">
+            <summary>
+Get Normal map image
+</summary>
+            <returns />
+        </member>
+        <member name="M:LotusAPI.MV.GObject.GetImage(System.String)">
+            <summary>
+Get layer image
+</summary>
+            <param name="layer_name">Layer name</param>
+            <returns>Layer image</returns>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.ShadeImage">
+            <summary>
+Get Shade image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.FaceMat">
+            <summary>
+Get Face image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.ColorMat">
+            <summary>
+Get Color image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.StateMat">
+            <summary>
+Get State image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.NormalMat">
+            <summary>
+Get State image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.VertexMat">
+            <summary>
+Get Vertex image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.HasFace">
+            <summary>
+Return true if pointcloud has Face component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.HasShade">
+            <summary>
+Return true if pointcloud has Shade component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.HasState">
+            <summary>
+Return true if pointcloud has State component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.HasColor">
+            <summary>
+Return true if pointcloud has Color component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.GObject.HasNormal">
+            <summary>
+Return true if pointcloud has Normal component
+</summary>
         </member>
         <member name="M:LotusAPI.MV.CameraModel.CalcObjectPoints(LotusAPI.Math.Point2f[],LotusAPI.Math.Matrix44d)">
             <summary>
