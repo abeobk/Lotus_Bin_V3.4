@@ -850,6 +850,74 @@ Estimate plane with normal align
 Get valid point count
 </summary>
         </member>
+        <member name="M:LotusAPI.MV.Pointcloud.GetNormalMap">
+            <summary>
+Get Normal map image
+</summary>
+            <returns />
+        </member>
+        <member name="M:LotusAPI.MV.Pointcloud.GetImage(System.String)">
+            <summary>
+Get layer image
+</summary>
+            <param name="layer_name">Layer name</param>
+            <returns>Layer image</returns>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.ShadeImage">
+            <summary>
+Get Shade image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.FaceMat">
+            <summary>
+Get Face image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.ColorMat">
+            <summary>
+Get Color image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.StateMat">
+            <summary>
+Get State image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.NormalMat">
+            <summary>
+Get State image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.VertexMat">
+            <summary>
+Get Vertex image
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.HasFace">
+            <summary>
+Return true if pointcloud has Face component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.HasShade">
+            <summary>
+Return true if pointcloud has Shade component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.HasState">
+            <summary>
+Return true if pointcloud has State component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.HasColor">
+            <summary>
+Return true if pointcloud has Color component
+</summary>
+        </member>
+        <member name="P:LotusAPI.MV.Pointcloud.HasNormal">
+            <summary>
+Return true if pointcloud has Normal component
+</summary>
+        </member>
         <member name="M:LotusAPI.MV.Pointcloud.MakeClone">
             <summary>
 Make a cloned pointcloud 
