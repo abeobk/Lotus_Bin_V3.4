@@ -699,6 +699,18 @@
             <param name="cam_man">Camera manager</param>
             <param name="lz_man">Lz manager</param>
         </member>
+        <member name="M:ATMC.Common.Utils.UpdateHwStatus(Abeo.Controls.ZeroCode.FlatStatusBar,System.Boolean,System.Object[],ATMC.Common.PLCManager,ATMC.Common.RobotManager,LotusAPI.HW.AbeoScanManager,ATMC.Common.CameraManager,LotusAPI.HW.LZManager)">
+            <summary>
+            Update hw status and display on statusbar, output PLC.DO.HW_ERR if HW_ERR signal is defined
+            </summary>
+            <param name="statusbar">The status bar</param>
+            <param name="show_alarm">Show alarm dialog if set to true</param>
+            <param name="plc_man">Plc manager</param>
+            <param name="robot_man">Robot manager</param>
+            <param name="scanner_man">Scanner manager</param>
+            <param name="cam_man">Camera manager</param>
+            <param name="lz_man">Lz manager</param>
+        </member>
         <member name="M:ATMC.Common.Utils.CreateWithNewUFCenter(LotusAPI.Robotics.HandEyeSystem,LotusAPI.Math.Point3f)">
             <summary>
             Create hand-eye with new UF center
