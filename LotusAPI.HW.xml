@@ -666,6 +666,22 @@
             </summary>
             <param name="node">json node</param>
         </member>
+        <member name="M:LotusAPI.HW.PinMap.Create(System.String[],System.String[])">
+            <summary>
+            Create pin map from array of input and output enums
+            </summary>
+            <param name="input_pins">array of input enums</param>
+            <param name="output_pins">array of output enums</param>
+            <returns>PinMap</returns>
+        </member>
+        <member name="M:LotusAPI.HW.PinMap.Create(System.Type,System.Type)">
+            <summary>
+            Create pin map from input and output enum types
+            </summary>
+            <param name="input_enum">Input enum type</param>
+            <param name="output_enum">Output enum type</param>
+            <returns>PinMap</returns>
+        </member>
         <member name="M:LotusAPI.HW.PLC.PlcLS.Start">
             <summary>
             Start polling thread in highest priority, automatic connect if PLC has not been not connected yet.
