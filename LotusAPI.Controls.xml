@@ -45,6 +45,382 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:LotusAPI.Controls.OGL.Camera">
+            <summary>
+            Opengl camera
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.Arcball">
+            <summary>
+            Opengl arcball
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Arcball.Click(LotusAPI.Math.Vector2f)">
+            <summary>
+            Mouse click
+            </summary>
+            <param name="p">mouse pos</param>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Arcball.Click(System.Single,System.Single)">
+            <summary>
+            Mouse click
+            </summary>
+            <param name="x">screen pos x</param>
+            <param name="y">screen pos y</param>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Arcball.Drag(LotusAPI.Math.Vector2f)">
+            <summary>
+            Mouse drag
+            </summary>
+            <param name="p">mouse pos</param>
+            <returns>current matrix</returns>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Arcball.Drag(System.Single,System.Single)">
+            <summary>
+            Mouse drag
+            </summary>
+            <param name="x">mouse pos x</param>
+            <param name="y">mouse pos y</param>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.Context">
+            <summary>
+            Current opengl context
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.Attribute">
+            <summary>
+            Opengl Attribute
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Attribute.Index">
+            <summary>
+            Attribute location index
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Attribute.Type">
+            <summary>
+            Data type (float/int...)
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Attribute.Size">
+            <summary>
+            Size of data (ex: vec3 = 3)
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Attribute.Stride">
+            <summary>
+            Stride in bytes
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Attribute.Normalized">
+            <summary>
+            True if normalized
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Attribute.Offset">
+            <summary>
+            Offset in bytes
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Attribute.#ctor(System.UInt32,System.UInt32,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Construct attribute
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Attribute.AttribFloat(System.UInt32,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Create float attribute
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Attribute.AttribByte(System.UInt32,System.Int32,System.Boolean)">
+            <summary>
+            Construct byte attribute
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Attribute.Init(LotusAPI.Controls.OGL.Context)">
+            <summary>
+            Init attribute
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.OpenGLObjectBase">
+            <summary>
+            OpenGL Object base class
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.Buffer">
+            <summary>
+            OpenGL Buffer
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Buffer.Target">
+            <summary>
+            Buffer Target (array, element array...)
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Buffer.Usage">
+            <summary>
+            Buffer Usage (static draw, dynamic draw...)
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.Buffer.Attribs">
+            <summary>
+            List of data attributes
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.#ctor(LotusAPI.Controls.OGL.Context,System.UInt32,System.UInt32)">
+            <summary>
+            Construct a buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.Bind">
+            <summary>
+            Bind buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.Unbind">
+            <summary>
+            Unbind buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.UpdateData(System.UInt16[])">
+            <summary>
+            Udate buffer data
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.UpdateData(System.Single[])">
+            <summary>
+            Udate buffer data
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.UpdateData(System.IntPtr,System.Int32)">
+            <summary>
+            Update buffer data
+            </summary>
+            <param name="data_ptr">pointer to data</param>
+            <param name="data_size">size in bytes</param>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.UpdateSubData(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Update buffer sub data
+            </summary>
+            <param name="data_ptr">pointer to data</param>
+            <param name="offset">offset in bytes</param>
+            <param name="data_size">size in bytes</param>
+            <returns></returns>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.Create(LotusAPI.Controls.OGL.Context,System.UInt32,System.UInt32,System.UInt16[],LotusAPI.Controls.OGL.Attribute[])">
+            <summary>
+            Create buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.Create(LotusAPI.Controls.OGL.Context,System.UInt32,System.UInt32,System.Single[],LotusAPI.Controls.OGL.Attribute[])">
+            <summary>
+            Create buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.Create(LotusAPI.Controls.OGL.Context,System.UInt32,System.UInt32,System.IntPtr,System.Int32,LotusAPI.Controls.OGL.Attribute[])">
+            <summary>
+            Create buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32,LotusAPI.Controls.OGL.Attribute[])">
+            <summary>
+            Create static draw VBO
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO(LotusAPI.Controls.OGL.Context,System.Single[],LotusAPI.Controls.OGL.Attribute[])">
+            <summary>
+            Create static draw VBO
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO(LotusAPI.Controls.OGL.Context,System.UInt16[],LotusAPI.Controls.OGL.Attribute[])">
+            <summary>
+            Create static draw VBO
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO_POS(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Vertex Position buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO_NORMAL(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Vertex Normal buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO_COLOR(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Vertex Color buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawVBO_STATE(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Vertex State buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawEBO(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Element Array buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawEBO(LotusAPI.Controls.OGL.Context,System.UInt16[])">
+            <summary>
+            Create static draw Element Array buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawEBO_TRIANGLES(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Triangles Element Array buffer
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Buffer.CreateStaticDrawEBO_LINES(LotusAPI.Controls.OGL.Context,System.IntPtr,System.Int32)">
+            <summary>
+            Create static draw Lines Element Array buffer
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.RBO">
+            <summary>
+            Opengl Render Buffer Object
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.RBO.Width">
+            <summary>
+            Width
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.RBO.Height">
+            <summary>
+            Height
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.RBO.BufferStorage">
+            <summary>
+            Buffer storage
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.Texture">
+            <summary>
+            OpenGL Texture
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.FBO">
+            <summary>
+            OpenGL Frame Buffer Object
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.VAO">
+            <summary>
+            OpenGL Vertex Array Object
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.Shader">
+            <summary>
+            OpenGL Shader
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetMVP(LotusAPI.Math.Matrix44f)">
+            <summary>
+            Set MVP matrix (Mat44f)
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetMVP(LotusAPI.Math.Matrix44d)">
+            <summary>
+            Set MVP matrix (Mat44f)
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetMV(LotusAPI.Math.Matrix33f)">
+            <summary>
+            Set MVP matrix (Mat33f)
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetMV(LotusAPI.Math.Matrix44d)">
+            <summary>
+            Set MVP matrix (Mat33f)
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetColor(LotusAPI.Math.Vector4f)">
+            <summary>
+            Set Color
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetColor(System.Drawing.Color)">
+            <summary>
+            Set Color
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetTex(System.Int32)">
+            <summary>
+            Set Texture ID
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetUseColorArray(System.Boolean)">
+            <summary>
+            Set Use Color VBO
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.CreateBasicShader(LotusAPI.Controls.OGL.Context)">
+            <summary>
+            Create basic shader
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.CreatePhongShader(LotusAPI.Controls.OGL.Context)">
+            <summary>
+            Create phong shader
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.RenderCmd">
+            <summary>
+            OpenGL Render command
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.CmdDrawArray">
+            <summary>
+            OpenGL DrawArray command
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.CmdDrawArray.Primitive">
+            <summary>
+            Draw mode
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.CmdDrawArray.First">
+            <summary>
+            Start index (int points)
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.OGL.CmdDrawArray.Count">
+            <summary>
+            Count (in points)
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.CmdDrawElements">
+            <summary>
+            OpenGL DrawElements command
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.GLObject">
+            <summary>
+            OpenGL object
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Controls.OGL.GLObject.SceneItem">
+            <summary>
+            OpenGL scene item
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SceneNode.UpdateObject(LotusAPI.MV.GObject)">
+            <summary>
+            Update object dadta
+            </summary>
+            <param name="obj"></param>
+        </member>
+        <member name="M:LotusAPI.Controls.SceneNode.UpdateObject(LotusAPI.MV.GObject,System.Drawing.Color)">
+            <summary>
+            Update object data
+            </summary>
+            <param name="obj"></param>
+            <param name="color"></param>
+        </member>
         <member name="F:LotusAPI.Controls.Dialogs.AlarmDialog.components">
             <summary>
             Required designer variable.
@@ -482,6 +858,26 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.Properties.Resources.basic_fs">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.Properties.Resources.basic_vs">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.Properties.Resources.phong_fs">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Controls.Properties.Resources.phong_vs">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
             </summary>
         </member>
         <member name="F:LotusAPI.App.Controls.SQLQueryEditor.components">
