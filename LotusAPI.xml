@@ -1033,6 +1033,12 @@ Count overlap between two clouds (with custom matrices)
             <param name="thread_count">Number of threads</param>
             <returns>Number of overlaped points</returns>
         </member>
+        <member name="M:LotusAPI.MV.Pointcloud.RemovePoints(LotusAPI.MV.Image,System.Boolean)">
+            <summary>
+Remove points in mask
+</summary>
+            <param name="mask" />
+        </member>
         <member name="M:LotusAPI.MV.Pointcloud.Extract(LotusAPI.Math.Point2i[])">
             <summary>
 Extract organized pointcloud by polygon boundary
@@ -12137,7 +12143,7 @@ Feature2D::compute scale space pyramid is computed twice.
 will use OpenCL.
 
 @note [ANB13] Fast Explicit Diffusion for Accelerated Features in Nonlinear
-Scale Spaces. Pablo F. Alcantarilla, JesÃºs Nuevo and Adrien Bartoli. In
+Scale Spaces. Pablo F. Alcantarilla, Jesús Nuevo and Adrien Bartoli. In
 British Machine Vision Conference (BMVC), Bristol, UK, September 2013.
 
 
