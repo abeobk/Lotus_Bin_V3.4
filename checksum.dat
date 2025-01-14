@@ -46,7 +46,7 @@ c86d21f719869b197a55fd86ed59e9323c20fc86 *./libplctag.dll
 66fd26a3c25afdd7dc7e78443777623b31169bcc *./LogViewer.exe
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
-0e5deaca116cadaa6899213596a9e9ff9b5a8294 *./LotusAPI.App.exe
+7d73d26d547ba4721f19a9655e4cbe98a55a3858 *./LotusAPI.App.exe
 f33353b290c5f37a831e4aae5cb96f27264ffd61 *./LotusAPI.Controls.dll
 7836a6098ed58fe12fe11f32311bd82d7258692c *./LotusAPI.Controls.xml
 1863238be33a1ec536ca2ea923449bef0ae0aba2 *./LotusAPI.Data.dll
@@ -64,7 +64,7 @@ b249dcf06dc09feab21243f49f31809d392c691f *./LotusAPI.HW.OpcPlc.xml
 7b5fff163484f7703a7ee0961264a6d744d148dd *./LotusAPI.Robotics.ABB.dll
 7b426ec1ccec0ef2e6b00a81f51336de37d5de6e *./LotusAPI.Robotics.ABB.xml
 dc492cb896f83177515fa4f0463bd7667f3a5ea7 *./LotusAPI.Robotics.dll
-163ab55e7fbdcaddd55b497848f28fe6c17321b9 *./LotusAPI.Robotics.Fanuc.dll
+26ae4a3da3f7d74303c0471defdf92885c7fb0ec *./LotusAPI.Robotics.Fanuc.dll
 cbc0c1ea43de88883a115c6dfeed6c8d5bd17cc9 *./LotusAPI.Robotics.Fanuc.xml
 16f13ddfcfbe2fd2ffeecad98ffd86fec93a132b *./LotusAPI.Robotics.HRLib.dll
 a7609bb038257181710045a109124201157ef706 *./LotusAPI.Robotics.xml
