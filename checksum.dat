@@ -1,5 +1,5 @@
 6d7fda80c6a6d06c72b016f94e8255ab8aee9a4e *./ABB.Robotics.Controllers.PC.dll
-3b17d5a4c447de330799e7b5d95064ad4a213374 *./Abeo.Controls.dll
+992afda3afc9ec067c22becd8fe674d824675f87 *./Abeo.Controls.dll
 a238a3abe5a8955786ba51c738f1474e2b20acd6 *./AbeoImageAnnotator.exe
 a7899035f2a88e7444ec98ceb0c3c7397e0e8687 *./AbeoJsonEditor.exe
 d12313f9355e66f452653aad8dd6ef603ee6569f *./AbeoMaskEditor.exe
@@ -46,7 +46,7 @@ c86d21f719869b197a55fd86ed59e9323c20fc86 *./libplctag.dll
 66fd26a3c25afdd7dc7e78443777623b31169bcc *./LogViewer.exe
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
-c66ec93f24139fb6672bfe84935822791210f54b *./LotusAPI.App.exe
+8388a9d995298721ff8e39359d1289caf68e3e3a *./LotusAPI.App.exe
 50bceba30f0779cdeaf6e9155516d1a525f7716b *./LotusAPI.Controls.dll
 7836a6098ed58fe12fe11f32311bd82d7258692c *./LotusAPI.Controls.xml
 f45b147cee05b72bc2d71c26eac6942d3b206e97 *./LotusAPI.Data.dll
@@ -114,7 +114,7 @@ c4b621df2f55b09f618579e36946e91767d818e5 *./PylonUtility_v7_2.dll
 9707812baa82de0a3b73df14d802b5bbb78220fd *./PylonViewerComponents6.dll
 c8a7509dfd76499f48e259df221b0e2479601a97 *./PylonViewerHelper6.dll
 2ef23358007cb5bca278b701697a220a55cf5487 *./realsense2.dll
-2ef6d9e71549b5bf35e09ceae88bba03e2d6493b *./RobotController.exe
+aabf5556f22dcb315f95571a8c3f19b6f56cc643 *./RobotController.exe
 9e3a4610c94cb6cceeb1188047639ae72437ead6 *./RobotSimulator.exe
 bd11f8e5fd781106ab00ea779ff823f665ec7abe *./RobotStudio.Services.RobApi.Desktop.dll
 2a6bfa09dffedaff6fb6ad8585eb0b35c3fe185e *./RobotStudio.Services.RobApi.dll
