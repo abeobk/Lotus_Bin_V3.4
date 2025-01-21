@@ -1142,6 +1142,12 @@ Return true if pointcloud has Color component
 Return true if pointcloud has Normal component
 </summary>
         </member>
+        <member name="M:LotusAPI.MV.GObject.CreateEmptyObject">
+            <summary>
+Create empty object with 1x1 pixel
+</summary>
+            <returns />
+        </member>
         <member name="M:LotusAPI.MV.CameraModel.CalcObjectPoints(LotusAPI.Math.Point2f[],LotusAPI.Math.Matrix44d)">
             <summary>
 Calculate 3D object points in calibration board frame
