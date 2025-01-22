@@ -381,6 +381,11 @@
             <param name="motion_speed_percent">Speed rate</param>
             <returns></returns>
         </member>
+        <member name="M:LotusAPI.Robotics.RobotControllerBase.GenerateProgram(System.String,System.Collections.Generic.List{LotusAPI.Robotics.RobotPoseEx},System.Double[],System.String)">
+            <summary>
+            Generate robot program with MoveJ
+            </summary>
+        </member>
         <member name="F:LotusAPI.Robotics.RobotControllerBase.locker">
             <summary>
             Sync object
