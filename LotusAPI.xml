@@ -1148,6 +1148,29 @@ Create empty object with 1x1 pixel
 </summary>
             <returns />
         </member>
+        <member name="M:LotusAPI.MV.GObject.GetMesh(System.String)">
+            <summary>
+Get mesh by name
+</summary>
+            <param name="mesh_name">mesh name</param>
+            <returns>Mesh obj</returns>
+        </member>
+        <member name="M:LotusAPI.MV.GObject.AddMesh(System.String,LotusAPI.MV.GObject)">
+            <summary>
+Add mesh to GObject
+Layer names: mesh_name_Vertex, mesh_name_Normal, mesh_name_Face
+</summary>
+            <param name="mesh_layer_name">mesh name</param>
+            <param name="mesh_data">GObject data of a stl mesh</param>
+        </member>
+        <member name="M:LotusAPI.MV.GObject.HasMesh(System.String)">
+            <summary>
+Check if GObject contains as mesh with a given prefix name
+Layer names: mesh_name_Vertex, mesh_name_Normal, mesh_name_Face
+</summary>
+            <param name="mesh_layer_name">mesh prefix</param>
+            <returns>true if exists</returns>
+        </member>
         <member name="M:LotusAPI.MV.CameraModel.CalcObjectPoints(LotusAPI.Math.Point2f[],LotusAPI.Math.Matrix44d)">
             <summary>
 Calculate 3D object points in calibration board frame

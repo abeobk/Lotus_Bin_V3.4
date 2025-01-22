@@ -587,93 +587,6 @@
             <param name="len">length</param>
             <returns></returns>
         </member>
-        <member name="T:LotusAPI.IOUtils">
-            <summary>
-            IO utilities
-            </summary>
-        </member>
-        <member name="M:LotusAPI.IOUtils.DirectoryCopy(System.String,System.String,System.Boolean,System.Boolean)">
-            <summary>
-            Directory copy
-            </summary>
-            <param name="sourceDirName">Source directory</param>
-            <param name="destDirName">Destination directory</param>
-            <param name="copySubDirs">True if copy recursively</param>
-            <param name="overwrite">True if overwrite</param>
-        </member>
-        <member name="T:LotusAPI.JsonUtils">
-            <summary>
-            Json utilities
-            </summary>
-        </member>
-        <member name="F:LotusAPI.JsonUtils.PublicPropertiesAndFields">
-            <summary>
-            Public properties and fields
-            </summary>
-        </member>
-        <member name="F:LotusAPI.JsonUtils.AllPropertiesAndFields">
-            <summary>
-            All properties and fields including non-public
-            </summary>
-        </member>
-        <member name="M:LotusAPI.JsonUtils.Write(LotusAPI.Json,System.Object,System.Reflection.BindingFlags)">
-            <summary>
-            Seriazlie object to a json node
-            </summary>
-            <param name="node">The json node</param>
-            <param name="obj">The object</param>
-            <param name="binding">The binding flags</param>
-        </member>
-        <member name="M:LotusAPI.JsonUtils.ToJson(System.Object,System.Reflection.BindingFlags)">
-            <summary>
-            Convert object to json representation
-            </summary>
-            <param name="obj">The object</param>
-            <param name="binding">The biding flag</param>
-            <returns>The json object</returns>
-        </member>
-        <member name="M:LotusAPI.JsonUtils.Read``1(LotusAPI.Json,System.Reflection.BindingFlags)">
-            <summary>
-            Deserialize object from json node
-            </summary>
-            <typeparam name="T">Target type</typeparam>
-            <param name="node">The json node</param>
-            <param name="binding">The binding flag</param>
-            <returns>The object</returns>
-        </member>
-        <member name="M:LotusAPI.JsonUtils.Clone``1(``0)">
-            <summary>
-            Clone an object with json
-            </summary>
-            <typeparam name="T">Object type</typeparam>
-            <param name="obj">Object</param>
-            <returns>Clonned object</returns>
-        </member>
-        <member name="T:LotusAPI.NetUtils">
-            <summary>
-            Contains Network utilities
-            </summary>
-        </member>
-        <member name="M:LotusAPI.NetUtils.PingHost(System.String,System.Int32)">
-            <summary>
-            Ping a host
-            </summary>
-            <param name="ip">host address</param>
-            <returns>true if succeed</returns>
-        </member>
-        <member name="M:LotusAPI.NetUtils.IsConnected(System.Net.Sockets.TcpClient)">
-            <summary>
-            Check if a connection is still alive
-            </summary>
-            <param name="client">TCP client</param>
-            <returns>true if alive</returns>
-        </member>
-        <member name="M:LotusAPI.NetUtils.FlushStream(System.Net.Sockets.NetworkStream)">
-            <summary>
-            Flush network stream contents
-            </summary>
-            <param name="ns"></param>
-        </member>
         <member name="T:LotusAPI.Net.PacketBuilder">
             <summary>
             Packet builder
@@ -909,6 +822,93 @@
             Convert to hex string
             </summary>
             <returns>hex string</returns>
+        </member>
+        <member name="T:LotusAPI.IOUtils">
+            <summary>
+            IO utilities
+            </summary>
+        </member>
+        <member name="M:LotusAPI.IOUtils.DirectoryCopy(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Directory copy
+            </summary>
+            <param name="sourceDirName">Source directory</param>
+            <param name="destDirName">Destination directory</param>
+            <param name="copySubDirs">True if copy recursively</param>
+            <param name="overwrite">True if overwrite</param>
+        </member>
+        <member name="T:LotusAPI.JsonUtils">
+            <summary>
+            Json utilities
+            </summary>
+        </member>
+        <member name="F:LotusAPI.JsonUtils.PublicPropertiesAndFields">
+            <summary>
+            Public properties and fields
+            </summary>
+        </member>
+        <member name="F:LotusAPI.JsonUtils.AllPropertiesAndFields">
+            <summary>
+            All properties and fields including non-public
+            </summary>
+        </member>
+        <member name="M:LotusAPI.JsonUtils.Write(LotusAPI.Json,System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Seriazlie object to a json node
+            </summary>
+            <param name="node">The json node</param>
+            <param name="obj">The object</param>
+            <param name="binding">The binding flags</param>
+        </member>
+        <member name="M:LotusAPI.JsonUtils.ToJson(System.Object,System.Reflection.BindingFlags)">
+            <summary>
+            Convert object to json representation
+            </summary>
+            <param name="obj">The object</param>
+            <param name="binding">The biding flag</param>
+            <returns>The json object</returns>
+        </member>
+        <member name="M:LotusAPI.JsonUtils.Read``1(LotusAPI.Json,System.Reflection.BindingFlags)">
+            <summary>
+            Deserialize object from json node
+            </summary>
+            <typeparam name="T">Target type</typeparam>
+            <param name="node">The json node</param>
+            <param name="binding">The binding flag</param>
+            <returns>The object</returns>
+        </member>
+        <member name="M:LotusAPI.JsonUtils.Clone``1(``0)">
+            <summary>
+            Clone an object with json
+            </summary>
+            <typeparam name="T">Object type</typeparam>
+            <param name="obj">Object</param>
+            <returns>Clonned object</returns>
+        </member>
+        <member name="T:LotusAPI.NetUtils">
+            <summary>
+            Contains Network utilities
+            </summary>
+        </member>
+        <member name="M:LotusAPI.NetUtils.PingHost(System.String,System.Int32)">
+            <summary>
+            Ping a host
+            </summary>
+            <param name="ip">host address</param>
+            <returns>true if succeed</returns>
+        </member>
+        <member name="M:LotusAPI.NetUtils.IsConnected(System.Net.Sockets.TcpClient)">
+            <summary>
+            Check if a connection is still alive
+            </summary>
+            <param name="client">TCP client</param>
+            <returns>true if alive</returns>
+        </member>
+        <member name="M:LotusAPI.NetUtils.FlushStream(System.Net.Sockets.NetworkStream)">
+            <summary>
+            Flush network stream contents
+            </summary>
+            <param name="ns"></param>
         </member>
         <member name="T:LotusAPI.RegexUtils">
             <summary>
