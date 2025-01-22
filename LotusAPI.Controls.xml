@@ -421,6 +421,26 @@
             <param name="obj"></param>
             <param name="color"></param>
         </member>
+        <member name="M:LotusAPI.Controls.SceneViewer.GDIDrawEventArgs.ToScreenPos(LotusAPI.Math.Point3f)">
+            <summary>
+            Convert to screen pos
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SceneViewer.GDIDrawEventArgs.DrawText(System.String,System.Drawing.Font,LotusAPI.Math.Point2f,System.Drawing.Color,System.Boolean)">
+            <summary>
+            Draw 2D text at 3d pos
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SceneViewer.GDIDrawEventArgs.DrawText(System.String,System.Drawing.Font,LotusAPI.Math.Point3f,System.Drawing.Color,System.Boolean)">
+            <summary>
+            Draw 2D text
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.SceneViewer.GDIDrawEventArgs.DrawText(System.String,LotusAPI.Math.Point3f,System.Drawing.Color,System.Boolean)">
+            <summary>
+            Draw text with scene viewer font
+            </summary>
+        </member>
         <member name="F:LotusAPI.Controls.Dialogs.AlarmDialog.components">
             <summary>
             Required designer variable.
