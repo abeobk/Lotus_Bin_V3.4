@@ -376,6 +376,36 @@
             Blocking FIFO serial task queue
             </summary>
         </member>
+        <member name="T:LotusAPI.Utils.TaskQueue">
+            <summary>
+            TaskQueue that implementing FIFO task run mechanism
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Enqueue(System.Action)">
+            <summary>
+            Enqueue a task without a label.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Enqueue(System.String,System.Action)">
+            <summary>
+            Enqueue a task with a label.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Wait">
+            <summary>
+            Blocks until the queue is empty.
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Utils.TaskQueue.Busy">
+            <summary>
+            Check if the queue is busy.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Dispose">
+            <summary>
+            Dispose of resources and stop the worker task.
+            </summary>
+        </member>
         <member name="T:LotusAPI.ChecksumUtils">
             <summary>
             Checksum utilities
@@ -884,6 +914,34 @@
             <typeparam name="T">Object type</typeparam>
             <param name="obj">Object</param>
             <returns>Clonned object</returns>
+        </member>
+        <member name="M:LotusAPI.NamedPipeServer.Start(System.Func{System.Byte[],System.Byte[]})">
+            <summary>
+            Start service
+            </summary>
+            <param name="service_action">service action</param>
+        </member>
+        <member name="M:LotusAPI.NamedPipeServer.Stop">
+            <summary>
+            Stop service
+            </summary>
+        </member>
+        <member name="M:LotusAPI.NamedPipeServer.HandleClientAsync(System.IO.Pipes.NamedPipeServerStream,System.Func{System.Byte[],System.Byte[]})">
+            <summary>
+            Handler client
+            </summary>
+        </member>
+        <member name="T:LotusAPI.NamedPipeClient">
+            <summary>
+            NamedPipeClient
+            </summary>
+        </member>
+        <member name="M:LotusAPI.NamedPipeClient.SendAsync(System.Byte[])">
+            <summary>
+            Send message async
+            </summary>
+            <param name="message">message as byte array</param>
+            <returns>response as byte array, null if failed</returns>
         </member>
         <member name="T:LotusAPI.NetUtils">
             <summary>
