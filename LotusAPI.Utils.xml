@@ -915,33 +915,25 @@
             <param name="obj">Object</param>
             <returns>Clonned object</returns>
         </member>
-        <member name="M:LotusAPI.NamedPipeServer.Start(System.Func{System.Byte[],System.Byte[]})">
+        <member name="T:LotusAPI.OS.Node">
             <summary>
-            Start service
-            </summary>
-            <param name="service_action">service action</param>
-        </member>
-        <member name="M:LotusAPI.NamedPipeServer.Stop">
-            <summary>
-            Stop service
+            Node class
             </summary>
         </member>
-        <member name="M:LotusAPI.NamedPipeServer.HandleClientAsync(System.IO.Pipes.NamedPipeServerStream,System.Func{System.Byte[],System.Byte[]})">
+        <member name="T:LotusAPI.OS.Subscriber">
             <summary>
-            Handler client
+            Subscriber class
             </summary>
         </member>
-        <member name="T:LotusAPI.NamedPipeClient">
+        <member name="T:LotusAPI.OS.Server">
             <summary>
-            NamedPipeClient
+            Server node
             </summary>
         </member>
-        <member name="M:LotusAPI.NamedPipeClient.SendAsync(System.Byte[])">
+        <member name="T:LotusAPI.OS.Client">
             <summary>
-            Send message async
+            Client node
             </summary>
-            <param name="message">message as byte array</param>
-            <returns>response as byte array, null if failed</returns>
         </member>
         <member name="T:LotusAPI.NetUtils">
             <summary>
