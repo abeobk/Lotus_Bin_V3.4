@@ -945,6 +945,7 @@
             Ping a host
             </summary>
             <param name="ip">host address</param>
+            <param name="timeout_ms">timeout in milliseconds</param>
             <returns>true if succeed</returns>
         </member>
         <member name="M:LotusAPI.NetUtils.IsConnected(System.Net.Sockets.TcpClient)">
