@@ -917,23 +917,120 @@
         </member>
         <member name="T:LotusAPI.OS.Node">
             <summary>
-            Node class
+            Base class for all communication nodes in the system.
+            Provides core functionality for node lifecycle management and IPC communication.
             </summary>
+            <example>
+            This is an abstract class. See Publisher, Subscriber, or Server for concrete implementations.
+            Example hierarchy:
+            Node
+             ├── Publisher
+             ├── Subscriber
+             └── Server
+            </example>
+        </member>
+        <member name="T:LotusAPI.OS.Publisher">
+            <summary>
+            Publisher node that broadcasts data to multiple subscribers using named pipes.
+            Supports both synchronous and asynchronous publishing with configurable rates and queue sizes.
+            </summary>
+            <example>
+            Creating and using a Publisher:
+            <code>
+            var publisher = new Publisher("sensor1", "temperature", 10); // 10Hz rate
+            publisher.SetPublishAction(() => {
+                return BitConverter.GetBytes(GetTemperature());
+            });
+            publisher.Start();
+            // ... later ...
+            publisher.Stop();
+            publisher.Dispose();
+            </code>
+            </example>
         </member>
         <member name="T:LotusAPI.OS.Subscriber">
             <summary>
-            Subscriber class
+            Subscriber node that receives data from a Publisher using named pipes.
+            Automatically handles reconnection and data reception.
             </summary>
+            <example>
+            Creating and using a Subscriber:
+            <code>
+            var subscriber = new Subscriber("display1", "temperature");
+            subscriber.SetOnDataReceived((data) => {
+                float temp = BitConverter.ToSingle(data, 0);
+                Console.WriteLine($"Temperature: {temp}°C");
+            });
+            subscriber.Start();
+            // ... later ...
+            subscriber.Stop();
+            subscriber.Dispose();
+            </code>
+            </example>
         </member>
         <member name="T:LotusAPI.OS.Server">
             <summary>
-            Server node
+            Server node that handles request-response communication pattern.
+            Supports both synchronous and asynchronous request handling.
             </summary>
+            <example>
+            Creating and using a Server:
+            <code>
+            var server = new Server("calc", "math", 10); // max 10 clients
+            server.SetOnDataReceived((request) => {
+                var json = Json.FromCBOR(request);
+                double result = Calculate(json);
+                return JsonUtils.ToJson(result).CBOR;
+            });
+            server.Start();
+            // ... later ...
+            server.Stop();
+            server.Dispose();
+            </code>
+            </example>
         </member>
         <member name="T:LotusAPI.OS.Client">
             <summary>
-            Client node
+            Client class for making request-response calls to Server nodes.
+            Supports both synchronous and asynchronous requests with timeout options.
             </summary>
+            <example>
+            Using a Client:
+            <code>
+            var client = new Client("calc1", "math");
+            var request = JsonUtils.ToJson(new { op = "add", a = 5, b = 3 }).CBOR;
+            var response = await client.SendAsync(request, 1000); // 1 second timeout
+            var result = Json.FromCBOR(response).GetNumber();
+            
+            // Or using static methods:
+            var result = await Client.SendJsonRequestAsync("math", request, 1000);
+            </code>
+            </example>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:LotusAPI.OS.Publisher_`1" -->
+        <!-- Badly formed XML comment ignored for member "T:LotusAPI.OS.Subscriber_`1" -->
+        <member name="T:LotusAPI.OS.AbeoOS">
+            <summary>
+            Central management system for tracking all nodes and their lifecycle events.
+            Provides system-wide monitoring and management capabilities.
+            </summary>
+            <example>
+            Using AbeoOS:
+            <code>
+            var system = new AbeoOS();
+            system.Start();
+            
+            // Get all active nodes
+            var nodes = system.GetNodes();
+            foreach (var node in nodes) {
+                Console.WriteLine($"Node: {node.ID}, Type: {node.Type}, Running: {node.IsRunning}");
+            }
+            
+            // Later...
+            system.Stop();
+            system.Dispose();
+            </code>
+            </example>
         </member>
         <member name="T:LotusAPI.NetUtils">
             <summary>
