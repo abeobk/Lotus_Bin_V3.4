@@ -391,21 +391,6 @@
             Enqueue a task with a label.
             </summary>
         </member>
-        <member name="M:LotusAPI.Utils.TaskQueue.Wait">
-            <summary>
-            Blocks until the queue is empty.
-            </summary>
-        </member>
-        <member name="P:LotusAPI.Utils.TaskQueue.Busy">
-            <summary>
-            Check if the queue is busy.
-            </summary>
-        </member>
-        <member name="M:LotusAPI.Utils.TaskQueue.Dispose">
-            <summary>
-            Dispose of resources and stop the worker task.
-            </summary>
-        </member>
         <member name="T:LotusAPI.ChecksumUtils">
             <summary>
             Checksum utilities
@@ -1031,6 +1016,11 @@
             system.Dispose();
             </code>
             </example>
+        </member>
+        <member name="M:LotusAPI.OS.AbeoOS.Start">
+            <summary>
+            Start OS
+            </summary>
         </member>
         <member name="T:LotusAPI.NetUtils">
             <summary>

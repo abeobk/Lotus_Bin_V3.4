@@ -1171,6 +1171,12 @@ Layer names: mesh_name_Vertex, mesh_name_Normal, mesh_name_Face
             <param name="mesh_layer_name">mesh prefix</param>
             <returns>true if exists</returns>
         </member>
+        <member name="M:LotusAPI.MV.GObject.Encode">
+            <summary>
+convert to byte array
+</summary>
+            <returns />
+        </member>
         <member name="M:LotusAPI.MV.CameraModel.CalcObjectPoints(LotusAPI.Math.Point2f[],LotusAPI.Math.Matrix44d)">
             <summary>
 Calculate 3D object points in calibration board frame
