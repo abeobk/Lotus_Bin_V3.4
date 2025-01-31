@@ -4,6 +4,39 @@
         <name>ATMC.Common</name>
     </assembly>
     <members>
+        <member name="F:ATMC.Common.BodyShop.FormMeasureConfig.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BodyShop.FormMeasureConfig.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.BodyShop.FormMeasureConfig.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.BodyShop.ModelConfig.ShiftLimit">
+            <summary>
+            Shift limit
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.CoarseToFineICPAligner.Align(LotusAPI.MV.Pointcloud,LotusAPI.Math.Matrix44d,System.Single)">
+            <summary>
+            Compute alignment
+            </summary>
+            <param name="scene">input scene</param>
+            <param name="initial_matrix">initial model matrix</param>
+            <param name="ovl_radius">overlap radius</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
         <member name="F:ATMC.Common.CycleInfoView.components">
             <summary> 
             Required designer variable.
