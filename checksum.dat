@@ -47,7 +47,7 @@ c86d21f719869b197a55fd86ed59e9323c20fc86 *./libplctag.dll
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
 88acd2d8581d7fd8bdccee33dde75efc45b678f7 *./LotusAPI.App.exe
-9cdc42c732028a47ebb6f93b58b8f82f43b6a5ea *./LotusAPI.Controls.dll
+c163aaba66025d2f6e006666bbeefbd7dfe4a70b *./LotusAPI.Controls.dll
 7c0df5c16a818d7b29c16588a9f98b271649e60a *./LotusAPI.Controls.xml
 d10efb94ef304f31bfcbe5352ebc0919ae9492e9 *./LotusAPI.Data.dll
 6252372f17af5dfb290b982d9724ba6648b374ab *./LotusAPI.Data.xml
@@ -131,7 +131,7 @@ cf0c3deb215d633cc3809a1f6322eab7897f6441 *./RobotModels/HYUNDAI_HS220.arm
 e83c71accf2e989047d1e4bee5d7885d4fa2dc9d *./RobotModels/HYUNDAI_HX300L.arm
 22d0e017299423127c723ddc38d6381afa95b197 *./RobotModels/HYUNDAI_HX400L.arm
 825f899e70e3a1cd474d12722989ed4a64f398ba *./RobotModels/KAWASAKI_RS050N.arm
-631a611e0210c161bdc33e0b562c015bd8cd3b0e *./RobotSimulator.exe
+4763787e5a63231c22564922a98e6ee92ea1503d *./RobotSimulator.exe
 bd11f8e5fd781106ab00ea779ff823f665ec7abe *./RobotStudio.Services.RobApi.Desktop.dll
 2a6bfa09dffedaff6fb6ad8585eb0b35c3fe185e *./RobotStudio.Services.RobApi.dll
 6e583ad59ba4181b0bc66843379cf7a1884fca2e *./S7.Net.dll
