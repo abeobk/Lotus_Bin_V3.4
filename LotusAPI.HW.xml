@@ -864,5 +864,13 @@
             <param name="profile">Scan profile</param>
             <returns>Connected scanner</returns>
         </member>
+        <member name="M:LotusAPI.BitField.SetBit(System.Int32,System.Boolean)">
+            <summary>
+            Set bit
+            </summary>
+            <param name="index">bit index</param>
+            <param name="on">true if on, false if off</param>
+            <returns>true if changed</returns>
+        </member>
     </members>
 </doc>
