@@ -94,6 +94,14 @@
             Setup scene viewer
             </summary>
         </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.UpdateRobotPose(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.Node,System.Double[])">
+            <summary>
+            Update robot joint angles in scene view
+            </summary>
+            <param name="sv">Scene view</param>
+            <param name="node">robot node</param>
+            <param name="joints">joint angles, if aux available => concat to standard joints</param>
+        </member>
         <member name="F:LotusAPI.Robotics.Graph.WorkCellGraphView.components">
             <summary> 
             Required designer variable.
