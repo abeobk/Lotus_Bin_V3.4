@@ -89,6 +89,28 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:LotusAPI.Robotics.Graph.DockContentWorkCellView3D.Render">
+            <summary>
+            Render, thread-safe
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Robotics.Graph.DockContentWorkCellView3D.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Robotics.Graph.DockContentWorkCellView3D.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:LotusAPI.Robotics.Graph.DockContentWorkCellView3D.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.SetupView(LotusAPI.Controls.SceneViewer)">
             <summary>
             Setup scene viewer
