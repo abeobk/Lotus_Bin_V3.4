@@ -900,6 +900,50 @@
             <param name="obj">Object</param>
             <returns>Clonned object</returns>
         </member>
+        <member name="T:LotusAPI.OS.ByteArrayBuffer">
+            <summary>
+            Byte array buffer
+            </summary>
+        </member>
+        <member name="F:LotusAPI.OS.ByteArrayBuffer.Buffer">
+            <summary>
+            Data buffer 
+            </summary>
+        </member>
+        <member name="P:LotusAPI.OS.ByteArrayBuffer.Size">
+            <summary>
+            Buffer size
+            </summary>
+        </member>
+        <member name="F:LotusAPI.OS.ByteArrayBuffer.Length">
+            <summary>
+            Real data length
+            </summary>
+        </member>
+        <member name="P:LotusAPI.OS.ByteArrayBuffer.Empty">
+            <summary>
+            Check if buffer is empty
+            </summary>
+        </member>
+        <member name="M:LotusAPI.OS.ByteArrayBuffer.GetData">
+            <summary>
+            Get real byte array as copy
+            </summary>
+        </member>
+        <member name="M:LotusAPI.OS.ByteArrayBuffer.GrowToSize(System.Int32,System.Double)">
+            <summary>
+            Grow buffer if not enough
+            </summary>
+            <param name="size">new size</param>
+            <param name="grow_factor">grow factor</param>
+            <returns>true if reallocated</returns>
+        </member>
+        <member name="M:LotusAPI.OS.ByteArrayBuffer.CborToJson">
+            <summary>
+            Convert to json, assuming that the buffer contains CBOR data
+            </summary>
+            <returns>Json</returns>
+        </member>
         <member name="T:LotusAPI.OS.Node">
             <summary>
             Base class for all communication nodes in the system.
@@ -952,6 +996,16 @@
             subscriber.Dispose();
             </code>
             </example>
+        </member>
+        <member name="T:LotusAPI.OS.JsonRequest">
+            <summary>
+            Json request with optinonal data
+            </summary>
+        </member>
+        <member name="T:LotusAPI.OS.JsonResponse">
+            <summary>
+            Json response with data
+            </summary>
         </member>
         <member name="T:LotusAPI.OS.Server">
             <summary>
