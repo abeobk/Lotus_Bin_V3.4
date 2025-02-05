@@ -6,7 +6,7 @@ d12313f9355e66f452653aad8dd6ef603ee6569f *./AbeoMaskEditor.exe
 b58cb32c234eed54d5202279bf63cc1cc3b246ae *./AbeoSIM.exe
 11514dc906b1d3fd93b64a777c9517bd08d76c40 *./abeosim_layout.cfg
 5af9c65aee03db4343d6974d00624d61d193ba48 *./AppCoreComponents1.dll
-f9d72280fd5b3d3a5d7eda43ac142905ee1f2ad6 *./ATMC.Common.dll
+65b1a00eb3627bced31c632502f70710321426cf *./ATMC.Common.dll
 4dbe5a1f6ab908cb0a3e58fa628a90d52e5e47fa *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 df7073886fbf003f73f2aa4cc484ac0a13ab786b *./ATMC.WorkCellConfigurator - Copy.exe
@@ -48,7 +48,7 @@ c86d21f719869b197a55fd86ed59e9323c20fc86 *./libplctag.dll
 66fd26a3c25afdd7dc7e78443777623b31169bcc *./LogViewer.exe
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
-d75a40c12be47c8f0ed9e3a9cec5b396528f31ae *./LotusAPI.App.exe
+6d5d5f1858968b4033eb426b360efba8c39bcd09 *./LotusAPI.App.exe
 aa5e545363c3e3c08fbf3654ece05e08fa352850 *./LotusAPI.Controls.dll
 7c0df5c16a818d7b29c16588a9f98b271649e60a *./LotusAPI.Controls.xml
 4981801ebd5ee7d0736b9a2dc9b9aa9ef751f255 *./LotusAPI.Data.dll
