@@ -6,7 +6,7 @@ d12313f9355e66f452653aad8dd6ef603ee6569f *./AbeoMaskEditor.exe
 b58cb32c234eed54d5202279bf63cc1cc3b246ae *./AbeoSIM.exe
 11514dc906b1d3fd93b64a777c9517bd08d76c40 *./abeosim_layout.cfg
 5af9c65aee03db4343d6974d00624d61d193ba48 *./AppCoreComponents1.dll
-1804271d5a234a1d285f2fae9d7237ef702be28e *./ATMC.Common.dll
+9dba1327877dc0acbb9433a7ea280c700e1b8112 *./ATMC.Common.dll
 4dbe5a1f6ab908cb0a3e58fa628a90d52e5e47fa *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 df7073886fbf003f73f2aa4cc484ac0a13ab786b *./ATMC.WorkCellConfigurator - Copy.exe
@@ -57,7 +57,7 @@ aa5e545363c3e3c08fbf3654ece05e08fa352850 *./LotusAPI.Controls.dll
 ac57867683af1f964fba443a9ffc7d7059525d8e *./LotusAPI.DNN.dll
 6ccb2578a5622ccb1689a1cb6b1f21a4ae93fb4b *./LotusAPI.DNN.xml
 095b76bdc0d26a96f232ae583ba70b4950cc0341 *./LotusAPI.HW.ABPLC.dll
-f464e96bbce91b3f10650b55e2e89e5199206014 *./LotusAPI.HW.dll
+1474fe30e33137d0dc2f9cdbc8de4bdb362becd6 *./LotusAPI.HW.dll
 bcbad7db60c24c648548df9e46e417d3e8244d34 *./LotusAPI.HW.FujiPLC.dll
 df6a83e694855751b5b9b85e7f90e2c891496998 *./LotusAPI.HW.FujiPLC.xml
 0dd28d36bdc0607053612b6d526a1823858defe5 *./LotusAPI.HW.OpcPlc.dll
