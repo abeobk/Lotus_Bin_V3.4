@@ -383,12 +383,27 @@
         </member>
         <member name="M:LotusAPI.Utils.TaskQueue.Enqueue(System.Action)">
             <summary>
-            Enqueue a task without a label.
+            Enqueue a synchronous task.
             </summary>
         </member>
         <member name="M:LotusAPI.Utils.TaskQueue.Enqueue(System.String,System.Action)">
             <summary>
-            Enqueue a task with a label.
+            Enqueue a synchronous task with a label.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Enqueue(System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Enqueue an asynchronous task.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Enqueue(System.String,System.Func{System.Threading.Tasks.Task})">
+            <summary>
+            Enqueue an asynchronous task with a label.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Dispose">
+            <summary>
+            Dispose the task queue.
             </summary>
         </member>
         <member name="T:LotusAPI.ChecksumUtils">
