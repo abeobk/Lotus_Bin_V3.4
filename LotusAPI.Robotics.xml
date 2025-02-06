@@ -116,7 +116,7 @@
             Setup scene viewer
             </summary>
         </member>
-        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.UpdateRobotPose(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.Node,System.Double[])">
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.UpdateRobotPose(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.Node,System.Double[],LotusAPI.Math.Matrix44d)">
             <summary>
             Update robot joint angles in scene view
             </summary>
