@@ -1324,6 +1324,28 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="E:ATMC.Common.ViewCardSceneViewer.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ViewCardSceneViewer.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCardSceneViewer.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCardSceneViewer.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="E:ATMC.Common.ViewCard3DSimple.TitleDoubleClickEvent">
             <summary>
             This is event will be fired when user double click the title label
