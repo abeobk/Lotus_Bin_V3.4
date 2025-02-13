@@ -987,14 +987,14 @@ Get indices of points inside a sphere
             <summary>
 Count number of point in cuboid
 </summary>
-            <param name="H_cuboid">Transform of unit cuboid centered at origin, and size = 1 (xyz -0.5-&gt;0.5)</param>
+            <param name="H_cuboid">Transform to unit cuboid centered at origin, and size = 1 (xyz -0.5-&gt;0.5)</param>
             <returns>number of points in cuboid</returns>
         </member>
         <member name="M:LotusAPI.MV.Pointcloud.GetPointsInCuboid(LotusAPI.Math.Matrix44d)">
             <summary>
 Get points inside cuboid
 </summary>
-            <param name="H_cuboid">Transform of unit cuboid centered at origin, and size = 1 (xyz -0.5-&gt;0.5)</param>
+            <param name="H_cuboid">Transform to unit cuboid centered at origin, and size = 1 (xyz -0.5-&gt;0.5)</param>
             <returns>point indices</returns>
         </member>
         <member name="M:LotusAPI.MV.Pointcloud.RadiusCount(LotusAPI.Math.Vector3f,System.Single)">
