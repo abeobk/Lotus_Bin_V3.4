@@ -318,6 +318,11 @@
             OpenGL Shader
             </summary>
         </member>
+        <member name="M:LotusAPI.Controls.OGL.Shader.SetTime(System.Single)">
+            <summary>
+            Set time uniform
+            </summary>
+        </member>
         <member name="M:LotusAPI.Controls.OGL.Shader.SetMVP(LotusAPI.Math.Matrix44f)">
             <summary>
             Set MVP matrix (Mat44f)
