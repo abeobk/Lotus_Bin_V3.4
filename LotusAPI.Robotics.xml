@@ -111,6 +111,26 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.FrameToTool(System.String,LotusAPI.Math.Matrix44d,System.String,LotusAPI.Math.Matrix44d)">
+            <summary>
+            Convert a matrix in frame to tool 
+            </summary>
+            <param name="frame">ref frame name</param>
+            <param name="H_frame">ref frame shift matrix</param>
+            <param name="robot_name">robot name</param>
+            <param name="H_robot_pose">robot pose</param>
+            <returns>matrix in tool</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.ToolToFrame(System.String,LotusAPI.Math.Matrix44d,LotusAPI.Math.Matrix44d,System.String)">
+            <summary>
+            Convert a matrix from tool to frame
+            </summary>
+            <param name="robot_name">robot name</param>
+            <param name="H_robot_pose">robot pose</param>
+            <param name="H_tool">tool matrix</param>
+            <param name="frame">frame name</param>
+            <returns>matrix in frame</returns>
+        </member>
         <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.SetupView(LotusAPI.Controls.SceneViewer)">
             <summary>
             Setup scene viewer
