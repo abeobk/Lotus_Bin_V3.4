@@ -111,6 +111,33 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.ChangeBasis(System.String,System.String,LotusAPI.Math.Matrix44d,System.Collections.Generic.Dictionary{System.String,LotusAPI.Math.Matrix44d})">
+            <summary>
+            Change frame basis
+            </summary>
+            <param name="src">source frame</param>
+            <param name="dst">dest frame</param>
+            <param name="H_src">transform in source frame</param>
+            <param name="robot_poses">robot poses</param>
+            <returns>transform in dst frame</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.ChangeBasis(LotusAPI.Math.Matrix44d,LotusAPI.Math.Point3f)">
+            <summary>
+            Change basis to the frame located at center
+            </summary>
+            <param name="H_src">transform in source frame</param>
+            <param name="center">center position in source frame</param>
+            <returns>transform in frame located at center</returns>
+        </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.ChangeBasis(System.String,LotusAPI.Math.Matrix44d,System.Collections.Generic.Dictionary{System.String,LotusAPI.Math.Matrix44d})">
+            <summary>
+            Change frame basis
+            </summary>
+            <param name="relation">src->dst</param>
+            <param name="H_src">transform in source frame</param>
+            <param name="robot_poses">robot poses</param>
+            <returns>transform in dst frame</returns>
+        </member>
         <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.FrameToTool(System.String,LotusAPI.Math.Matrix44d,System.String,LotusAPI.Math.Matrix44d)">
             <summary>
             Convert a matrix in frame to tool 
