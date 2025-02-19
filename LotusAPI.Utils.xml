@@ -401,6 +401,17 @@
             Enqueue an asynchronous task with a label.
             </summary>
         </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.WaitAsync">
+            <summary>
+            Enqueues a no-op task and returns a Task that completes once that task has run,
+            meaning all tasks enqueued before it have been processed.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.TaskQueue.Wait">
+            <summary>
+            Synchronously waits until all tasks enqueued prior to calling Wait() have completed.
+            </summary>
+        </member>
         <member name="M:LotusAPI.Utils.TaskQueue.Dispose">
             <summary>
             Dispose the task queue.
