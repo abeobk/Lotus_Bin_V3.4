@@ -1864,6 +1864,18 @@ Compute average 3D pose
             <param name="poses">Array of 3D poses</param>
             <returns>Average pose</returns>
         </member>
+        <member name="M:LotusAPI.Math.Utils.GetTransform(LotusAPI.Math.Point3f,LotusAPI.Math.Vector3d,LotusAPI.Math.Vector3d,LotusAPI.Math.Point3f,LotusAPI.Math.Vector3d,LotusAPI.Math.Vector3d)">
+            <summary>
+Get transform matrix from src frame to dst frame
+</summary>
+            <param name="src_center">src frame origin</param>
+            <param name="src_xaxis">src frame x axis</param>
+            <param name="src_yaxis">src frame y axis</param>
+            <param name="dst_center">dst frame origin</param>
+            <param name="dst_xaxis">dst_frame x axis</param>
+            <param name="dst_yaxis">dst_frame y axis</param>
+            <returns>4x4 tranformation matrix src-&gt;dst</returns>
+        </member>
         <member name="M:LotusAPI.Math.Utils.EstimateTransform(LotusAPI.Math.Point3f[],LotusAPI.Math.Point3f[],System.Double@)">
             <summary>
 Estimate rigid transformation matrix between from source points to target points
