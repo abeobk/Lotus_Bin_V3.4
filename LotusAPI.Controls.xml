@@ -413,6 +413,13 @@
             OpenGL scene item
             </summary>
         </member>
+        <member name="P:LotusAPI.Controls.SceneNode.Item(System.String)">
+            <summary>
+            Get node in path, create if not exist
+            </summary>
+            <param name="path">path/to/node</param>
+            <returns>node</returns>
+        </member>
         <member name="M:LotusAPI.Controls.SceneNode.UpdateObject(LotusAPI.MV.GObject)">
             <summary>
             Update object dadta
