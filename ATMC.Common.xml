@@ -4,6 +4,45 @@
         <name>ATMC.Common</name>
     </assembly>
     <members>
+        <member name="F:ATMC.Common.FormMakeModel.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.FormSetting.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.FormSetting.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.FormSetting.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ScanActionGroup.GetAction(System.String)">
+            <summary>
+            Get action by name, return null if not exist
+            </summary>
+        </member>
         <member name="F:ATMC.Common.BodyShop.FormMeasureConfig.components">
             <summary>
             Required designer variable.
