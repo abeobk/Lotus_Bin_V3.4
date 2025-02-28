@@ -1003,6 +1003,11 @@
             </code>
             </example>
         </member>
+        <member name="M:LotusAPI.OS.Publisher.Publish">
+            <summary>
+            Trigger publish signal
+            </summary>
+        </member>
         <member name="T:LotusAPI.OS.Subscriber">
             <summary>
             Subscriber node that receives data from a Publisher using named pipes.
