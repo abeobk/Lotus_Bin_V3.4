@@ -89,6 +89,12 @@ e611f2c45ed206cb03e9954893644f9e45d8199b *./lotus_ml.dll
 65525a58c5e27df2380ef12e6ad2f70173fe3163 *./lotus_v142_x64.dll
 a8372165ff6bac756dc2d02c6932f369c234f0a2 *./MathParser_MD_VC140_v3_0.dll
 76d8be1b1be69e9c11ad9ea18d644059fd901277 *./MathParser_MD_VC141_v3_1_Basler_pylon.dll
+0610b72313fdff4460272e6ce4674b92642cf430 *./Microsoft.Web.WebView2.Core.dll
+40d9fa748288dc149e4db5968323d46d0f50fbaa *./Microsoft.Web.WebView2.Core.xml
+5649e1893285f216a21ce1b55ad1062ce4458bb2 *./Microsoft.Web.WebView2.WinForms.dll
+22acb08e12e6ccbc4005c393e78d78be4f64b28e *./Microsoft.Web.WebView2.WinForms.xml
+23c1de6e57804c4555fd3cc47601b2e656e1e8c5 *./Microsoft.Web.WebView2.Wpf.dll
+37879ee6032745a1aaf46c6e5b2e24301c9fd256 *./Microsoft.Web.WebView2.Wpf.xml
 9e9f4e438023e7f2d835614c12e74fc5ae25e83f *./NodeMapData_MD_VC140_v3_0.dll
 a683257ed6a8f5b1d88bd5266d421a632a47f156 *./NodeMapData_MD_VC141_v3_1_Basler_pylon.dll
 69b9a48fb2cee1f4698a69c64d98ebc9eb6111f6 *./opencv_ffmpeg410_64.dll
@@ -157,6 +163,7 @@ ca0fb6e96c39c955365db0ee5e9084a472684030 *./vcamp140.dll
 1f8c667df810fed8fb42a6680a15465ac1e288eb *./vcomp120.dll
 4fee261457681c7002c30277d1cb5f5dfa4b7422 *./vcomp140.dll
 30a2719d4b8667fd237bcfb781660901c993d9fc *./vcruntime140.dll
+26242ced6ddf005e0ea1073409a058121636fc9b *./WebView2Loader.dll
 5f87f28835c89cb0d89760a1ace150af7b090c00 *./WinFormsUI.Docking.dll
 0b48adb86f702deaf1d559e8a4e72ae02f7d4c6a *./WrapperCSharp_msvc14_Release_1.13.1.dll
 2f9998a045df5201c0bd3920b8b57818968337ae *./XMLParser_MD_VC140_v3_0.dll
