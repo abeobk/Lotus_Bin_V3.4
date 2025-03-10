@@ -599,6 +599,11 @@ Read a mesh from STL file
             <param name="filename">file name</param>
             <returns>Mesh</returns>
         </member>
+        <member name="M:LotusAPI.MV.Utils.DetectLaserStripe(LotusAPI.MV.Image,System.Int32,System.Single,System.Single,System.Int32,System.Int32)">
+            <summary>
+Detect laser stripe
+</summary>
+        </member>
         <member name="M:LotusAPI.MV.Utils.PointPolygonTest(LotusAPI.Math.Point2f[],LotusAPI.Math.Point2f)">
             <summary>
 Test if point inside polygon inside=+1, outside=-1, on-edge=0
