@@ -1502,25 +1502,13 @@ Gets camera model.
 \return  The camera model.
 
 </member>
-        <member name="M:Lotus.Mv.Sl3dDecoder.calib(Lotus.Mv.CameraCalibData*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,Lotus.Mv.CameraCalibData*!System.Runtime.CompilerServices.IsImplicitlyDereferenced)">
-Calib structured light system.
-\param [in,out]  camCalibData    Camera calib data.
-\param [in,out]  prjCalibData    Projector calib data.
-
-</member>
         <member name="M:Lotus.Mv.Sl3dDecoder.getPatternInfo(System.Boolean)">
 Gets pattern count stat.
 \param  horizontal  (Optional) True to horizontal.
 \return Structured light pattern info.
 
 </member>
-        <member name="M:Lotus.Mv.Sl3dDecoder.decode_fast(std.vector&lt;Lotus.Mv.Image,std.allocator&lt;Lotus.Mv.Image&gt;&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,std.vector&lt;std.pair&lt;std.basic_string&lt;System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte,std.char_traits{System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte},std.allocator&lt;System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte&gt;&gt;,Lotus.Mv.Image&gt;,std.allocator&lt;std.pair&lt;std.basic_string&lt;System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte,std.char_traits{System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte},std.allocator&lt;System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte&gt;&gt;,Lotus.Mv.Image&gt;&gt;&gt;*!System.">
-Decodes the given patterns.
-\param   patterns    The patterns.
-\return  A cv::Mat1f.
-
-</member>
-        <member name="M:Lotus.Mv.Sl3dDecoder.triangulate(cv.Mat_&lt;System.Single&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Mat_&lt;cv.Vec&lt;System.Single,0x3&gt;&gt;*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Rect_&lt;System.Int32&gt;)">
+        <member name="M:Lotus.Mv.Sl3dDecoder.triangulate(cv.Mat_&lt;System.Single&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Mat_&lt;cv.Vec&lt;System.Single,0x3&gt;&gt;*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Mat_&lt;System.Single&gt;*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Rect_&lt;System.Int32&gt;)">
 Triangulates.
 \param           index_map   The index map.
 \param [in,out]  point_cloud The output point cloud.
