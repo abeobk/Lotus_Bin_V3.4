@@ -376,6 +376,16 @@
             Blocking FIFO serial task queue
             </summary>
         </member>
+        <member name="P:LotusAPI.Utils.SerialTaskQueue.Busy">
+            <summary>
+            Indicates whether the queue currently has any tasks waiting or running.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Utils.SerialTaskQueue.Wait">
+            <summary>
+            Blocks the calling thread until all currently queued tasks have completed.
+            </summary>
+        </member>
         <member name="T:LotusAPI.Utils.TaskQueue">
             <summary>
             TaskQueue that implementing FIFO task run mechanism
@@ -401,20 +411,24 @@
             Enqueue an asynchronous task with a label.
             </summary>
         </member>
+        <member name="P:LotusAPI.Utils.TaskQueue.Busy">
+            <summary>
+            Returns true if the queue is actively processing tasks or tasks are queued.
+            </summary>
+        </member>
         <member name="M:LotusAPI.Utils.TaskQueue.WaitAsync">
             <summary>
-            Enqueues a no-op task and returns a Task that completes once that task has run,
-            meaning all tasks enqueued before it have been processed.
+            Wait asynchronously until all tasks previously enqueued are finished.
             </summary>
         </member>
         <member name="M:LotusAPI.Utils.TaskQueue.Wait">
             <summary>
-            Synchronously waits until all tasks enqueued prior to calling Wait() have completed.
+            Synchronously waits until all tasks previously enqueued have completed.
             </summary>
         </member>
         <member name="M:LotusAPI.Utils.TaskQueue.Dispose">
             <summary>
-            Dispose the task queue.
+            Disposes the queue gracefully, ensuring all queued tasks complete before shutdown.
             </summary>
         </member>
         <member name="T:LotusAPI.ChecksumUtils">
