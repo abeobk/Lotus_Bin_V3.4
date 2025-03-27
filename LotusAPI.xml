@@ -1508,12 +1508,8 @@ Gets pattern count stat.
 \return Structured light pattern info.
 
 </member>
-        <member name="M:Lotus.Mv.Sl3dDecoder.triangulate(cv.Mat_&lt;System.Single&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Mat_&lt;cv.Vec&lt;System.Single,0x3&gt;&gt;*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Mat_&lt;System.Single&gt;*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,cv.Rect_&lt;System.Int32&gt;)">
-Triangulates.
-\param           index_map   The index map.
-\param [in,out]  point_cloud The output point cloud.
-\param [in,out]  roi         The roi.
-
+        <member name="M:Lotus.Mv.Sl3dDecoder.calcDepth(cv.Mat_&lt;System.Single&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.Int32,cv.Rect_&lt;System.Int32&gt;,System.Int32)">
+**
 </member>
         <member name="M:Lotus.Mv.Sl3dDecoder.isCalibrated">
 Query if this scanner is calibrated.
