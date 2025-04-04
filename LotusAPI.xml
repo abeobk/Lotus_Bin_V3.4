@@ -1093,6 +1093,12 @@ Read an info, return null if not found
             <param name="key">Info name</param>
             <returns>Info string, null if not found</returns>
         </member>
+        <member name="M:LotusAPI.MV.GObject.GetConvexHull(System.Single)">
+            <summary>
+Get convex hull
+</summary>
+            <param name="eps">eps err</param>
+        </member>
         <member name="M:LotusAPI.MV.GObject.GetNormalMap">
             <summary>
 Get Normal map image
