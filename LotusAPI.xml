@@ -688,6 +688,16 @@ Check if any of the bounding boxes of the meshes objs1 collides with any of the 
             <param name="objs2">mesh array 2</param>
             <returns>True if collision found</returns>
         </member>
+        <member name="M:LotusAPI.MV.Utils.CollisionCheck(LotusAPI.MV.GObject[],LotusAPI.Math.Matrix44d[],LotusAPI.MV.GObject[],LotusAPI.Math.Matrix44d[])">
+            <summary>
+Collision check
+</summary>
+            <param name="objs1">array of first objs</param>
+            <param name="Hs1">array of first obj matrices, null =&gt; all eyes</param>
+            <param name="objs2">array of obj</param>
+            <param name="Hs2">array of second obj matrices, null =&gt; all eyes</param>
+            <returns>true if collide</returns>
+        </member>
         <member name="M:LotusAPI.MV.Utils.CollisionCheck(LotusAPI.MV.GObject[],LotusAPI.MV.GObject[])">
             <summary>
 Check if any of the meshes in objs1 collides with any of the meshes in objs2
