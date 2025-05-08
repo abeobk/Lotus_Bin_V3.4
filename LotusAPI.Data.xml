@@ -38,6 +38,1027 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:LotusAPI.Data.SqlDialect">
+            <summary>
+            Specifies the SQL dialect to use for query generation
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlDialect.SQLite">
+            <summary>SQLite database engine</summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlDialect.MSSQL">
+            <summary>Microsoft SQL Server database engine</summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlDialect.MySQL">
+            <summary>MySQL database engine</summary>
+        </member>
+        <member name="T:LotusAPI.Data.SqlOperationType">
+            <summary>
+            Specifies the type of SQL operation being performed
+            </summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlOperationType.Select">
+            <summary>SELECT operation to retrieve data</summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlOperationType.Insert">
+            <summary>INSERT operation to add data</summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlOperationType.Update">
+            <summary>UPDATE operation to modify data</summary>
+        </member>
+        <member name="F:LotusAPI.Data.SqlOperationType.Delete">
+            <summary>DELETE operation to remove data</summary>
+        </member>
+        <member name="T:LotusAPI.Data.DbEngine">
+            <summary>
+            Manages database connections and provides methods for executing queries
+            </summary>
+            <example>
+            Creating and using a database engine:
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) 
+            {
+                var users = db.Query("SELECT * FROM users WHERE active = 1");
+                foreach (var user in users) {
+                    Logger.Error($"User: {user.name}");
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.#ctor(System.String,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Creates a new database engine with the specified connection string and dialect
+            </summary>
+            <param name="connectionString">The connection string for the database</param>
+            <param name="dialect">The SQL dialect to use for query generation</param>
+            <example>
+            <code>
+            // Create a new SQLite database engine
+            var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite);
+            
+            // Create a new SQL Server database engine
+            var sqlServerDb = new DbEngine("Server=myserver;Database=mydb;User Id=sa;Password=pass;", SqlDialect.MSSQL);
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateSqliteEngine(System.String)">
+            <summary>
+            Creates a new SQLite database engine with the specified connection string
+            </summary>
+            <param name="connectionString">The connection string for the SQLite database</param>
+            <returns>A new DbEngine instance for SQLite</returns>
+            <example>
+            <code>
+            // Create a new SQLite database engine
+            var db = DbEngine.CreateSqliteEngine("Data Source=mydb.sqlite");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateMsSqlEngine(System.String)">
+            <summary>
+            Creates a new SQL Server database engine with the specified connection string
+            </summary>
+            <param name="connectionString">The connection string for the SQL Server database</param>
+            <returns>A new DbEngine instance for SQL Server</returns>
+            <example>
+            <code>
+            // Create a new SQL Server database engine
+            var db = DbEngine.CreateMsSqlEngine("Server=myserver;Database=mydb;User Id=sa;Password=pass;");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateMySqlEngine(System.String)">
+            <summary>
+            Creates a new MySQL/MariaDB database engine with the specified connection string
+            </summary>
+            <param name="connectionString">The connection string for the MySQL/MariaDB database</param>
+            <returns>A new DbEngine instance for MySQL/MariaDB</returns>
+            <example>
+            <code>
+            // Create a new MySQL database engine
+            var db = DbEngine.CreateMySqlEngine("Server=localhost;Database=mydb;Uid=root;Pwd=password;");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.Connect">
+            <summary>
+            Opens the database connection if it is not already open
+            </summary>
+            <example>
+            <code>
+            var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite);
+            db.Connect(); // Explicitly open the connection
+            // Use the connection...
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateConnection">
+            <summary>
+            Creates a new database connection based on the dialect
+            </summary>
+            <returns>A database connection appropriate for the configured dialect</returns>
+            <exception cref="T:System.NotImplementedException">Thrown when trying to use MariaDB without the appropriate package</exception>
+            <exception cref="T:System.NotSupportedException">Thrown when an unsupported SQL dialect is specified</exception>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.NewQuery">
+            <summary>
+            Creates a new query builder for this database engine
+            </summary>
+            <returns>A new QueryEngine instance connected to this database engine</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) 
+            {
+                var query = db.NewQuery()
+                              .Select("id", "name", "email")
+                              .From("users")
+                              .Where("active", true);
+                              
+                var activeUsers = query.Get();
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.BeginTransaction">
+            <summary>
+            Begins a new transaction
+            </summary>
+            <returns>A database transaction object that can be committed or rolled back</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) 
+            {
+                using (var transaction = db.BeginTransaction()) 
+                {
+                    try 
+                    {
+                        db.Execute("INSERT INTO orders (customer_id) VALUES (@id)", 
+                                  new Dictionary&lt;string, object&gt; { { "@id", 123 } });
+                                  
+                        db.Execute("UPDATE customers SET order_count = order_count + 1 WHERE id = @id", 
+                                  new Dictionary&lt;string, object&gt; { { "@id", 123 } });
+                                  
+                        transaction.Commit();
+                    }
+                    catch 
+                    {
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.Execute(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Executes a query and returns the number of rows affected
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>Number of rows affected</returns>
+            <example>
+            <code>
+            var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite);
+            int rowsAffected = db.Execute("DELETE FROM users WHERE inactive = 1");
+            Logger.Error($"Deleted {rowsAffected} inactive users");
+            
+            // With parameters
+            var parameters = new Dictionary&lt;string, object&gt;
+            {
+                { "@name", "John" },
+                { "@email", "john@example.com" }
+            };
+            db.Execute("INSERT INTO users (name, email) VALUES (@name, @email)", parameters);
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Executes a query asynchronously and returns the number of rows affected
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>Task containing the number of rows affected</returns>
+            <example>
+            <code>
+            var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite);
+            int rowsAffected = await db.ExecuteAsync("UPDATE products SET active = 0 WHERE expired = 1");
+            Logger.Error($"Deactivated {rowsAffected} expired products");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteScalar(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Executes a query and returns the first column of the first row
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>The first column of the first row, or null if no rows</returns>
+            <example>
+            <code>
+            var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite);
+            var count = db.ExecuteScalar("SELECT COUNT(*) FROM users");
+            Logger.Error($"Total users: {count}");
+            
+            // With parameters
+            var userId = db.ExecuteScalar("SELECT id FROM users WHERE email = @email", 
+                                         new Dictionary&lt;string, object&gt; { { "@email", "user@example.com" } });
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteScalarAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Executes a query asynchronously and returns the first column of the first row
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>Task containing the first column of the first row, or null if no rows</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteReader(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Executes a query and returns a data reader
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>A data reader for reading the query results</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteReaderAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Executes a query asynchronously and returns a data reader
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>Task containing a data reader for reading the query results</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.Query(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Executes a query and returns a list of dynamic objects
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>A list of dynamic objects representing the query results</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.QueryAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Executes a query asynchronously and returns a list of dynamic objects
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>Task containing a list of dynamic objects representing the query results</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateCommand(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Creates a new command with the specified SQL and parameters
+            </summary>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>A database command object</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.Dispose">
+            <summary>
+            Closes the connection and releases resources
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.Dispose(System.Boolean)">
+            <summary>
+            Closes the connection and releases resources
+            </summary>
+            <param name="disposing">Indicates whether the method is being called from Dispose</param>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.Query``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Executes a query and returns a list of strongly typed objects
+            </summary>
+            <typeparam name="T">The type to map results to</typeparam>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>A list of objects of type T populated from the query results</returns>
+            <example>
+            <code>
+            // Define a class that matches your database structure
+            public class User {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public string Email { get; set; }
+                public bool IsActive { get; set; }
+            }
+            
+            // Query and map to objects
+            List&lt;User&gt; activeUsers = db.NewQuery()
+                .Select()
+                .From("users")
+                .Where("is_active", 1)
+                .Get&lt;User&gt;();
+                
+            foreach (var user in activeUsers) {
+                Logger.Error($"User {user.Name} has email {user.Email}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.QueryAsync``1(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Executes a query asynchronously and returns a list of strongly typed objects
+            </summary>
+            <typeparam name="T">The type to map results to</typeparam>
+            <param name="sql">The SQL command text</param>
+            <param name="parameters">Optional parameters for the SQL command</param>
+            <returns>Task containing a list of objects of type T populated from the query results</returns>
+            <example>
+            <code>
+            public class Product {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public decimal Price { get; set; }
+            }
+            
+            // Async query with strong typing
+            List&lt;Product&gt; expensiveProducts = await db.NewQuery()
+                .Select()
+                .From("products")
+                .Where("price", ">", 1000)
+                .OrderBy("price", false)
+                .GetAsync&lt;Product&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteInTransaction(System.Action{LotusAPI.Data.DbEngine})">
+            <summary>
+            Executes a series of operations within a transaction with automatic commit/rollback
+            </summary>
+            <param name="action">The action containing database operations to perform</param>
+            <returns>True if the transaction was committed successfully, otherwise false</returns>
+            <example>
+            <code>
+            db.ExecuteInTransaction(db => {
+                db.Execute("INSERT INTO orders (customer_id, total) VALUES (@id, @total)",
+                    new Dictionary&lt;string, object&gt; { { "@id", 123 }, { "@total", 99.95 } });
+                    
+                db.Execute("UPDATE inventory SET stock = stock - 1 WHERE product_id = @pid",
+                    new Dictionary&lt;string, object&gt; { { "@pid", 456 } });
+            });
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CloseConnection">
+            <summary>
+            Explicitly closes the database connection if it is open
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.GetParameterPrefix">
+            <summary>
+            Gets the appropriate parameter prefix for the configured SQL dialect
+            </summary>
+            <returns>Parameter prefix character or string</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.FormatIdentifier(System.String)">
+            <summary>
+            Formats a database object identifier (table/column name) according to dialect rules
+            </summary>
+            <param name="identifier">The raw identifier name</param>
+            <returns>Properly formatted identifier for the current dialect</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.FormatSingleIdentifier(System.String,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Formats a single identifier without handling aliases
+            </summary>
+            <param name="identifier">The raw identifier name</param>
+            <returns>Properly formatted identifier for the current dialect</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.FormatSingleIdentifierPart(System.String,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Formats a single part of an identifier (database, schema, or table name)
+            </summary>
+            <param name="part">The identifier part to format</param>
+            <param name="dialect">SQL dialect to use</param>
+            <returns>The formatted identifier part</returns>
+        </member>
+        <member name="T:LotusAPI.Data.DbEngine.ColumnDefinition">
+            <summary>
+            Column definition for table schema operations
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.Name">
+            <summary>
+            Name of the column
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.DataType">
+            <summary>
+            SQL data type of the column
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.Nullable">
+            <summary>
+            Whether the column can contain NULL values
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.DefaultValue">
+            <summary>
+            Default value for the column
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.PrimaryKey">
+            <summary>
+            Whether the column is a primary key
+            </summary>
+        </member>
+        <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.AutoIncrement">
+            <summary>
+            Whether the column should auto-increment (for integer primary keys)
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ColumnDefinition.GetDefinitionSql(LotusAPI.Data.SqlDialect)">
+            <summary>
+            Creates a full column definition string
+            </summary>
+            <param name="dialect">SQL dialect to use for formatting</param>
+            <returns>SQL column definition string</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ColumnDefinition.GetAddColumnSql(System.String,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Creates an ALTER TABLE ADD COLUMN statement for this column
+            </summary>
+            <param name="tableName">Name of the table to alter</param>
+            <param name="dialect">SQL dialect to use for formatting</param>
+            <returns>SQL statement to add this column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateBoolColumn(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a boolean column definition with specified properties
+            </summary>
+            <param name="name">The name of the column</param>
+            <param name="defaultValue">The default value for the column (true or false)</param>
+            <param name="nullable">Whether the column can contain NULL values</param>
+            <returns>A configured ColumnDefinition for a boolean column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateIntColumn(System.String,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Creates an integer column definition with specified properties
+            </summary>
+            <param name="name">The name of the column</param>
+            <param name="defaultValue">The default value for the column</param>
+            <param name="nullable">Whether the column can contain NULL values</param>
+            <param name="primary">Whether the column is a primary key</param>
+            <param name="autoIncrement">Whether the column should auto-increment</param>
+            <returns>A configured ColumnDefinition for an integer column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateTextColumn(System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Creates a text column definition with specified properties
+            </summary>
+            <param name="name">The name of the column</param>
+            <param name="defaultValue">The default value for the column</param>
+            <param name="nullable">Whether the column can contain NULL values</param>
+            <param name="length">Maximum length of the text (-1 for unlimited)</param>
+            <returns>A configured ColumnDefinition for a text column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateCharColumn(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Creates a char column definition with specified properties
+            </summary>
+            <param name="name">The name of the column</param>
+            <param name="length">The fixed length of the char column</param>
+            <param name="defaultValue">The default value for the column</param>
+            <param name="distinctValues">Whether the column should have distinct values (effectively adds a UNIQUE constraint in some dialects)</param>
+            <returns>A configured ColumnDefinition for a char column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateIDColumn(System.String)">
+            <summary>
+            Creates an auto-incrementing primary key column (ID column)
+            </summary>
+            <param name="name">The name of the column (typically 'id')</param>
+            <returns>A configured ColumnDefinition for an ID column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateDateTimeColumn(System.String,System.String)">
+            <summary>
+            Creates a datetime column definition with specified properties
+            </summary>
+            <param name="name">The name of the column</param>
+            <param name="defaultValue">The default value for the column. Use "CURRENT_TIMESTAMP" to use the current datetime.</param>
+            <returns>A configured ColumnDefinition for a datetime column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateFloatColumn(System.String,System.Double,System.Boolean)">
+            <summary>
+            Creates a floating-point column definition with specified properties
+            </summary>
+            <param name="name">The name of the column</param>
+            <param name="defaultValue">The default value for the column</param>
+            <param name="nullable">Whether the column can contain NULL values</param>
+            <returns>A configured ColumnDefinition for a floating-point column</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.EnsureTable(System.String,System.Collections.Generic.IEnumerable{LotusAPI.Data.DbEngine.ColumnDefinition})">
+            <summary>
+            Ensures a table exists with all required columns
+            </summary>
+            <param name="tableName">Name of the table to check/create</param>
+            <param name="columns">List of column definitions</param>
+            <returns>True if table was created, false if it already existed (may have been modified)</returns>
+            <example>
+            <code>
+            // Define and ensure a users table exists
+            var columns = new List&lt;ColumnDefinition&gt;
+            {
+                new ColumnDefinition { 
+                    Name = "id", 
+                    DataType = "INTEGER", 
+                    Nullable = false, 
+                    PrimaryKey = true, 
+                    AutoIncrement = true 
+                },
+                new ColumnDefinition { 
+                    Name = "username", 
+                    DataType = "VARCHAR(100)", 
+                    Nullable = false 
+                },
+                new ColumnDefinition { 
+                    Name = "email", 
+                    DataType = "VARCHAR(255)", 
+                    Nullable = false 
+                },
+                new ColumnDefinition { 
+                    Name = "created_at", 
+                    DataType = "DATETIME", 
+                    DefaultValue = "CURRENT_TIMESTAMP" 
+                }
+            };
+            
+            bool created = db.EnsureTable("users", columns);
+            if (created) {
+                Logger.Error("Created new users table");
+            } else {
+                Logger.Error("Users table already exists, any missing columns were added");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.AddView(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new view with the specified definition
+            </summary>
+            <param name="viewName">Name of the view to create</param>
+            <param name="selectQuery">SELECT query that defines the view</param>
+            <param name="replaceIfExists">If true, replaces any existing view with the same name</param>
+            <exception cref="T:System.ArgumentException">Thrown when viewName is null or empty, or selectQuery is null or empty</exception>
+            <example>
+            <code>
+            // Create a view for active users
+            db.AddView("active_users", "SELECT id, name, email FROM users WHERE status = 'active'");
+            
+            // Create or replace a view that joins orders and customers
+            db.AddView("customer_orders", 
+                "SELECT o.id, c.name, o.order_date, o.total " +
+                "FROM orders o JOIN customers c ON o.customer_id = c.id", 
+                true);
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.RemoveView(System.String)">
+            <summary>
+            Removes a view if it exists
+            </summary>
+            <param name="viewName">Name of the view to remove</param>
+            <returns>True if the view was removed, false if it didn't exist</returns>
+            <exception cref="T:System.ArgumentException">Thrown when viewName is null or empty</exception>
+            <example>
+            <code>
+            // Remove an outdated view
+            bool removed = db.RemoveView("outdated_report_view");
+            if(removed) {
+                Logger.Error("Removed outdated report view");
+            } else {
+                Logger.Error("View didn't exist, nothing to remove");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.GetDatabases">
+            <summary>
+            Retrieves a list of all databases accessible by the current connection.
+            </summary>
+            <returns>A list of database names as strings.</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("Server=myserver;User Id=sa;Password=pass;", SqlDialect.MSSQL)) {
+                var databases = db.GetDatabases();
+                foreach (var database in databases) {
+                    Console.WriteLine($"Database: {database}");
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.GetTables">
+            <summary>
+            Retrieves a list of all tables in the database.
+            </summary>
+            <returns>A list of table names as strings.</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) {
+                var tables = db.GetTables();
+                foreach (var table in tables) {
+                    Console.WriteLine($"Table: {table}");
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.GetViews">
+            <summary>
+            Retrieves a list of all views in the database.
+            </summary>
+            <returns>A list of view names as strings.</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) {
+                var views = db.GetViews();
+                foreach (var view in views) {
+                    Console.WriteLine($"View: {view}");
+                }
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.GetViewSource(System.String)">
+            <summary>
+            Retrieves the source code (definition) of a view in the database.
+            </summary>
+            <param name="viewName">The name of the view to retrieve the source code for.</param>
+            <returns>The SQL definition of the view as a string.</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) {
+                string viewDefinition = db.GetViewSource("active_users");
+                Console.WriteLine($"View Definition: {viewDefinition}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.TableExists(System.String)">
+            <summary>
+            Checks if a table exists in the database
+            </summary>
+            <param name="tableName">Name of the table to check</param>
+            <returns>True if the table exists</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.GetTableColumns(System.String)">
+            <summary>
+            Gets list of column names for an existing table
+            </summary>
+            <param name="tableName">Name of the table</param>
+            <returns>List of column names</returns>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreateTable(System.String,System.Collections.Generic.IEnumerable{LotusAPI.Data.DbEngine.ColumnDefinition})">
+            <summary>
+            Creates a new table with the specified columns
+            </summary>
+            <param name="tableName">Name of the table to create</param>
+            <param name="columns">Column definitions</param>
+            <exception cref="T:System.ArgumentException">Thrown when tableName is null or empty, or columns collection is null or empty</exception>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.FormatIdentifier(System.String,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Formats an identifier (table or column name) according to the specified dialect
+            </summary>
+            <param name="identifier">The raw identifier</param>
+            <param name="dialect">SQL dialect to use</param>
+            <returns>The formatted identifier</returns>
+        </member>
+        <member name="T:LotusAPI.Data.QueryEngine">
+            <summary>
+            Builds SQL queries using a fluent interface
+            </summary>
+            <example>
+            Basic query building:
+            <code>
+            using (var db = new DbEngine("Data Source=mydb.sqlite", SqlDialect.SQLite)) 
+            {
+                var results = db.NewQuery()
+                                .Select("id", "name")
+                                .From("users")
+                                .Where("status", "active")
+                                .OrderBy("created_at", false)
+                                .Limit(10)
+                                .Get();
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.#ctor(LotusAPI.Data.SqlDialect)">
+            <summary>
+            Creates a new query builder with the specified dialect
+            </summary>
+            <param name="dialect">The SQL dialect to use for query generation</param>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.#ctor(LotusAPI.Data.DbEngine,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Creates a new query builder with the specified database engine and dialect
+            </summary>
+            <param name="dbEngine">The database engine to use for executing queries</param>
+            <param name="dialect">The SQL dialect to use for query generation</param>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Select(System.String[])">
+            <summary>
+            Selects columns from a table
+            </summary>
+            <param name="columns">The columns to select. Omit to select all columns (*)</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+            <example>
+            <code>
+            // Select specific columns
+            db.NewQuery().Select("id", "name", "email").From("users");
+            
+            // Select all columns
+            db.NewQuery().Select().From("users");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.From(System.String)">
+            <summary>
+            Specifies the table to select from
+            </summary>
+            <param name="table">The name of the table</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+            <example>
+            <code>
+            db.NewQuery().Select("id", "title").From("posts");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Table(System.String)">
+            <summary>
+            Specifies the table to operate on (equivalent to From for SELECT queries)
+            </summary>
+            <param name="table">The name of the table</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+            <example>
+            <code>
+            // For UPDATE operations
+            db.NewQuery().Update().Table("users").Set("status", "inactive");
+            
+            // For DELETE operations
+            db.NewQuery().Delete().Table("logs").Where("created_at", "&lt;", DateTime.Now.AddDays(-30));
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Where(System.String)">
+            <summary>
+            Adds a condition to the WHERE clause
+            </summary>
+            <param name="condition">The raw SQL condition</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+            <example>
+            <code>
+            db.NewQuery()
+              .Select()
+              .From("products")
+              .Where("price > 100")
+              .AndWhere("stock > 0");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Where(System.String,System.Object)">
+            <summary>
+            Adds an equality condition to the WHERE clause with a parameter
+            </summary>
+            <param name="column">The column to compare</param>
+            <param name="value">The value to compare against (will be parameterized)</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+            <example>
+            <code>
+            db.NewQuery()
+              .Select()
+              .From("users")
+              .Where("status", "active")
+              .AndWhere("role", "admin");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.InsertInto(System.String)">
+            <summary>
+            Sets the operation type to Insert and specifies the target table in one call
+            </summary>
+            <param name="tableName">The name of the table for the INSERT operation</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Set(System.String,System.Object)">
+            <summary>
+            Sets a value for UPDATE operations
+            </summary>
+            <param name="column">Column to update</param>
+            <param name="value">New value (will be parameterized)</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.UpdateTable(System.String)">
+            <summary>
+            Sets the operation type to Update and specifies the target table in one call
+            </summary>
+            <param name="tableName">The name of the table for the UPDATE operation</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Where(System.String,System.String,System.Object)">
+            <summary>
+            Adds a WHERE condition with a parameterized comparison operator
+            </summary>
+            <param name="column">The column to compare</param>
+            <param name="comparisonOperator">The comparison operator (e.g., "=", "&lt;", "&gt;")</param>
+            <param name="value">The value to compare against (will be parameterized)</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Raw(System.String)">
+            <summary>
+            Adds a raw SQL fragment to the query
+            </summary>
+            <param name="sql">The raw SQL fragment</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Values``1(``0,System.Boolean)">
+            <summary>
+            Sets values for an INSERT operation from an object's properties
+            </summary>
+            <typeparam name="T">The type of object containing values to insert</typeparam>
+            <param name="obj">The object whose properties will be used as values</param>
+            <returns>The current QueryEngine instance for method chaining</returns>
+            <example>
+            <code>
+            // Define a class that matches your table structure
+            public class User {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public string Email { get; set; }
+                public bool IsActive { get; set; }
+            }
+            
+            // Create an object and insert it
+            var newUser = new User {
+                Name = "Jane Doe",
+                Email = "jane@example.com",
+                IsActive = true
+            };
+            
+            db.NewQuery()
+              .InsertInto("users")
+              .Values(newUser)  // Using the new Values&lt;T&gt; method
+              .Execute();
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Execute">
+            <summary>
+            Executes the query and returns the number of rows affected
+            </summary>
+            <returns>The number of rows affected by the query</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.ExecuteAsync(System.Boolean)">
+            <summary>
+            Executes the query asynchronously and returns the number of rows affected
+            </summary>
+            <param name="keepConnectionOpen">Whether to keep the connection open after execution</param>
+            <returns>Task containing the number of rows affected by the query</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.ExecuteScalar">
+            <summary>
+            Executes the query and returns the first column of the first row
+            </summary>
+            <returns>The first column of the first row, or null if no rows</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.ExecuteScalarAsync">
+            <summary>
+            Executes the query asynchronously and returns the first column of the first row
+            </summary>
+            <returns>Task containing the first column of the first row, or null if no rows</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.ExecuteReader">
+            <summary>
+            Executes the query and returns a data reader
+            </summary>
+            <returns>A data reader for reading the query results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.ExecuteReaderAsync">
+            <summary>
+            Executes the query asynchronously and returns a data reader
+            </summary>
+            <returns>Task containing a data reader for reading the query results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Get">
+            <summary>
+            Executes the query and returns a list of dynamic objects
+            </summary>
+            <returns>A list of dynamic objects representing the query results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.GetAsync">
+            <summary>
+            Executes the query asynchronously and returns a list of dynamic objects
+            </summary>
+            <returns>Task containing a list of dynamic objects representing the query results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.First">
+            <summary>
+            Executes the query and returns the first result or null if none
+            </summary>
+            <returns>The first result of the query, or null if no results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.FirstAsync">
+            <summary>
+            Executes the query asynchronously and returns the first result or null if none
+            </summary>
+            <returns>Task containing the first result of the query, or null if no results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.Get``1">
+            <summary>
+            Executes the query and returns a list of strongly typed objects
+            </summary>
+            <typeparam name="T">The type to map results to</typeparam>
+            <returns>A list of objects of type T populated from the query results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+            <example>
+            <code>
+            // Define a class that matches your database structure
+            public class User {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public string Email { get; set; }
+                public bool IsActive { get; set; }
+            }
+            
+            // Query and map to objects
+            List&lt;User&gt; activeUsers = db.NewQuery()
+                .Select()
+                .From("users")
+                .Where("is_active", 1)
+                .Get&lt;User&gt;();
+                
+            foreach (var user in activeUsers) {
+                Logger.Error($"User {user.Name} has email {user.Email}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.GetAsync``1">
+            <summary>
+            Executes the query asynchronously and returns a list of strongly typed objects
+            </summary>
+            <typeparam name="T">The type to map results to</typeparam>
+            <returns>Task containing a list of objects of type T populated from the query results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+            <example>
+            <code>
+            public class Product {
+                public int Id { get; set; }
+                public string Name { get; set; }
+                public decimal Price { get; set; }
+            }
+            
+            // Async query with strong typing
+            List&lt;Product&gt; expensiveProducts = await db.NewQuery()
+                .Select()
+                .From("products")
+                .Where("price", ">", 1000)
+                .OrderBy("price", false)
+                .GetAsync&lt;Product&gt;();
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.First``1">
+            <summary>
+            Executes the query and returns the first result as a strongly typed object or default if none
+            </summary>
+            <typeparam name="T">The type to map the result to</typeparam>
+            <returns>The first result of the query as an object of type T, or default if no results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.FirstAsync``1">
+            <summary>
+            Executes the query asynchronously and returns the first result as a strongly typed object or default if none
+            </summary>
+            <typeparam name="T">The type to map the result to</typeparam>
+            <returns>Task containing the first result of the query as an object of type T, or default if no results</returns>
+            <exception cref="T:System.InvalidOperationException">Thrown when there is no database engine connection</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.ValidateQuery">
+            <summary>
+            Validates that the query is well-formed and ready to execute
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown when the query is not properly configured</exception>
+        </member>
+        <member name="M:LotusAPI.Data.QueryEngine.FormatSqlValue(System.Object)">
+            <summary>
+            Safely formats a SQL value according to its type
+            </summary>
+        </member>
         <member name="F:LotusAPI.Data.DialogSelectSampleRange.components">
             <summary>
             Required designer variable.
@@ -54,6 +1075,33 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="M:LotusAPI.Data.Extensions.Escape(System.String,System.String)">
+            <summary>
+            Escapes a field for CSV output, wrapping in quotes if needed and doubling any inner quotes.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.Extensions.ToCsv(System.Data.DataTable,System.String,System.Boolean)">
+            <summary>
+            Converts the given DataTable to a CSV-formatted string.
+            </summary>
+            <param name="table">The DataTable to convert.</param>
+            <param name="delimiter">Field separator (default is comma).</param>
+            <param name="includeHeader">Whether to include the column names as the first row.</param>
+            <returns>A CSV representation of the table.</returns>
+        </member>
+        <member name="M:LotusAPI.Data.Extensions.CopyToClipboard(System.String)">
+            <summary>
+            Copies this string to the system clipboard.
+            If you’re already on an STA thread, it writes directly;
+            otherwise it spins up a temporary STA thread for the call.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.Extensions.CopyToClipboard(System.Data.DataTable)">
+            <summary>
+            Copy table contents as CSV to clipboard
+            </summary>
+            <param name="tb">Input table</param>
         </member>
         <member name="F:LotusAPI.Data.SimpleDashboardView.components">
             <summary> 

@@ -120,12 +120,6 @@
             Required designer variable.
             </summary>
         </member>
-        <member name="M:ATMC.Common.ErrorIndicator.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
         <member name="M:ATMC.Common.ErrorIndicator.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
@@ -938,12 +932,6 @@
             Required designer variable.
             </summary>
         </member>
-        <member name="M:ATMC.Common.BiPieChart.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
         <member name="M:ATMC.Common.BiPieChart.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
@@ -1128,10 +1116,30 @@
         </member>
         <member name="M:ATMC.Common.PLCManager.WriteDOBit(System.String,System.Boolean)">
             <summary>
-            Write DO bit value, throw if failed to find pin
+            Write DO bit value, log error failed to find pin
             </summary>
             <param name="name">Pin name</param>
             <param name="value">Pin value</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteDOBits(System.Collections.Generic.ICollection{System.ValueTuple{System.String,System.Boolean}})">
+            <summary>
+            Write DO bit value, log error if failed to find pin
+            </summary>
+            <param name="bits"></param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.PulseDOBit(System.String,System.Int32)">
+            <summary>
+            Pulse DO bit, log error if failed to find pin
+            </summary>
+            <param name="name"></param>
+            <param name="pulse_width_ms"></param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.PulseDOBit(System.Enum,System.Int32)">
+            <summary>
+            Pulse DO bit, log error if failed to find pin
+            </summary>
+            <param name="name"></param>
+            <param name="pulse_width_ms"></param>
         </member>
         <member name="M:ATMC.Common.PLCManager.WriteDOBit(System.Enum,System.Boolean)">
             <summary>
@@ -1139,6 +1147,12 @@
             </summary>
             <param name="name">Pin name</param>
             <param name="value">Pin value</param>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.WriteDOBits(System.Collections.Generic.ICollection{System.ValueTuple{System.Enum,System.Boolean}})">
+            <summary>
+            Write multiple DO bits, log if failed to find pin
+            </summary>
+            <param name="bits"></param>
         </member>
         <member name="M:ATMC.Common.PLCManager.ToggleDOBit(System.String)">
             <summary>
@@ -1527,6 +1541,94 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="P:ATMC.Common.WorkCell.ScannerServer.Profile">
+            <summary>
+            The profile name used for the scanner configuration.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.WorkCell.ScannerServer.ROI">
+            <summary>
+            The region of interest (ROI) for the scanner.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.WorkCell.ScannerServer.Scanner">
+            <summary>
+            The scanner object used for scanning operations.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.WorkCell.ScannerServer._encodeBuffer">
+            <summary>
+            Internal buffer used for encoding scan data.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.WorkCell.ScannerServer.Publisher">
+            <summary>
+            The publisher used to publish scanner status updates.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.WorkCell.ScannerServer.IsConnected">
+            <summary>
+            Indicates whether the scanner is connected.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.ScannerServer.Init">
+            <summary>
+            Initializes the scanner server by stopping any existing operations, creating a new scanner instance, and setting the status to Initialized.
+            </summary>
+            <example>
+            var server = new ScannerServer();
+            server.Init();
+            </example>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.ScannerServer.Start">
+            <summary>
+            Starts the scanner server, connects the scanner, sets the ROI, and initializes the publisher and server for handling requests.
+            </summary>
+            <example>
+            var server = new ScannerServer();
+            server.Init();
+            server.Start();
+            </example>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.ScannerServer.Stop">
+            <summary>
+            Stops the scanner server, disconnects the scanner, and disposes of the publisher and server.
+            </summary>
+            <example>
+            var server = new ScannerServer();
+            server.Stop();
+            </example>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.ScannerServer.Read(LotusAPI.Json)">
+            <summary>
+            Reads the configuration from a JSON node and initializes the scanner server.
+            </summary>
+            <param name="node">The JSON node containing the configuration.</param>
+            <example>
+            var server = new ScannerServer();
+            server.Read(jsonNode);
+            </example>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.ScannerServer.Write(LotusAPI.Json)">
+            <summary>
+            Writes the current configuration to a JSON node.
+            </summary>
+            <param name="node">The JSON node to write the configuration to.</param>
+            <example>
+            var server = new ScannerServer();
+            server.Write(jsonNode);
+            </example>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.ScannerServer.Dispose(System.Boolean)">
+            <summary>
+            Disposes of the scanner server, stopping and disposing of the publisher if necessary.
+            </summary>
+            <param name="disposing">Indicates whether the method is called from Dispose().</param>
+            <example>
+            var server = new ScannerServer();
+            server.Dispose();
+            </example>
         </member>
         <member name="M:ATMC.Common.WorkCell.WorkCell.SetupView(LotusAPI.Controls.SceneViewer)">
             <summary>

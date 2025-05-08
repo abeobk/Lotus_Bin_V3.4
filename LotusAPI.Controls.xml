@@ -821,16 +821,53 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:LotusAPI.Controls.Graph.Axis.Pan(System.Single)">
+            <summary>
+            Pans the axis by the specified delta value
+            </summary>
+            <param name="delta">The amount to shift the axis</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.Axis.MapToRange(System.Single,System.Single,System.Single)">
+            <summary>
+            Maps a value from axis range to a specified output range
+            </summary>
+            <param name="value">The value to map</param>
+            <param name="min">Minimum of output range</param>
+            <param name="max">Maximum of output range</param>
+            <returns>The mapped value</returns>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.Axis.MapToAxis(System.Single,System.Single,System.Single)">
+            <summary>
+            Maps a value from a specified input range to the axis range
+            </summary>
+            <param name="value">The value to map</param>
+            <param name="min">Minimum of input range</param>
+            <param name="max">Maximum of input range</param>
+            <returns>The mapped value</returns>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.Axis.Draw(System.Drawing.Graphics,System.Drawing.PointF,System.Drawing.PointF,System.Single)">
+            <summary>
+            Draws axis from p1 to p2
+            </summary>
+            <param name="g">The Graphics to process</param>
+            <param name="p1">The first PointF</param>
+            <param name="p2">The second PointF</param>
+            <param name="gridLength">Length of grid lines</param>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.Axis.CreateXAxis">
+            <summary>
+            Creates a pre-configured horizontal X axis
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Controls.Graph.Axis.CreateYAxis">
+            <summary>
+            Creates a pre-configured vertical Y axis
+            </summary>
+        </member>
         <member name="F:LotusAPI.Controls.Graph.GraphView.components">
             <summary> 
             Required designer variable.
             </summary>
-        </member>
-        <member name="M:LotusAPI.Controls.Graph.GraphView.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:LotusAPI.Controls.Graph.GraphView.InitializeComponent">
             <summary> 
