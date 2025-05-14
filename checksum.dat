@@ -60,10 +60,10 @@ a0ee8f8955e7a2b8a0893c12461b88a1e3ce7caa *./LotusAPI.Controls.xml
 cf039761efa200e1b32e7354bbf328a4ad77dafb *./LotusAPI.Data.dll
 0bb94ec3e65d0f709926e1ebfd6a81cea9578bdc *./LotusAPI.Data.xml
 c40e0fe6834eb54f8b7a480722e4e63bc4130797 *./LotusAPI.dll
-bba710064b36018b0dad7bf92cd2811588ab797a *./LotusAPI.DNN.dll
+0dd3207a9cc786baaf2f6389ebfe85035aa7776b *./LotusAPI.DNN.dll
 6ccb2578a5622ccb1689a1cb6b1f21a4ae93fb4b *./LotusAPI.DNN.xml
 7dde1b98e88ae0585950d553d53094f54d04205a *./LotusAPI.HW.ABPLC.dll
-f47552f2dbac79c8446c30dfbf6cc3b6430cbf9d *./LotusAPI.HW.dll
+c43a3ceb8272de3b029951839d76794b780d59c8 *./LotusAPI.HW.dll
 9c7524f6f56b227dddd2dc1000d9ecb5314c9fbc *./LotusAPI.HW.FujiPLC.dll
 df6a83e694855751b5b9b85e7f90e2c891496998 *./LotusAPI.HW.FujiPLC.xml
 0dd28d36bdc0607053612b6d526a1823858defe5 *./LotusAPI.HW.OpcPlc.dll
