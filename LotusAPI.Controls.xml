@@ -470,6 +470,13 @@
             Draw text with scene viewer font
             </summary>
         </member>
+        <member name="M:LotusAPI.Controls.SceneViewer.GetViewRay(LotusAPI.Math.Point2f)">
+            <summary>
+            Get view ray from screen position
+            </summary>
+            <param name="screen_pos">Screen pos</param>
+            <returns>Line3f that represents the view ray</returns>
+        </member>
         <member name="F:LotusAPI.Controls.Dialogs.AlarmDialog.components">
             <summary>
             Required designer variable.

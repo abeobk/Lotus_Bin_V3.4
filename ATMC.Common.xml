@@ -4,6 +4,155 @@
         <name>ATMC.Common</name>
     </assembly>
     <members>
+        <member name="T:ATMC.Common.FormMakeModel">
+            <summary>
+            Form for creating and managing 3D models from scan data with robot poses.
+            Handles scanning operations and model saving capabilities.
+            </summary>
+            <example>
+            Using FormMakeModel with a WorkCell:
+            <code>
+            var scanGroups = new ScanActionGroup[] { /* scan groups here */ };
+            using (var form = new FormMakeModel(workCell, scanGroups))
+            {
+                form.ShowDialog();
+            }
+            </code>
+            </example>
+        </member>
+        <member name="F:ATMC.Common.FormMakeModel._clouds">
+            <summary>
+            Dictionary to store pointcloud data with scan action names as keys.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.FormMakeModel._poses">
+            <summary>
+            Dictionary to store robot pose data with pose names as keys.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.FormMakeModel._combinedGroups">
+            <summary>
+            List of group to be combined.
+            </summary>
+        </member>
+        <member name="E:ATMC.Common.FormMakeModel.OnDataClear">
+            <summary>
+            Event triggered when data is cleared from the form.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,ATMC.Common.WorkCell.WorkCell,ATMC.Common.ScanActionGroup[],System.Collections.Generic.List{ATMC.Common.RobotPoseDef},System.Single)">
+            <summary>
+            Initializes a new instance of the FormMakeModel using a WorkCell instance.
+            </summary>
+            <param name="wc">The WorkCell containing the necessary components.</param>
+            <param name="scan_action_groups">Groups of scan actions to be performed.</param>
+            <param name="install_robot_poses">Optional list of robot poses for installation.</param>
+            <example>
+            <code>
+            var workCell = new WorkCell.WorkCell();
+            var scanGroups = new ScanActionGroup[] { /* scan actions */ };
+            var form = new FormMakeModel(workCell, scanGroups);
+            form.Show();
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.WorkCellGraph,System.Collections.Generic.Dictionary{System.String,ATMC.Common.WorkCell.ScannerClient},System.Collections.Generic.Dictionary{System.String,ATMC.Common.WorkCell.RobotClient},ATMC.Common.ScanActionGroup[],System.Collections.Generic.List{ATMC.Common.RobotPoseDef},System.Single)">
+            <summary>
+            Initializes a new instance of the FormMakeModel with detailed components.
+            </summary>
+            <param name="wc">The WorkCellGraph containing the work cell graph.</param>
+            <param name="scanners">Dictionary of scanner clients by name.</param>
+            <param name="robots">Dictionary of robot clients by name.</param>
+            <param name="scan_action_groups">Groups of scan actions to be performed.</param>
+            <param name="install_robot_poses">Optional list of robot poses for installation.</param>
+            <example>
+            <code>
+            var graph = new WorkCellGraph();
+            var scanners = new Dictionary&lt;string, ScannerClient&gt;();
+            var robots = new Dictionary&lt;string, RobotClient&gt;();
+            var scanGroups = new ScanActionGroup[] { /* scan actions */ };
+            var form = new FormMakeModel(graph, scanners, robots, scanGroups);
+            form.ShowDialog();
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.WorkCellGraph,LotusAPI.HW.AbeoScanManager,ATMC.Common.RobotManager,ATMC.Common.ScanActionGroup[])">
+            <summary>
+            Initializes a new instance of the FormMakeModel using manager objects.
+            </summary>
+            <param name="wc">The WorkCellGraph containing the work cell graph.</param>
+            <param name="scanner_manager">Manager for scanner devices.</param>
+            <param name="robot_manager">Manager for robot devices.</param>
+            <param name="scan_action_groups">Groups of scan actions to be performed.</param>
+            <example>
+            <code>
+            var graph = new WorkCellGraph();
+            var scannerManager = new AbeoScanManager();
+            var robotManager = new RobotManager();
+            var scanGroups = new ScanActionGroup[] { /* scan actions */ };
+            var form = new FormMakeModel(graph, scannerManager, robotManager, scanGroups);
+            form.Show();
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.WorkCellGraph,System.Collections.Generic.Dictionary{System.String,LotusAPI.MV.AbeoScan},System.Collections.Generic.Dictionary{System.String,LotusAPI.Robotics.IRobotController},ATMC.Common.ScanActionGroup[],System.Single)">
+            <summary>
+            Initializes a new instance of the FormMakeModel using dictionaries of generic scanner and robot interfaces.
+            </summary>
+            <param name="wc">The WorkCellGraph containing the work cell graph.</param>
+            <param name="scanners">Dictionary of scanner devices by name.</param>
+            <param name="robots">Dictionary of robot controllers by name.</param>
+            <param name="scan_action_groups">Groups of scan actions to be performed.</param>
+            <example>
+            <code>
+            var graph = new WorkCellGraph();
+            var scanners = new Dictionary&lt;string, AbeoScan&gt;();
+            var robots = new Dictionary&lt;string, IRobotController&gt;();
+            var scanGroups = new ScanActionGroup[] { /* scan actions */ };
+            var form = new FormMakeModel(graph, scanners, robots, scanGroups);
+            form.ShowDialog();
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.bt_SAVE_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the save button click event. Saves pointclouds and robot poses to a selected directory.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">Event arguments.</param>
+            <example>
+            This method is typically called when the user clicks the save button:
+            <code>
+            private void SetupButtons()
+            {
+                saveButton.Click += bt_SAVE_Click;
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.lbScanItems_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handles the selected index change event for scan items list.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">Event arguments.</param>
+        </member>
+        <member name="M:ATMC.Common.FormMakeModel.btClear_Click(System.Object,System.EventArgs)">
+            <summary>
+            Handles the clear button click event. Clears all collected data.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">Event arguments.</param>
+            <example>
+            This method is typically called when the user clicks the clear button:
+            <code>
+            private void SetupButtons()
+            {
+                clearButton.Click += btClear_Click;
+            }
+            </code>
+            </example>
+        </member>
         <member name="F:ATMC.Common.FormMakeModel.components">
             <summary>
             Required designer variable.
@@ -38,10 +187,245 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:ATMC.Common.RobotPoseDef">
+            <summary>
+            Defines a robot pose configuration with name and related properties.
+            </summary>
+            <example>
+            <code>
+            var pose = new RobotPoseDef(name:"p0", robotName:"R1", checkNullTool:true, nullToolTolerance:5.0);
+            Console.WriteLine(pose.ToString());
+            </code>
+            </example>
+        </member>
+        <member name="P:ATMC.Common.RobotPoseDef.Name">
+            <summary>
+            Gets or sets the name of the pose.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RobotPoseDef.RobotName">
+            <summary>
+            Gets or sets the name of the robot.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RobotPoseDef.CheckNullTool">
+            <summary>
+            Gets or sets whether to check for null tool condition.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RobotPoseDef.NullToolTolerance">
+            <summary>
+            Gets or sets the tolerance value for null tool checking in millimeters.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RobotPoseDef.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.RobotPoseDef"/> class.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RobotPoseDef.#ctor(System.String,System.String,System.Boolean,System.Double)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.RobotPoseDef"/> class with specified parameters.
+            </summary>
+            <param name="name">The name of the pose.</param>
+            <param name="robotName">The name of the robot.</param>
+            <param name="checkNullTool">Whether to check for null tool condition.</param>
+            <param name="nullToolTolerance">The tolerance value for null tool checking.</param>
+        </member>
+        <member name="M:ATMC.Common.RobotPoseDef.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.RobotPoseDef"/> class from a string definition.
+            </summary>
+            <param name="def">String in format "name:robot_name".</param>
+            <example>
+            <code>
+            var pose = new RobotPoseDef("scan_00:R1");
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.RobotPoseDef.ToString">
+            <summary>
+            Returns a string representation of the robot pose definition.
+            </summary>
+            <returns>A formatted string with pose details.</returns>
+        </member>
+        <member name="T:ATMC.Common.ScanDef">
+            <summary>
+            Defines a scanner configuration with scanner name, robot name and target frame.
+            </summary>
+            <example>
+            <code>
+            var scanDef = new ScanDef(scannerName:"S1", robotName:"R1", targetFrame:"WC");
+            Console.WriteLine(scanDef.ToString());
+            </code>
+            </example>
+        </member>
+        <member name="P:ATMC.Common.ScanDef.ScannerName">
+            <summary>
+            Gets or sets the name of the scanner.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanDef.RobotName">
+            <summary>
+            Gets or sets the name of the robot.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanDef.TargetFrame">
+            <summary>
+            Gets or sets the target frame identifier.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ScanDef.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanDef"/> class.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ScanDef.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanDef"/> class with specified parameters.
+            </summary>
+            <param name="scannerName">The name of the scanner.</param>
+            <param name="robotName">The name of the robot.</param>
+            <param name="targetFrame">The target frame.</param>
+        </member>
+        <member name="M:ATMC.Common.ScanDef.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanDef"/> class from a string definition.
+            </summary>
+            <param name="def">String in format "ScannerName+RobotName->TargetFrame".</param>
+            <example>
+            <code>
+            var scanDef = new ScanDef("S1+R1->WC");
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.ScanDef.ToString">
+            <summary>
+            Returns a string representation of the scan definition.
+            </summary>
+            <returns>A formatted string with scan definition details.</returns>
+        </member>
+        <member name="T:ATMC.Common.ScanAction">
+            <summary>
+            Represents a scanning action with associated scanner and robot pose definitions.
+            </summary>
+            <example>
+            <code>
+            var scanDef = new ScanDef(scannerName:"S1", robotName:"R1", targetFrame:"WC");
+            var robotPose = new RobotPoseDef(name:"p0", robotName:"R1", checkNullTool:true, nullToolTolerance:10.0);
+            var scanAction = new ScanAction(name:"body_scan0", "Scan body p0", scanDef, robotPose);
+            </code>
+            </example>
+        </member>
+        <member name="P:ATMC.Common.ScanAction.Name">
+            <summary>
+            Gets or sets the name of the action.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanAction.Text">
+            <summary>
+            Gets or sets the display text of the action.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanAction.ScanDef">
+            <summary>
+            Gets or sets the scan definition for this action.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanAction.RobotPoseDef">
+            <summary>
+            Gets or sets the robot pose definition for this action.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ScanAction.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanAction"/> class.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ScanAction.#ctor(System.String,System.String,ATMC.Common.ScanDef,ATMC.Common.RobotPoseDef)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanAction"/> class with specified parameters.
+            </summary>
+            <param name="name">The name of the action.</param>
+            <param name="text">The display text of the action.</param>
+            <param name="scanDef">The scan definition for this action.</param>
+            <param name="robotPoseDef">The optional robot pose definition for this action.</param>
+        </member>
+        <member name="M:ATMC.Common.ScanAction.#ctor(System.String,ATMC.Common.ScanDef,ATMC.Common.RobotPoseDef)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanAction"/> class with the name used as text.
+            </summary>
+            <param name="name">The name and display text of the action.</param>
+            <param name="scanDef">The scan definition for this action.</param>
+            <param name="robotPoseDef">The optional robot pose definition for this action.</param>
+        </member>
+        <member name="M:ATMC.Common.ScanAction.ToString">
+            <summary>
+            Returns a string representation of the scan action.
+            </summary>
+            <returns>The text if available, otherwise the name.</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:ATMC.Common.ScanActionGroup" -->
+        <member name="P:ATMC.Common.ScanActionGroup.Name">
+            <summary>
+            Gets or sets the name of the action group.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanActionGroup.Text">
+            <summary>
+            Gets or sets the display text of the action group.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanActionGroup.Combine">
+            <summary>
+            Gets or sets a value indicating whether to combine the actions in this group.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.ScanActionGroup.ScanActions">
+            <summary>
+            Gets or sets the list of scan actions in this group.
+            </summary>
+        </member>
         <member name="M:ATMC.Common.ScanActionGroup.GetAction(System.String)">
             <summary>
-            Get action by name, return null if not exist
+            Gets a scan action by name from the group.
             </summary>
+            <param name="action_name">The name of the action to find.</param>
+            <returns>The scan action if found; otherwise, null.</returns>
+            <example>
+            <code>
+            var action = actionGroup.GetAction("ScanPart1");
+            if (action != null) {
+                Console.WriteLine($"Found action: {action.Name}");
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:ATMC.Common.ScanActionGroup.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanActionGroup"/> class.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ScanActionGroup.#ctor(System.String,System.String,System.Collections.Generic.List{ATMC.Common.ScanAction},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanActionGroup"/> class with specified parameters.
+            </summary>
+            <param name="name">The name of the action group.</param>
+            <param name="text">The display text of the action group.</param>
+            <param name="actions">The list of scan actions in this group.</param>
+        </member>
+        <member name="M:ATMC.Common.ScanActionGroup.#ctor(System.String,System.Collections.Generic.List{ATMC.Common.ScanAction},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:ATMC.Common.ScanActionGroup"/> class with the name used as text.
+            </summary>
+            <param name="name">The name and display text of the action group.</param>
+            <param name="actions">The list of scan actions in this group.</param>
+        </member>
+        <member name="M:ATMC.Common.ScanActionGroup.ToString">
+            <summary>
+            Returns a string representation of the scan action group.
+            </summary>
+            <returns>The text if available, otherwise the name.</returns>
         </member>
         <member name="F:ATMC.Common.BodyShop.FormMeasureConfig.components">
             <summary>
@@ -60,7 +444,7 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:ATMC.Common.BodyShop.ModelConfig.ShiftLimit">
+        <member name="P:ATMC.Common.BodyShop.BodyModelConfig.ShiftLimit">
             <summary>
             Shift limit
             </summary>
@@ -467,6 +851,105 @@
             <exception cref="T:System.Exception"></exception>
         </member>
         <member name="M:ATMC.Common.RegistrationConfig.ToString">
+            <summary>
+            Convert to string
+            </summary>
+        </member>
+        <member name="T:ATMC.Common.CoarseToFineRegistrationConfig">
+            <summary>
+            Coarse to fine registration config
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.Finder">
+            <summary>
+            3D Pattern finder
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.FinderEnable">
+            <summary>
+            Enable/disable 3D pattern finder
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.Aligner">
+            <summary>
+            Coarse aligner
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.ShiftOffset">
+            <summary>
+            Shift offset
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.MaxFitness">
+            <summary>
+            Maximum fitness value
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.MinOverlap">
+            <summary>
+            Minimum overlap ratio (0~1)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.OverlapRadius">
+            <summary>
+            Overlap radius (model->scene)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.ShiftLimit">
+            <summary>
+            Shift limit
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.ScanPoses">
+            <summary>
+            Scan poses
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.Model">
+            <summary>
+            Model cloud file = {prefix}model{suffix}.ply
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.CadModel">
+            <summary>
+            Cad model mesh file = {prefix}cad{suffix}.stl
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.CoarseToFineRegistrationConfig.Valid">
+            <summary>
+            Check if data is valid or not
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.CoarseToFineRegistrationConfig.AssertFile(System.String)">
+            <summary>
+            Check if file exist
+            </summary>
+            <param name="file">file path</param>
+            <exception cref="T:System.Exception">throw exception if file does not exist</exception>
+        </member>
+        <member name="M:ATMC.Common.CoarseToFineRegistrationConfig.Init(System.String,System.String,System.String)">
+            <summary>
+            Initialize registration model
+            model file name      =   [prefix]_model_[suffix].ply
+            cad file name        =   [prefix]_cad_[suffix].stl
+            robot pose file name =   [prefix]_scan_poses.json
+            Ex.: 
+               - prefix: front, rear, left, right ...
+               - suffix: base, uf, cc
+            </summary>
+            <param name="model_dir">Model directory</param>
+            <param name="prefix">prefix</param>
+            <param name="suffix">suffix</param>
+        </member>
+        <member name="M:ATMC.Common.CoarseToFineRegistrationConfig.Align(LotusAPI.MV.Pointcloud,LotusAPI.Math.Matrix44d,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Find a match using 3D finder
+            </summary>
+            <param name="scene">scene cloud</param>
+            <param name="initial_matrix">initial matrix</param>
+            <returns>Registration result</returns>
+        </member>
+        <member name="M:ATMC.Common.CoarseToFineRegistrationConfig.ToString">
             <summary>
             Convert to string
             </summary>
@@ -1394,6 +1877,28 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="E:ATMC.Common.ViewCardResultView.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ViewCardResultView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCardResultView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCardResultView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="E:ATMC.Common.ViewCardSceneViewer.TitleDoubleClickEvent">
             <summary>
             This is event will be fired when user double click the title label
@@ -1537,6 +2042,57 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:ATMC.Common.WorkCell.DockContentFlowPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.WorkCell.DockContentModelConfig_`1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContentModelConfig_`1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContentModelConfig_`1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.WorkCell.DockContentResultView.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContentResultView.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContentResultView.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.WorkCell.DockContent_`1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContent_`1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContent_`1.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.

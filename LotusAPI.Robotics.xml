@@ -189,6 +189,14 @@
             <param name="joints">joint angles, if aux available => concat to standard joints</param>
             <param name="robot_pose">current robotpose read from robot (optional)</param>
         </member>
+        <member name="M:LotusAPI.Robotics.Graph.WorkCellGraph.SetRobotBaseColor(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.Node,System.Drawing.Color)">
+            <summary>
+            Set Robot base color
+            </summary>
+            <param name="sv"></param>
+            <param name="node"></param>
+            <param name="color"></param>
+        </member>
         <member name="F:LotusAPI.Robotics.Graph.WorkCellGraphView.components">
             <summary> 
             Required designer variable.

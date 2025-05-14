@@ -515,14 +515,13 @@
             <param name="length">Maximum length of the text (-1 for unlimited)</param>
             <returns>A configured ColumnDefinition for a text column</returns>
         </member>
-        <member name="M:LotusAPI.Data.DbEngine.CreateCharColumn(System.String,System.Int32,System.String,System.Boolean)">
+        <member name="M:LotusAPI.Data.DbEngine.CreateCharColumn(System.String,System.Int32,System.String)">
             <summary>
             Creates a char column definition with specified properties
             </summary>
             <param name="name">The name of the column</param>
             <param name="length">The fixed length of the char column</param>
             <param name="defaultValue">The default value for the column</param>
-            <param name="distinctValues">Whether the column should have distinct values (effectively adds a UNIQUE constraint in some dialects)</param>
             <returns>A configured ColumnDefinition for a char column</returns>
         </member>
         <member name="M:LotusAPI.Data.DbEngine.CreateIDColumn(System.String)">
