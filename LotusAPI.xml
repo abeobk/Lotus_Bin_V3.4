@@ -1066,6 +1066,18 @@ Remove points in mask
 </summary>
             <param name="mask" />
         </member>
+        <member name="M:LotusAPI.MV.Pointcloud.ExtractContour(System.Int32,System.Single,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+Extract contour cloud
+</summary>
+            <param name="smoothRad">smooth radius (1~3)</param>
+            <param name="edgeThreshold">edge threshold (0~0.5)</param>
+            <param name="minLength">min contour length (10~100)</param>
+            <param name="maxLength">max contour length (100~100000)</param>
+            <param name="planeRad">plane radius (5~10)</param>
+            <param name="threadCount">thread count (1~16) </param>
+            <returns />
+        </member>
         <member name="M:LotusAPI.MV.Pointcloud.Extract(LotusAPI.Math.Point2i[])">
             <summary>
 Extract organized pointcloud by polygon boundary
