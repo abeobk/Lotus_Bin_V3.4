@@ -1010,6 +1010,16 @@ Get points inside cuboid
             <param name="H_cuboid">Transform to unit cuboid centered at origin, and size = 1 (xyz -0.5-&gt;0.5)</param>
             <returns>point indices</returns>
         </member>
+        <member name="M:LotusAPI.MV.Pointcloud.GetPointsInCylinder(LotusAPI.Math.Point3f,LotusAPI.Math.Vector3f,System.Single,System.Single)">
+            <summary>
+Count number of point inside cylinder
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Pointcloud.CountPointsInCylinder(LotusAPI.Math.Point3f,LotusAPI.Math.Vector3f,System.Single,System.Single)">
+            <summary>
+Count number of point inside cylinder
+</summary>
+        </member>
         <member name="M:LotusAPI.MV.Pointcloud.RadiusCount(LotusAPI.Math.Vector3f,System.Single)">
             <summary>
 Count number of points inside a sphere
