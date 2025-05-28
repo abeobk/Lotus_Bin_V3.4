@@ -7,7 +7,7 @@ b58cb32c234eed54d5202279bf63cc1cc3b246ae *./AbeoSIM.exe
 11514dc906b1d3fd93b64a777c9517bd08d76c40 *./abeosim_layout.cfg
 5af9c65aee03db4343d6974d00624d61d193ba48 *./AppCoreComponents1.dll
 436efd14cec4cb630063e086387e562cbc1516cb *./ATMC.App.DBViewer.exe
-621f7511dab9e1d54bbd2a4ccc73769da639c1be *./ATMC.Common.dll
+c69b99398d6c1a9ec795ee2426c7981e4afcd8c3 *./ATMC.Common.dll
 b10947ea1d0e4dee63e3c7750f137cbb1a7b477a *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 be6023ab2670a873a5a4f2d88e320e3ed1d52e4d *./ATMC.WorkCellConfigurator.exe
@@ -71,7 +71,7 @@ b249dcf06dc09feab21243f49f31809d392c691f *./LotusAPI.HW.OpcPlc.xml
 1eed2f641ca0e0b51f007dba0cc7b487a71f96a2 *./LotusAPI.HW.xml
 7b5fff163484f7703a7ee0961264a6d744d148dd *./LotusAPI.Robotics.ABB.dll
 7b426ec1ccec0ef2e6b00a81f51336de37d5de6e *./LotusAPI.Robotics.ABB.xml
-c069a579064dd42bd6cd732aa3430e0ed1f9b26b *./LotusAPI.Robotics.dll
+f0ef84402da546f2234daf14dea0c26b59d6172e *./LotusAPI.Robotics.dll
 443a7e49d6f8026176dd58a5d1a5bb20e28cb2b4 *./LotusAPI.Robotics.Fanuc.dll
 cbc0c1ea43de88883a115c6dfeed6c8d5bd17cc9 *./LotusAPI.Robotics.Fanuc.xml
 16f13ddfcfbe2fd2ffeecad98ffd86fec93a132b *./LotusAPI.Robotics.HRLib.dll
