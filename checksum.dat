@@ -130,6 +130,7 @@ c4b621df2f55b09f618579e36946e91767d818e5 *./PylonUtility_v7_2.dll
 c8a7509dfd76499f48e259df221b0e2479601a97 *./PylonViewerHelper6.dll
 2ef23358007cb5bca278b701697a220a55cf5487 *./realsense2.dll
 3b15d531a9c5f7b97437447c08d2ec7f8cd7d656 *./RobotController.exe
+4bc0473dcc4955fc421acb585c03941b628dc59c *./RobotModels/FANUC_120iD.arm
 8dbe9627da2f8721e8b65c866f803035c29988e4 *./RobotModels/FANUC_M20IA.arm
 f8c0b175a3f32f5f9258d5d8a3867a241861c7ce *./RobotModels/FANUC_M710ID_70.arm
 ec9901e60dff3689c3ed18c853af19c2d8bc17aa *./RobotModels/FANUC_M900IA_400L.arm
