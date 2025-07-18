@@ -439,7 +439,7 @@
             <param name="bit_index"></param>
             <returns></returns>
         </member>
-        <member name="M:LotusAPI.HW.IPLC.WriteDO(System.UInt32)">
+        <member name="M:LotusAPI.HW.IPLC.WriteDO(System.UInt64)">
             <summary>
             Batch write
             </summary>
