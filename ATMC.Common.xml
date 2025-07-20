@@ -40,7 +40,7 @@
             Event triggered when data is cleared from the form.
             </summary>
         </member>
-        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,ATMC.Common.WorkCell.WorkCell,ATMC.Common.ScanActionGroup[],System.Collections.Generic.List{ATMC.Common.RobotPoseDef},System.Single)">
+        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,ATMC.Common.WorkCell.WorkCell,ATMC.Common.ScanActionGroup[],ATMC.Common.RobotPoseDef[],System.Single)">
             <summary>
             Initializes a new instance of the FormMakeModel using a WorkCell instance.
             </summary>
@@ -56,7 +56,7 @@
             </code>
             </example>
         </member>
-        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.WorkCellGraph,System.Collections.Generic.Dictionary{System.String,ATMC.Common.WorkCell.ScannerClient},System.Collections.Generic.Dictionary{System.String,ATMC.Common.WorkCell.RobotClient},ATMC.Common.ScanActionGroup[],System.Collections.Generic.List{ATMC.Common.RobotPoseDef},System.Single)">
+        <member name="M:ATMC.Common.FormMakeModel.#ctor(LotusAPI.Controls.SceneViewer,LotusAPI.Robotics.Graph.WorkCellGraph,System.Collections.Generic.Dictionary{System.String,ATMC.Common.WorkCell.ScannerClient},System.Collections.Generic.Dictionary{System.String,ATMC.Common.WorkCell.RobotClient},ATMC.Common.ScanActionGroup[],ATMC.Common.RobotPoseDef[],System.Single)">
             <summary>
             Initializes a new instance of the FormMakeModel with detailed components.
             </summary>
