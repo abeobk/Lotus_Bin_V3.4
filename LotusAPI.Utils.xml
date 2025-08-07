@@ -1091,36 +1091,8 @@
             </code>
             </example>
         </member>
-        <member name="T:LotusAPI.OS.TypeSerializers">
-            <summary>
-            High-performance type serialization using static type lookups
-            </summary>
-        </member>
-        <member name="M:LotusAPI.OS.TypeSerializers.Serialize``1(``0)">
-            <summary>
-            Serialize object of type T - O(1) lookup instead of O(n) comparisons
-            </summary>
-        </member>
-        <member name="M:LotusAPI.OS.TypeSerializers.Deserialize``1(LotusAPI.OS.ByteArrayBuffer)">
-            <summary>
-            Deserialize to type T - O(1) lookup instead of O(n) comparisons
-            </summary>
-        </member>
-        <member name="M:LotusAPI.OS.TypeSerializers.GetOptimalBufferSize``1">
-            <summary>
-            Get optimal buffer size - O(1) lookup
-            </summary>
-        </member>
-        <member name="M:LotusAPI.OS.TypeSerializers.HasNativeSupport``1">
-            <summary>
-            Check if type has native support
-            </summary>
-        </member>
-        <member name="M:LotusAPI.OS.TypeSerializers.RegisterType``1(System.Func{``0,System.Byte[]},System.Func{LotusAPI.OS.ByteArrayBuffer,``0},System.Int32)">
-            <summary>
-            Register custom type serialization
-            </summary>
-        </member>
+        <!-- Badly formed XML comment ignored for member "T:LotusAPI.OS.Publisher_`1" -->
+        <!-- Badly formed XML comment ignored for member "T:LotusAPI.OS.Subscriber_`1" -->
         <member name="T:LotusAPI.OS.AbeoOS">
             <summary>
             Central management system for tracking all nodes and their lifecycle events.
