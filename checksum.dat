@@ -128,6 +128,7 @@ aa9bfe718bb374714b202866d9e9260a3c321a73 *./PylonGUI_v7_2.dll
 c4b621df2f55b09f618579e36946e91767d818e5 *./PylonUtility_v7_2.dll
 9707812baa82de0a3b73df14d802b5bbb78220fd *./PylonViewerComponents6.dll
 c8a7509dfd76499f48e259df221b0e2479601a97 *./PylonViewerHelper6.dll
+8d527e03dc1ecde747d4c62c21e9ed97b2315850 *./QLightService.exe
 2ef23358007cb5bca278b701697a220a55cf5487 *./realsense2.dll
 3b15d531a9c5f7b97437447c08d2ec7f8cd7d656 *./RobotController.exe
 4bc0473dcc4955fc421acb585c03941b628dc59c *./RobotModels/FANUC_120iD.arm
@@ -167,6 +168,7 @@ f151cd6210630a0766edfc06945c2557e913318a *./System.Data.SQLite.dll
 007b522901a665bc2037428602d4d527f5ead7ed *./tessdata/eng.traineddata
 c523db7da79efd0a4664761411faed488fa936bd *./ThemeVS2015.dll
 8606033e719ff09da4ee996658bf2436c79c4c6e *./Utils1.dll
+3dd75402c542cefbcced5943f431a137c30cd383 *./Ux64_dllc.dll
 d43218a6874c21da59524023b77326a84e16fd1e *./uxapi_v13.dll
 6b258b257013912456681b1c984b177ec8c9f819 *./uxtopapi_v7_2.dll
 32ea5a8b93187c39fbe5fc0d362b625c74a468d6 *./vcamp120.dll
