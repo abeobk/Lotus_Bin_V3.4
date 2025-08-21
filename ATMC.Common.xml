@@ -969,6 +969,31 @@
             Align matrix
             </summary>
         </member>
+        <member name="P:ATMC.Common.RegistrationResult.LimitMatrix">
+            <summary>
+            Matrix to check limit
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.Limit">
+            <summary>
+            Shift limit
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.MinOverlap">
+            <summary>
+            Overlap limit
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.RegistrationResult.MaxFitness">
+            <summary>
+            Fitness limit
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.RegistrationResult.CheckLimit">
+            <summary>
+            Check limits
+            </summary>
+        </member>
         <member name="P:ATMC.Common.RegistrationResult.TryCount">
             <summary>
             Number of tries
@@ -2081,6 +2106,23 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:ATMC.Common.WorkCell.DockContentModelConfig_`1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.WorkCell.DockContentWebView2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContentWebView2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.DockContentWebView2.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
