@@ -1877,6 +1877,28 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="E:ATMC.Common.ViewCardWebView2.TitleDoubleClickEvent">
+            <summary>
+            This is event will be fired when user double click the title label
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ViewCardWebView2.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ViewCardWebView2.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ViewCardWebView2.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="E:ATMC.Common.ViewCardResultView.TitleDoubleClickEvent">
             <summary>
             This is event will be fired when user double click the title label
