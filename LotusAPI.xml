@@ -971,6 +971,18 @@ Get indices of connected components
             <param name="min_length">Minimum component size</param>
             <returns>Indices of connected components</returns>
         </member>
+        <member name="M:LotusAPI.MV.Pointcloud.ComputePlaneEdgePoints(System.Single,System.Int32)">
+            <summary>
+Compute plane edge points
+</summary>
+        </member>
+        <member name="M:LotusAPI.MV.Pointcloud.ComputeEdgePoints(System.Int32)">
+            <summary>
+Get indices of edge points
+</summary>
+            <param name="thread_count">number of threads</param>
+            <returns />
+        </member>
         <member name="M:LotusAPI.MV.Pointcloud.ComputeEdgePoints(System.Int32,System.Single,System.Int32)">
             <summary>
 Get indcies of edge points
