@@ -645,6 +645,7 @@ class ProductionDashboard {
     }
     if (level != "DEBUG" && level != "TRACE")
       this.updateMiniLog(timestamp, level, message);
+    this.renderLogs();
     this.incrementLogCounter(level);
   }
 
@@ -654,7 +655,6 @@ class ProductionDashboard {
     const entries = data["value"];
     if (!entries) return;
     entries.forEach((entry) => this.addLogEntry(entry));
-    this.renderLogs();
   }
 
   // Renders the log entries using Clusterize or fallback
