@@ -277,6 +277,7 @@ class ProductionDashboard {
   setResultTable(data) {
     if (!data) return;
     this.resultTables = data["tables"];
+    console.log("Result Tables: " + JSON.stringify(this.resultTables));
     this.renderResultTable();
   }
 
