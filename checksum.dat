@@ -54,6 +54,7 @@ ec8a43a39aaed7a4eee6cfdda3d58d5aba43584b *./Google.Protobuf.dll
 04dcef6609b1c42fc90c5c18c9fbd498aef6baef *./gxapi_v14.dll
 7de025a64d0ceba125263bd68493ab87331c76b5 *./HRRpcProxy_x64.dll
 0e49d1ea3eb7d8edb9ae0e78e4284ac2bf2c5e24 *./ICSharpCode.TextEditor.dll
+5965b16daa774d23905edea53db724501e0903f9 *./ImageShiftCheck.exe
 264dd3652922b87291f7f4ecd16db1bb80e010e1 *./ipconfigurator.exe
 d1793eadd0d1e392eb8972b6c91e564b26dbe413 *./K4os.Compression.LZ4.dll
 788e0ae49dbe0e2d6251b5b4fc94f08f30ebde4e *./K4os.Compression.LZ4.Streams.dll
@@ -167,6 +168,7 @@ e5f5de3e345e760de2e37b904f8cd96146f3fc0d *./RobotModels/KAWASAKI_BX200X.arm
 f92280f2f5622e8d80633610dab6b01a7a4ba8cd *./RobotModels/KAWASAKI_BX300L.arm
 00828619eed125ba4b07b120708c91ff1dbc0494 *./RobotModels/KAWASAKI_MXP360L.arm
 825f899e70e3a1cd474d12722989ed4a64f398ba *./RobotModels/KAWASAKI_RS050N.arm
+fd588882c5eb18c4ef204b6045b4f619a022b630 *./RobotModels/OMRON_TM20.arm
 b2f83974cad39607b5ce4a4a97de2b46683475a2 *./RobotSimulator.exe
 bd11f8e5fd781106ab00ea779ff823f665ec7abe *./RobotStudio.Services.RobApi.Desktop.dll
 2a6bfa09dffedaff6fb6ad8585eb0b35c3fe185e *./RobotStudio.Services.RobApi.dll
