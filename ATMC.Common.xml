@@ -1097,6 +1097,13 @@
             Add a new record to DB 
             </summary>
         </member>
+        <member name="M:ATMC.Common.WebResultBuilder.GetResultTable(System.String,ATMC.Common.RegistrationResult[])">
+            <summary>
+            Create result table from RegistrationResult array
+            The table has fixed cols: Name, X, Y, Z, Rx, Ry, Rz, Fit, Ovl
+            Each row has additional columns to indicate if the value is OK or not, e.g., X_ok, Fit_ok
+            </summary>
+        </member>
         <member name="F:ATMC.Common.ResultPinmapLogView.components">
             <summary> 
             Required designer variable.
