@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" href="../../css/font-awesome.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="../../css/theme.css">
+    <script src="../../script/clusterize.min.js"></script>
+    <script src="../../script/vue.global.prod.js"></script>
+    <script src="../../script/chart.js"></script>
+    <script src="../../script/utils.js"></script>
+    <script src="../../script/api.js"></script>
+</head>
+
+<!-- mounting point of the app -->
+
+<body id="app">
+    <!-- Navigation bar -->
+    <nav id="nav-bar">
+        <button class="control-button" @click="onSettingsButtonClick"><i class="fa fa-cog"></i></button>
+        <button class="control-button" v-show="!isAutoMode" @click="onModelButtonClick"> <i
+                class="fa fa-cube"></i></button>
+        <!-- <button class="auto-button" :class="{ active: isAutoMode }" style="margin-left:auto;"
+            @dblclick="isAutoMode = !isAutoMode; console.log(`AutoMode: ${isAutoMode}`)">{{isAutoMode?"AUTO":"MANUAL"}}</button> -->
+        <button class="theme-button" style="margin-left:auto" @click="this.toggleTheme()"><i
+                class="fa fa-adjust"></i></button>
+    </nav>
+
+    <!-- Result panel -->
+    <div id="result-panel" class="result-panel" style="display: flex; flex-direction: column;">
+        <!-- Cycle info panel -->
+        <div class="cycle-info-container">
+            <div class="cycle-info-card">
+                <span class="cycle-info-label">MODEL</span>
+                <span class="cycle-info-value">{{crrModelName}}</span>
+            </div>
+
+            <div class="cycle-info-card">
+                <span class="cycle-info-label">BODY / VIN NO</span>
+                <span class="cycle-info-value">{{crrVinNo}}</span>
+            </div>
+
+            <div class="cycle-info-card">
+                <span class="cycle-info-label">SEQ NO</span>
+                <span class="cycle-info-value">{{crrSeqNo}}</span>
+            </div>
+        </div>
+
+        <!-- Result table -->
+        <div v-for="(table, tblIndex) in resultData" :key="'res-table-'+tblIndex">
+            <table class="result-table">
+                <thead>
+                    <th v-for="(col,colIndex) in table.cols" :key="'res-table-'+colIndex">{{ col }}</th>
+                </thead>
+                <tbody>
+                    <tr v-for="(row,rowIndex) in table.rows" :key="'res-table-row-'+rowIndex">
+                        <td v-for="(col,colIndex) in table.cols" :key="'res-table-row-'+rowIndex+'-'+colIndex"
+                            :class="!row ? '' : (colIndex===0 ? 'result-badge '+(row['ok']?'ok':'ng') :!row[col+'_ok']?'res-text ng':'')">
+                            {{ !row ? '-' : row[col] }}
+                        </td>
+                    </tr>
+            </table>
+        </div>
+        <div style=" margin-top:auto">
+        </div>
+    </div>
+
+    <!-- Tab panel -->
+    <div id="tab-panel" class="panel tab-panel">
+        <h3 class="section-title">{{crrTabTitle}}</h3>
+        <button class="control-button" :class="{active: crrTab===0}"
+            @click="this.activateTab(0);console.log('History view')" style="margin-left: auto;"><i
+                class="fa fa-table"></i></button>
+        <button class="control-button" :class="{active: crrTab===1}"
+            @click="this.activateTab(1);console.log('Log view')"><i class="fa fa-list"></i></button>
+        <button class="control-button" :class="{active: crrTab===2}"
+            @click="this.activateTab(2);console.log('PLC map view')"><i class="fa fa-microchip"></i></button>
+        <button class="control-button" :class="{active: crrTab===3}"
+            @click="this.activateTab(3);console.log('Stats view')"><i class="fa fa-chart-pie"></i></button>
+    </div>
+
+    <!-- Main panel -->
+    <div id="main-panel" class="panel main-panel">
+        <!-- history -->
+        <div class="main-panel" v-show=" crrTab===0">
+            <div class="counter-card-row">
+                <div class="counter-card">
+                    <div class="counter-label-row">
+                        <span class="counter-label ok">OK</span>
+                        <span class="counter-percent">{{(okCount / Math.max(1,okCount + ngCount) *
+                            100).toFixed(2)}}%</span>
+                    </div>
+                    <span class="counter-value">{{okCount}}</span>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-label-row">
+                        <span class="counter-label ng">NG</span>
+                        <span class="counter-percent">{{(ngCount / Math.max(1,okCount + ngCount) *
+                            100).toFixed(2)}}%</span>
+                    </div>
+                    <span class="counter-value">{{ngCount}}</span>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas class="hourly-chart" id="hourlyChart"> </canvas>
+            </div>
+
+            <!-- History table -->
+            <div class="history-table-container">
+                <table class="history-table" style="margin:0;">
+                    <thead>
+                        <th v-for="col in historyCols" :key="'hist-table-'+col">{{ col }}</th>
+                    </thead>
+                </table>
+                <div id="history-clusterize-scroll" class="history-table-scroll">
+                    <table class="history-table" style="margin:0;">
+                        <tbody id="history-clusterize-content">
+                            <!-- Clusterize will inject rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- log -->
+        <div class="log-container" id="log-clusterize-scroll" v-show="crrTab===1">
+            <div id="log-clusterize-content">
+                <!-- Clusterize will inject rows here -->
+            </div>
+        </div>
+
+        <!-- plc -->
+        <div class="plc-container" v-show="crrTab==2">
+            <div class="plc-column">
+                <div class="plc-header">
+                    <span class="io-badge" :class="{ active: readFlashTimeout}">R</span>
+                    <span>INPUT</span>
+                </div>
+                <div id="plc-input" class="plc-column-content">
+                    <div class="pin-row" v-for="pin in plcInputs" :key="pin.Name" @dblclick="onInputPinDblClick(pin)">
+                        <span class="pin-badge" :class="{ active: pin.isActive }">I.{{pin.Index}}</span>
+                        <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plc-column">
+                <div class="plc-header">
+                    <span class="io-badge" :class="{ active: writeFlashTimeout}">W</span>
+                    <span>OUTPUT</span>
+                </div>
+                <div id="plc-output" class="plc-column-content">
+                    <div class="pin-row" v-for="pin in plcOutputs" :key="pin.Name" @dblclick="onOutputPinDblClick(pin)">
+                        <span class="pin-badge" :class="{ active: pin.isActive }">O.{{pin.Index}}</span>
+                        <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- analytics-->
+        <div class="main-panel" v-show="crrTab==3">
+            <div class="chart-container" style="margin-top:0.5rem; height:40%">
+                <canvas class="pie-chart" id="analyticPieChart"> </canvas>
+            </div>
+            <div class="chart-container" style="margin-top:0.5rem;margin-bottom:0.5rem;height:calc(60% - 1.5rem)">
+                <canvas class="hourly-chart" id="analyticHourlyChart"> </canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mini log -->
+    <div id="mini-log" class="panel mini-log">
+        <span class="log-level" :class="'log-'+lastlog.level" v-show="crrTab!==1">{{lastlog.level}}</span>
+        <span class="log-content-mini" v-show="crrTab!==1">{{lastlog.message}}</span>
+        <span class="log-counter" style="margin-left:auto" @click="logFilterLevel=1" v-show="crrTab===1">
+            <i class="fa fa-list"></i>{{logCount}}</span>
+        <span class="log-counter warn" @click="logFilterLevel=2" v-show="crrTab===1">
+            <i class="fa fa-exclamation-triangle"></i>{{warnLogCount}}</span>
+        <span class="log-counter error" @click="logFilterLevel=3" v-show="crrTab===1">
+            <i class="fa fa-times-circle"></i>{{errLogCount}}</span>
+        <span class="log-counter" @click="logFilterLevel=0" v-show="crrTab===1">
+            <i class="fa fa-bug"></i></span>
+        <!-- NG only filter -->
+        <button class="filter-button" :class="{ active: showNGOnly }" @click="showNGOnly^=true" v-show="crrTab===0"
+            style="margin-left:auto">
+            <i class="fa fa-filter"></i> NG</button>
+    </div>
+
+    <!-- Vue App Script -->
+    <script>
+        const { createApp } = Vue;
+        const app = createApp({
+            // App data
+            data() {
+                return {
+                    title: "Dashboard",
+                    tabTitles: ['Result History', 'System Logs', 'PLC I/O', 'Analytics'],
+                    crrTab: 0,
+                    isAutoMode: false,
+                    //cycle info
+                    crrModelName: "Model_XYZ",
+                    crrVinNo: "ABC123545",
+                    crrSeqNo: "0123",
+                    //logs
+                    logCount: 123,
+                    warnLogCount: 20,
+                    errLogCount: 4,
+                    logClusterize: null,
+                    logScrollArea: null,
+                    logInteractTimeout: null,
+                    logPauseAutoScroll: false,
+                    logAutoScroll: true,
+                    logFilterLevel: 1,//0=all,1=log,2=warn,3=error
+                    logs: [],
+                    lastlog: { level: "LOG", message: "log entry", timestamp: new Date() },
+                    logFilterTimeout: null,
+                    //plcs
+                    plcInputs: [],
+                    plcOutputs: [],
+                    readFlashTimeout: null,
+                    writeFlashTimeout: null,
+                    plcRecentChanges: new Map(),
+                    //chart
+                    showNGOnly: false,
+                    showNGOnlyTimeout: null,
+                    hourlyData: [],
+                    //history
+                    okCount: 0,
+                    ngCount: 0,
+                    historyCols: [],
+                    historyData: [],
+                    historyClusterize: null,
+                    historyScrollArea: null,
+                    //result
+                    resultData: [],
+                }
+            },
+
+            // Computed properties
+            computed: {
+                crrTabTitle() {
+                    return this.tabTitles[this.crrTab] || "Unknown";
+                },
+                filteredHistoryData() {
+                    if (this.showNGOnly) {
+                        return this.historyData?.filter(row => row.result.toLowerCase() === 'ng');
+                    }
+                    return this.historyData;
+                }
+            },
+            //other methods
+            methods: {
+                // Toggle between light and dark themes
+                toggleTheme() {
+                    const body = document.body;
+                    if (body.getAttribute('data-theme') === 'light') {
+                        body.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        body.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    }
+                },
+                //buttons
+                onSettingsButtonClick() {
+                    console.log('Settings button clicked');
+                    CSharpUtils.sendMessage({ type: 'setting_button_click' });
+                },
+                onModelButtonClick() {
+                    console.log('Model button clicked');
+                    CSharpUtils.sendMessage({ type: 'model_button_click' });
+                },
+
+                //activate specific tab
+                activateTab(tabIndex) {
+                    this.crrTab = tabIndex;
+                    localStorage.setItem('crrTab', tabIndex);
+                },
+
+                //LOGVIEW
+                // Initialize Clusterize.js
+                initLogClusterize() {
+                    if (this.logClusterize) return;
+                    this.logClusterize = new Clusterize({
+                        rows: [],
+                        scrollId: 'log-clusterize-scroll',
+                        contentId: 'log-clusterize-content'
+                    });
+                    console.log("Clusterize initialized");
+                },
+
+                //add log entry to the log view
+                addLogEntry(entry) {
+                    if (!entry) return;
+                    if (!this.logs) return;
+                    // console.log("New log entry:", entry);
+                    const level = entry['l'].toUpperCase();
+                    const timestamp = entry['t'];
+                    const message = entry['m'];
+                    this.logCount++;
+                    if (level == "WARN") this.warnLogCount++;
+                    if (level == "ERROR") this.errLogCount++;
+                    // Fill with initial logs if any
+                    if (this.logs.length > 5000) {
+                        this.logs = this.logs.slice(-4000);
+                    }
+
+                    this.logs.push({
+                        level: level,
+                        content: `<div class="log-row">
+                            <span class="log-timestamp">${timestamp.split(' ')[1]}</span>
+                            <span class="log-level log-${level}">${level}</span>
+                            <span class="log-content">${message}</span>
+                        </div>`});
+
+                    this.lastlog = { level: level, message: message, timestamp: timestamp };
+                },
+
+                //add logs in batch
+                addLogEntries(entries) {
+                    if (!entries) return;
+                    if (!this.logs) return;
+                    entries.forEach((entry) => this.addLogEntry(entry));
+                    this.renderLogs();
+                },
+
+                //render logs using clusterize.js
+                renderLogs() {
+                    if (!this.logs) return;
+                    this.logs = this.logs.slice(-10000); //cap to 1000 items
+
+                    if (this.logClusterize) {
+                        //compute filtered rows
+                        const rows = this.logs.filter(x => {
+                            if (this.logFilterLevel == 1) return x.level !== "DEBUG" && x.level !== "TRACE";
+                            if (this.logFilterLevel == 2) return x.level === "WARN" || x.level === "ERROR";
+                            if (this.logFilterLevel == 3) return x.level === "ERROR";
+                            return true;
+                        }).map(log => log.content);
+
+                        this.logClusterize.update(rows);
+                        // Auto-scroll if not paused
+                        if (!this.logPauseAutoScroll) this.$nextTick(() => {
+                            this.logAutoScroll = true;
+                            this.logScrollArea.scrollTop = this.logScrollArea.scrollHeight;
+                        });
+                    }
+                },
+
+                //PLCVIEW
+                setPlcPinmap(data) {
+                    if (!data) return;
+                    console.log("Setup PLC pinmap:", data);
+                    this.plcInputs = data.filter(pin => pin.Function == 'DI').map(pin => ({ ...pin, isActive: false }));
+                    this.plcOutputs = data.filter(pin => pin.Function == 'DO').map(pin => ({ ...pin, isActive: false }));
+                },
+                setInputPin(name, value) {
+                    if (!this.readFlashTimeout) this.readFlashTimeout = setTimeout(() => { this.readFlashTimeout = null; }, 50);
+                    const key = `DI.${name}`;
+                    console.log(`${key}: ${value}`);
+                    const pinIndex = this.plcInputs.findIndex(pin => pin.Name === name);
+                    if (pinIndex === -1) return;
+                    const pin = this.plcInputs[pinIndex];
+                    if (pin.isActive === value) return; //no change
+                    pin.isActive = value;
+
+                },
+                setOutputPin(name, value) {
+                    if (!this.writeFlashTimeout) this.writeFlashTimeout = setTimeout(() => { this.writeFlashTimeout = null; }, 50);
+                    const key = `DO.${name}`;
+                    console.log(`${key}: ${value}`);
+                    const pinIndex = this.plcOutputs.findIndex(pin => pin.Name === name);
+                    if (pinIndex === -1) return;
+                    const pin = this.plcOutputs[pinIndex];
+                    if (pin.isActive === value) return; //no change
+                    pin.isActive = value;
+                },
+                //input pin double click
+                onInputPinDblClick(pin) {
+                    console.log(`DI[${pin.Index}]-${pin.Name}`);
+                    CSharpUtils.sendMessage({ type: 'input_pin_dblclick', value: pin.Name });
+                },
+                //output pin double click
+                onOutputPinDblClick(pin) {
+                    console.log(`DO[${pin.Index}]-${pin.Name}`);
+                    CSharpUtils.sendMessage({ type: 'output_pin_dblclick', value: pin.Name });
+                },
+
+                //RESULT TABLE
+                setResultTable(data) {
+                    this.resultData = data;
+                    console.log("Set result table:", data);
+                },
+
+                //HISTORY TABLE
+                initHistoryClusterize() {
+                    if (this.historyClusterize) return;
+                    this.historyClusterize = new Clusterize({
+                        rows: [],
+                        scrollId: 'history-clusterize-scroll',
+                        contentId: 'history-clusterize-content'
+                    });
+                    console.log("History Clusterize initialized");
+                },
+                //set history data 
+                setHistory(data) {
+                    console.log("Set history table: length =", data.length);
+                    this.historyCols = data['cols'];
+                    this.historyData = data['rows'];
+                    this.renderHistoryTable();
+                },
+
+                //show row details on double click
+                showRowDetails(row) {
+                    console.log(row);
+                    CSharpUtils.sendMessage({ type: 'history_row_dblclick', value: row });
+                },
+
+                // Render history table using clusterize
+                renderHistoryTable() {
+                    if (!this.historyClusterize || !this.historyData) return;
+
+                    const filteredData = this.showNGOnly
+                        ? this.historyData.filter(row => row.res.toLowerCase() === 'ng')
+                        : this.historyData;
+
+                    const rows = filteredData.map(row =>
+                        `<tr ondblclick="app.showRowDetails(${JSON.stringify(row).replace(/"/g, '&quot;')})">
+                    <td>${row.time.split(' ')[1]}</td>
+                    <td>${row.model}</td>
+                    <td>${row.body}</td>
+                    <td>${row.seq}</td>
+                    <td class="result-badge ${row.res.toLowerCase()}">${row.res}</td>
+                </tr>`
+                    );
+
+                    this.historyClusterize.update(rows);
+                    this.historyScrollArea.scrollTop = 0;
+                },
+
+                setCounters(data) {
+                    console.log("Set counters:", data);
+                    this.okCount = data?.ok || 0;
+                    this.ngCount = data?.ng || 0;
+                    this.renderPieChart();
+                },
+
+                //HOURLY CHART
+                renderHourlyChart() {
+                    if (this.crrTab == 0) ChartUtils.renderHourlyChart('hourlyChart', this.hourlyData, false, this.showNGOnly);
+                    else if (this.crrTab == 3) ChartUtils.renderHourlyChart('analyticHourlyChart', this.hourlyData, true, this.showNGOnly);
+                },
+
+                //render pie chart
+                renderPieChart() {
+                    if (this.crrTab == 3) ChartUtils.renderPieChart('analyticPieChart', this.okCount, this.ngCount);
+                },
+
+                //set hourly data for hourly chart
+                setHourlyData(data) {
+                    console.log("Set hourly data:", data);
+                    this.hourlyData = data;
+                    // Initialize chart if not already done
+                    this.renderHourlyChart();
+                },
+
+            },
+            // Lifecycle hooks
+            mounted() {
+                console.log("------------REFRESH-------------");
+
+                //load theme from localStorage
+                const theme = localStorage.getItem('theme');
+                if (theme == 'light') { document.body.setAttribute('data-theme', 'light'); }
+                else { document.body.removeAttribute('data-theme'); }
+
+                //load last active tab from localStorage
+                const savedTab = localStorage.getItem('crrTab');
+                if (savedTab) {
+                    this.crrTab = parseInt(savedTab);
+                }
+
+                //setting up scroll area
+                this.logScrollArea = document.getElementById('log-clusterize-scroll');
+                if (this.logScrollArea) {
+                    this.logScrollArea.addEventListener('scroll', () => {
+                        if (this.logAutoScroll) { this.logAutoScroll = false; }
+                        else {
+                            this.logPauseAutoScroll = true;
+                            clearTimeout(this.logInteractTimeout);
+                            this.logInteractTimeout = setTimeout(() => {
+                                this.logPauseAutoScroll = false;
+                            }, 3000);
+                        }
+                    });
+                }
+
+                this.initLogClusterize();
+
+                //setting up history table
+                this.historyScrollArea = document.getElementById('history-clusterize-scroll');
+                this.initHistoryClusterize();
+
+                API.init();
+
+                // Render initial empty chart
+                window.addEventListener('resize', () => {
+                    this.renderHourlyChart();
+                    this.renderPieChart();
+                });
+                this.renderHourlyChart();
+                this.renderPieChart();
+                this.renderLogs();
+            },
+            watch: {
+                //when crrTab changes, initialize clusterize and render chart/table if needed
+                crrTab(newVal) {
+                    if (newVal === 0) {
+                        this.$nextTick(() => {
+                            this.initHistoryClusterize();
+                            this.renderHourlyChart();
+                            this.renderHistoryTable();
+                        });
+                    }
+                    else if (newVal === 1) {
+                        this.$nextTick(() => { this.initLogClusterize(); });
+                    }
+                    else if (newVal === 3) {
+                        this.$nextTick(() => { this.renderHourlyChart(); this.renderPieChart(); });
+                    }
+                },
+                //when showNGOnly changes, re-render chart and history table
+                showNGOnly(newVal) {
+                    this.$nextTick(() => {
+                        clearTimeout(this.showNGOnlyTimeout);
+                        this.showNGOnlyTimeout = setTimeout(() => { this.showNGOnly = false; }, 5000);
+                        this.renderHourlyChart();
+                        this.renderHistoryTable();
+                    });
+                },
+                //when logFilterLevel changes, re-render logs
+                logFilterLevel(newVal) {
+                    if (newVal != 1) {
+                        clearTimeout(this.logFilterTimeout);
+                        this.logFilterTimeout = setTimeout(() => { this.logFilterLevel = 1; }, 10000);
+                    }
+                    this.renderLogs();
+                }
+            },
+        }).mount("#app");
+        window.app = app; //expose app to global for api calls
+        console.log("App mounted");
+    </script>
+
+</body>
+
+</html>
