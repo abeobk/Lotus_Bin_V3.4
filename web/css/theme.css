@@ -350,7 +350,7 @@ button:active {
 
 /*Result table*/
 table {
-    /* table-layout: fixed; */
+    table-layout: fixed;
     border-radius: 0.4rem;
     border: 1px solid var(--border-color);
     box-shadow: 0 2px 4px var(--shadow-color);
@@ -363,11 +363,11 @@ table th,
 td,
 tr {
     font-size: 0.8rem;
-    padding: 0.1rem 0.5rem;
+    padding: 0rem 0.5rem;
     text-align: right;
     border-bottom: 1px solid var(--border-color);
     white-space: nowrap;
-    line-height: 1.6rem;
+    line-height: 1.2rem;
     font-weight: 500;
 }
 
@@ -376,9 +376,6 @@ table th {
     line-height: 2rem;
 }
 
-table tr {
-    line-height: 1rem;
-}
 
 table tr:nth-child(odd) {
     background-color: var(--bg-table-row-odd);
@@ -404,9 +401,9 @@ table tr:hover {
     border-radius: 0.4em;
     box-shadow: 0 2px 4px var(--shadow-color);
     padding: 0 0.4em;
-    margin: 0.4em;
+    margin: 0.3em 0.4em;
     text-align: center;
-    line-height: 1.5;
+    line-height: 1rem;
     width: 100%;
 }
 
@@ -422,6 +419,7 @@ table tr:hover {
 .res-text {
     color: var(--accent-ok);
 }
+
 .res-text.ng {
     color: var(--accent-ng);
 }
@@ -602,16 +600,65 @@ table tr:hover {
 }
 
 .pin-badge.active {
-    background-color: var(--accent-ok);
+    background-color: var(--blue);
     color: var(--base03);
     border: none;
-    animation: pulse-pin 0.5s 5;
-    /*pulse 5 times total 2.5s*/
+    animation: pulse-pin 0.5s 2;
+}
+
+.pin-badge.active.err {
+    background-color: var(--accent-ng);
+    animation: pulse-err-pin 0.5s 2;
+}
+
+.pin-badge.manual {
+    animation: manual-pulse-pin 0.5s 1;
+}
+.pin-badge.err.manual {
+    animation: manual-pulse-err-pin 0.5s 1;
+}
+
+.pin-badge.active.manual {
+    animation: manual-pulse-pin 0.5s 1;
+}
+
+.pin-badge.active.err.manual {
+    animation: manual-pulse-err-pin 0.5s 1;
 }
 
 @keyframes pulse-pin {
     0% {
-        box-shadow: 0 0 0 0 var(--accent-ok, 0.1);
+        box-shadow: 0 0 0 0 var(--blue, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 0 4px #0000;
+    }
+}
+
+@keyframes pulse-err-pin {
+    0% {
+        box-shadow: 0 0 0 0 var(--ng, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 0 4px #0000;
+    }
+}
+
+@keyframes manual-pulse-pin {
+    0% {
+        box-shadow: 0 0 0 0 var(--blue, 0.1);
+    }
+
+    100% {
+        box-shadow: 0 0 0 4px #0000;
+    }
+}
+
+@keyframes manual-pulse-err-pin {
+    0% {
+        box-shadow: 0 0 0 0 var(--accent-ng, 0.1);
     }
 
     100% {

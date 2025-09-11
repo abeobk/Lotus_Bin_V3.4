@@ -140,7 +140,8 @@
                 </div>
                 <div id="plc-input" class="plc-column-content">
                     <div class="pin-row" v-for="pin in plcInputs" :key="pin.Name" @dblclick="onInputPinDblClick(pin)">
-                        <span class="pin-badge" :class="{ active: pin.isActive }">I.{{pin.Index}}</span>
+                        <span class="pin-badge"
+                            :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">I.{{pin.Index}}</span>
                         <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
                     </div>
                 </div>
@@ -153,7 +154,8 @@
                 </div>
                 <div id="plc-output" class="plc-column-content">
                     <div class="pin-row" v-for="pin in plcOutputs" :key="pin.Name" @dblclick="onOutputPinDblClick(pin)">
-                        <span class="pin-badge" :class="{ active: pin.isActive }">O.{{pin.Index}}</span>
+                        <span class="pin-badge"
+                            :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">O.{{pin.Index}}</span>
                         <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
                     </div>
                 </div>
@@ -175,13 +177,13 @@
     <div id="mini-log" class="panel mini-log">
         <span class="log-level" :class="'log-'+lastlog.level" v-show="crrTab!==1">{{lastlog.level}}</span>
         <span class="log-content-mini" v-show="crrTab!==1">{{lastlog.message}}</span>
-        <span class="log-counter" style="margin-left:auto" @click="logFilterLevel=1" v-show="crrTab===1">
+        <span class="log-counter" style="margin-left:auto" @click="setLogFilterLevel(1);" v-show="crrTab===1">
             <i class="fa fa-list"></i>{{logCount}}</span>
-        <span class="log-counter warn" @click="logFilterLevel=2" v-show="crrTab===1">
+        <span class="log-counter warn" @click="setLogFilterLevel(2);" v-show="crrTab===1">
             <i class="fa fa-exclamation-triangle"></i>{{warnLogCount}}</span>
-        <span class="log-counter error" @click="logFilterLevel=3" v-show="crrTab===1">
+        <span class="log-counter error" @click="setLogFilterLevel(3);" v-show="crrTab===1">
             <i class="fa fa-times-circle"></i>{{errLogCount}}</span>
-        <span class="log-counter" @click="logFilterLevel=0" v-show="crrTab===1">
+        <span class="log-counter" @click="setLogFilterLevel(0);debugCnt++;" v-show="crrTab===1">
             <i class="fa fa-bug"></i></span>
         <!-- NG only filter -->
         <button class="filter-button" :class="{ active: showNGOnly }" @click="showNGOnly^=true" v-show="crrTab===0"
@@ -205,14 +207,13 @@
                     crrVinNo: "ABC123545",
                     crrSeqNo: "0123",
                     //logs
-                    logCount: 123,
-                    warnLogCount: 20,
-                    errLogCount: 4,
+                    logCount: 0,
+                    warnLogCount: 0,
+                    errLogCount: 0,
                     logClusterize: null,
                     logScrollArea: null,
                     logInteractTimeout: null,
                     logPauseAutoScroll: false,
-                    logAutoScroll: true,
                     logFilterLevel: 1,//0=all,1=log,2=warn,3=error
                     logs: [],
                     lastlog: { level: "LOG", message: "log entry", timestamp: new Date() },
@@ -236,6 +237,9 @@
                     historyScrollArea: null,
                     //result
                     resultData: [],
+                    //debug
+                    debugCnt: 0,
+                    debugT0: 0,
                 }
             },
 
@@ -266,11 +270,9 @@
                 },
                 //buttons
                 onSettingsButtonClick() {
-                    console.log('Settings button clicked');
                     CSharpUtils.sendMessage({ type: 'setting_button_click' });
                 },
                 onModelButtonClick() {
-                    console.log('Model button clicked');
                     CSharpUtils.sendMessage({ type: 'model_button_click' });
                 },
 
@@ -289,14 +291,12 @@
                         scrollId: 'log-clusterize-scroll',
                         contentId: 'log-clusterize-content'
                     });
-                    console.log("Clusterize initialized");
                 },
 
                 //add log entry to the log view
                 addLogEntry(entry) {
                     if (!entry) return;
                     if (!this.logs) return;
-                    // console.log("New log entry:", entry);
                     const level = entry['l'].toUpperCase();
                     const timestamp = entry['t'];
                     const message = entry['m'];
@@ -304,8 +304,8 @@
                     if (level == "WARN") this.warnLogCount++;
                     if (level == "ERROR") this.errLogCount++;
                     // Fill with initial logs if any
-                    if (this.logs.length > 5000) {
-                        this.logs = this.logs.slice(-4000);
+                    if (this.logs.length > 1500) {
+                        this.logs = this.logs.slice(-1000);
                     }
 
                     this.logs.push({
@@ -319,6 +319,12 @@
                     this.lastlog = { level: level, message: message, timestamp: timestamp };
                 },
 
+                //log filter level
+                setLogFilterLevel(level) {
+                    this.logFilterLevel = level;
+                    this.logPauseAutoScroll = false;
+                    this.logScrollArea.scrollTop = this.logScrollArea.scrollHeight;
+                },
                 //add logs in batch
                 addLogEntries(entries) {
                     if (!entries) return;
@@ -330,7 +336,7 @@
                 //render logs using clusterize.js
                 renderLogs() {
                     if (!this.logs) return;
-                    this.logs = this.logs.slice(-10000); //cap to 1000 items
+                    this.logs = this.logs.slice(-1000); //cap to 1000 items
 
                     if (this.logClusterize) {
                         //compute filtered rows
@@ -344,7 +350,6 @@
                         this.logClusterize.update(rows);
                         // Auto-scroll if not paused
                         if (!this.logPauseAutoScroll) this.$nextTick(() => {
-                            this.logAutoScroll = true;
                             this.logScrollArea.scrollTop = this.logScrollArea.scrollHeight;
                         });
                     }
@@ -354,13 +359,14 @@
                 setPlcPinmap(data) {
                     if (!data) return;
                     console.log("Setup PLC pinmap:", data);
-                    this.plcInputs = data.filter(pin => pin.Function == 'DI').map(pin => ({ ...pin, isActive: false }));
-                    this.plcOutputs = data.filter(pin => pin.Function == 'DO').map(pin => ({ ...pin, isActive: false }));
+                    const err_keys = ["HW_ERR", "FAULT", "FAULTY", "NG"];
+                    this.plcInputs = data.filter(pin => pin.Function == 'DI').map(pin => ({ ...pin, isErr: err_keys.some(key => pin.Name.toUpperCase() === key), isManual: false, isActive: false }));
+                    this.plcOutputs = data.filter(pin => pin.Function == 'DO').map(pin => ({ ...pin, isErr: err_keys.some(key => pin.Name.toUpperCase() === key), isManual: false, isActive: false }));
                 },
                 setInputPin(name, value) {
                     if (!this.readFlashTimeout) this.readFlashTimeout = setTimeout(() => { this.readFlashTimeout = null; }, 50);
                     const key = `DI.${name}`;
-                    console.log(`${key}: ${value}`);
+                    // console.log(`${key}: ${value}`);
                     const pinIndex = this.plcInputs.findIndex(pin => pin.Name === name);
                     if (pinIndex === -1) return;
                     const pin = this.plcInputs[pinIndex];
@@ -371,7 +377,7 @@
                 setOutputPin(name, value) {
                     if (!this.writeFlashTimeout) this.writeFlashTimeout = setTimeout(() => { this.writeFlashTimeout = null; }, 50);
                     const key = `DO.${name}`;
-                    console.log(`${key}: ${value}`);
+                    // console.log(`${key}: ${value}`);
                     const pinIndex = this.plcOutputs.findIndex(pin => pin.Name === name);
                     if (pinIndex === -1) return;
                     const pin = this.plcOutputs[pinIndex];
@@ -381,18 +387,24 @@
                 //input pin double click
                 onInputPinDblClick(pin) {
                     console.log(`DI[${pin.Index}]-${pin.Name}`);
+                    pin.isManual = true;
+                    if (pin.manualTimer) clearTimeout(pin.manualTimer);
+                    pin.manualTimer = setTimeout(() => { pin.isManual = false; pin.manualTimer = null; }, 500);
                     CSharpUtils.sendMessage({ type: 'input_pin_dblclick', value: pin.Name });
                 },
                 //output pin double click
                 onOutputPinDblClick(pin) {
                     console.log(`DO[${pin.Index}]-${pin.Name}`);
+                    pin.isManual = true;
+                    if (pin.manualTimer) clearTimeout(pin.manualTimer);
+                    pin.manualTimer = setTimeout(() => { pin.isManual = false; pin.manualTimer = null; }, 500);
                     CSharpUtils.sendMessage({ type: 'output_pin_dblclick', value: pin.Name });
                 },
 
                 //RESULT TABLE
                 setResultTable(data) {
                     this.resultData = data;
-                    console.log("Set result table:", data);
+                    // console.log("Set result table:", data);
                 },
 
                 //HISTORY TABLE
@@ -403,11 +415,9 @@
                         scrollId: 'history-clusterize-scroll',
                         contentId: 'history-clusterize-content'
                     });
-                    console.log("History Clusterize initialized");
                 },
                 //set history data 
                 setHistory(data) {
-                    console.log("Set history table: length =", data.length);
                     this.historyCols = data['cols'];
                     this.historyData = data['rows'];
                     this.renderHistoryTable();
@@ -415,7 +425,6 @@
 
                 //show row details on double click
                 showRowDetails(row) {
-                    console.log(row);
                     CSharpUtils.sendMessage({ type: 'history_row_dblclick', value: row });
                 },
 
@@ -442,7 +451,6 @@
                 },
 
                 setCounters(data) {
-                    console.log("Set counters:", data);
                     this.okCount = data?.ok || 0;
                     this.ngCount = data?.ng || 0;
                     this.renderPieChart();
@@ -461,7 +469,6 @@
 
                 //set hourly data for hourly chart
                 setHourlyData(data) {
-                    console.log("Set hourly data:", data);
                     this.hourlyData = data;
                     // Initialize chart if not already done
                     this.renderHourlyChart();
@@ -485,16 +492,23 @@
 
                 //setting up scroll area
                 this.logScrollArea = document.getElementById('log-clusterize-scroll');
+                function setUserScroll() {
+                    this.logPauseAutoScroll = true;
+                    clearTimeout(this.logInteractTimeout);
+                    this.logInteractTimeout = setTimeout(() => {
+                        this.logPauseAutoScroll = false;
+                    }, 3000);
+                }
+
                 if (this.logScrollArea) {
+
+                    this.logScrollArea.addEventListener('wheel', () => { setUserScroll.call(this); });
+                    this.logScrollArea.addEventListener('mousedown', () => { setUserScroll.call(this); });
+                    this.logScrollArea.addEventListener('touchstart', () => { setUserScroll.call(this); });
+
                     this.logScrollArea.addEventListener('scroll', () => {
-                        if (this.logAutoScroll) { this.logAutoScroll = false; }
-                        else {
-                            this.logPauseAutoScroll = true;
-                            clearTimeout(this.logInteractTimeout);
-                            this.logInteractTimeout = setTimeout(() => {
-                                this.logPauseAutoScroll = false;
-                            }, 3000);
-                        }
+                        if (this.logPauseAutoScroll) return;
+                        this.logScrollArea.scrollTop = this.logScrollArea.scrollHeight;
                     });
                 }
 
@@ -514,6 +528,9 @@
                 this.renderHourlyChart();
                 this.renderPieChart();
                 this.renderLogs();
+
+                // Disable right-click context menu
+                document.addEventListener('contextmenu', event => event.preventDefault());
             },
             watch: {
                 //when crrTab changes, initialize clusterize and render chart/table if needed
@@ -526,7 +543,7 @@
                         });
                     }
                     else if (newVal === 1) {
-                        this.$nextTick(() => { this.initLogClusterize(); });
+                        this.$nextTick(() => { this.initLogClusterize(); this.renderLogs(); });
                     }
                     else if (newVal === 3) {
                         this.$nextTick(() => { this.renderHourlyChart(); this.renderPieChart(); });
@@ -548,6 +565,18 @@
                         this.logFilterTimeout = setTimeout(() => { this.logFilterLevel = 1; }, 10000);
                     }
                     this.renderLogs();
+                    this.logPauseAutoScroll = false;
+                    this.logScrollArea.scrollTop = this.logScrollArea.scrollHeight;
+                },
+                debugCnt(newVal) {
+                    const dt = performance.now() - this.debugT0;
+                    this.debugT0 = performance.now();
+                    if (dt > 500) { this.debugCnt = 0; }
+                    if (this.debugCnt > 5) {
+                        this.debugCnt = 0;
+                        console.log("Debug mode activated");
+                        CSharpUtils.sendMessage({ type: 'open_dev_tool' });
+                    }
                 }
             },
         }).mount("#app");
