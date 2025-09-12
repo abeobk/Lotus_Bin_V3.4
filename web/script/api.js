@@ -58,6 +58,11 @@ const API = {
         case 'set_manual_mode':
           app.isAutoMode = false;
           break;
+
+        // //make model
+        // case 'set_make_model':
+        //   app.makeModelLayout = value;
+        //   break;
       }
     });
 

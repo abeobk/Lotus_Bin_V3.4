@@ -22,8 +22,6 @@
         <button class="control-button" @click="onSettingsButtonClick"><i class="fa fa-cog"></i></button>
         <button class="control-button" v-show="!isAutoMode" @click="onModelButtonClick"> <i
                 class="fa fa-cube"></i></button>
-        <!-- <button class="auto-button" :class="{ active: isAutoMode }" style="margin-left:auto;"
-            @dblclick="isAutoMode = !isAutoMode; console.log(`AutoMode: ${isAutoMode}`)">{{isAutoMode?"AUTO":"MANUAL"}}</button> -->
         <button class="theme-button" style="margin-left:auto" @click="this.toggleTheme()"><i
                 class="fa fa-adjust"></i></button>
     </nav>
@@ -57,8 +55,10 @@
                 <tbody>
                     <tr v-for="(row,rowIndex) in table.rows" :key="'res-table-row-'+rowIndex">
                         <td v-for="(col,colIndex) in table.cols" :key="'res-table-row-'+rowIndex+'-'+colIndex"
-                            :class="!row ? '' : (colIndex===0 ? 'result-badge '+(row['ok']?'ok':'ng') :!row[col+'_ok']?'res-text ng':'')">
+                            :class="!row ? '' : (colIndex===0 ? 'res-text '+(row['ok']?'ok':'ng'):!row[col+'_ok']?'res-text ng':'')">
                             {{ !row ? '-' : row[col] }}
+                            <i class="fa " :class="row['ok']?'fa-check-circle':'fa-times-circle'"
+                                v-if="row&&colIndex===0"></i>
                         </td>
                     </tr>
             </table>
@@ -70,25 +70,28 @@
     <!-- Tab panel -->
     <div id="tab-panel" class="panel tab-panel">
         <h3 class="section-title">{{crrTabTitle}}</h3>
-        <button class="control-button" :class="{active: crrTab===0}"
-            @click="this.activateTab(0);console.log('History view')" style="margin-left: auto;"><i
+        <button class="control-button" :class="{active: crrTab===this.TAB.HISTORY}"
+            @click="this.activateTab(this.TAB.HISTORY);console.log('History view')" style="margin-left: auto;"><i
                 class="fa fa-table"></i></button>
-        <button class="control-button" :class="{active: crrTab===1}"
-            @click="this.activateTab(1);console.log('Log view')"><i class="fa fa-list"></i></button>
-        <button class="control-button" :class="{active: crrTab===2}"
-            @click="this.activateTab(2);console.log('PLC map view')"><i class="fa fa-microchip"></i></button>
-        <button class="control-button" :class="{active: crrTab===3}"
-            @click="this.activateTab(3);console.log('Stats view')"><i class="fa fa-chart-pie"></i></button>
+        <button class="control-button" :class="{active: crrTab===this.TAB.PLC}"
+            @click="this.activateTab(this.TAB.PLC);console.log('PLC map view')"><i class="fa fa-microchip"></i></button>
+        <button class="control-button" :class="{active: crrTab===this.TAB.ANALYTICS}"
+            @click="this.activateTab(this.TAB.ANALYTICS);console.log('Stats view')"><i
+                class="fa fa-chart-pie"></i></button>
+        <button class="control-button" :class="{active: crrTab===this.TAB.LOG}"
+            @click="this.activateTab(this.TAB.LOG);console.log('Log view')"><i class="fa fa-list"></i></button>
+        <!-- <button class="control-button" v-show="!isAutoMode"
+            @click="this.activateTab(this.TAB.MODEL);console.log('Model view')"> <i class="fa fa-cube"></i></button> -->
     </div>
 
     <!-- Main panel -->
     <div id="main-panel" class="panel main-panel">
         <!-- history -->
-        <div class="main-panel" v-show=" crrTab===0">
+        <div class="main-panel" v-show=" crrTab===TAB.HISTORY">
             <div class="counter-card-row">
                 <div class="counter-card">
                     <div class="counter-label-row">
-                        <span class="counter-label ok">OK</span>
+                        <span class="counter-label ok"><i class="fa fa-check-circle"></i> OK</span>
                         <span class="counter-percent">{{(okCount / Math.max(1,okCount + ngCount) *
                             100).toFixed(2)}}%</span>
                     </div>
@@ -96,7 +99,7 @@
                 </div>
                 <div class="counter-card">
                     <div class="counter-label-row">
-                        <span class="counter-label ng">NG</span>
+                        <span class="counter-label ng"><i class="fa fa-times-circle"></i> NG</span>
                         <span class="counter-percent">{{(ngCount / Math.max(1,okCount + ngCount) *
                             100).toFixed(2)}}%</span>
                     </div>
@@ -124,15 +127,9 @@
             </div>
         </div>
 
-        <!-- log -->
-        <div class="log-container" id="log-clusterize-scroll" v-show="crrTab===1">
-            <div id="log-clusterize-content">
-                <!-- Clusterize will inject rows here -->
-            </div>
-        </div>
 
         <!-- plc -->
-        <div class="plc-container" v-show="crrTab==2">
+        <div class="plc-container" v-show="crrTab===TAB.PLC">
             <div class="plc-column">
                 <div class="plc-header">
                     <span class="io-badge" :class="{ active: readFlashTimeout}">R</span>
@@ -141,7 +138,7 @@
                 <div id="plc-input" class="plc-column-content">
                     <div class="pin-row" v-for="pin in plcInputs" :key="pin.Name" @dblclick="onInputPinDblClick(pin)">
                         <span class="pin-badge"
-                            :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">I.{{pin.Index}}</span>
+                            :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">{{pin.Index}}</span>
                         <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
                     </div>
                 </div>
@@ -155,15 +152,16 @@
                 <div id="plc-output" class="plc-column-content">
                     <div class="pin-row" v-for="pin in plcOutputs" :key="pin.Name" @dblclick="onOutputPinDblClick(pin)">
                         <span class="pin-badge"
-                            :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">O.{{pin.Index}}</span>
+                            :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">{{pin.Index}}</span>
                         <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
                     </div>
                 </div>
             </div>
         </div>
 
+
         <!-- analytics-->
-        <div class="main-panel" v-show="crrTab==3">
+        <div class="main-panel" v-show="crrTab===TAB.ANALYTICS">
             <div class="chart-container" style="margin-top:0.5rem; height:40%">
                 <canvas class="pie-chart" id="analyticPieChart"> </canvas>
             </div>
@@ -171,6 +169,21 @@
                 <canvas class="hourly-chart" id="analyticHourlyChart"> </canvas>
             </div>
         </div>
+
+        <!-- log -->
+        <div class="log-container" id="log-clusterize-scroll" v-show="crrTab===TAB.LOG">
+            <div id="log-clusterize-content">
+                <!-- Clusterize will inject rows here -->
+            </div>
+        </div>
+
+        <!-- make model -->
+        <!-- <div class="main-panel" v-show="crrTab===TAB.MODEL" style="padding:1rem; overflow:auto;">
+            <div class="row-div">
+                <button title="Clear data" class="control-button" @click="onMakeModelClear()"><i class="fa fa-trash"></i></button>
+                <button title="Save data" class="control-button" @click="onMakeModelSave()" style="margin-left:auto"><i class="fa fa-save"></i></button>
+            </div>
+        </div> -->
     </div>
 
     <!-- Mini log -->
@@ -188,7 +201,7 @@
         <!-- NG only filter -->
         <button class="filter-button" :class="{ active: showNGOnly }" @click="showNGOnly^=true" v-show="crrTab===0"
             style="margin-left:auto">
-            <i class="fa fa-filter"></i> NG</button>
+            <i class="fa fa-filter"></i></button>
     </div>
 
     <!-- Vue App Script -->
@@ -199,7 +212,8 @@
             data() {
                 return {
                     title: "Dashboard",
-                    tabTitles: ['Result History', 'System Logs', 'PLC I/O', 'Analytics'],
+                    TAB: { HISTORY: 0, LOG: 1, PLC: 2, ANALYTICS: 3, MODEL: 4 },
+                    tabTitles: ['Result History', 'System Logs', 'PLC I/O', 'Analytics', 'Make Model'],
                     crrTab: 0,
                     isAutoMode: false,
                     //cycle info
@@ -237,6 +251,8 @@
                     historyScrollArea: null,
                     //result
                     resultData: [],
+                    //make model
+                    makeModelLayout: null,
                     //debug
                     debugCnt: 0,
                     debugT0: 0,
@@ -279,6 +295,10 @@
                 //activate specific tab
                 activateTab(tabIndex) {
                     this.crrTab = tabIndex;
+                    // if (this.crrTab == this.TAB.MODEL) {
+                    //     CSharpUtils.sendMessage({ type: 'get_make_model_layout' });
+                    //     // return;//dont save model tab
+                    // }
                     localStorage.setItem('crrTab', tabIndex);
                 },
 
@@ -416,7 +436,7 @@
                         contentId: 'history-clusterize-content'
                     });
                 },
-                //set history data 
+                //set history data
                 setHistory(data) {
                     this.historyCols = data['cols'];
                     this.historyData = data['rows'];
@@ -442,7 +462,7 @@
                     <td>${row.model}</td>
                     <td>${row.body}</td>
                     <td>${row.seq}</td>
-                    <td class="result-badge ${row.res.toLowerCase()}">${row.res}</td>
+                    <td class="res-text ${row.res.toLowerCase()}"><i class="fa ${row.res.toLowerCase() === 'ok' ? 'fa-check-circle' : 'fa-times-circle'}"></i></td>
                 </tr>`
                     );
 
@@ -458,13 +478,13 @@
 
                 //HOURLY CHART
                 renderHourlyChart() {
-                    if (this.crrTab == 0) ChartUtils.renderHourlyChart('hourlyChart', this.hourlyData, false, this.showNGOnly);
-                    else if (this.crrTab == 3) ChartUtils.renderHourlyChart('analyticHourlyChart', this.hourlyData, true, this.showNGOnly);
+                    if (this.crrTab == this.TAB.HISTORY) ChartUtils.renderHourlyChart('hourlyChart', this.hourlyData, false, this.showNGOnly);
+                    else if (this.crrTab == this.TAB.ANALYTICS) ChartUtils.renderHourlyChart('analyticHourlyChart', this.hourlyData, true, this.showNGOnly);
                 },
 
                 //render pie chart
                 renderPieChart() {
-                    if (this.crrTab == 3) ChartUtils.renderPieChart('analyticPieChart', this.okCount, this.ngCount);
+                    if (this.crrTab == this.TAB.ANALYTICS) ChartUtils.renderPieChart('analyticPieChart', this.okCount, this.ngCount);
                 },
 
                 //set hourly data for hourly chart
@@ -535,17 +555,17 @@
             watch: {
                 //when crrTab changes, initialize clusterize and render chart/table if needed
                 crrTab(newVal) {
-                    if (newVal === 0) {
+                    if (newVal === this.TAB.HISTORY) {
                         this.$nextTick(() => {
                             this.initHistoryClusterize();
                             this.renderHourlyChart();
                             this.renderHistoryTable();
                         });
                     }
-                    else if (newVal === 1) {
+                    else if (newVal === this.TAB.LOG) {
                         this.$nextTick(() => { this.initLogClusterize(); this.renderLogs(); });
                     }
-                    else if (newVal === 3) {
+                    else if (newVal === this.TAB.ANALYTICS) {
                         this.$nextTick(() => { this.renderHourlyChart(); this.renderPieChart(); });
                     }
                 },

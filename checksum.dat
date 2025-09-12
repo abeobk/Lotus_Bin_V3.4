@@ -183,13 +183,13 @@ ca0fb6e96c39c955365db0ee5e9084a472684030 *./vcamp140.dll
 b513d9a39af2ee145f12c1ba03f9982960c47029 *./web/css/font-awesome.min.css
 1710af5a4bc7e485628993e0b49d4ba218ef41d1 *./web/css/styles.css
 4f3c160791857d5e18bc04fb1f27a01f0c16d434 *./web/css/styles.min.css
-f0ddf7bbdca08e7ecdd0d6b6f48cd5be5afc0be8 *./web/css/theme.css
-47d97d57db90a6037949ba79ef6c596712102fc3 *./web/script/api.js
+fa904a355b58ab81657e19efb5a28b85390d905f *./web/css/theme.css
+fc73efcf211e569c4fb97794759207a80f54562d *./web/script/api.js
 67df7673867ff5f294eaa8f1f1eb58c9b86bd673 *./web/script/chart.js
 b6eeed0d12425e58a6a830b547bb326b0b6888fc *./web/script/clusterize.min.js
 bca683605c32a5c91af179b877621ab7566bd054 *./web/script/utils.js
 431e24f0c08a1e3c4d863903e80d0b674b203c91 *./web/script/vue.global.prod.js
-ee066e7c5eb7578bb7a85f92356c279c8747da8b *./web/src/dashboard/index.html
+671e7a77e54b5906a5f548df32275a2d72164a48 *./web/src/dashboard/index.html
 da6f537cd597b76d264970f1c95e4beebc82fde9 *./web/webfonts/fa-brands-400.ttf
 31c30351084e2670bbe5c47bd342e11540a68717 *./web/webfonts/fa-brands-400.woff2
 6e7f0651059eea9783ea8b28892b2c979c2f7f30 *./web/webfonts/fa-regular-400.ttf
