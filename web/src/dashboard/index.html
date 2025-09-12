@@ -380,8 +380,9 @@
                     if (!data) return;
                     console.log("Setup PLC pinmap:", data);
                     const err_keys = ["HW_ERR", "FAULT", "FAULTY", "NG"];
-                    this.plcInputs = data.filter(pin => pin.Function == 'DI').map(pin => ({ ...pin, isErr: err_keys.some(key => pin.Name.toUpperCase() === key), isManual: false, isActive: false }));
-                    this.plcOutputs = data.filter(pin => pin.Function == 'DO').map(pin => ({ ...pin, isErr: err_keys.some(key => pin.Name.toUpperCase() === key), isManual: false, isActive: false }));
+                    const err_suffix = ["_ERR", "_NG"];
+                    this.plcInputs = data.filter(pin => pin.Function == 'DI').map(pin => ({ ...pin, isErr: err_keys.some(key => pin.Name.toUpperCase() === key || pin.Name.toUpperCase().endsWith(key)), isManual: false, isActive: false }));
+                    this.plcOutputs = data.filter(pin => pin.Function == 'DO').map(pin => ({ ...pin, isErr: err_keys.some(key => pin.Name.toUpperCase() === key || pin.Name.toUpperCase().endsWith(key)), isManual: false, isActive: false }));
                 },
                 setInputPin(name, value) {
                     if (!this.readFlashTimeout) this.readFlashTimeout = setTimeout(() => { this.readFlashTimeout = null; }, 50);
@@ -517,19 +518,13 @@
                     clearTimeout(this.logInteractTimeout);
                     this.logInteractTimeout = setTimeout(() => {
                         this.logPauseAutoScroll = false;
-                    }, 3000);
+                    }, 10000);
                 }
 
                 if (this.logScrollArea) {
-
-                    this.logScrollArea.addEventListener('wheel', () => { setUserScroll.call(this); });
+                    this.logScrollArea.addEventListener('wheel', () => { setUserScroll().call(this); });
                     this.logScrollArea.addEventListener('mousedown', () => { setUserScroll.call(this); });
                     this.logScrollArea.addEventListener('touchstart', () => { setUserScroll.call(this); });
-
-                    this.logScrollArea.addEventListener('scroll', () => {
-                        if (this.logPauseAutoScroll) return;
-                        this.logScrollArea.scrollTop = this.logScrollArea.scrollHeight;
-                    });
                 }
 
                 this.initLogClusterize();
