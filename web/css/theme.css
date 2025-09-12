@@ -94,7 +94,7 @@
 }
 
 /* Body */
-body {
+.div-body {
     display: flex;
     flex-direction: column;
     font-family: 'Segoe UI', 'Consolas';
@@ -243,6 +243,7 @@ button:active {
 
 .mini-log {
     display: flex;
+    flex-direction: row;
     align-items: center;
     text-align: left;
     align-content: center;
@@ -263,6 +264,7 @@ button:active {
     flex-direction: row;
     font-size: 0.6rem;
     gap: 0.2rem;
+    margin:0.2rem;
     padding: 0.1rem 0.5rem;
     border-radius: 1rem;
     border: 1px solid var(--base01);
@@ -502,6 +504,14 @@ table tr:hover {
     margin: 0;
     padding: 0;
     overflow-y: auto;
+    height:100%;
+}
+
+.log-container.morelog {
+    border-top:1px solid var(--border-color);
+    padding-top:0.5rem;
+    box-shadow: inset 0 4px 8px var(--shadow-color);
+    height:250px;
 }
 
 .log-row {
@@ -512,6 +522,23 @@ table tr:hover {
     position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--border-color);
+}
+
+.log-filter-input{
+    flex: 1;
+    font-size: 0.8rem;
+    padding: 0.1rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: "Consolas";
+    margin: 0 0.5rem;
+}
+
+.log-filter-input:focus{
+    border-color: var(--accent-info); 
+    outline: none;
 }
 
 .log-content,
@@ -747,11 +774,12 @@ table tr:hover {
 
 .filter-button {
     font-size: 0.7rem;
-    padding: 0rem 0.3rem;
+    margin: 0;
+    padding: 0;
     border-radius: 1rem;
     height: 1.2rem;
-    width: fit-content;
-    margin: 0;
+    min-width: 1.2rem;
+    max-width: 1.2rem;
     border: 1px solid var(--border-color);
     background-color: var(--bg-primary);
     color: var(--text-muted);
@@ -766,6 +794,13 @@ table tr:hover {
 
 .filter-button.active {
     background-color: var(--accent-ng);
+    color: var(--bg-primary);
+    box-shadow: 0 0.2em 0.2em var(--shadow-hover);
+    font-weight: 600;
+}
+
+.filter-button.morelog {
+    background-color: var(--accent-info);
     color: var(--bg-primary);
     box-shadow: 0 0.2em 0.2em var(--shadow-hover);
     font-weight: 600;
