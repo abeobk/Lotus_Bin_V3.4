@@ -32,17 +32,17 @@
             <!-- Cycle info panel -->
             <div class="cycle-info-container">
                 <div class="cycle-info-card">
-                    <span class="cycle-info-label">MODEL</span>
+                    <span class="cycle-info-label"><i class="fa fa-car"></i> MODEL</span>
                     <span class="cycle-info-value">{{crrModelName}}</span>
                 </div>
 
                 <div class="cycle-info-card">
-                    <span class="cycle-info-label">BODY / VIN NO</span>
+                    <span class="cycle-info-label"><i class="fa fa-tag"></i> BODY / VIN NO</span>
                     <span class="cycle-info-value">{{crrVinNo}}</span>
                 </div>
 
                 <div class="cycle-info-card">
-                    <span class="cycle-info-label">SEQ NO</span>
+                    <span class="cycle-info-label"><i class="fa fa-hashtag"></i> SEQ NO</span>
                     <span class="cycle-info-value">{{crrSeqNo}}</span>
                 </div>
             </div>
@@ -519,7 +519,7 @@
 
                     const rows = filteredData.map(row =>
                         `<tr ondblclick="app.showRowDetails(${JSON.stringify(row).replace(/"/g, '&quot;')})">
-                    <td>${row.time.split(' ')[1].slice(0,8)}</td>
+                    <td>${row.time.split(' ')[1].slice(0, 8)}</td>
                     <td>${row.model}</td>
                     <td>${row.body}</td>
                     <td>${row.seq}</td>

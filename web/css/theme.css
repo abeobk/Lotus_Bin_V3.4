@@ -132,9 +132,7 @@ nav {
     min-height: 3rem;
     max-height: 3rem;
     padding: 0.5rem 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    border-top: 1px solid var(--border-color);
-    box-shadow: 0 4px 8px var(--shadow-color);
+    box-shadow: 0 1px 8px var(--shadow-color);
 }
 
 .nav-animate {
@@ -165,26 +163,17 @@ nav {
 button {
     color: var(--text-primary);
     background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    /* border:none; */
+    border:none;
     padding: 0.5rem;
     border-radius: 1rem;
-    border-color: var(--border-color);
-    box-shadow: 0 0.1em 0.1em var(--shadow-color);
 }
 
 button:hover {
-    transform: scale(1.1);
     background-color: var(--bg-hover);
-    box-shadow: 0 0.2em 0.2em var(--shadow-hover);
-    transition: transform 0.05s, box-shadow 0.05s;
 }
 
 button:active {
-    transform: translateY(1px);
     background-color: var(--bg-primary);
-    box-shadow: 0 0.1em 0.1em var(--shadow-color);
-    transition: transform 0.05s, box-shadow 0.05s;
 }
 
 /*ROW DIV*/
@@ -194,7 +183,6 @@ button:active {
     gap: 0.5rem;
     align-items: center;
 }
-
 
 /* Theme button */
 .theme-button {
@@ -212,22 +200,21 @@ button:active {
     padding: 0.5rem;
     height: fit-content;
     border-top: none;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .result-panel {
-    box-shadow: inset 0 -1px 2px var(--shadow-color);
+    /* box-shadow: inset 0 -1px 8px var(--shadow-color); */
     height: fit-content;
 }
 
 .tab-panel {
     height: 48px;
     padding-left: 16px;
-    box-shadow: 0 4px 8px var(--shadow-color);
+    box-shadow: 0 1px 8px var(--shadow-color);
 }
 
 .section-title {
-    text-shadow: 0 1px 2px var(--shadow-color);
+    text-shadow: 0 1px 8px var(--shadow-color);
 }
 
 .main-panel {
@@ -250,10 +237,11 @@ button:active {
     height: 2rem;
     width: 100%;
     margin: 0;
+    padding:0.2rem;
     overflow: hidden;
     font-family: "Consolas";
-    border-top: 1px solid var(--border-color);
-    box-shadow: 0 -4px 8px var(--shadow-color);
+    /* border-top: 1px solid var(--border-color); */
+    box-shadow: 0 -1px 8px var(--shadow-color);
     z-index: 1000;
 }
 
@@ -267,7 +255,6 @@ button:active {
     margin:0.2rem;
     padding: 0.1rem 0.5rem;
     border-radius: 1rem;
-    border: 1px solid var(--base01);
     background-color: var(--bg-secondary);
 }
 
@@ -335,14 +322,14 @@ button:active {
 
 .cycle-info-card {
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     font-size: 1.2rem;
     font-weight: 600;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     padding: 0.2rem 0.5rem;
     border-radius: 0.4rem;
     /* font-family: "Consolas"; */
-    text-shadow: 0 1px 2px var(--shadow-color);
+    /* text-shadow: 0 1px 2px var(--shadow-color); */
     background-color: var(--bg-secondary);
     box-shadow: 0 0.1em 0.1em var(--shadow-color);
     width: 100%;
@@ -508,9 +495,9 @@ table tr:hover {
 }
 
 .log-container.morelog {
-    border-top:1px solid var(--border-color);
+    /* border-top:1px solid var(--border-color); */
     padding-top:0.5rem;
-    box-shadow: inset 0 4px 8px var(--shadow-color);
+    box-shadow: inset 0 1px 8px var(--shadow-color);
     height:250px;
 }
 
