@@ -162,7 +162,7 @@ nav {
 /*BUTTON*/
 button {
     color: var(--text-primary);
-    background-color: var(--bg-secondary);
+    background-color: transparent;
     border:none;
     padding: 0.5rem;
     border-radius: 1rem;
