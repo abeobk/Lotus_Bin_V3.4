@@ -1914,6 +1914,32 @@
             This is event will be fired when user double click the title label
             </summary>
         </member>
+        <member name="T:ATMC.Common.ViewCardWebView2.ResultTableBuilder">
+            <summary>
+            Helper class to build result table
+            Result table format:
+            {
+              "title": "Table Title",
+              "name": "table_name",
+              "cols": ["Column1", "Column2", "Column3"],
+              "rows": [
+                { "Column1": { "value": "Value1", "tag": "ok" }, "Column2": { "value": "Value2", "tag": "ng" }, "Column3": { "value": "Value3", "tag": "ok" } },
+                { "Column1": { "value": "Value4", "tag": "ok" }, "Column2": { "value": "Value5", "tag": "ok" }, "Column3": { "value": "Value6", "tag": "ng" } }
+              ]
+            }
+            Each row is an object with column names as keys, and each column contains an object with "value" and "tag" status.
+            The "tag" field is a boolean indicating the status ("ok" for OK, "ng" for NG).
+            The "cols" array defines the order of columns in the table.
+            Usage:
+            var table = new ResultTableBuilder()
+                .Title("Inspection Results")
+                .Name("inspection_results")
+                .Columns("Feature1", "Feature2", "Feature3")
+                .Row( ("Feature1", "Value1", "ok"), ("Feature2", "Value2", "ng"), ("Feature3", "Value3", "ok") )
+                .Row( ("Feature1", "Value4", "ok"), ("Feature2", "Value5", "ok"), ("Feature3", "Value6", "ng") )
+                .Build();
+            </summary>
+        </member>
         <member name="F:ATMC.Common.ViewCardWebView2.components">
             <summary> 
             Required designer variable.
