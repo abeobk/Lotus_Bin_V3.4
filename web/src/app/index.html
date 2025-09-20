@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <link rel="preload" href="../../css/font-awesome.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="./theme.css">
+    <script src="../../script/clusterize.min.js"></script>
+    <script src="../../script/vue.global.prod.js"></script>
+    <script src="../../script/split.min.js"></script>
+    <script src="../../script/chart.js"></script>
+    <script src="../../script/utils.js"></script>
+</head>
+
+<body>
+    <div id="app" class="app-container">
+        <nav>
+            <!--MAIN-->
+            <button @click="activateSection('MAIN')"><i class="fa fa-table"></i></button>
+            <!---->
+            <button @click="activateSection('IO')"><i class="fa fa-microchip"></i></button>
+            <button @click="activateSection('STATS')"><i class="fa fa-chart-pie"></i></button>
+            <button @click="activateSection('LOG')"><i class="fa fa-list"></i></button>
+            <!--log-->
+            <div style="flex:1"></div>
+            <button v-show="!isAutoMode" @click="send_MakeModelButtonClick"><i class="fa fa-cube"></i></button>
+            <button @click="send_SettingButtonClick"><i class="fa fa-gear"></i></button>
+            <button @click="toggleTheme()"><i class="fa fa-adjust"></i></button>
+        </nav>
+
+        <div class="split-container-vertical" id="vertical-split">
+            <div class="split-panel-top">
+                <!--SECTION: CYCLE RESULT-->
+                <section>
+                    <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
+                        :vin="cycleInfo.vin" :seq="cycleInfo.seq">
+                    </cycle-info-card>
+                    <div v-for="(table,index) in resultTables" :key="index">
+                        <result-table :table="table"></result-table>
+                    </div>
+                </section>
+
+                <!--SECTION: MAIN-->
+                <section v-show="crrSection==='MAIN'" class="section-main">
+                    <stat-view ref="statView"></stat-view>
+                    <history-table ref="historyTable" @show-ng-only="handleShowNGOnly"></history-table>
+                </section>
+
+                <!--SECTION: IO VIEWER-->
+                <section v-show="crrSection==='IO'" class="io-section">
+                    <io-viewer v-for="(iomap, index) in ioViewers" :key="index" :ref="`ioViewer-${iomap.name}`">
+                    </io-viewer>
+                </section>
+            </div>
+
+            <div class="split-panel-bottom">
+                <section class="section-log">
+                    <log-viewer ref="logViewer"></log-viewer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js -->
+    <script src="./cycle-info-card.js"></script>
+    <script src="./result-table.js"></script>
+    <script src="./log-viewer-var-height.js"></script>
+    <script src="./stat-view.js"></script>
+    <script src="./io-view.js"></script>
+    <script src="./history-table.js"></script>
+    <script src="../../script/api.js"></script>
+    <script>
+
+        const { createApp } = Vue;
+        const sections = ['MAIN', 'LOG', 'IO', 'STATS']
+        const app = createApp({
+            components: {
+                'cycle-info-card': window.CycleInfoCard,
+                'result-table': window.ResultTable,
+                'log-viewer': window.LogViewer,
+                'stat-view': window.StatView,
+                'io-viewer': window.IOViewer,
+                'history-table': window.HistoryTable,
+            },
+
+            data() {
+                return {
+                    //mode
+                    isAutoMode: false,
+
+                    //current section
+                    crrSection: 'MAIN',
+                    splitter: null,
+                    fullLogSplitterSizes: [0, 100],
+                    logSplitterSizes: [80, 20],
+
+                    //
+                    cycleInfo: {
+                        status: '',
+                        model: 'A',
+                        tag: 'TAG',
+                        vin: 'VINNUMBER',
+                        seq: 'SEQ001'
+                    },
+
+                    resultTables: [],
+
+                    ioViewers: [
+                        // { name: 'R1.PLC', iomap: null },
+                        // { name: 'R2.PLC', iomap: null },
+                        // { name: 'R3.PLC', iomap: null },
+                    ],
+                }
+            },
+            computed: {
+
+            },
+            methods: {
+                //TOGGLE THEME
+                toggleTheme() {
+                    const body = document.body;
+                    if (body.getAttribute('data-theme') === 'light') {
+                        body.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        body.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    }
+                },
+                initTheme() {
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme === 'light') {
+                        document.body.setAttribute('data-theme', 'light');
+                    } else { document.body.removeAttribute('data-theme'); }
+                },
+                isFullLog() { return this.crrSection === 'LOG'; },
+
+                activateSection(section) {
+                    if (sections.includes(section)) {
+                        this.crrSection = section;
+                        localStorage.setItem('crrSection', section);
+                    }
+                    //render history table if switch to MAIN
+                    if (section === 'MAIN') {
+                        this.$nextTick(() => { this.$refs.historyTable.render(); });
+                    }
+                    this.adjustLogSplitter();
+                },
+
+                initSection() {
+                    const savedSection = localStorage.getItem('crrSection');
+                    if (sections.includes(savedSection)) {
+                        this.crrSection = savedSection;
+                    } else { this.crrSection = 'MAIN'; }
+                },
+
+                setIOViewerRef(el, index) { if (el) { this.ioViewerRefs[index] = el; } },
+
+                handleShowNGOnly(showNG) {
+                    this.showNGOnly = showNG;
+                    this.$refs.statView.showNGOnly(showNG);
+                }
+                ,
+                // Add this new method
+                initVerticalSplit() {
+                    this.loadSavedSplitSizes();
+                    // Initialize vertical split (top/bottom panels)
+                    this.splitter = Split(['#vertical-split .split-panel-top', '#vertical-split .split-panel-bottom'], {
+                        sizes: [80, 20],              // Top panel 60%, bottom panel 40%
+                        minSize: [100, 100],          // Minimum sizes in pixels
+                        gutterSize: 6,                // Splitter height
+                        cursor: 'row-resize',         // Cursor style
+                        direction: 'vertical',        // Split direction
+                        onDragEnd: (sizes) => {
+                            if (this.isFullLog()) {
+                                this.fullLogSplitterSizes = sizes;
+                                localStorage.setItem('fullLogSplitterSizes', JSON.stringify(sizes));
+                            }
+                            else {
+                                this.logSplitterSizes = sizes;
+                                localStorage.setItem('logSplitterSizes', JSON.stringify(sizes));
+                            }
+                        }
+                    });
+                    this.adjustLogSplitter();
+                },
+                // Adjust splitter sizes based on current section
+                adjustLogSplitter() {
+                    this.splitter.setSizes(this.isFullLog() ? this.fullLogSplitterSizes : this.logSplitterSizes);
+                },
+
+                // Load saved split sizes
+                loadSavedSplitSizes() {
+                    const logSplitterSizes = localStorage.getItem('logSplitterSizes');
+                    const fullLogSplitterSizes = localStorage.getItem('fullLogSplitterSizes');
+                    this.fullLogSplitterSizes = fullLogSplitterSizes ? JSON.parse(fullLogSplitterSizes) : [0, 100];
+                    this.logSplitterSizes = logSplitterSizes ? JSON.parse(logSplitterSizes) : [80, 20];
+                },
+
+                //IO MAPS
+                setPlcPinmap(data) {
+                    //check if data is array
+                    if (Array.isArray(data)) {
+                        this.ioViewers = data;
+                    }
+                    else this.ioViewers = [data];
+
+                    //clear previous iomap ref
+                    Object.keys(this.$refs).forEach(refKey => {
+                        if (refKey.startsWith('ioViewer-')) {
+                            delete this.$refs[refKey];
+                        }
+                    });
+
+                    this.$nextTick(() => {
+                        for (const viewer of this.ioViewers) {
+                            this.$refs[`ioViewer-${viewer.name}`][0].setIOMap(viewer.name, viewer.iomap);
+                        }
+                    });
+                },
+                setInputPin(pinname, value) {
+                    for (const viewer of this.ioViewers) {
+                        this.$refs[`ioViewer-${viewer.name}`][0].setInputPin(pinname, value);
+                    }
+                },
+                setOutputPin(pinname, value) {
+                    for (const viewer of this.ioViewers) {
+                        this.$refs[`ioViewer-${viewer.name}`][0].setOutputPin(pinname, value);
+                    }
+                },
+                //LOGS
+                addLogEntries(entries) {
+                    this.$refs.logViewer.addEntries(entries);
+                },
+                //STATS
+                setHourlyData(data) {
+                    this.$refs.statView.renderHourlyChart(data, this.showNGOnly);
+                },
+                setCounters(data) {
+                    const okCount = data?.ok || 0;
+                    const ngCount = data?.ng || 0;
+                    this.$refs.statView.renderPieChart(okCount, ngCount);
+                },
+                //RESULT TABLE
+                setResultTable(data) {
+                    this.resultTables = []; //clear
+                    if (Array.isArray(data)) {
+                        this.resultTables = data;
+                    } else {
+                        this.resultTables = [data];
+                    }
+                },
+                //HISTORY TABLE
+                setHistory(data) {
+                    this.$refs.historyTable.updateTable(data);
+                },
+                //BUTTONS
+                send_MakeModelButtonClick() {
+                    CSharpUtils.sendMessage({ type: 'model_button_click' });
+                },
+                send_SettingButtonClick() {
+                    CSharpUtils.sendMessage({ type: 'setting_button_click' });
+                },
+                //CYCLE INFO
+            },
+            mounted() {
+                this.initTheme();
+                this.initSection();
+                this.$nextTick(() => { this.initVerticalSplit(); });
+
+                //init API
+                API.init();
+            },
+            watch: {
+
+            },
+            //clearn up
+            beforeUnmount() {
+                if (this.splitter) {
+                    this.splitter.destroy();
+                    this.splitter = null;
+                }
+            }
+        }).mount('#app');
+        window.app = app; 
+    </script>
+</body>
+
+</html>

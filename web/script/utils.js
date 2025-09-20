@@ -67,15 +67,11 @@ const ChartUtils = {
             ctx.save();
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-
-            // Draw total number
+            // // Draw total number
             ctx.fillStyle = '#9aa';
-            ctx.font = 'bold 24px Segoe UI';
-            ctx.fillText(okcnt + '/' + total, centerX, centerY - 8);
-            const percentage =
-              total > 0 ? ((okcnt / total) * 100).toFixed(2) : 0;
-            ctx.font = 'bold 16px Segoe UI';
-            ctx.fillText(percentage + '%', centerX, centerY + 16);
+            const percentage = total > 0 ? ((okcnt / total) * 100).toFixed(2) : 0;
+            ctx.font = '1rem Segoe UI';
+            ctx.fillText(percentage + '%', centerX, centerY);
             ctx.restore();
           },
         },
@@ -95,6 +91,7 @@ const ChartUtils = {
       console.error(`Hourly chart ${canvasID} not found`);
       return;
     }
+    if(!hourlyData)return;
 
     // Extract arrays for ok and ng
     const okData = hourlyData.map((d) => (showNGOnly ? 0 : d?.ok || 0));

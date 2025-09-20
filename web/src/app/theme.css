@@ -1,0 +1,313 @@
+/* ========================================
+   Modern Flat Dashboard Theme
+   Support for Dark/Light Mode
+   ======================================== */
+
+/* CSS Custom Properties for Solarized Theme Variables */
+:root {
+    --font-size: 12px;
+    /* Solarized Color Palette */
+    --base04: #001a25;
+    --base03: #002b36;
+    --base02: #073642;
+    --base01: #586e75;
+    --base00: #657b83;
+    --base0: #839496;
+    --base1: #93a1a1;
+    --base2: #eee8d5;
+    --base3: #fdf6e3;
+
+    /* Solarized Accent Colors */
+    --red: #dc322f;
+    --orange: #cb4b16;
+    --yellow: #b58900;
+    --green: #859900;
+    --cyan: #2aa198;
+    --blue: #268bd2;
+    --violet: #6c71c4;
+    --magenta: #d33682;
+
+    /*size*/
+    --nav-size: 3rem;
+    --button-panel-size: 3rem;
+    --badge-size: 1.2rem;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    /* Typography */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Background Colors - Solarized Dark */
+
+    --bg-primary: var(--base03);
+    --bg-secondary: var(--base02);
+    --bg-tertiary: #0c4a56;
+    --bg-card: var(--base02);
+    --bg-hover: rgb(0, 55, 66);
+    --bg-active: var(--base01);
+
+    --bg-section: rgb(0, 55, 66);
+    --bg-nav: rgb(0, 44, 55);
+    --bg-table-header: rgb(0, 66, 77);
+    --bg-table-row-odd: rgb(0, 33, 44);
+    --bg-table-row-even: rgb(0, 40, 50);
+    --bg-io-badge: #005f73;
+
+    /* Text Colors - Solarized Dark */
+    --text-primary: var(--base1);
+    --text-secondary: var(--base0);
+    --text-tertiary: var(--base00);
+    --text-inverse: var(--base03);
+    --text-muted: var(--base01);
+
+    /* Border Colors - Solarized Dark */
+    --border-color: rgb(0, 77, 88);
+
+    /* Status Colors for Solarized Dark Theme */
+    --success-bg: rgba(133, 153, 0, 0.15);
+    --warning-bg: rgba(203, 75, 22, 0.15);
+    --error-bg: rgba(220, 50, 47, 0.15);
+    --info-bg: rgba(42, 161, 152, 0.15);
+
+    /* Shadow for Solarized Dark Theme */
+    --shadow-color: rgba(0, 22, 33, 0.8);
+    --shadow-sm: 0 1px 8px var(--shadow-color);
+
+    --accent-ok: #2ecc71;
+    --accent-ng: #e74c3c;
+    --accent-active: var(--blue);
+    --accent-manual: var(--yellow);
+}
+
+/* Solarized Dark Theme */
+[data-theme='light'] {
+    /* Light Theme (Solarized Light) */
+    --primary-color: var(--blue);
+    --primary-dark: #1e7bb8;
+    --primary-light: var(--cyan);
+    --secondary-color: var(--violet);
+    --accent-color: var(--magenta);
+
+    /* Background Colors - Solarized Light */
+    --bg-primary: var(--base3);
+    --bg-secondary: var(--base2);
+    --bg-tertiary: #e8dcc0;
+
+    /* slightly darker cream */
+    --bg-card: var(--base2);
+    --bg-hover: var(--base2);
+    --bg-active: #e0d5b7;
+
+    --bg-section: var(--bg-secondary);
+    --bg-nav: var(--bg-primary);
+    --bg-table-header: #f1e1ba;
+    --bg-table-row-odd: #ece4d3;
+    --bg-table-row-even: #f0ebe1;
+
+
+    /* Text Colors - Solarized Light */
+    --text-primary: var(--base01);
+    --text-secondary: var(--base00);
+    --text-tertiary: var(--base0);
+    --text-inverse: var(--base3);
+    --text-muted: var(--base1);
+
+    /* Border Colors - Solarized Light */
+    --border-color: #ddd6c1;
+
+    /* Status Colors - Solarized */
+    --success-color: var(--green);
+    --success-bg: rgba(133, 153, 0, 0.1);
+    --warning-color: var(--orange);
+    --warning-bg: rgba(203, 75, 22, 0.1);
+    --error-color: var(--red);
+    --error-bg: rgba(220, 50, 47, 0.1);
+    --info-color: var(--cyan);
+    --info-bg: rgba(42, 161, 152, 0.1);
+
+    /* Shadow - Adjusted for Solarized */
+    --shadow-color: #93a1a17f;
+
+    --accent-ok: #21b15d;
+    --accent-ng: #c93d2d;
+    --accent-active: var(--blue);
+    --accent-manual: var(--yellow);
+}
+
+/* Custom Scrollbar
+ */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', 'Consolas', monospace, 'Roboto', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.app-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-height: 100vh;
+    /* Full viewport height */
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: var(--spacing-xs);
+    height: var(--nav-size);
+    gap: var(--spacing-xs);
+    background: var(--bg-nav);
+    /* border-bottom: 1px solid var(--border-color); */
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+button {
+    background: transparent;
+    color: var(--text-primary);
+    border: none;
+    width: 2rem;
+    height: 2rem;
+}
+
+button:hover {
+    background-color: var(--bg-hover);
+    border-radius: 100%;
+}
+
+button:hover {
+    background-color: var(--bg-hover);
+}
+
+.border-right {
+    border-right: 1px solid var(--bg-primary);
+}
+
+section {
+    background-color: transparent;
+    margin: 0;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: var(--spacing-sm);
+    box-shadow: none;
+}
+
+section:last-of-type {
+    flex: 1;
+    min-height: 0;
+}
+
+.io-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-main {
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+}
+
+.section-log {
+    padding-top:2px;
+}
+
+.split-container-vertical {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--nav-size) - var(--spacing-xs));
+}
+
+.split-panel-top,
+.split-panel-bottom {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+}
+
+/* Split.js gutter styling for vertical split */
+.gutter.gutter-vertical {
+    background-color: transparent;
+    cursor: row-resize;
+    transition: background-color 0.2s;
+}
+
+.gutter.gutter-vertical:hover {
+    background-color: var(--bg-hover);
+}

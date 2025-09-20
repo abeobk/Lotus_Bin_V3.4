@@ -16,14 +16,21 @@ const API = {
 
         //cycle info
         case 'set_model_name':
-          app.crrModelName = value;
+          app.cycleInfo.model = value;
           break;
         case 'set_body_no':
-          app.crrVinNo = value;
+          app.cycleInfo.vin = value;
           break;
         case 'set_seq_no':
-          app.crrSeqNo = value;
+          app.cycleInfo.seq = value;
           break;
+        case 'set_cycle_tag':
+          app.cycleInfo.tag = value;
+          break;
+        case 'set_cycle_status':
+          app.cycleInfo.status = value;
+          break;
+
         // plc
         case 'set_pinmap':
           app.setPlcPinmap(value);
@@ -64,6 +71,8 @@ const API = {
         //   app.makeModelLayout = value;
         //   break;
       }
+
+      event = null; //free memory
     });
 
     //load display state from C# when loaded
