@@ -30,6 +30,9 @@ const API = {
         case 'set_cycle_status':
           app.cycleInfo.status = value;
           break;
+        case 'set_result_tag':
+          app.setResultTag(value);
+          break;
 
         // plc
         case 'set_pinmap':
