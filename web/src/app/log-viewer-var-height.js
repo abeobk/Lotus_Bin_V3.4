@@ -160,10 +160,10 @@ const LogViewer = {
       this.filteredLogs = this.internalLogs.filter((log) => {
         const levelMatch =
           showAll ||
-          (showLog && log.l !== 'DEBUG' && log.l !== 'TRACE') ||
+          (showLog && log.l !== 'Debug' && log.l !== 'Trace') ||
           (showWarn &&
-            (log.l === 'WARN' || log.l === 'ERROR' || log.l === 'FATAL')) ||
-          (showError && (log.l === 'ERROR' || log.l === 'FATAL'));
+            (log.l === 'Warn' || log.l === 'Error' || log.l === 'Fatal')) ||
+          (showError && (log.l === 'Error' || log.l === 'Fatal'));
         const textMatch =
           !filter || log.l.includes(filter) || log.m.includes(filter);
         return levelMatch && textMatch;

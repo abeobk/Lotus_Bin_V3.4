@@ -196,7 +196,7 @@ ae82a23b3dceb6f4cd300073f7b5ee7008bc5281 *./web/src/app/history-table.js
 0f8f7c8d740ca8af7a0ea45cfe385a62f5b6d37c *./web/src/app/index.html
 b5ea44d0fff1b98010a24df6e5e64cd7175dcddf *./web/src/app/io-view.js
 d085ee86e47b85cf2b9f847d0a0a5a6391edf6fc *./web/src/app/log-viewer-fixed-height.js
-d7a5885d16db2208bfedd876d29d0bbdc1a27b67 *./web/src/app/log-viewer-var-height.js
+8c72820b035faaafe3403d344a2ceab69971a8ee *./web/src/app/log-viewer-var-height.js
 031c5e355e749318494129cb028e7b64cd9350e2 *./web/src/app/result-table.js
 89c33a10b986d904c9c40f16b2b6bcb794a37e51 *./web/src/app/stat-view.js
 241a51d83d6758cbbf167ac36dedc24efce0cbb5 *./web/src/app/template.js
