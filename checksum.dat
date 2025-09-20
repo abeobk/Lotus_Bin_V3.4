@@ -193,7 +193,7 @@ eafcf8f04a842a51a3a66df46d5c848d792da6df *./web/script/utils.js
 431e24f0c08a1e3c4d863903e80d0b674b203c91 *./web/script/vue.global.prod.js
 c277d2f09a6aebb957c8de7d4c44c0eea4e604e6 *./web/src/app/cycle-info-card.js
 31376c86b076d09adf441f3a394a2d0fb8a0b0ac *./web/src/app/history-table.js
-a2a62d97ece8e1e698eee3ca6f1a31d11c5528ac *./web/src/app/index.html
+0f8f7c8d740ca8af7a0ea45cfe385a62f5b6d37c *./web/src/app/index.html
 b5ea44d0fff1b98010a24df6e5e64cd7175dcddf *./web/src/app/io-view.js
 d085ee86e47b85cf2b9f847d0a0a5a6391edf6fc *./web/src/app/log-viewer-fixed-height.js
 d7a5885d16db2208bfedd876d29d0bbdc1a27b67 *./web/src/app/log-viewer-var-height.js

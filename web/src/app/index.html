@@ -253,10 +253,11 @@
                         this.resultTables = [data];
                     }
                 },
-                setResultTag(data){
-                    if(!data)return;
-                    this.resultTables[data.id].rows.forEach(row=>{
-                        if(row.name && row.name.value === data.name){
+                setResultTag(data) {
+                    if (!data) return;
+                    const table = this.resultTables[data.id];
+                    table?.rows?.forEach(row => {
+                        if (row.name && row.name.value === data.name) {
                             row.name.tag = data.tag;
                         }
                     });
