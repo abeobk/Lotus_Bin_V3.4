@@ -23,7 +23,9 @@ const HistoryTable = {
     <h3 style="text-align:center;text-transform:uppercase;">{{ table.title }}</h3>
 
     <div class="table-header" >
-     <span v-for="(col,index) in table.cols" :key="'C-'+index">{{col}}</span>
+        <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
+          <span v-if="col!=='res'">{{col}}</span>
+        </template>
      <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
     </div>
 
@@ -36,7 +38,10 @@ const HistoryTable = {
           :key="'R-'+visibleStart+rowIndex"
           :class="{ 'even-row': rowIndex % 2 === 0 }"
         >
-          <span v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">{{row[col]}}</span>
+          <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
+            <span v-if="col!=='res'">{{row[col]}}</span>
+          </template>
+
           <i class="fa " :class="{
             'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
             'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
