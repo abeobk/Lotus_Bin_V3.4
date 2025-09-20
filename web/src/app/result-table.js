@@ -48,7 +48,8 @@ const ResultTable = {
               <i class="fa " :class="{
                 'fa-circle-check': row.name && row.name.tag.toLowerCase() === 'ok', 
                 'fa-circle-exclamation': row.name && row.name.tag.toLowerCase() === 'ng',
-                'fa-spinner fa-spin': !row.name || !row.name.tag || row.name.tag === '',
+                'fa-hourglass': !row.name.tag || row.name.tag === '',
+                'fa-spinner fa-spin': row.name.tag === '...',
                 'ng-status': row.name && row.name.tag.toLowerCase() === 'ng',
                 'ok-status': row.name && row.name.tag.toLowerCase() === 'ok',
               }"></i>
@@ -127,6 +128,7 @@ if (!document.querySelector('#result-table-styles')) {
         color: var(--text-primary); 
         text-align:right;
         padding: 0 0.5rem;
+        width:7rem;
         /* border: 1px solid var(--border-color);  */
       }
 

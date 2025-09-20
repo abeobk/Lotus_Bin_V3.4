@@ -253,6 +253,14 @@
                         this.resultTables = [data];
                     }
                 },
+                setResultTag(data){
+                    if(!data)return;
+                    this.resultTables[data.id].rows.forEach(row=>{
+                        if(row.name && row.name.value === data.name){
+                            row.name.tag = data.tag;
+                        }
+                    });
+                },
                 //HISTORY TABLE
                 setHistory(data) {
                     this.$refs.historyTable.updateTable(data);
