@@ -63,7 +63,8 @@ const HistoryTable = {
       this.render();
       this.showNGOnly = false; // Reset filter when new data is loaded
       this.$emit('show-ng-only', this.showNGOnly);
-      // console.log('History table updated:', this.table.rows.length, 'rows');
+      //scroll to top
+      this.scrollToTop();
     },
     filterItem() {
       if (!this.table || !this.table.rows || this.table.rows.length === 0)
