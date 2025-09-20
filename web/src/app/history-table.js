@@ -23,8 +23,8 @@ const HistoryTable = {
     <h3 style="text-align:center;text-transform:uppercase;">{{ table.title }}</h3>
 
     <div class="table-header" >
-     <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
      <span v-for="(col,index) in table.cols" :key="'C-'+index">{{col}}</span>
+     <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
     </div>
 
     <div class="table-content" ref="container" 
@@ -36,6 +36,7 @@ const HistoryTable = {
           :key="'R-'+visibleStart+rowIndex"
           :class="{ 'even-row': rowIndex % 2 === 0 }"
         >
+          <span v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">{{row[col]}}</span>
           <i class="fa " :class="{
             'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
             'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
@@ -43,7 +44,6 @@ const HistoryTable = {
             'ng-res': row.res && row.res.toLowerCase() === 'ng',
             'ok-res': row.res && row.res.toLowerCase() === 'ok',
           }"></i>
-          <span v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">{{row[col]}}</span>
         </div>
       </div>
     </div>
@@ -53,6 +53,7 @@ const HistoryTable = {
   methods: {
     updateTable(data) {
       this.table = data;
+      //change time column text
       this.filterItem();
       this.render();
       this.showNGOnly = false; // Reset filter when new data is loaded
@@ -62,6 +63,7 @@ const HistoryTable = {
     filterItem() {
       if (!this.table || !this.table.rows || this.table.rows.length === 0)
         return;
+
       this.filteredItems = [];
       this.filteredItems = this.showNGOnly
         ? this.table.rows.filter(

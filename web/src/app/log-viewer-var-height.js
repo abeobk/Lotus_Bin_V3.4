@@ -131,7 +131,7 @@ const LogViewer = {
           ...entry,
           id: this.totalEntries++, //unique id
           height: ((entry.m.match(/\n/g) || []).length + 1) * this.lineHeight, //row height based on number of lines
-          // heightMeasured: false,
+          heightMeasured: false,
           offset: 0,
         }))
       ); //add rowCount property
@@ -259,9 +259,9 @@ const LogViewer = {
       if (this.autoScroll && !this.autoScrollPaused) {
         this.$nextTick(() => {
           //clear ref
-          // for (let i = this.visibleStart; i < this.visibleEnd; i++) {
-          //   this.measureEntryHeight(i);
-          // }
+          for (let i = this.visibleStart; i < this.visibleEnd; i++) {
+            this.measureEntryHeight(i);
+          }
           this.scrollToBottom();
         });
       }
@@ -282,7 +282,7 @@ const LogViewer = {
       const container = event.target;
       const isNearBottom =
         container.scrollTop + container.clientHeight >=
-        container.scrollHeight - 50;
+        container.scrollHeight - this.lineHeight;
 
       if (isNearBottom && this.autoScrollPaused) {
         this.resumeAutoScroll();
