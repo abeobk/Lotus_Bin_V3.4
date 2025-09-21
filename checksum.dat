@@ -202,6 +202,13 @@ d085ee86e47b85cf2b9f847d0a0a5a6391edf6fc *./web/src/app/log-viewer-fixed-height.
 241a51d83d6758cbbf167ac36dedc24efce0cbb5 *./web/src/app/template.js
 56b531977585a0814b57a4852e253a8cae794df4 *./web/src/app/theme.css
 c69f52f7ca80fa3a5fe38e7d66843e5379763f03 *./web/src/dashboard/index.html
+c398ea72ce841b4eb3ca17a86aba45d915f5b70e *./web/src/test/component-demo/README.md
+61b403a9f9f08c228d1eae0a95daeec420731b78 *./web/src/test/component-demo/src/test/app.js
+84f84f2baae3e2c8d9d795ff657947bbfa492ddd *./web/src/test/component-demo/src/test/components/card.js
+ffcde3260c77891dff52db228d22006bfc76705a *./web/src/test/component-demo/src/test/components/footer.js
+c0aaf5954fb75e23720dc2ae9ee4f341415d3965 *./web/src/test/component-demo/src/test/components/header.js
+c2323a465c54121d9539b4858a98e6912ced8172 *./web/src/test/component-demo/src/test/index.html
+8e23562eb45a21455a903026a1b17d6f64166c52 *./web/src/test/component-demo/src/test/styles/main.css
 da6f537cd597b76d264970f1c95e4beebc82fde9 *./web/webfonts/fa-brands-400.ttf
 31c30351084e2670bbe5c47bd342e11540a68717 *./web/webfonts/fa-brands-400.woff2
 6e7f0651059eea9783ea8b28892b2c979c2f7f30 *./web/webfonts/fa-regular-400.ttf
