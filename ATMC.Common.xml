@@ -460,6 +460,22 @@
             <exception cref="T:System.InvalidOperationException"></exception>
             <exception cref="T:System.ArgumentNullException"></exception>
         </member>
+        <member name="M:ATMC.Common.CycleContext_`2.Reset">
+            <summary>
+            Reset cycle
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ATMC.Common.CycleContext_`2.CheckValid" -->
+        <member name="M:ATMC.Common.CycleContext_`2.Start">
+            <summary>
+            Cycle start
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.CycleContext_`2.End">
+            <summary>
+            Cycle end
+            </summary>
+        </member>
         <member name="F:ATMC.Common.CycleInfoView.components">
             <summary> 
             Required designer variable.
