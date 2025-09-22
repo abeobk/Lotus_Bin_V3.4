@@ -465,7 +465,6 @@
             Reset cycle
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:ATMC.Common.CycleContext_`2.CheckValid" -->
         <member name="M:ATMC.Common.CycleContext_`2.Start">
             <summary>
             Cycle start
