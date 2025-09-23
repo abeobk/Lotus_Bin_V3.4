@@ -58,8 +58,6 @@
                 <!--SECTION: IO VIEWER-->
                 <section v-show="crrSection==='IO'" class="io-section">
                     <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index" :ref="`ioViewer-${iomap.name}`"> </io-viewer>
-                    <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO1-'+index" :ref="`ioViewer1-${iomap.name}`"> </io-viewer>
-                    <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO2-'+index" :ref="`ioViewer2-${iomap.name}`"> </io-viewer>
                 </section>
 
                 <!--SECTION: IO VIEWER-->
@@ -237,8 +235,6 @@
                     this.$nextTick(() => {
                         for (const viewer of this.ioViewers) {
                             this.$refs[`ioViewer-${viewer.name}`][0].setIOMap(viewer.name, viewer.iomap);
-                            this.$refs[`ioViewer1-${viewer.name}`][0].setIOMap(viewer.name, viewer.iomap);
-                            this.$refs[`ioViewer2-${viewer.name}`][0].setIOMap(viewer.name, viewer.iomap);
                         }
                     });
                 },
