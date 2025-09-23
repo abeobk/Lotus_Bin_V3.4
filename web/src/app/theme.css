@@ -29,6 +29,7 @@
 
     /*size*/
     --nav-size: 3rem;
+    --button-size: 2.5rem;
     --button-panel-size: 3rem;
     --badge-size: 1.2rem;
 
@@ -66,7 +67,7 @@
     --bg-secondary: var(--base02);
     --bg-tertiary: #0c4a56;
     --bg-card: var(--base02);
-    --bg-hover: rgb(0, 55, 66);
+    --bg-hover: rgb(0, 77, 88);
     --bg-active: var(--base01);
 
     --bg-section: rgb(0, 55, 66);
@@ -218,9 +219,9 @@ nav {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: var(--spacing-xs);
+    padding: 0 var(--spacing-sm);
     height: var(--nav-size);
-    gap: var(--spacing-xs);
+    gap: var(--spacing-sm);
     background: var(--bg-nav);
     /* border-bottom: 1px solid var(--border-color); */
     box-shadow: 0 4px 8px var(--shadow-color);
@@ -230,17 +231,21 @@ button {
     background: transparent;
     color: var(--text-primary);
     border: none;
-    width: 2rem;
-    height: 2rem;
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius:100%;
+    cursor: pointer;
 }
 
 button:hover {
     background-color: var(--bg-hover);
-    border-radius: 100%;
+    box-shadow: 0 1px 2px var(--shadow-color);
 }
 
-button:hover {
-    background-color: var(--bg-hover);
+button.active {
+    color: var(--accent-active);
+    background-color: var(--bg-secondary);
+    box-shadow: 0 1px 2px var(--shadow-color);
 }
 
 .border-right {
@@ -280,7 +285,7 @@ section:last-of-type {
 }
 
 .section-log {
-    padding-top:2px;
+    padding-top: 2px;
 }
 
 .split-container-vertical {

@@ -4,9 +4,9 @@ const ResultTable = {
     table: {
       type: Object,
       default: () => ({
-        title: 'Result Table',
-        cols: [],
-        rows: [],
+        title: 'Result Table', 
+        cols: [], //['name','x','y','z',...]
+        rows: [], //[{name:{value:'part1',tag:'ok | ng | ...'},x:{value:10,tag:'ok'},...},...]
       }),
       validator: (value) => {
         return (

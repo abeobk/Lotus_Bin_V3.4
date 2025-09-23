@@ -63,16 +63,16 @@ const API = {
 
         //mode
         case 'set_auto_mode':
-          app.isAutoMode = true;
+          app.setMode(true);
           break;
         case 'set_manual_mode':
-          app.isAutoMode = false;
+          app.setMode(false);
           break;
 
-        // //make model
-        // case 'set_make_model':
-        //   app.makeModelLayout = value;
-        //   break;
+        //make model
+        case 'make_model_set_state':
+          app.setMakeModelState(value);
+          break;
       }
 
       event = null; //free memory
@@ -84,6 +84,7 @@ const API = {
     CSharpUtils.sendMessage({ type: 'get_cycle_info' }); //model, body, seq
     CSharpUtils.sendMessage({ type: 'get_result' }); //latest get results
     CSharpUtils.sendMessage({ type: 'get_history' }); //last results + counter
+    CSharpUtils.sendMessage({ type: 'make_model_get_state' }); //last results + counter
   },
 };
 

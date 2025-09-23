@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./theme.css">
     <script src="../../script/clusterize.min.js"></script>
     <script src="../../script/vue.global.prod.js"></script>
+    <script src="../../script/api.js"></script>
     <script src="../../script/split.min.js"></script>
     <script src="../../script/chart.js"></script>
     <script src="../../script/utils.js"></script>
@@ -19,22 +20,27 @@
     <div id="app" class="app-container">
         <nav>
             <!--MAIN-->
-            <button @click="activateSection('MAIN')"><i class="fa fa-table"></i></button>
+            <button :class="{'active': crrSection === 'MAIN'}" @click="activateSection('MAIN')"><i
+                    class="fa fa-table"></i></button>
             <!---->
-            <button @click="activateSection('IO')"><i class="fa fa-microchip"></i></button>
-            <button @click="activateSection('STATS')"><i class="fa fa-chart-pie"></i></button>
-            <button @click="activateSection('LOG')"><i class="fa fa-list"></i></button>
+            <button :class="{'active': crrSection === 'IO'}" @click="activateSection('IO')"><i
+                    class="fa fa-microchip"></i></button>
+            <button :class="{'active': crrSection === 'STATS'}" @click="activateSection('STATS')"><i
+                    class="fa fa-chart-pie"></i></button>
+            <button :class="{'active': crrSection === 'LOG'}" @click="activateSection('LOG')"><i
+                    class="fa fa-list"></i></button>
             <!--log-->
+            <button :class="{'active': crrSection === 'MODEL'}" v-show="!isAutoMode"
+                @click="activateSection('MODEL'); send_MakeModelButtonClick()"><i class="fa fa-cube"></i></button>
             <div style="flex:1"></div>
-            <button v-show="!isAutoMode" @click="send_MakeModelButtonClick"><i class="fa fa-cube"></i></button>
-            <button @click="send_SettingButtonClick"><i class="fa fa-gear"></i></button>
+            <button @click="send_SettingButtonClick()"><i class="fa fa-gear"></i></button>
             <button @click="toggleTheme()"><i class="fa fa-adjust"></i></button>
         </nav>
 
         <div class="split-container-vertical" id="vertical-split">
             <div class="split-panel-top">
                 <!--SECTION: CYCLE RESULT-->
-                <section>
+                <section v-show="crrSection==='MAIN' || crrSection==='IO'">
                     <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
                     </cycle-info-card>
@@ -54,6 +60,11 @@
                     <io-viewer v-for="(iomap, index) in ioViewers" :key="index" :ref="`ioViewer-${iomap.name}`">
                     </io-viewer>
                 </section>
+
+                <!--SECTION: IO VIEWER-->
+                <section v-show="crrSection==='MODEL'" class="section-main">
+                    <model-maker ref="modelMaker"></model-maker>
+                </section>
             </div>
 
             <div class="split-panel-bottom">
@@ -71,11 +82,11 @@
     <script src="./stat-view.js"></script>
     <script src="./io-view.js"></script>
     <script src="./history-table.js"></script>
-    <script src="../../script/api.js"></script>
+    <script src="./model-maker.js"></script>
     <script>
 
         const { createApp } = Vue;
-        const sections = ['MAIN', 'LOG', 'IO', 'STATS']
+        const sections = ['MAIN', 'LOG', 'IO', 'STATS', "MODEL"];
         const app = createApp({
             components: {
                 'cycle-info-card': window.CycleInfoCard,
@@ -84,6 +95,7 @@
                 'stat-view': window.StatView,
                 'io-viewer': window.IOViewer,
                 'history-table': window.HistoryTable,
+                'model-maker': window.ModelMaker,
             },
 
             data() {
@@ -141,12 +153,18 @@
                 activateSection(section) {
                     if (sections.includes(section)) {
                         this.crrSection = section;
-                        localStorage.setItem('crrSection', section);
+                        //dont save MODEL section to local storage
+                        if (this.crrSection != 'MODEL'){
+                            localStorage.setItem('crrSection', section);
+                        }
                     }
                     //render history table if switch to MAIN
                     if (section === 'MAIN') {
                         this.$nextTick(() => { this.$refs.historyTable.render(); });
                     }
+                    // if (section === 'MODEL') {
+                    //     CSharpUtils.sendMessage({ type: 'make_model_get_state' });
+                    // }
                     this.adjustLogSplitter();
                 },
 
@@ -274,6 +292,16 @@
                     CSharpUtils.sendMessage({ type: 'setting_button_click' });
                 },
                 //CYCLE INFO
+                //MAKE MODEL
+                setMakeModelState(value) { this.$refs.modelMaker.setState(value); },
+
+                //mode
+                setMode(auto){
+                    this.isAutoMode = auto;
+                    if(this.isAutoMode && this.crrSection === 'MODEL'){
+                        this.activateSection('MAIN');
+                    }
+                }
             },
             mounted() {
                 this.initTheme();

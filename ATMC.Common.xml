@@ -4,6 +4,21 @@
         <name>ATMC.Common</name>
     </assembly>
     <members>
+        <member name="F:ATMC.Common.ModelMaker._clouds">
+            <summary>
+            Dictionary to store pointcloud data with scan action names as keys.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ModelMaker._poses">
+            <summary>
+            Dictionary to store robot pose data with pose names as keys.
+            </summary>
+        </member>
+        <member name="F:ATMC.Common.ModelMaker._scanActionGroups">
+            <summary>
+            List of group to be combined.
+            </summary>
+        </member>
         <member name="T:ATMC.Common.FormMakeModel">
             <summary>
             Form for creating and managing 3D models from scan data with robot poses.
@@ -129,13 +144,6 @@
             }
             </code>
             </example>
-        </member>
-        <member name="M:ATMC.Common.FormMakeModel.lbScanItems_SelectedIndexChanged(System.Object,System.EventArgs)">
-            <summary>
-            Handles the selected index change event for scan items list.
-            </summary>
-            <param name="sender">The source of the event.</param>
-            <param name="e">Event arguments.</param>
         </member>
         <member name="M:ATMC.Common.FormMakeModel.btClear_Click(System.Object,System.EventArgs)">
             <summary>
