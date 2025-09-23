@@ -202,6 +202,7 @@ d085ee86e47b85cf2b9f847d0a0a5a6391edf6fc *./web/src/app/log-viewer-fixed-height.
 89c33a10b986d904c9c40f16b2b6bcb794a37e51 *./web/src/app/stat-view.js
 241a51d83d6758cbbf167ac36dedc24efce0cbb5 *./web/src/app/template.js
 333f75f8bb20ffbd677a0b136967a8b040a9cbfa *./web/src/app/theme.css
+c69f52f7ca80fa3a5fe38e7d66843e5379763f03 *./web/src/dashboard/index.html
 da6f537cd597b76d264970f1c95e4beebc82fde9 *./web/webfonts/fa-brands-400.ttf
 31c30351084e2670bbe5c47bd342e11540a68717 *./web/webfonts/fa-brands-400.woff2
 6e7f0651059eea9783ea8b28892b2c979c2f7f30 *./web/webfonts/fa-regular-400.ttf
