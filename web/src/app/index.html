@@ -20,7 +20,7 @@
     <div id="app" class="app-container">
         <nav>
             <!--MAIN-->
-            <button :class="{'active': crrSection === 'MAIN'}" @click="activateSection('MAIN')"><i
+            <button :class="{'active': crrSection === 'MAIN'}" @click="debugCnt++; activateSection('MAIN')"><i
                     class="fa fa-table"></i></button>
             <!---->
             <button :class="{'active': crrSection === 'IO'}" @click="activateSection('IO')"><i
@@ -57,7 +57,8 @@
 
                 <!--SECTION: IO VIEWER-->
                 <section v-show="crrSection==='IO'" class="io-section">
-                    <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index" :ref="`ioViewer-${iomap.name}`"> </io-viewer>
+                    <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index" :ref="`ioViewer-${iomap.name}`">
+                    </io-viewer>
                 </section>
 
                 <!--SECTION: IO VIEWER-->
@@ -101,6 +102,7 @@
                 return {
                     //mode
                     isAutoMode: false,
+                    debugCnt:0,
 
                     //current section
                     crrSection: 'MAIN',
@@ -153,7 +155,7 @@
                     if (sections.includes(section)) {
                         this.crrSection = section;
                         //dont save MODEL section to local storage
-                        if (this.crrSection != 'MODEL'){
+                        if (this.crrSection != 'MODEL') {
                             localStorage.setItem('crrSection', section);
                         }
                     }
@@ -295,12 +297,12 @@
                 setMakeModelState(value) { this.$refs.modelMaker.setState(value); },
 
                 //mode
-                setMode(auto){
+                setMode(auto) {
                     this.isAutoMode = auto;
-                    if(this.isAutoMode && this.crrSection === 'MODEL'){
+                    if (this.isAutoMode && this.crrSection === 'MODEL') {
                         this.activateSection('MAIN');
                     }
-                }
+                },
             },
             mounted() {
                 this.initTheme();
@@ -309,9 +311,21 @@
 
                 //init API
                 API.init();
+
+                // Disable right-click context menu
+                document.addEventListener('contextmenu', event => event.preventDefault());
             },
             watch: {
-
+                debugCnt(newVal) {
+                    const dt = performance.now() - this.debugT0;
+                    this.debugT0 = performance.now();
+                    if (dt > 500) { this.debugCnt = 0; }
+                    if (this.debugCnt > 5) {
+                        this.debugCnt = 0;
+                        console.log("Debug mode activated");
+                        CSharpUtils.sendMessage({ type: 'open_dev_tool' });
+                    }
+                }
             },
             //clearn up
             beforeUnmount() {

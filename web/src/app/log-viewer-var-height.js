@@ -399,7 +399,8 @@ if (!document.querySelector('#log-viewer-styles')) {
         background: var(--bg-secondary);
         border-bottom: 1px solid var(--border-color);
         overflow: hidden;
-        height:2rem;
+        min-height:2rem;
+        max-height:2rem;
       }
 
       .level-filter, .text-filter {
