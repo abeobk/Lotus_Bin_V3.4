@@ -304,8 +304,6 @@ if (!document.querySelector('#log-viewer-styles')) {
         flex-direction: column;
         background: var(--bg-primary);
         overflow: hidden;
-        border-radius: var(--spacing-sm);
-        border: 1px solid var(--border-color);
       }
 
       .log-container {
@@ -324,7 +322,6 @@ if (!document.querySelector('#log-viewer-styles')) {
         background: var(--bg-secondary);
         padding: var(--spacing-xs);
         gap: var(--spacing-md);
-        border-bottom: 1px solid var(--border-color);
       }
 
       .filter-controls {

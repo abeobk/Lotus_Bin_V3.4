@@ -60,9 +60,8 @@ if (!document.querySelector('#stat-view-styles')) {
             flex-direction:row;
             height:120px;
             background:var(--bg-primary);
-            border-radius: var(--spacing-sm);
-            border:1px solid var(--border-color);
-            box-shadow: 0 4px 8px var(--shadow-color);
+            border-top:1px solid var(--border-color);
+            padding:var(--spacing-sm);
          } 
          .pie-chart-area{
             display:flex;

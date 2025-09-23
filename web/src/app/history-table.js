@@ -149,14 +149,11 @@ if (!document.querySelector('#history-table-styles')) {
   const styles = /*css*/ `
     <style id="history-table-styles">
       .history-table-container {
-        border-radius: var(--spacing-sm);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 4px 8px var(--shadow-color);
         display: flex;
         flex-direction: column;
         flex:1;
         min-height: 150px;
-        box-shadow: 0 4px 8px var(--shadow-color);
+        border-top:1px solid var(--border-color);
       }
 
       .table-header{

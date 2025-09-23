@@ -114,9 +114,7 @@ if (!document.querySelector('#model-maker-styles')) {
     .model-maker-container{
         display:flex;
         flex-direction:column;
-        border:1px solid var(--border-color);
-        border-radius: var(--spacing-sm);
-        box-shadow: 0 4px 8px var(--shadow-color);
+        border-top:1px solid var(--border-color);
         background-color: var(--bg-);
         overflow:auto;
         height:100%;
@@ -125,7 +123,6 @@ if (!document.querySelector('#model-maker-styles')) {
         display:flex;
         flex-direction:row;
         align-items:center;
-        padding:var(--spacing-xs);
         background-color: var(--bg-table-header);
         border-bottom:1px solid var(--border-color);
     }
@@ -133,17 +130,12 @@ if (!document.querySelector('#model-maker-styles')) {
         display:flex;
         flex-direction:column;
         flex-wrap:wrap;
-        gap:var(--spacing-sm);
-        padding:var(--spacing-sm);
-        padding-bottom:0;
     }
     .group-container{
         display:flex;
         flex-direction:column;
         padding:var(--spacing-sm);
         padding-bottom:0;
-        border-radius: var(--spacing-sm);
-        box-shadow: 0 2px 4px var(--shadow-color);
         background-color: var(--bg-secondary);
         margin-bottom:0;
         height:flex;
@@ -172,7 +164,7 @@ if (!document.querySelector('#model-maker-styles')) {
     .action-button{
         padding: var(--spacing-sm) var(--spacing-md) ;
         height: fit-content;
-        border-radius: var(--spacing-sm);
+        border-radius: var(--spacing-xs);
         background-color: var(--bg-primary);
         width:fit-content;
         font-size:1rem;
@@ -192,26 +184,22 @@ if (!document.querySelector('#model-maker-styles')) {
         border-top:1px solid var(--border-color);
         display:flex;
         flex-direction:column;
-        gap: var(--spacing-sm);
-        margin-top: var(--spacing-sm);
-        padding: var(--spacing-sm);
         height:fit-content;
     }
     .robot-pose-item{
         display:flex;
         flex-direction:column;
+        border-bottom:1px solid var(--border-color);
     }
     .robot-pose-item{
         display:flex;
         flex-direction:column;
         padding: var(--spacing-sm);
-        box-shadow: 0 1px 2px var(--shadow-color);
-        border-radius: var(--spacing-sm);
         background-color: var(--bg-secondary);
     }
     .robot-pose-name{
         font-weight:600;
-        color: var(--text-primary);
+        color: var(--accent-ok);
     }
     .robot-pose-value{
         font-family:"Consolas", "Roboto Mono", monospace;

@@ -47,12 +47,11 @@ if (!document.querySelector('#cycle-info-card-styles')) {
           .cycle-info-card {
               display: flex;
               flex-direction: row;
-              background: var(--bg-tertiary);
+              background: var(--bg-secondary);
               padding: var(--spacing-sm);
               width: auto;
               overflow: hidden;
-              box-shadow: 0 2px 8px var(--shadow-color);
-              border-radius: var(--spacing-sm);
+              border-top:1px solid var(--border-color);
           }
 
           .cycle-info-item {
@@ -83,7 +82,7 @@ if (!document.querySelector('#cycle-info-card-styles')) {
           .model-tag{
             background: var(--yellow);
             color: var(--bg-primary);
-            border-radius: var(--spacing-sm);
+            border-radius: var(--spacing-xs);
             padding: 0 var(--spacing-sm);
             font-size: 0.8em;
           }

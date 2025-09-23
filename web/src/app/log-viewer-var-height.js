@@ -38,25 +38,19 @@ const LogViewer = {
   template: /*html*/ `
     <div class="log-viewer">
       <div v-show="showControllers" class="log-viewer-controls">
-        <div class="filter-controls">
-          <select v-model="levelFilter" @change="render" class="level-filter">
-            <option value="LOG">LOG</option>
-            <option value="WARN">WARN</option>
-            <option value="ERROR">ERROR</option>
-            <option value="ALL">ALL</option>
-          </select>
-          <input 
-            type="text" 
-            v-model="textFilter" 
-            @input="render"
-            placeholder="Filter messages..." 
-            class="text-filter"
-          >
-        </div>
-        <div class="scroll-status">
-          <span>{{ totalLogs }} entries </span>
-          <span v-if="autoScrollPaused" class="auto-scroll-paused">[paused]</span>
-        </div>
+        <select v-model="levelFilter" @change="render" class="level-filter">
+          <option value="LOG">LOG</option>
+          <option value="WARN">WARN</option>
+          <option value="ERROR">ERROR</option>
+          <option value="ALL">ALL</option>
+        </select>
+        <input 
+          type="text" 
+          v-model="textFilter" 
+          @input="render"
+          placeholder="Filter messages..." 
+          class="text-filter"
+        >
       </div>
       <div v-show="showControllers && crrEntry" class="selected-entry-container">
         <div style="display:flex;flex-direction:row;margin:0;padding:0;">
@@ -382,9 +376,7 @@ if (!document.querySelector('#log-viewer-styles')) {
         flex-direction: column;
         background: var(--bg-primary);
         overflow: hidden;
-        border-radius: var(--spacing-sm);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 4px 8px var(--shadow-color);
+        border-top: 1px solid var(--border-color);
         user-select:text;
         cursor:text;
       }
@@ -401,37 +393,32 @@ if (!document.querySelector('#log-viewer-styles')) {
 
       .log-viewer-controls {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         background: var(--bg-secondary);
-        padding: var(--spacing-xs);
-        gap: var(--spacing-md);
         border-bottom: 1px solid var(--border-color);
-      }
-
-      .filter-controls {
-        display: flex;
-        gap: var(--spacing-sm);
-        align-items: center;
+        overflow: hidden;
+        height:2rem;
       }
 
       .level-filter, .text-filter {
         padding: var(--spacing-xs) var(--spacing-sm);
         border:none;
-        border-radius: var(--spacing-xs);
-        background: var(--bg-primary);
+        background: var(--bg-secondary);
         color: var(--text-primary);
         font-size: var(--font-size-sm);
+        height:100%;
       }
 
-      .level-filter { min-width: fit-content;background: var(--bg-tertiary); }
-      .text-filter { min-width: 200px; }
+      .level-filter { min-width: fit-content; background: var(--bg-tertiary); }
+      .text-filter { flex:1; }
 
       .text-filter:focus, .level-filter:focus {
         outline: none;
         border: 1px solid var(--accent-active);
       }
-      .scroll-status { font-size: var(--font-size-sm); color: var(--text-muted); }
+      .scroll-status { font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
       .log-content { position: relative; }
       .log-spacer { width: 100%; }
 

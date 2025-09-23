@@ -71,7 +71,7 @@
     --bg-active: var(--base01);
 
     --bg-section: rgb(0, 55, 66);
-    --bg-nav: rgb(0, 44, 55);
+    --bg-nav: rgb(0, 33, 44);
     --bg-table-header: rgb(0, 66, 77);
     --bg-table-row-odd: rgb(0, 33, 44);
     --bg-table-row-even: rgb(0, 40, 50);
@@ -219,33 +219,26 @@ nav {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding: 0 var(--spacing-sm);
     height: var(--nav-size);
-    gap: var(--spacing-sm);
     background: var(--bg-nav);
-    /* border-bottom: 1px solid var(--border-color); */
-    box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 button {
     background: transparent;
     color: var(--text-primary);
     border: none;
-    width: var(--button-size);
-    height: var(--button-size);
-    border-radius:100%;
+    width: var(--nav-size);
+    height: var(--nav-size);
     cursor: pointer;
 }
 
 button:hover {
     background-color: var(--bg-hover);
-    box-shadow: 0 1px 2px var(--shadow-color);
 }
 
 button.active {
     color: var(--accent-active);
     background-color: var(--bg-secondary);
-    box-shadow: 0 1px 2px var(--shadow-color);
 }
 
 .border-right {
@@ -255,11 +248,9 @@ button.active {
 section {
     background-color: transparent;
     margin: 0;
-    padding: var(--spacing-sm);
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
-    gap: var(--spacing-sm);
     box-shadow: none;
 }
 
@@ -275,7 +266,9 @@ section:last-of-type {
     overflow-y: auto;
     flex: 1;
     min-height: 0;
-    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
 }
 
 .section-main {

@@ -79,10 +79,8 @@ if (!document.querySelector('#result-table-styles')) {
     <style id="result-table-styles">
       .result-table-container {
         overflow: auto;
-        box-shadow: 0 2px 8px var(--shadow-color);
-        border-radius: var(--spacing-sm);
         background: var(--bg-secondary);
-        border: 1px solid var(--border-color);
+        border-top:1px solid var(--border-color);
       }
       .result-table {
         width: 100%;
@@ -92,19 +90,16 @@ if (!document.querySelector('#result-table-styles')) {
         text-transform: uppercase;
         white-space: nowrap;
         overflow: hidden;
-        box-shadow: 0 2px 4px var(--shadow-color);
       }
 
       .header-row {
         background: var(--bg-table-header);
         color: var(--text-primary);
-        border-bottom: 1px solid var(--border-color);
       }
 
       .header-cell { 
         text-align:right;
         padding: 0.25rem 0.5rem 0;
-        /* border: 1px solid var(--border-color);  */
       }
 
       .header-cell:first-child{ max-width:1rem; }
