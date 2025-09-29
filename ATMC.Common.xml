@@ -660,6 +660,11 @@
             <param name="right_pnts"></param>
             <returns>Return null if not success</returns>
         </member>
+        <member name="T:ATMC.Common.LaserSealer.Utils">
+            <summary>
+            Sealer utilities
+            </summary>
+        </member>
         <member name="M:ATMC.Common.LaserSealer.Utils.GetRobotPathInterval(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Double)">
             <summary>
             Given a robot path as a sequence of timed tool positions, find a position that match with the given time 
@@ -679,10 +684,43 @@
             <summary>
             Get Sealer path pointcloud
             </summary>
+            <param name="fps">Sealer laser fps</param>
             <param name="profile_cloud">Sealer profile cloud</param>
             <param name="robot_path">Robot path list</param>
             <param name="filtered_ok_chain">Filtered ok chain</param>
             <returns>Sealer ok cloud</returns>
+        </member>
+        <member name="F:ATMC.Common.LaserSealer.Utils.ColorMap">
+            <summary>
+            color height map
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.InspectProfile(LotusAPI.Math.Point2f[],ATMC.Common.LaserSealer.SealerSpec)">
+            <summary>
+            Inspect a sealer profile
+            </summary>
+            <param name="seg">profile</param>
+            <param name="spec">sealer inspection spec</param>
+            <returns></returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.InspectProfile(LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SealerSpec},ATMC.Common.LaserSealer.SealerModelConfigBase)">
+            <summary>
+            Inspect a sealer profile with multiple specs, return the best result
+            </summary>
+            <param name="seg">sealer profile</param>
+            <param name="specs">inspection specs</param>
+            <param name="model">model config</param>
+            <returns></returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.Utils.ShowProfileInspectionResult(LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SealerSpec},LotusAPI.Controls.Graph.GraphView,ATMC.Common.LaserSealer.SealerModelConfigBase)">
+            <summary>
+            SHow profile inspection result on graph
+            </summary>
+            <param name="seg">profile</param>
+            <param name="specs">specs</param>
+            <param name="graph">graph</param>
+            <param name="model">model</param>
+            <returns></returns>
         </member>
         <member name="M:ATMC.Common.LaserSealer.Utils.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SealerModelConfigBase,System.Int32)">
             <summary>
@@ -719,6 +757,7 @@
             <param name="fps">Sealer FPS</param>
             <param name="pc">Sealer cloud</param>
             <param name="model">Model config</param>
+            <param name="use_align_range">enable/disable align range</param>
             <returns>Starting position if found, -1 otherwise</returns>
         </member>
         <member name="M:ATMC.Common.ModelConfigBase.Match(System.Int32)">
