@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <link rel="preload" href="../../css/font-awesome.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="./theme.css">
+    <script src="../../script/clusterize.min.js"></script>
+    <script src="../../script/vue.global.prod.js"></script>
+    <script src="../../script/api.js"></script>
+    <script src="../../script/split.min.js"></script>
+    <script src="../../script/chart.js"></script>
+    <script src="../../script/utils.js"></script>
+</head>
+
+<body>
+    <div id="app" class="app-container">
+        <nav>
+            <button @click="connectDB('IO')" title="Connect to Database"> <i class="fa fa-database"></i> </button>
+            <!-- <button @click="send_SettingButtonClick()"><i class="fa fa-gear"></i></button> -->
+            <span style="flex:1"></span>
+            <button @click="toggleTheme()" title="Toggle theme"><i class="fa fa-adjust"></i></button>
+        </nav>
+
+        <div class="split-container-vertical" id="vertical-split">
+            <div class="split-panel-top">
+                <section>
+                    <db-viewer ref="dbViewer"></db-viewer>
+                </section>
+            </div>
+            <div class="split-panel-mid1">
+                <section>
+                    <log-viewer ref="graphView"></log-viewer>
+                </section>
+            </div>
+            <div class="split-panel-bottom">
+                <section>
+                    <log-viewer ref="logViewer"></log-viewer>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vue.js -->
+    <script src="sample-data.js"></script>
+    <script src="./db-viewer.js"></script>
+    <script src="./log-viewer.js"></script>
+    <script>
+
+        const { createApp } = Vue;
+        const defaultSplitterSize = [60,30, 10]; // Default sizes for top/mid/bottom panels
+        const defaultMinSizes = [100,100, 100]; // Minimum sizes for top/mid/bottom panels
+        const app = createApp({
+            components: {
+                'db-viewer': window.DBViewer,
+                'log-viewer': window.LogViewer,
+            },
+
+            data() {
+                return {}
+            },
+            computed: {},
+            methods: {
+                //TOGGLE THEME
+                toggleTheme() {
+                    const body = document.body;
+                    if (body.getAttribute('data-theme') === 'light') {
+                        body.removeAttribute('data-theme');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        body.setAttribute('data-theme', 'light');
+                        localStorage.setItem('theme', 'light');
+                    }
+                },
+                initTheme() {
+                    const savedTheme = localStorage.getItem('theme');
+                    if (savedTheme === 'light') {
+                        document.body.setAttribute('data-theme', 'light');
+                    } else { document.body.removeAttribute('data-theme'); }
+                },
+
+                // Add this new method
+                initVerticalSplit() {
+                    this.loadSavedSplitSizes();
+                    // Initialize vertical split (top/bottom panels)
+                    this.splitter = Split(['#vertical-split .split-panel-top', '#vertical-split .split-panel-mid1', '#vertical-split .split-panel-bottom'], {
+                        sizes: defaultSplitterSize,              // Top panel 60%, bottom panel 40%
+                        minSize: defaultMinSizes,          // Minimum sizes in pixels
+                        gutterSize: 3,                // Splitter height
+                        cursor: 'row-resize',         // Cursor style
+                        direction: 'vertical',        // Split direction
+                        onDragEnd: (sizes) => {
+                            localStorage.setItem('logSplitterSizes', JSON.stringify(sizes));
+                        }
+                    });
+                    this.adjustLogSplitter();
+                },
+                // Adjust splitter sizes based on current section
+                adjustLogSplitter() {
+                    this.splitter.setSizes(this.logSplitterSizes);
+                },
+
+                // Load saved split sizes
+                loadSavedSplitSizes() {
+                    const logSplitterSizes = localStorage.getItem('logSplitterSizes');
+                    this.logSplitterSizes = logSplitterSizes ? JSON.parse(logSplitterSizes) : defaultSplitterSize;
+                },
+            },
+            mounted() {
+                this.initTheme();
+                this.$nextTick(() => { this.initVerticalSplit(); });
+
+                //init API
+                API.init();
+
+                if (window.chrome.webview) {
+                    // Disable right-click context menu
+                    document.addEventListener('contextmenu', event => event.preventDefault());
+                    return;
+                }
+                //---test code---
+                //TODO: add test data
+            },
+            watch: {
+                debugCnt(newVal) {
+                    const dt = performance.now() - this.debugT0;
+                    this.debugT0 = performance.now();
+                    if (dt > 500) { this.debugCnt = 0; }
+                    if (this.debugCnt > 5) {
+                        this.debugCnt = 0;
+                        console.log("Debug mode activated");
+                        CSharpUtils.sendMessage({ type: 'open_dev_tool' });
+                    }
+                }
+            },
+            //clearn up
+            beforeUnmount() {
+                if (this.splitter) {
+                    this.splitter.destroy();
+                    this.splitter = null;
+                }
+            }
+        }).mount('#app');
+        window.app = app; 
+    </script>
+</body>
+
+</html>

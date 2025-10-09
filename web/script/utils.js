@@ -147,12 +147,9 @@ const ChartUtils = {
 const CSharpUtils = {
   //send message to C# backend
   sendMessage(messageData) {
-    if (window.chrome && window.chrome.webview) {
-      console.log('Sending message to C# backend:', messageData);
-      window.chrome.webview.postMessage(messageData);
-    } else {
-      console.warn('WebView2 postMessage API not available.');
-    }
+    if (!window.chrome.webview) return;
+    console.log('Sending message to C# backend:', messageData);
+    window.chrome.webview.postMessage(messageData);
   },
 };
 

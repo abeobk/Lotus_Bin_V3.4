@@ -67,14 +67,14 @@
     --bg-secondary: var(--base02);
     --bg-tertiary: #0c4a56;
     --bg-card: var(--base02);
-    --bg-hover: rgb(0, 77, 88);
+    --bg-hover: rgb(0, 55, 66);
     --bg-active: var(--base01);
 
     --bg-section: rgb(0, 55, 66);
     --bg-nav: rgb(0, 33, 44);
     --bg-table-header: rgb(0, 66, 77);
-    --bg-table-row-odd: rgb(0, 33, 44);
-    --bg-table-row-even: rgb(0, 40, 50);
+    --bg-table-row-odd: rgb(0, 44, 55);
+    --bg-table-row-even: rgb(0, 49, 59);
     --bg-io-badge: #005f73;
 
     /* Text Colors - Solarized Dark */
@@ -119,8 +119,9 @@
 
     /* slightly darker cream */
     --bg-card: var(--base2);
-    --bg-hover: var(--base2);
+    --bg-hover: #e0d5b7;
     --bg-active: #e0d5b7;
+
 
     --bg-section: var(--bg-secondary);
     --bg-nav: var(--bg-primary);
@@ -247,38 +248,66 @@ button.active {
 
 section {
     background-color: transparent;
-    margin: 0;
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
     box-shadow: none;
+    flex: 1;
+    min-height: 0;
+    border-top: 2px solid var(--border-color);
 }
 
-section:last-of-type {
+.section-container {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
     flex: 1;
     min-height: 0;
 }
 
-.io-section {
+.section--main {
+    flex: none;
+}
+
+.section--history,
+.section--model 
+.section--io{
+    flex: 1;
+    min-height: 0;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    font-size: var(--font-size-lg);
+    background-color: var(--bg-tertiary);
+}
+
+.section-header__button {
+    padding: 0 var(--spacing-sm);
+}
+
+.section-header__button:hover {
+    cursor: pointer;
+    color: var(--accent-active)
+}
+
+.section-header__label {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0 var(--spacing-sm);
+}
+
+
+.io-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: var(--spacing-xs);
+    gap: var(--spacing-xs);
     overflow-y: auto;
-    flex: 1;
     min-height: 0;
-    border-top: 1px solid var(--border-color);
-    padding: var(--spacing-sm);
-    gap: var(--spacing-sm);
-}
-
-.section-main {
-    overflow-y: auto;
-    flex: 1;
-    min-height: 0;
-}
-
-.section-log {
-    padding-top: 2px;
 }
 
 .split-container-vertical {
@@ -296,7 +325,7 @@ section:last-of-type {
     background: var(--bg-color);
     display: flex;
     flex-direction: column;
-    min-height: 100px;
+    min-height: 50px;
 }
 
 /* Split.js gutter styling for vertical split */

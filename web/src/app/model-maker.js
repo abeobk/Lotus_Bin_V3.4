@@ -8,44 +8,7 @@ const ModelMaker = {
   // Reactive data
   data() {
     return {
-      state: {
-        poses: [
-          { name: 'Pose1', value: 'X:0 Y:0 Z:0 Rx:0 Ry:0 Rz:0' },
-          { name: 'Pose1', value: 'X:0 Y:0 Z:0 Rx:0 Ry:0 Rz:0' },
-          { name: 'Pose1', value: 'X:0 Y:0 Z:0 Rx:0 Ry:0 Rz:0' },
-          { name: 'Pose1', value: 'X:0 Y:0 Z:0 Rx:0 Ry:0 Rz:0' },
-          { name: 'Pose1', value: 'X:0 Y:0 Z:0 Rx:0 Ry:0 Rz:0' },
-        ],
-        groups: [
-          {
-            title: 'BODY',
-            actions: [
-              { name: 'BODY1', ok: true },
-              { name: 'BODY2', ok: false },
-              { name: 'BODY3', ok: true },
-            ],
-          },
-          {
-            title: 'DOOR',
-            actions: [
-              { name: 'DOOR1', ok: false },
-              { name: 'DOOR2', ok: false },
-              { name: 'DOOR3', ok: true },
-            ],
-          },
-          {
-            title: 'HANGER',
-            actions: [{ name: 'HANGER', ok: false }],
-          },
-          {
-            title: 'HANGER',
-            actions: [
-              { name: 'HANGER', ok: false },
-              { name: 'HANGER', ok: false },
-            ],
-          },
-        ],
-      },
+      state:{poses:[], groups:[]},
     };
   },
 
@@ -105,6 +68,19 @@ const ModelMaker = {
       CSharpUtils.sendMessage({ type: 'make_model_reset' });
     },
   },
+  mounted() {
+    if (window.chrome.webview) return;
+    //test view
+    this.$nextTick(() => {
+      //create 10 random poses
+      this.state.poses = Array.from({ length: 100 }, (_, index) => ({ name: `Pose${index + 1}`, value: 'X:0 Y:0 Z:0 Rx:0 Ry:0 Rz:0' }));
+      //create 10 random groups with random actions
+      this.state.groups = Array.from({ length: 10 }, (_, gIndex) => ({
+        title: `GROUP${gIndex + 1}`,
+        actions: Array.from({ length: Math.floor(Math.random() * 5) + 1 }, (_, aIndex) => ({ name: `ACTION${aIndex + 1}`, ok: Math.random() > 0.5 })),
+      }));
+    });
+  },
 };
 
 //inject style
@@ -137,6 +113,7 @@ if (!document.querySelector('#model-maker-styles')) {
         padding:var(--spacing-sm);
         padding-bottom:0;
         background-color: var(--bg-secondary);
+        border-bottom:1px solid var(--border-color);
         margin-bottom:0;
         height:flex;
         flex:1;

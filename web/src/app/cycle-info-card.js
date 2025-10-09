@@ -17,7 +17,7 @@ const CycleInfoCard = {
                 <i class="fa" :class="{
                     'fa-circle-check': status.toLowerCase() === 'ok', 
                     'fa-circle-exclamation': status.toLowerCase() === 'ng', 
-                    'fa-spinner fa-spin': status === ''
+                    'fa-spinner fa-spin': status === '...' || status === ''
                 }"></i>
             </div>
         </div>

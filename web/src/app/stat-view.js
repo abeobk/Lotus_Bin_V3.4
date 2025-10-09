@@ -9,7 +9,7 @@ const StatView = {
       ngcnt: 0,
       total:0,
       okpercent:0,
-      hourlyData: [], //{hour: '00', ok: 0, ng:0},...
+      hourlyData:[],
     };
   },
   //template
@@ -49,6 +49,21 @@ const StatView = {
       this.renderHourlyChart(this.hourlyData, showNG);
     }
   },
+  mounted() {
+    //test view
+    if(window.chrome.webview)return;
+    this.$nextTick(() => {
+       this.hourlyData = Array.from({ length: 24 }, (_, i) => {
+         const ok = Math.floor(Math.random() * 25);
+         const ng = Math.floor(Math.random() * 3);
+         return { ok, ng };
+       });
+      this.renderHourlyChart(this.hourlyData, false);
+      this.okcnt = this.hourlyData.reduce((sum, hour) => sum + hour.ok, 0);
+      this.ngcnt = this.hourlyData.reduce((sum, hour) => sum + hour.ng, 0);
+      this.renderPieChart(this.okcnt, this.ngcnt);
+    });
+  }
 };
 
 //inject style
@@ -60,7 +75,6 @@ if (!document.querySelector('#stat-view-styles')) {
             flex-direction:row;
             height:120px;
             background:var(--bg-primary);
-            border-top:1px solid var(--border-color);
             padding:var(--spacing-sm);
          } 
          .pie-chart-area{

@@ -23,7 +23,7 @@ const ResultTable = {
 
   template: /*html*/ `
     <div class="result-table-container">
-      <h3 style="text-align:center;text-transform:uppercase;">{{ table.title }}</h3>
+      <h3 class="result-table-title"><i class="fa fa-table"></i>&nbsp;{{table.title }}</h3>
       <table class="result-table">
         <thead>
           <tr class="header-row">
@@ -80,8 +80,18 @@ if (!document.querySelector('#result-table-styles')) {
       .result-table-container {
         overflow: auto;
         background: var(--bg-secondary);
-        border-top:1px solid var(--border-color);
       }
+
+      .result-table-title{
+        text-align:left;
+        text-transform:uppercase;
+        font-weight:600;
+        padding-left:0.5rem;
+        background-color:var(--bg-primary);
+        border-top:2px solid var(--border-color);
+        border-bottom:1px solid var(--border-color);
+      }
+
       .result-table {
         width: 100%;
         font-weight: 500;
@@ -108,7 +118,6 @@ if (!document.querySelector('#result-table-styles')) {
 
       .data-row { 
         background:var(--bg-table-row-odd);
-        border-bottom: 1px solid var(--border-color);
       }
 
       .data-row:last-child {

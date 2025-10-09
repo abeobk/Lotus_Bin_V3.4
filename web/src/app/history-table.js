@@ -4,7 +4,10 @@ const HistoryTable = {
   // Reactive data
   data() {
     return {
-      table: { title: 'Production History', cols: [], rows: [] },
+      table: {
+        title: 'Production History',cols:[],rows:[],
+      },
+      colWidths: [],
       filteredItems: [],
       filteredTotalHeight: 0,
       topPadding: 0,
@@ -20,13 +23,11 @@ const HistoryTable = {
 
   template: /*html*/ `
   <div class="history-table-container">
-    <h3 style="text-align:center;text-transform:uppercase;">{{ table.title }}</h3>
-
-    <div class="table-header" >
-        <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
-          <span v-if="col!=='res'">{{col}}</span>
-        </template>
-     <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
+    <div class="table-header">
+      <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
+        <span v-if="col!=='res'">{{getColText(colIndex)}}</span>
+      </template>
+      <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
     </div>
 
     <div class="table-content" ref="container" 
@@ -42,7 +43,7 @@ const HistoryTable = {
             <span v-if="col!=='res'">{{row[col]}}</span>
           </template>
 
-          <i class="fa " :class="{
+          <i class="fa res-cell" :class="{
             'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
             'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
             'fa-spinner fa-spin': !row.res || !row.res || row.res === '',
@@ -59,12 +60,14 @@ const HistoryTable = {
     updateTable(data) {
       this.table = data;
       //change time column text
-      this.filterItem();
-      this.render();
       this.showNGOnly = false; // Reset filter when new data is loaded
       this.$emit('show-ng-only', this.showNGOnly);
-      //scroll to top
-      this.scrollToTop();
+      this.filterItem();
+      this.$nextTick(() => {
+        this.render();
+        //scroll to top
+        this.scrollToTop();
+      });
     },
     filterItem() {
       if (!this.table || !this.table.rows || this.table.rows.length === 0)
@@ -122,6 +125,27 @@ const HistoryTable = {
         this.filteredTotalHeight - this.topPadding - visibleHeight;
       this.visibleStart = startIndex;
       this.visibleEnd = endIndex;
+      //compute col widths
+      this.colWidths = new Array(this.table.cols.length).fill(0);
+      this.filteredItems.forEach((row) => {
+        this.table.cols.forEach((col, colIndex) => {
+          this.colWidths[colIndex] = Math.max(
+            this.colWidths[colIndex],
+            row[col] ? row[col].toString().length : 1
+          );
+        });
+      });
+    },
+    getColText(colIndex){
+      const colwidth = this.colWidths[colIndex];
+      //space padding to match colwidth if colwidth > text length
+      const txt = this.table.cols[colIndex];
+      if(colwidth > txt.length){
+        //padd spaces to both sides
+        const totalSpaces = (colwidth - txt.length) * 0.75;
+        return '\u00A0'.repeat(totalSpaces) + txt + '\u00A0'.repeat(totalSpaces);
+      }
+      else {return txt;}
     },
 
     getVisibleRows() {
@@ -133,8 +157,9 @@ const HistoryTable = {
     },
   },
   mounted() {
+    if(window.chrome.webview)return;
     this.$nextTick(() => {
-      this.render();
+      this.updateTable(SampleData.generateHistoryData());
     });
   },
   // Cleanup to prevent memory leaks
@@ -159,17 +184,17 @@ if (!document.querySelector('#history-table-styles')) {
       .table-header{
         display:flex;
         flex-direction:row;
-        justify-content:space-between;
         align-items:center;
+        justify-content:space-between;
         text-transform:uppercase;
         font-weight:600;
         background:var(--bg-table-header);
-        padding:var(--spacing-sm);
+        padding:0 var(--spacing-sm);
+        min-width:100%;
       }
-      .table-header:first-child{max-width:1rem;}
+      .table-header:last-child{max-width:2rem;}
 
       .table-content{
-        width: 100%;
         font-weight: 500;
         font-size: var(--font-size-md);
         border-collapse:collapse;
@@ -177,8 +202,9 @@ if (!document.querySelector('#history-table-styles')) {
         white-space: nowrap;
         overflow-y:auto;
         flex:1;
-        min-height:100px;
         position: relative;
+        min-height:100px;
+        min-width: 100%;
       }
       .table-content-scrollarea{
         position: relative;
@@ -191,7 +217,6 @@ if (!document.querySelector('#history-table-styles')) {
         justify-content:space-between;
         align-items:center;
         background:var(--bg-table-row-odd);
-        border-bottom: 1px solid var(--border-color);
         padding:0 var(--spacing-sm);
         line-height:16px;
       }
@@ -201,9 +226,8 @@ if (!document.querySelector('#history-table-styles')) {
       .ng-res{ color: var(--accent-ng) !important; }
       .ok-res { color: var(--accent-ok) !important; }
       .row-spacer{width:100%;}
-      .filter-icon{
-        cursor:pointer;
-      }
+      .res-cell{width:1rem;}
+      .filter-icon{ cursor:pointer; }
       .filter-icon:hover{ color:var(--accent-ng); }
     </style>
   `;

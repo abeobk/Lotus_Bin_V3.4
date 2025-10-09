@@ -39,8 +39,10 @@
 
         <div class="split-container-vertical" id="vertical-split">
             <div class="split-panel-top">
+                <!------------------------->
                 <!--SECTION: CYCLE RESULT-->
-                <section v-show="crrSection==='MAIN' || crrSection==='IO'">
+                <!------------------------->
+                <section v-show="crrSection==='MAIN' || crrSection==='IO'" class="section--main">
                     <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
                     </cycle-info-card>
@@ -49,26 +51,34 @@
                     </div>
                 </section>
 
+                <!----------------->
                 <!--SECTION: MAIN-->
-                <section v-show="crrSection==='MAIN'" class="section-main">
+                <!----------------->
+                <section v-show="crrSection==='MAIN'" class="section--history">
                     <stat-view ref="statView"></stat-view>
                     <history-table ref="historyTable" @show-ng-only="handleShowNGOnly"></history-table>
                 </section>
 
+                <!---------------------->
                 <!--SECTION: IO VIEWER-->
-                <section v-show="crrSection==='IO'" class="io-section">
-                    <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index" :ref="`ioViewer-${iomap.name}`">
-                    </io-viewer>
+                <!---------------------->
+                <section v-show="crrSection==='IO'" class="section--io">
+                    <div class="io-container">
+                        <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index" :ref="`ioViewer-${iomap.name}`">
+                        </io-viewer>
+                    </div>
                 </section>
 
+                <!---------------------->
                 <!--SECTION: IO VIEWER-->
-                <section v-show="crrSection==='MODEL'" class="section-main">
+                <!---------------------->
+                <section v-show="crrSection==='MODEL'" class="section--model">
                     <model-maker ref="modelMaker"></model-maker>
                 </section>
             </div>
 
             <div class="split-panel-bottom">
-                <section class="section-log">
+                <section>
                     <log-viewer ref="logViewer"></log-viewer>
                 </section>
             </div>
@@ -76,13 +86,15 @@
     </div>
 
     <!-- Vue.js -->
+    <script src="sample-data.js"></script>
     <script src="./cycle-info-card.js"></script>
     <script src="./result-table.js"></script>
-    <script src="./log-viewer-var-height.js"></script>
+    <script src="./log-viewer.js"></script>
     <script src="./stat-view.js"></script>
     <script src="./io-view.js"></script>
     <script src="./history-table.js"></script>
     <script src="./model-maker.js"></script>
+
     <script>
 
         const { createApp } = Vue;
@@ -102,7 +114,7 @@
                 return {
                     //mode
                     isAutoMode: false,
-                    debugCnt:0,
+                    debugCnt: 0,
 
                     //current section
                     crrSection: 'MAIN',
@@ -126,6 +138,8 @@
                         // { name: 'R2.PLC', iomap: null },
                         // { name: 'R3.PLC', iomap: null },
                     ],
+
+                    sectionMainExpanded: true,
                 }
             },
             computed: {
@@ -168,6 +182,11 @@
                     // }
                     this.adjustLogSplitter();
                 },
+                toggleSection(section) {
+                    if (section === 'MAIN') {
+                        this.sectionMainExpanded = !this.sectionMainExpanded;
+                    }
+                },
 
                 initSection() {
                     const savedSection = localStorage.getItem('crrSection');
@@ -190,7 +209,7 @@
                     this.splitter = Split(['#vertical-split .split-panel-top', '#vertical-split .split-panel-bottom'], {
                         sizes: [80, 20],              // Top panel 60%, bottom panel 40%
                         minSize: [100, 100],          // Minimum sizes in pixels
-                        gutterSize: 6,                // Splitter height
+                        gutterSize: 3,                // Splitter height
                         cursor: 'row-resize',         // Cursor style
                         direction: 'vertical',        // Split direction
                         onDragEnd: (sizes) => {
@@ -312,8 +331,19 @@
                 //init API
                 API.init();
 
-                // Disable right-click context menu
-                document.addEventListener('contextmenu', event => event.preventDefault());
+                if (window.chrome.webview){
+                    // Disable right-click context menu
+                    document.addEventListener('contextmenu', event => event.preventDefault());
+                    return;
+                }
+                //---test code---
+                this.setPlcPinmap(SampleData.generatePinmaps());
+                setInterval(() => {
+                    this.cycleInfo = SampleData.generateCycleInfo();
+                    this.setResultTable(SampleData.generateResultTables());
+                    this.addLogEntries(SampleData.generateLogs());
+                }, 1000);
+                //---------------
             },
             watch: {
                 debugCnt(newVal) {

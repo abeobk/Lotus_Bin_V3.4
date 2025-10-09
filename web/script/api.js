@@ -2,6 +2,7 @@
 // C# API
 const API = {
   init() {
+    if(!window.chrome.webview)return;
     window.chrome.webview.addEventListener('message', (event) => {
       const type = event.data['type'];
       const value = event.data['value'];
