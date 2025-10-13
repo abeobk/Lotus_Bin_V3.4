@@ -64,7 +64,8 @@
                 <!---------------------->
                 <section v-show="crrSection==='IO'" class="section--io">
                     <div class="io-container">
-                        <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index" :ref="`ioViewer-${iomap.name}`">
+                        <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index"
+                            :ref="`ioViewer-${iomap.name}`">
                         </io-viewer>
                     </div>
                 </section>
@@ -331,18 +332,20 @@
                 //init API
                 API.init();
 
-                if (window.chrome.webview){
+                if (window.chrome.webview) {
                     // Disable right-click context menu
                     document.addEventListener('contextmenu', event => event.preventDefault());
                     return;
                 }
                 //---test code---
                 this.setPlcPinmap(SampleData.generatePinmaps());
+                this.addLogEntries(SampleData.generateLogs());
+
                 setInterval(() => {
                     this.cycleInfo = SampleData.generateCycleInfo();
                     this.setResultTable(SampleData.generateResultTables());
-                    this.addLogEntries(SampleData.generateLogs());
                 }, 1000);
+
                 //---------------
             },
             watch: {

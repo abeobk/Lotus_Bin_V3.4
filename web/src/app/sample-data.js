@@ -200,7 +200,7 @@ const SampleData = {
       'Debug: Configuration loaded.'];
 
       //generate randomly 1-5 logs
-      return Array.from({ length: 5 }, () => ({
+      return Array.from({ length: 5000 }, () => ({
         l: levels[Math.floor(Math.random() * levels.length)],
         m: messages[Math.floor(Math.random() * messages.length)],
         t: new Date().toISOString().replace('T', ' ').split('.')[0],

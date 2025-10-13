@@ -176,9 +176,11 @@ const LogViewer = {
       this.filteredTotalHeight = offset;
 
       // Auto scroll to bottom if enabled and update visible range
-      if (this.autoScroll && !this.autoScrollPaused) {
-        this.updateVisibleRange();
-      }
+      this.$nextTick(() => {
+        if (this.autoScroll && !this.autoScrollPaused) {
+          this.updateVisibleRange();
+        }
+      });
     },
 
     //measure height of a log entry
@@ -340,7 +342,16 @@ const LogViewer = {
 
   // Lifecycle hooks
   mounted() {
-
+    // Wait for container to be ready
+    const container = this.$refs.container;
+    const waitForContainer = () => {
+      this.$nextTick(() => {
+        if (!container || container.clientHeight <= 0) {
+          requestAnimationFrame(waitForContainer);
+        } else this.render();
+      });
+    };
+    waitForContainer();
   },
 
   // Watch for changes
