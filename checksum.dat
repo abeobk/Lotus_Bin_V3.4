@@ -8,7 +8,7 @@ b58cb32c234eed54d5202279bf63cc1cc3b246ae *./AbeoSIM.exe
 5af9c65aee03db4343d6974d00624d61d193ba48 *./AppCoreComponents1.dll
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
 30e635c6014eec87e4da76772b23b9ce9f63dee2 *./ATMC.App.DBViewer.pdb
-265690ace1f014f7c7657ae032910b4682ebe317 *./ATMC.Common.dll
+e7491c6a66e4234701aaf553571db3777d89423c *./ATMC.Common.dll
 149e8e4e9993a728d3b4eb2d4ce5d2458431efbc *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 5124f2e1f8f148bb4f3207bd533854fb5d20baee *./ATMC.WorkCellConfigurator.exe
@@ -73,7 +73,7 @@ b249dcf06dc09feab21243f49f31809d392c691f *./LotusAPI.HW.OpcPlc.xml
 62a27671aa357556bedfea897c3f81be859473a7 *./LotusAPI.HW.xml
 7b5fff163484f7703a7ee0961264a6d744d148dd *./LotusAPI.Robotics.ABB.dll
 7b426ec1ccec0ef2e6b00a81f51336de37d5de6e *./LotusAPI.Robotics.ABB.xml
-772d7843ac829119fd5d4331fcae4912646eefd2 *./LotusAPI.Robotics.dll
+159c4f92c351e3a3ef43ed2d1b81f455d68b544e *./LotusAPI.Robotics.dll
 fcece773c66ca5884a07ecc85945a820ea82362b *./LotusAPI.Robotics.Fanuc.dll
 cbc0c1ea43de88883a115c6dfeed6c8d5bd17cc9 *./LotusAPI.Robotics.Fanuc.xml
 de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
@@ -132,7 +132,7 @@ c4b621df2f55b09f618579e36946e91767d818e5 *./PylonUtility_v7_2.dll
 c8a7509dfd76499f48e259df221b0e2479601a97 *./PylonViewerHelper6.dll
 78a31815dd9adffc81ed627c3381c5f72a42bc26 *./QLightService.exe
 2ef23358007cb5bca278b701697a220a55cf5487 *./realsense2.dll
-9bfdbb66ef508f08c1fa7a6062b99cf9dd0f8f1a *./RobotController.exe
+cf9e6df1f1f5d531e41c5d40af9eddf8fa9fd80a *./RobotController.exe
 4bc0473dcc4955fc421acb585c03941b628dc59c *./RobotModels/FANUC_120iD.arm
 8dbe9627da2f8721e8b65c866f803035c29988e4 *./RobotModels/FANUC_M20IA.arm
 f8c0b175a3f32f5f9258d5d8a3867a241861c7ce *./RobotModels/FANUC_M710ID_70.arm
