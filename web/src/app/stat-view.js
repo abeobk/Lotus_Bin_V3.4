@@ -74,7 +74,7 @@ if (!document.querySelector('#stat-view-styles')) {
             display:flex;
             flex-direction:row;
             height:120px;
-            background:var(--bg-primary);
+            background-color:var(--bg-primary);
             padding:var(--spacing-sm);
          } 
          .pie-chart-area{

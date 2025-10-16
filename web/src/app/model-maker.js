@@ -16,35 +16,37 @@ const ModelMaker = {
   template: /*html*/ `
     <div class="model-maker-container">
         <div class="top-bar-container">
-        <button @click="saveButtonClick"><i class="fa fa-save"></i></button>
-        <span style="flex:1"></span>
-        <span style="font-weight:600">MAKE MODEL</span>
-        <span style="flex:1"></span>
-        <button @click="deleteButtonClick"><i class="fa fa-trash"></i></button>
+          <button @click="saveButtonClick"><i class="fa fa-save"></i></button>
+          <span style="flex:1"></span>
+          <span style="font-weight:600">MAKE MODEL</span>
+          <span style="flex:1"></span>
+          <button @click="deleteButtonClick"><i class="fa fa-trash"></i></button>
         </div>
 
-        <div class="all-group-container">
-        <div v-for="(group, gIndex) in state.groups" 
-            :key="'G-'+gIndex" 
-            class="group-container">
-            <div class="group-header">
-                <span><i class="fa fa-cube"></i> {{group.title}}</span>
+        <div class="model-maker-body-container">
+          <div class="all-group-container">
+            <div v-for="(group, gIndex) in state.groups" 
+                :key="'G-'+gIndex" 
+                class="group-container">
+                <div class="group-header">
+                    <span><i class="fa fa-cube"></i> {{group.title}}</span>
+                </div>
+                <div class="action-container">
+                <button v-for="(action, aIndex) in group.actions"
+                class="action-button" 
+                :class="{ active: action.ok }"
+                @click="actionClick(action)"
+                :key="'A-'+gIndex+'-'+aIndex"><i v-show="action.ok" class="fa fa-check"> </i> {{action.name}} </button>
+                </div>
             </div>
-            <div class="action-container">
-            <button v-for="(action, aIndex) in group.actions"
-             class="action-button" 
-             :class="{ active: action.ok }"
-             @click="actionClick(action)"
-             :key="'A-'+gIndex+'-'+aIndex"><i v-show="action.ok" class="fa fa-check"> </i> {{action.name}} </button>
-            </div>
-        </div>
-        </div>
+          </div>
 
-        <div v-show="state.poses && state.poses.length > 0" class="robot-poses-container">
-            <div class="robot-pose-item" v-for="(pose, pIndex) in state.poses" :key="'P-'+pIndex">
-                <span class="robot-pose-name"><i class="fa fa-location-dot"></i> {{pose.name}}</span>
-                <span class="robot-pose-value">{{pose.value}}</span>
-            </div>
+          <div v-show="state.poses && state.poses.length > 0" class="robot-poses-container">
+              <div class="robot-pose-item" v-for="(pose, pIndex) in state.poses" :key="'P-'+pIndex" :class="{ 'even-row': pIndex % 2 === 0 }">
+                  <span class="robot-pose-name"><i class="fa fa-location-dot"></i> {{pose.name}}</span>
+                  <span class="robot-pose-value">{{pose.value}}</span>
+              </div>
+          </div>
         </div>
     </div>
   `,
@@ -92,6 +94,12 @@ if (!document.querySelector('#model-maker-styles')) {
         flex-direction:column;
         border-top:1px solid var(--border-color);
         background-color: var(--bg-);
+        height:100%;
+    }
+    .model-maker-body-container{
+        display:flex;
+        flex-direction:column;
+        background-color: var(--bg-);
         overflow:auto;
         height:100%;
     }
@@ -100,29 +108,31 @@ if (!document.querySelector('#model-maker-styles')) {
         flex-direction:row;
         align-items:center;
         background-color: var(--bg-table-header);
-        border-bottom:1px solid var(--border-color);
+        box-shadow: 0 2px 4px var(--shadow-color);
+        z-index:1;
     }
     .all-group-container{
         display:flex;
-        flex-direction:column;
         flex-wrap:wrap;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
     }
+
     .group-container{
         display:flex;
         flex-direction:column;
-        padding:var(--spacing-sm);
-        padding-bottom:0;
         background-color: var(--bg-secondary);
-        border-bottom:1px solid var(--border-color);
-        margin-bottom:0;
         height:flex;
         flex:1;
+        border-radius: var(--spacing-xs);
+        box-shadow: 0 2px 4px var(--shadow-color);
     }
 
     .group-header{
         display:flex;
         flex-direction:row;
         width:100%;
+        padding: var(--spacing-xs) var(--spacing-sm);
         font-weight:600;
         color:var(--text-primarty);
         text-transform:uppercase;
@@ -147,6 +157,7 @@ if (!document.querySelector('#model-maker-styles')) {
         font-size:1rem;
         text-transform:uppercase;
         box-shadow: 0 1px 2px var(--shadow-color);
+        white-space: nowrap;
     }
 
     .action-button:hover{
@@ -168,10 +179,12 @@ if (!document.querySelector('#model-maker-styles')) {
         flex-direction:column;
         border-bottom:1px solid var(--border-color);
     }
+    .robot-pose-item:hover{ background-color: var(--bg-tertiary); }
+    .robot-pose-item.even-row{ background-color: var(--bg-table-row-even); }
     .robot-pose-item{
         display:flex;
-        flex-direction:column;
-        padding: var(--spacing-sm);
+        flex-direction:row;
+        padding: 0 var(--spacing-sm);
         background-color: var(--bg-secondary);
     }
     .robot-pose-name{

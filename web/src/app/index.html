@@ -42,7 +42,7 @@
                 <!------------------------->
                 <!--SECTION: CYCLE RESULT-->
                 <!------------------------->
-                <section v-show="crrSection==='MAIN' || crrSection==='IO'" class="section--main">
+                <section v-show="crrSection==='MAIN' || crrSection==='IO' || crrSection=='LOG'" class="section--main">
                     <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
                     </cycle-info-card>

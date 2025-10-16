@@ -79,7 +79,7 @@ if (!document.querySelector('#result-table-styles')) {
     <style id="result-table-styles">
       .result-table-container {
         overflow: auto;
-        background: var(--bg-secondary);
+        background-color: var(--bg-secondary);
       }
 
       .result-table-title{
@@ -103,7 +103,7 @@ if (!document.querySelector('#result-table-styles')) {
       }
 
       .header-row {
-        background: var(--bg-table-header);
+        background-color: var(--bg-table-header);
         color: var(--text-primary);
       }
 
@@ -117,16 +117,16 @@ if (!document.querySelector('#result-table-styles')) {
 
 
       .data-row { 
-        background:var(--bg-table-row-odd);
+        background-color:var(--bg-table-row-odd);
       }
 
       .data-row:last-child {
         border-bottom: none;
       }
 
-      .data-row.even-row { background: var(--bg-table-row-even); }
-      .data-row:hover { background: var(--bg-hover); } 
-      .data-row.even-row:hover { background: var(--bg-hover); }
+      .data-row.even-row { background-color: var(--bg-table-row-even); }
+      .data-row:hover { background-color: var(--bg-hover); } 
+      .data-row.even-row:hover { background-color: var(--bg-hover); }
 
       .data-cell { 
         color: var(--text-primary); 

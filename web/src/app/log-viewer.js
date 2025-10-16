@@ -38,21 +38,24 @@ const LogViewer = {
   template: /*html*/ `
     <div class="log-viewer">
       <div v-show="showControllers" class="log-viewer-controls">
-        <select v-model="levelFilter" @change="render" class="level-filter">
+        <i class = "fa fa-filter log-icon"></i>
+        <input 
+          type="text" 
+          v-model="textFilter" 
+          @input="filterChanged"
+          placeholder="Filter..." 
+          class="text-filter"
+          title="Log filter input"
+        >
+        <select v-model="levelFilter" @change="filterChanged" class="level-filter" title="Filter log level">
           <option value="LOG">LOG</option>
           <option value="WARN">WARN</option>
           <option value="ERROR">ERROR</option>
           <option value="ALL">ALL</option>
         </select>
-        <input 
-          type="text" 
-          v-model="textFilter" 
-          @input="render"
-          placeholder="Filter messages..." 
-          class="text-filter"
-        >
-        <button v-show="autoScrollPaused" class="scroll-status" @click="resumeAutoScroll" >
-          <i class="fa fa-down-long"></i>
+
+        <button class="scroll-status" :class="{ active: autoScrollPaused }" @click="resumeAutoScroll" title="Scroll to bottom">
+          <i class="fa fa-angle-double-down"></i>
         </button>
       </div>
       <div v-show="showControllers && crrEntry" class="selected-entry-container">
@@ -103,7 +106,7 @@ const LogViewer = {
               }"></i>
             </span>
             <span class="log-message"
-             @click="setCurrentEntry(entry)">{{ entry.m }}</span>
+             @dblclick="setCurrentEntry(entry)">{{ entry.m }}</span>
           </div>
         </div>
       </div>
@@ -144,6 +147,10 @@ const LogViewer = {
       });
     },
 
+    filterChanged() {
+      this.render();
+      this.scrollToBottom();
+    },
     // Re-apply filters and render logs
     render() {
       //filter logs
@@ -385,19 +392,19 @@ if (!document.querySelector('#log-viewer-styles')) {
         max-height: 100%;
         min-height:0;
         flex-direction: column;
-        background: var(--bg-primary);
+        background-color: var(--bg-primary);
         overflow: hidden;
         user-select:text;
         cursor:text;
       }
-      .log-viewer::selection{background:var(--bg-tertiary);color:var(--text-primary);}
+      .log-viewer::selection{background-color:var(--bg-tertiary);color:var(--text-primary);}
 
       .log-container {
         height: 100%;
         min-height:0;
         overflow-x: hidden;
         overflow-y: auto;
-        background: var(--bg-primary);
+        background-color: var(--bg-primary);
         position: relative;
       }
 
@@ -406,7 +413,7 @@ if (!document.querySelector('#log-viewer-styles')) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background: var(--bg-secondary);
+        background-color: var(--bg-secondary);
         border-bottom: 1px solid var(--border-color);
         overflow: hidden;
         min-height:1.7rem;
@@ -416,13 +423,13 @@ if (!document.querySelector('#log-viewer-styles')) {
       .level-filter, .text-filter {
         padding: var(--spacing-xs) var(--spacing-sm);
         border:none;
-        background: var(--bg-secondary);
+        background-color: var(--bg-secondary);
         color: var(--text-primary);
         font-size: var(--font-size-sm);
         height:100%;
       }
 
-      .level-filter { min-width: fit-content; background: var(--bg-tertiary); }
+      .level-filter { min-width: fit-content; background-color: var(--bg-tertiary); }
       .text-filter { flex:1; }
 
       .text-filter:focus, .level-filter:focus {
@@ -430,6 +437,7 @@ if (!document.querySelector('#log-viewer-styles')) {
         border: 1px solid var(--accent-active);
       }
       .scroll-status { font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
+      .scroll-status.active { color: var(--text-primary); overflow:hidden; }
       .log-content { position: relative; }
       .log-spacer { width: 100%; }
 
@@ -443,7 +451,7 @@ if (!document.querySelector('#log-viewer-styles')) {
       }
       
 
-      .log-entry:hover { background: var(--bg-hover); }
+      .log-entry:hover { background-color: var(--bg-hover); }
 
       /* Log level border colors */
       .log-entry.log-level-Normal { border-left-color: var(--primary-color); }
@@ -474,6 +482,9 @@ if (!document.querySelector('#log-viewer-styles')) {
         color: var(--text-primary);
         white-space: pre;
       }
+      .log-icon{
+        padding: 0 var(--spacing-sm);
+      }
 
       /* Log level text colors */
       .level-Normal{ color: var(--text-primary); }
@@ -488,7 +499,7 @@ if (!document.querySelector('#log-viewer-styles')) {
       .selected-entry-container{
         margin:0;
         padding: var(--spacing-xs) var(--spacing-sm);
-        background: var(--bg-secondary);
+        background-color: var(--bg-secondary);
         border-bottom: 1px solid var(--border-color);
         font-family: 'Consolas', monospace;
         font-size: var(--font-size-lg);
@@ -503,7 +514,7 @@ if (!document.querySelector('#log-viewer-styles')) {
       }
 
       .close-button{
-        background: transparent;
+        background-color: transparent;
         border: none;
         color: var(--text-muted);
         padding:0;
@@ -514,7 +525,7 @@ if (!document.querySelector('#log-viewer-styles')) {
       }
       .close-button:hover{ 
         color: var(--red); 
-        background:transparent;
+        background-color:transparent;
       }
 
     </style>
