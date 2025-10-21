@@ -1,5 +1,5 @@
 6d7fda80c6a6d06c72b016f94e8255ab8aee9a4e *./ABB.Robotics.Controllers.PC.dll
-4ed4c92d09208e02010f3973158b2fea99151363 *./Abeo.Controls.dll
+74b8779e585c5a3af15c179e4cc9f2822c9ddb4d *./Abeo.Controls.dll
 0134e802afbc82c0d2ee371a6f2cc6a15870d839 *./AbeoImageAnnotator.exe
 a7899035f2a88e7444ec98ceb0c3c7397e0e8687 *./AbeoJsonEditor.exe
 d12313f9355e66f452653aad8dd6ef603ee6569f *./AbeoMaskEditor.exe
@@ -7,10 +7,12 @@ b58cb32c234eed54d5202279bf63cc1cc3b246ae *./AbeoSIM.exe
 11514dc906b1d3fd93b64a777c9517bd08d76c40 *./abeosim_layout.cfg
 5af9c65aee03db4343d6974d00624d61d193ba48 *./AppCoreComponents1.dll
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
-8f66c29b55849b73a8e8a2001f3be27d2939a71a *./ATMC.Common.dll
+78d23f726bc03a9d9be109f93cef6a39f169f476 *./ATMC.App.PosAdj.exe
+f17d0414cb83b6f96277812fc91cc5e15a8b5173 *./ATMC.Common.dll
+2f764db6f7b01dd5e1484c7788f4a15b11173311 *./ATMC.Common.pdb
 149e8e4e9993a728d3b4eb2d4ce5d2458431efbc *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
-5124f2e1f8f148bb4f3207bd533854fb5d20baee *./ATMC.WorkCellConfigurator.exe
+6c310e070d821bfabe198aeeaa6cf234dc575776 *./ATMC.WorkCellConfigurator.exe
 c22e9aaad0649e09df6e6460750acc71cd62a10b *./Automation.BDaq4.dll
 b272809b5b4d63e4be937ebca81400cd1d357599 *./BouncyCastle.Cryptography.dll
 123fe310d1d035932b65fac5006209c4dcd692bf *./EntityFramework.dll
@@ -56,7 +58,7 @@ df45f0be3fffd4d4d5bce11d20a9775b626886d9 *./libplctag.NativeImport.dll
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
 159a46ab4e9d0a7f7eda9d5d412ab968f2826a8c *./LotusAPI.App.exe
-12201789f0cfae153ecad39c2eb4a1153635b7e8 *./LotusAPI.Controls.dll
+a603278ea4f777d97f50abdc1430c120361e4381 *./LotusAPI.Controls.dll
 a0ee8f8955e7a2b8a0893c12461b88a1e3ce7caa *./LotusAPI.Controls.xml
 adcd348fc293c24fe793930f8d6ff2e072609806 *./LotusAPI.Data.dll
 0bb94ec3e65d0f709926e1ebfd6a81cea9578bdc *./LotusAPI.Data.xml
@@ -80,7 +82,7 @@ de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
 6f06c618653507dafff03b01ce2da48adceb0374 *./LotusAPI.Settings.dll
 d3bb1ee39ecea08b8bd616040dd4b36a1327bcb5 *./LotusAPI.Sim.dll
 2b84cf2a9c9617741b4d940c29544fafb838b7ca *./LotusAPI.Sim.xml
-32beff8f5c9d2115ee350f705c10519e6838dbb3 *./LotusAPI.Utils.dll
+9b768e25f01b51d0e60a56251b6f8ac8ae83a9f5 *./LotusAPI.Utils.dll
 d8edba821d0b452dcbb0bc0cc0a71db75dcfd69b *./LotusAPI.Utils.xml
 494ebfe48c70c181456d7ffbc20a286cde92ed31 *./LotusAPI.xml
 a8a4a7554ea0b3df9ec6bdc0379e86afa6505e9d *./lotus_gl_v142_x64.dll
@@ -131,7 +133,7 @@ c4b621df2f55b09f618579e36946e91767d818e5 *./PylonUtility_v7_2.dll
 c8a7509dfd76499f48e259df221b0e2479601a97 *./PylonViewerHelper6.dll
 78a31815dd9adffc81ed627c3381c5f72a42bc26 *./QLightService.exe
 2ef23358007cb5bca278b701697a220a55cf5487 *./realsense2.dll
-cf9e6df1f1f5d531e41c5d40af9eddf8fa9fd80a *./RobotController.exe
+916508659e123f6051e6997e0faa220d352954fe *./RobotController.exe
 4bc0473dcc4955fc421acb585c03941b628dc59c *./RobotModels/FANUC_120iD.arm
 8dbe9627da2f8721e8b65c866f803035c29988e4 *./RobotModels/FANUC_M20IA.arm
 f8c0b175a3f32f5f9258d5d8a3867a241861c7ce *./RobotModels/FANUC_M710ID_70.arm
