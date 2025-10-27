@@ -1011,6 +1011,14 @@
             <param name="initial_matrix">initial matrix</param>
             <returns>Registration result</returns>
         </member>
+        <member name="M:ATMC.Common.CoarseToFineRegistrationConfig.AlignLinear(LotusAPI.MV.Pointcloud,System.Int32,LotusAPI.Math.Matrix44d,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Find a match using 3D finder
+            </summary>
+            <param name="scene">scene cloud</param>
+            <param name="initial_matrix">initial matrix</param>
+            <returns>Registration result</returns>
+        </member>
         <member name="M:ATMC.Common.CoarseToFineRegistrationConfig.ToString">
             <summary>
             Convert to string
