@@ -499,8 +499,8 @@ if (!document.querySelector('#log-viewer-styles')) {
       .level-Trace{ color: var(--text-muted); }
       .level-Warn{ color: var(--yellow); }
       .level-Info{ color: var(--blue); }
-      .level-Success{ color: var(--green); }
-      .level-Error{ color: var(--red); }
+      .level-Success{ color: var(--accent-ok); }
+      .level-Error{ color: var(--accent-ng); }
       .level-Fatal{ color: var(--magenta); }
 
       .selected-entry-container{

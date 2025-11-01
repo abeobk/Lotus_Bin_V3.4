@@ -204,7 +204,7 @@ bb059c345b03ca980fddb3f54bbaaa18b07b9921 *./web/src/app/history-table.js
 8ef5948466c7369ede3b7485022148b67c51837c *./web/src/app/io-view.js
 2d9487e3c07d68b64a83afd8445c12c577d3f189 *./web/src/app/log-viewer-fixed-height.js
 5b86ede8f49dc5d8707989598b4ba43f9ccc4814 *./web/src/app/log-viewer-var-height.js
-de1b24972b62af2f543d52842bea0a8ec7d1d493 *./web/src/app/log-viewer.js
+d0420b62efbcacc929b96411bf1d738b149571f5 *./web/src/app/log-viewer.js
 433f25d3765c57732cbfb60229c2e28d9c7296a0 *./web/src/app/model-maker.js
 f6c5f9ddf5d9d17c33db6aea472cdc400731561b *./web/src/app/result-table.js
 ad5ca8037fd8c4e16d9b7e81da14854477b0572f *./web/src/app/sample-data.js
