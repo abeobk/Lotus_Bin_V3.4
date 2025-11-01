@@ -74,8 +74,13 @@ if (!document.querySelector('#stat-view-styles')) {
             display:flex;
             flex-direction:row;
             height:120px;
-            background-color:var(--bg-primary);
+            background-color:var(--bg-secondary);
             padding:var(--spacing-sm);
+            /*
+            border:1px solid var(--border-color);
+            border-radius:var(--spacing-sm);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            */
          } 
          .pie-chart-area{
             display:flex;

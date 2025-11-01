@@ -99,7 +99,6 @@ if (!document.querySelector('#model-maker-styles')) {
     .model-maker-body-container{
         display:flex;
         flex-direction:column;
-        background-color: var(--bg-);
         overflow:auto;
         height:100%;
     }
@@ -107,7 +106,8 @@ if (!document.querySelector('#model-maker-styles')) {
         display:flex;
         flex-direction:row;
         align-items:center;
-        background-color: var(--bg-table-header);
+        height:3rem;
+        background-color: var(--bg-tertiary);
         box-shadow: 0 2px 4px var(--shadow-color);
         z-index:1;
     }

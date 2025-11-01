@@ -47,11 +47,11 @@ if (!document.querySelector('#cycle-info-card-styles')) {
           .cycle-info-card {
               display: flex;
               flex-direction: row;
-              background: var(--bg-secondary);
+              background: var(--bg-tertiary);
               padding: var(--spacing-sm);
               width: auto;
               overflow: hidden;
-              border-top:1px solid var(--border-color);
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
           }
 
           .cycle-info-item {

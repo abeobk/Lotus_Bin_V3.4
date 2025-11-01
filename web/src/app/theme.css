@@ -239,7 +239,7 @@ button:hover {
 
 button.active {
     color: var(--accent-active);
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-tertiary);
 }
 
 .border-right {
@@ -270,10 +270,17 @@ section {
 }
 
 .section--history,
-.section--model 
-.section--io{
+.section--model .section--io {
     flex: 1;
     min-height: 0;
+}
+
+.section--history {
+    display: flex;
+    flex-direction: column;
+    /* margin: var(--spacing-sm);
+    gap: var(--spacing-sm);
+    border-top: 2px solid var(--border-color); */
 }
 
 .section-header {
@@ -299,6 +306,23 @@ section {
     padding: 0 var(--spacing-sm);
 }
 
+.section--main__result-container {
+    display: flex;
+    flex-direction: column;
+    margin: var(--spacing-sm);
+    gap: var(--spacing-sm);
+}
+
+.section-title{
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 600;
+    align-items: center;
+    padding-left: 0.5rem;
+    background-color: var(--bg-tertiary);
+    /* box-shadow: 0 2px 4px var(--shadow-color); */
+    /* z-index: 10; */
+}
 
 .io-container {
     display: flex;

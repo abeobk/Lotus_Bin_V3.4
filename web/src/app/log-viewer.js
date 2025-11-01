@@ -38,12 +38,13 @@ const LogViewer = {
   template: /*html*/ `
     <div class="log-viewer">
       <div v-show="showControllers" class="log-viewer-controls">
-        <i class = "fa fa-filter log-icon"></i>
+        <i class = "fa fa-list log-icon"></i>
+        <span style="font-weight: 600;padding-right: 1rem"> SYSTEM LOG</span>
         <input 
           type="text" 
           v-model="textFilter" 
           @input="filterChanged"
-          placeholder="Filter..." 
+          placeholder="Filter text..." 
           class="text-filter"
           title="Log filter input"
         >
@@ -282,22 +283,23 @@ const LogViewer = {
     // Handle scroll events
     handleScroll(event) {
       const scrollDown = event.target.scrollTop > (this.scrollTop || 0);
+      if (!scrollDown && !this.autoScrollPaused) {
+        this.pauseAutoScroll();
+        return;
+      }
       this.scrollTop = event.target.scrollTop;
       this.updateVisibleRange();
       // Check if user scrolled near the bottom
       const container = event.target;
-      if (
-        scrollDown &&
-        this.visibleEnd >= this.filteredLogs.length - 2 &&
-        this.autoScrollPaused
-      ) {
+      if (scrollDown && this.visibleEnd >= this.filteredLogs.length - 2) {
         this.resumeAutoScroll();
       }
     },
 
     // Handle user-initiated scroll (mouse wheel)
-    handleUserScroll() {
-      if (!this.autoScrollPaused) {
+    handleUserScroll(e) {
+      //scroll up
+      if (e.deltaY < 0 && !this.autoScrollPaused) {
         this.pauseAutoScroll();
       }
     },
@@ -392,7 +394,7 @@ if (!document.querySelector('#log-viewer-styles')) {
         max-height: 100%;
         min-height:0;
         flex-direction: column;
-        background-color: var(--bg-primary);
+        background-color: var(--bg-secondary);
         overflow: hidden;
         user-select:text;
         cursor:text;
@@ -413,31 +415,37 @@ if (!document.querySelector('#log-viewer-styles')) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background-color: var(--bg-secondary);
-        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-tertiary);
+        box-shadow: 0 2px 4px var(--shadow-color);
         overflow: hidden;
         min-height:1.7rem;
         max-height:1.7rem;
+        z-index: 10;
       }
 
       .level-filter, .text-filter {
         padding: var(--spacing-xs) var(--spacing-sm);
         border:none;
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-tertiary);
         color: var(--text-primary);
         font-size: var(--font-size-sm);
         height:100%;
       }
 
-      .level-filter { min-width: fit-content; background-color: var(--bg-tertiary); }
-      .text-filter { flex:1; }
+      .level-filter { min-width: fit-content; }
+      .text-filter { 
+        flex:1; 
+        border-radius: var(--spacing-xs);
+        border: 1px solid var(--border-color);
+        height:1.5rem;
+      }
 
       .text-filter:focus, .level-filter:focus {
         outline: none;
         border: 1px solid var(--accent-active);
       }
-      .scroll-status { font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
-      .scroll-status.active { color: var(--text-primary); overflow:hidden; }
+      .scroll-status {width: 0rem; font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
+      .scroll-status.active {width:2rem; color: var(--text-primary); overflow:hidden; }
       .log-content { position: relative; }
       .log-spacer { width: 100%; }
 
@@ -449,7 +457,6 @@ if (!document.querySelector('#log-viewer-styles')) {
         font-family: 'Consolas', monospace;
         font-size: var(--font-size-sm);
       }
-      
 
       .log-entry:hover { background-color: var(--bg-hover); }
 

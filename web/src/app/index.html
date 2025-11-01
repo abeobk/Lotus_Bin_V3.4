@@ -46,8 +46,10 @@
                     <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
                     </cycle-info-card>
-                    <div v-for="(table,index) in resultTables" :key="index">
-                        <result-table :table="table"></result-table>
+                    <div class= "section--main__result-container">
+                        <div v-for="(table,index) in resultTables" :key="index">
+                            <result-table :table="table"></result-table>
+                        </div>
                     </div>
                 </section>
 
@@ -55,6 +57,7 @@
                 <!--SECTION: MAIN-->
                 <!----------------->
                 <section v-show="crrSection==='MAIN'" class="section--history">
+                    <h3 class="section-title"><i class="fa fa-table"></i>&nbsp;PRODUCTION HISTORY</h3>
                     <stat-view ref="statView"></stat-view>
                     <history-table ref="historyTable" @show-ng-only="handleShowNGOnly"></history-table>
                 </section>
@@ -63,6 +66,7 @@
                 <!--SECTION: IO VIEWER-->
                 <!---------------------->
                 <section v-show="crrSection==='IO'" class="section--io">
+                    <h3 class="section-title"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
                     <div class="io-container">
                         <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index"
                             :ref="`ioViewer-${iomap.name}`">

@@ -23,6 +23,9 @@ const HistoryTable = {
 
   template: /*html*/ `
   <div class="history-table-container">
+    <!--
+    <h3 class="table-title"><i class="fa fa-table"></i>&nbsp;{{table.title }}</h3>
+    -->
     <div class="table-header">
       <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
         <span v-if="col!=='res'">{{getColText(colIndex)}}</span>
@@ -179,6 +182,19 @@ if (!document.querySelector('#history-table-styles')) {
         flex:1;
         min-height: 150px;
         border-top:1px solid var(--border-color);
+        /*
+        border-radius: var(--spacing-sm);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        */
+      }
+
+      .table-title{
+        text-align:left;
+        text-transform:uppercase;
+        font-weight:600;
+        padding-left:0.5rem;
+        background-color:var(--bg-tertiary);
       }
 
       .table-header{
