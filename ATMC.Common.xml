@@ -435,6 +435,32 @@
             </summary>
             <returns>The text if available, otherwise the name.</returns>
         </member>
+        <member name="M:ATMC.Common.ScanActionExtensions.ToActionDict(System.Collections.Generic.List{ATMC.Common.ScanAction})">
+            <summary>
+            Convert a list of ScanAction objects to a dictionary keyed by action name.
+            </summary>
+            <param name="actions">Action list</param>
+            <returns>Action dict</returns>
+            <exception cref="T:System.Exception">duplicate action name</exception>
+        </member>
+        <member name="M:ATMC.Common.ScanActionExtensions.CreateActionDict(ATMC.Common.ScanDef,System.String[])">
+            <summary>
+            Create a dictionary of ScanAction objects from action names and a ScanDef.
+            </summary>
+            <param name="scan_def">Scan definition</param>
+            <param name="action_names">list of action names</param>
+            <returns>Action dict</returns>
+            <exception cref="T:System.Exception">duplicate action name</exception>
+        </member>
+        <member name="M:ATMC.Common.ScanActionExtensions.GetActionList(System.Collections.Generic.Dictionary{System.String,ATMC.Common.ScanAction},System.String[])">
+            <summary>
+            Get a list of ScanAction objects from the dictionary based on the provided action keys.
+            </summary>
+            <param name="action_dict">action dict</param>
+            <param name="action_keys">action keys</param>
+            <returns>List of actions</returns>
+            <exception cref="T:System.Exception">key not found</exception>
+        </member>
         <member name="F:ATMC.Common.BodyShop.FormMeasureConfig.components">
             <summary>
             Required designer variable.
