@@ -66,7 +66,7 @@
                 <!--SECTION: IO VIEWER-->
                 <!---------------------->
                 <section v-show="crrSection==='IO'" class="section--io">
-                    <h3 class="section-title"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
+                    <h3 class="section-title io"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
                     <div class="io-container">
                         <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index"
                             :ref="`ioViewer-${iomap.name}`">
@@ -83,7 +83,7 @@
             </div>
 
             <div class="split-panel-bottom">
-                <section>
+                <section class="section--log">
                     <log-viewer ref="logViewer"></log-viewer>
                 </section>
             </div>
@@ -233,6 +233,10 @@
                 // Adjust splitter sizes based on current section
                 adjustLogSplitter() {
                     this.splitter.setSizes(this.isFullLog() ? this.fullLogSplitterSizes : this.logSplitterSizes);
+                    this.$nextTick(() => {
+                        this.$refs.logViewer.updateVisibleRange(); // Refresh log viewer layout;
+                        this.$refs.logViewer.scrollToBottom(); // Refresh log viewer layout;
+                    });
                 },
 
                 // Load saved split sizes
@@ -348,6 +352,7 @@
                 setInterval(() => {
                     this.cycleInfo = SampleData.generateCycleInfo();
                     this.setResultTable(SampleData.generateResultTables());
+                    this.setHistory(SampleData.generateHistoryData(50));
                 }, 1000);
 
                 //---------------

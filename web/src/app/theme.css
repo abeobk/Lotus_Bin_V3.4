@@ -71,7 +71,7 @@
     --bg-active: var(--base01);
 
     --bg-section: rgb(0, 55, 66);
-    --bg-nav: rgb(0, 33, 44);
+    --bg-nav: rgb(0, 11, 22);
     --bg-table-header: rgb(0, 66, 77);
     --bg-table-row-odd: rgb(0, 44, 55);
     --bg-table-row-even: rgb(0, 49, 59);
@@ -85,7 +85,7 @@
     --text-muted: var(--base01);
 
     /* Border Colors - Solarized Dark */
-    --border-color: rgb(0, 77, 88);
+    --border-color: rgb(0, 66, 77);
 
     /* Status Colors for Solarized Dark Theme */
     --success-bg: rgba(133, 153, 0, 0.15);
@@ -113,21 +113,21 @@
     --accent-color: var(--magenta);
 
     /* Background Colors - Solarized Light */
-    --bg-primary: var(--base3);
-    --bg-secondary: var(--base2);
-    --bg-tertiary: #e8dcc0;
+    --bg-primary: #f7f7f7;
+    --bg-secondary: #e7e7e7;
+    --bg-tertiary: #c7c7c7;
 
     /* slightly darker cream */
-    --bg-card: var(--base2);
-    --bg-hover: #e0d5b7;
-    --bg-active: #e0d5b7;
+    --bg-card: #f7f7f7;
+    --bg-hover: #e7e7e7;
+    --bg-active: #f7f7f7;
 
 
     --bg-section: var(--bg-secondary);
     --bg-nav: var(--bg-primary);
-    --bg-table-header: #f1e1ba;
-    --bg-table-row-odd: #ece4d3;
-    --bg-table-row-even: #f0ebe1;
+    --bg-table-header: #d7d7d7;
+    --bg-table-row-odd: #e6e6e6;
+    --bg-table-row-even: #eeeeee;
 
 
     /* Text Colors - Solarized Light */
@@ -138,7 +138,7 @@
     --text-muted: var(--base1);
 
     /* Border Colors - Solarized Light */
-    --border-color: #ddd6c1;
+    --border-color: #c7c7c7;
 
     /* Status Colors - Solarized */
     --success-color: var(--green);
@@ -151,7 +151,7 @@
     --info-bg: rgba(42, 161, 152, 0.1);
 
     /* Shadow - Adjusted for Solarized */
-    --shadow-color: #93a1a17f;
+    --shadow-color: #7e7e7e81;
 
     --accent-ok: #21b15d;
     --accent-ng: #c93d2d;
@@ -171,7 +171,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--text-muted);
+    background: var(--bg-tertiary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -220,26 +220,31 @@ nav {
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
+    padding-left: var(--spacing-xs);
+    padding-right: var(--spacing-xs);
     height: var(--nav-size);
-    background: var(--bg-nav);
 }
 
 button {
     background: transparent;
     color: var(--text-primary);
     border: none;
-    width: var(--nav-size);
-    height: var(--nav-size);
+    width: var(--button-size);
+    height: var(--button-size);
+    border-radius: 2rem;
+    margin: var(--spacing-xs);
     cursor: pointer;
 }
 
 button:hover {
     background-color: var(--bg-hover);
+    box-shadow: 0 1px 2px var(--shadow-color);
 }
 
 button.active {
     color: var(--accent-active);
     background-color: var(--bg-tertiary);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .border-right {
@@ -254,7 +259,6 @@ section {
     box-shadow: none;
     flex: 1;
     min-height: 0;
-    border-top: 2px solid var(--border-color);
 }
 
 .section-container {
@@ -270,17 +274,22 @@ section {
 }
 
 .section--history,
-.section--model .section--io {
+.section--model,
+.section--io,
+.section--log {
     flex: 1;
     min-height: 0;
+    overflow: hidden;
+    margin: var(--spacing-sm);
+    margin-top: 0px;
+    border-radius: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
 }
 
 .section--history {
     display: flex;
     flex-direction: column;
-    /* margin: var(--spacing-sm);
-    gap: var(--spacing-sm);
-    border-top: 2px solid var(--border-color); */
 }
 
 .section-header {
@@ -313,23 +322,26 @@ section {
     gap: var(--spacing-sm);
 }
 
-.section-title{
+.section-title {
     text-align: left;
     text-transform: uppercase;
     font-weight: 600;
     align-items: center;
     padding-left: 0.5rem;
     background-color: var(--bg-tertiary);
-    /* box-shadow: 0 2px 4px var(--shadow-color); */
-    /* z-index: 10; */
+}
+
+.section-title.io{
+    box-shadow: 0 2px 4px var(--shadow-color);
+    z-index: 10;
 }
 
 .io-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: var(--spacing-xs);
-    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
     overflow-y: auto;
     min-height: 0;
 }

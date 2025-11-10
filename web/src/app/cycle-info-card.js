@@ -48,7 +48,10 @@ if (!document.querySelector('#cycle-info-card-styles')) {
               display: flex;
               flex-direction: row;
               background: var(--bg-tertiary);
+              margin: var(--spacing-sm);
               padding: var(--spacing-sm);
+              margin-bottom: 0px;
+              border-radius: var(--spacing-sm);
               width: auto;
               overflow: hidden;
               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

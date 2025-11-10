@@ -156,15 +156,16 @@ const SampleData = {
       title: 'Production History',
       cols: ['time', 'model', 'body', 'seq', 'res'],
       rows: Array.from({ length: 1000 }, (_, i) => {
-        const isOk = Math.random() > 0.1; // 90% chance of OK
         return {
-          time: `2025-10-01 12:${String(i % 60).padStart(2, '0')}:${String(
-            i % 60
+          time: `2025-10-01 12:${String(
+            Math.floor((Math.random() * 100) % 60)
+          ).padStart(2, '0')}:${String(
+            Math.floor((Math.random() * 100) % 60)
           ).padStart(2, '0')}`,
-          model: `Model ${String.fromCharCode(65 + (i % 5))}`,
-          body: String(10000 + i),
+          model: `Model ${String.fromCharCode(65 + Math.random() * 5)}`,
+          body: String(Math.floor(1000 + Math.random() * 9000)),
           seq: String(i + 1).padStart(3, '0'),
-          res: isOk ? 'OK' : 'NG',
+          res: Math.random() > 0.1 ? 'OK' : 'NG',
         };
       }),
     };

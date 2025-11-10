@@ -445,7 +445,8 @@ if (!document.querySelector('#log-viewer-styles')) {
         border: 1px solid var(--accent-active);
       }
       .scroll-status {width: 0rem; font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
-      .scroll-status.active {width:2rem; color: var(--text-primary); overflow:hidden; }
+      .scroll-status.active {width:2rem; color: var(--text-primary); overflow:hidden; border:none; box-shadow:none; }
+      .scroll-status:hover { color: var(--accent-active); }
       .log-content { position: relative; }
       .log-spacer { width: 100%; }
 

@@ -102,11 +102,12 @@ if (!document.querySelector('#model-maker-styles')) {
         overflow:auto;
         height:100%;
     }
+
     .top-bar-container{
         display:flex;
         flex-direction:row;
         align-items:center;
-        height:3rem;
+        height:2.5rem;
         background-color: var(--bg-tertiary);
         box-shadow: 0 2px 4px var(--shadow-color);
         z-index:1;
@@ -126,6 +127,7 @@ if (!document.querySelector('#model-maker-styles')) {
         flex:1;
         border-radius: var(--spacing-xs);
         box-shadow: 0 2px 4px var(--shadow-color);
+        border: 1px solid var(--border-color);
     }
 
     .group-header{

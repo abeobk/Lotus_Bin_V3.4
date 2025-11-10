@@ -51,16 +51,17 @@ const StatView = {
   },
   mounted() {
     //test view
-    if(window.chrome.webview)return;
+    if (window.chrome.webview) return;
+
     this.$nextTick(() => {
-       this.hourlyData = Array.from({ length: 24 }, (_, i) => {
-         const ok = Math.floor(Math.random() * 25);
-         const ng = Math.floor(Math.random() * 3);
-         return { ok, ng };
-       });
-      this.renderHourlyChart(this.hourlyData, false);
+      this.hourlyData = Array.from({ length: 24 }, (_, i) => {
+        const ok = Math.floor(Math.random() * 25);
+        const ng = Math.floor(Math.random() * 3);
+        return { ok, ng };
+      });
       this.okcnt = this.hourlyData.reduce((sum, hour) => sum + hour.ok, 0);
       this.ngcnt = this.hourlyData.reduce((sum, hour) => sum + hour.ng, 0);
+      this.renderHourlyChart(this.hourlyData, false);
       this.renderPieChart(this.okcnt, this.ngcnt);
     });
   }
