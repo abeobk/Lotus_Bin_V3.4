@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <link rel="preload" href="../../css/font-awesome.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            font-family: sans-serif;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column; 
+            user-select: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .section {
+            border: 1px solid #ccc;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            min-height: fit-content;
+            flex:1;
+        }
+
+        .section__header {
+            display: flex;
+            flex-direction: row;
+            background: #f0f0f0;
+            padding: 3px 6px;
+            border-bottom: 1px solid #ccc;
+            gap: 6px;
+        }
+
+        .section__header__toggle {
+            cursor: pointer;
+        }
+
+        .section__header__toggle:hover {
+            color: red;
+        }
+
+        .section__header__title {
+            flex: 1;
+            font-weight: bold;
+        }
+
+        .section__header button {
+            font-size: 14px;
+            padding: 2px 8px;
+        }
+
+        .section__content {
+            padding: 3px;
+            overflow: auto;
+            flex: 1;
+
+        }
+
+        .resizer {
+            height: 3px;
+            background: #ddd;
+            cursor: row-resize;
+            flex-shrink: 0;
+        }
+
+        .collapsed .content,
+        .collapsed .resizer {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section" id="s1"> </div>
+    <div class="section" id="s2"> </div>
+    <div class="section" id="s3"> </div>
+    <div class="section" id="s4"> </div>
+    <div class="section" id="s5"> </div>
+
+    <script>
+        class Section {
+            constructor(id, header) {
+                this.id = id;
+                this.header = header;
+                this.el = document.getElementById(id);
+                this.collapsed = false;
+            }
+
+            toggleCollapse() { this.collapsed = !this.collapsed; this.render(); }
+
+            render() {
+                this.el.innerHTML = `
+                    <div class="section__header"> 
+                        <span class="section__header__toggle"><i class="fa ${this.collapsed ? 'fa-chevron-right' : 'fa-chevron-down'}"></i></span>
+                        <span class="section__header__title">${this.header}</span> 
+                    </div>
+                    ${this.collapsed ? '' : `
+                        <div class="section__content">
+                            Content of ${this.header}
+                        </div>
+                        <div class="resizer"></div>
+                    `}
+                `;
+                //install signal
+                this.el.querySelector('.section__header__toggle').onclick = () => this.toggleCollapse();
+                this.el.style.flex = this.collapsed ? '0 0 auto' : '1';
+            }
+
+            destroy() { this.el.innerHTML = ''; }
+        }
+
+        const sections = [
+            new Section('s1', 'Section 1'),
+            new Section('s2', 'Section 2'),
+            new Section('s3', 'Section 3'),
+            new Section('s4', 'Section 4'),
+            new Section('s5', 'Section 5'),
+        ]
+
+        //on document load
+        document.addEventListener('DOMContentLoaded', () => {
+            sections.forEach(section => section.render());
+        });
+
+    </script>
+
+</body>
+
+</html>

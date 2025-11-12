@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DB Table View with Column Filters</title>
+    <link rel="stylesheet" href="../../css/theme.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+        input[type="text"] {
+            width: 90%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h2>DB Table View</h2>
+    <table id="dbTable">
+        <thead>
+            <tr id="filterRow"></tr>
+            <tr id="headerRow"></tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+    <script>
+        // Example data
+        const columns = ["ID", "Name", "Email", "Role"];
+        const data = [
+            { ID: 1, Name: "Alice", Email: "alice@example.com", Role: "Admin" },
+            { ID: 2, Name: "Bob", Email: "bob@example.com", Role: "User" },
+            { ID: 3, Name: "Charlie", Email: "charlie@example.com", Role: "User" },
+            { ID: 4, Name: "Dana", Email: "dana@example.com", Role: "Manager" }
+        ];
+
+        // Render header
+        const headerRow = document.getElementById('headerRow');
+        columns.forEach(col => {
+            const th = document.createElement('th');
+            th.textContent = col;
+            headerRow.appendChild(th);
+        });
+
+        // Render filter inputs
+        const filterRow = document.getElementById('filterRow');
+        columns.forEach(col => {
+            const th = document.createElement('th');
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.placeholder = `Filter ${col}`;
+            input.dataset.col = col;
+            input.addEventListener('input', filterTable);
+            th.appendChild(input);
+            filterRow.appendChild(th);
+        });
+
+        // Render table body
+        function renderTable(filteredData) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            filteredData.forEach(row => {
+                const tr = document.createElement('tr');
+                columns.forEach(col => {
+                    const td = document.createElement('td');
+                    td.textContent = row[col];
+                    tr.appendChild(td);
+                });
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Filter logic
+        function filterTable() {
+            const filters = {};
+            filterRow.querySelectorAll('input').forEach(input => {
+                filters[input.dataset.col] = input.value.toLowerCase();
+            });
+            const filtered = data.filter(row => {
+                return columns.every(col => {
+                    return row[col].toString().toLowerCase().includes(filters[col]);
+                });
+            });
+            renderTable(filtered);
+        }
+
+        // Initial render
+        renderTable(data);
+    </script>
+</body>
+</html>

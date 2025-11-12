@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Split.js Vertical Sections Test</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .split {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      flex:1;
+    }
+    .section {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-bottom: 1px solid #ddd;
+      background: #f9f9f9;
+    }
+    .section:last-child {
+      border-bottom: none;
+      flex:1;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 8px 16px;
+      background: #e3e3e3;
+      cursor: pointer;
+      user-select: none;
+    }
+    .chevron {
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      transition: transform 0.2s;
+      display: inline-block;
+    }
+    .collapsed .chevron {
+      transform: rotate(-90deg);
+    }
+    .expanded .chevron {
+      transform: rotate(0deg);
+    }
+    .content {
+      padding: 16px;
+      overflow: auto;
+      background: #fff;
+      flex: 1;
+    }
+    .collapsed .content {
+      display: none;
+    }
+    .collapsed {
+      min-height: 2rem !important;
+      max-height: 2rem !important;
+      height: 2rem !important;
+    }
+    .gutter {
+      background: #ccc;
+      cursor: row-resize;
+      height: 4px;
+      margin: 0;
+    }
+  </style>
+  <!-- Split.js CDN -->
+  <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
+</head>
+<body>
+  <div id="split" class="split">
+    <div class="section expanded" id="section1">
+      <div class="header" onclick="toggleSection(1)">
+        <span class="chevron">&#9660;</span>
+        Section 1
+      </div>
+      <div class="content">Content for section 1</div>
+    </div>
+    <div class="section expanded" id="section2">
+      <div class="header" onclick="toggleSection(2)">
+        <span class="chevron">&#9660;</span>
+        Section 2
+      </div>
+      <div class="content">Content for section 2</div>
+    </div>
+    <div class="section expanded" id="section3">
+      <div class="header" onclick="toggleSection(3)">
+        <span class="chevron">&#9660;</span>
+        Section 3
+      </div>
+      <div class="content">Content for section 3</div>
+    </div>
+    <div class="section expanded" id="section4">
+      <div class="header" onclick="toggleSection(4)">
+        <span class="chevron">&#9660;</span>
+        Section 4
+      </div>
+      <div class="content">Content for section 4</div>
+    </div>
+    <div class="section expanded" id="section5">
+      <div class="header" onclick="toggleSection(5)">
+        <span class="chevron">&#9660;</span>
+        Section 5
+      </div>
+      <div class="content">Content for section 5</div>
+    </div>
+  </div>
+  <script>
+    // Store Split.js instance
+    let splitInstance = Split(['#section1', '#section2', '#section3', '#section4', '#section5'], {
+      direction: 'vertical',
+      sizes: [20, 20, 20, 20, 20],
+      gutterSize: 4,
+      minSize: 80,
+      expandToMin: false,
+      gutter: function (index, direction) {
+        const gutter = document.createElement('div');
+        gutter.className = 'gutter';
+        return gutter;
+      }
+    });
+
+    function getExpandedSections() {
+      return Array.from(document.querySelectorAll('.section')).map((s, i) =>
+        s.classList.contains('collapsed') ? null : i
+      ).filter(i => i !== null);
+    }
+
+    function toggleSection(idx) {
+      const section = document.getElementById('section' + idx);
+      const sections = Array.from(document.querySelectorAll('.section'));
+      const minHeaderHeight = 40;
+      let sizes = splitInstance.getSizes();
+
+      if (section.classList.contains('collapsed')) {
+        // Expand this section
+        section.classList.remove('collapsed');
+        section.classList.add('expanded');
+      } else {
+        // Collapse this section
+        section.classList.remove('expanded');
+        section.classList.add('collapsed');
+        // Expand previous section if exists and not collapsed
+        let prevIdx = idx - 2;
+        if (prevIdx >= 0 && !sections[prevIdx].classList.contains('collapsed')) {
+          sections[prevIdx].classList.remove('collapsed');
+          sections[prevIdx].classList.add('expanded');
+        }
+      }
+
+      // Recalculate sizes so all expanded sections fill the screen
+      const expandedSections = getExpandedSections();
+      let newSizes = sections.map((s, i) =>
+        s.classList.contains('collapsed')
+          ? (minHeaderHeight / window.innerHeight) * 100
+          : 0
+      );
+      if (expandedSections.length > 0) {
+        let remaining = 100 - newSizes.reduce((a, b) => a + b, 0);
+        let perExpanded = remaining / expandedSections.length;
+        expandedSections.forEach(i => newSizes[i] = perExpanded);
+      }
+      splitInstance.setSizes(newSizes);
+    }
+  </script>
+</body>
+</html>

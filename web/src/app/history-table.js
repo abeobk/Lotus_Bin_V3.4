@@ -15,7 +15,13 @@ const HistoryTable = {
       visibleStart: 0,
       visibleEnd: 0,
       lineHeight: 16,
+      cachedLineHeight: null, // Cache actual measured line height
       showNGOnly: false,
+      scrollTimeout: null,
+      rafId: null, // Add for requestAnimationFrame
+      scrollTop: 0,
+      headerWidths: [], // Store header column widths
+      resizeObserver: null, // ResizeObserver instance
     };
   },
 
@@ -23,38 +29,48 @@ const HistoryTable = {
 
   template: /*html*/ `
   <div class="history-table-container">
-    <!--
-    <h3 class="table-title"><i class="fa fa-table"></i>&nbsp;{{table.title }}</h3>
-    -->
-    <div class="table-header">
-      <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
-        <span v-if="col!=='res'">{{getColText(colIndex)}}</span>
-      </template>
-      <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
-    </div>
-
-    <div class="table-content" ref="container" 
-      @scroll="handleScroll"
-    >
-      <div class="table-content-scrollarea" :style="{ height: filteredTotalHeight + 'px' }">
-        <div class="row-spacer" :style="{ height: topPadding + 'px' }"></div>
-        <div class="table-row" v-for="(row, rowIndex) in getVisibleRows()" 
-          :key="'R-'+visibleStart+rowIndex"
-          :class="{ 'even-row': rowIndex % 2 === 0 }"
-        >
-          <template v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex">
-            <span v-if="col!=='res'">{{row[col]}}</span>
-          </template>
-
-          <i class="fa res-cell" :class="{
-            'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
-            'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
-            'fa-spinner fa-spin': !row.res || !row.res || row.res === '',
-            'ng-res': row.res && row.res.toLowerCase() === 'ng',
-            'ok-res': row.res && row.res.toLowerCase() === 'ok',
-          }"></i>
-        </div>
-      </div>
+    <table class="history-table history-table-header" ref="headerTable">
+      <thead>
+        <tr class="table-header">
+          <th v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex"
+              :style="{ width: headerWidths[colIndex] ? headerWidths[colIndex] + 'px' : 'auto' }">
+            <span v-if="col=='time'"><i class="fa fa-clock"></i> {{col}}</span>
+            <span v-else-if="col=='model'"><i class="fa fa-car"></i> {{col}}</span>
+            <span v-else-if="col=='body'"><i class="fa fa-tag"></i> {{col}}</span>
+            <span v-else-if="col=='seq'"><i class="fa fa-hashtag"></i> {{col}}</span>
+            <span v-else-if="col!=='res'">{{col}}</span>
+          </th>
+          <th class="filter-column" :style="{ width: headerWidths[table.cols.length] ? headerWidths[table.cols.length] + 'px' : '3rem' }">
+            <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
+          </th>
+        </tr>
+      </thead>
+    </table>
+    <div class="table-content" ref="container" @scroll="handleScroll">
+      <table class="history-table history-table-body" ref="bodyTable">
+        <tbody>
+          <tr class="row-spacer" :style="{ height: topPadding + 'px' }"></tr>
+          <tr v-for="(row, rowIndex) in getVisibleRows()" 
+            :key="'R-'+visibleStart+rowIndex"
+            class="table-row"
+            :class="{ 'even-row': rowIndex % 2 === 0 }"
+          >
+            <td v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex" class="table-cell">
+              <span v-if="col!=='res'">{{row[col]}}</span>
+            </td>
+            <td class="table-cell res-cell-container filter-column">
+              <i class="fa res-cell" :class="{
+                'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
+                'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
+                'fa-spinner fa-spin': !row.res || !row.res || row.res === '',
+                'ng-res': row.res && row.res.toLowerCase() === 'ng',
+                'ok-res': row.res && row.res.toLowerCase() === 'ok',
+              }"></i>
+            </td>
+          </tr>
+          <tr class="row-spacer" :style="{ height: bottomPadding + 'px' }"></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 `,
@@ -93,13 +109,16 @@ const HistoryTable = {
       this.filterItem();
     },
     handleScroll() {
-      // Debounce scroll updates to prevent rapid recalculation
-      if (this.scrollTimeout) {
-        clearTimeout(this.scrollTimeout);
+      // Cancel any pending render
+      if (this.rafId) {
+        cancelAnimationFrame(this.rafId);
       }
-      this.scrollTimeout = setTimeout(() => {
+
+      // Use requestAnimationFrame for smooth 60fps rendering
+      this.rafId = requestAnimationFrame(() => {
         this.render();
-      }, 16);
+        this.rafId = null;
+      });
     },
 
     // Update visible range for virtual scrolling with dynamic heights
@@ -108,47 +127,66 @@ const HistoryTable = {
       if (!container || this.filteredItems.length === 0) {
         this.visibleStart = 0;
         this.visibleEnd = 0;
+        this.topPadding = 0;
+        this.bottomPadding = 0;
         return;
       }
 
+      // Cache line height once after first visible row is rendered
+      if (this.cachedLineHeight === null) {
+        const dataRow = container.querySelector('tbody tr.table-row');
+        if (dataRow) {
+          this.cachedLineHeight = dataRow.offsetHeight;
+        }
+      }
+
+      const lineHeight = this.cachedLineHeight || this.lineHeight;
       const containerHeight = container.offsetHeight; // Visible height
       const scrollTop = container.scrollTop;
+      this.scrollTop = scrollTop;
       if (containerHeight <= 0) return;
 
       // Calculate visible range based on actual scroll position
-      let startIndex = Math.floor(scrollTop / this.lineHeight);
+      let startIndex = Math.floor(scrollTop / lineHeight);
       startIndex = Math.max(0, startIndex);
 
-      let endIndex = Math.ceil((scrollTop + containerHeight) / this.lineHeight);
+      let endIndex = Math.ceil((scrollTop + containerHeight) / lineHeight) + 1;
       endIndex = Math.min(endIndex, this.filteredItems.length);
 
-      this.topPadding = startIndex * this.lineHeight;
-      const visibleHeight = (endIndex - startIndex) * this.lineHeight;
-      this.bottomPadding =
-        this.filteredTotalHeight - this.topPadding - visibleHeight;
+      const totalHeight = this.filteredItems.length * lineHeight;
+      this.topPadding = startIndex * lineHeight;
+      const visibleHeight = (endIndex - startIndex) * lineHeight;
+      this.bottomPadding = Math.max(0, totalHeight - this.topPadding - visibleHeight);
+      
       this.visibleStart = startIndex;
       this.visibleEnd = endIndex;
-      //compute col widths
-      this.colWidths = new Array(this.table.cols.length).fill(0);
-      this.filteredItems.forEach((row) => {
-        this.table.cols.forEach((col, colIndex) => {
-          this.colWidths[colIndex] = Math.max(
-            this.colWidths[colIndex],
-            row[col] ? row[col].toString().length : 1
-          );
-        });
+      
+      // Sync header widths with body column widths
+      this.syncColumnWidths();
+      
+      //keep scroll position after render to prevent jump
+      this.$nextTick(() => {
+        container.scrollTop = this.scrollTop;
       });
     },
-    getColText(colIndex){
-      const colwidth = this.colWidths[colIndex];
-      //space padding to match colwidth if colwidth > text length
-      const txt = this.table.cols[colIndex];
-      if(colwidth > txt.length){
-        //padd spaces to both sides
-        const totalSpaces = (colwidth - txt.length) * 0.75;
-        return '\u00A0'.repeat(totalSpaces) + txt + '\u00A0'.repeat(totalSpaces);
-      }
-      else {return txt;}
+
+    syncColumnWidths() {
+      // Get actual widths from body table cells
+      this.$nextTick(() => {
+        const bodyTable = this.$refs.bodyTable;
+        if (!bodyTable) return;
+
+        const firstRow = bodyTable.querySelector('tbody tr.table-row');
+        if (!firstRow) return;
+
+        const cells = firstRow.querySelectorAll('td');
+        const widths = [];
+        cells.forEach(cell => {
+          widths.push(cell.offsetWidth);
+        });
+
+        this.headerWidths = widths;
+      });
     },
 
     getVisibleRows() {
@@ -163,12 +201,26 @@ const HistoryTable = {
     if(window.chrome.webview)return;
     this.$nextTick(() => {
       this.updateTable(SampleData.generateHistoryData());
+      
+      // Setup ResizeObserver to sync column widths on resize
+      if (this.$refs.container) {
+        this.resizeObserver = new ResizeObserver(() => {
+          this.syncColumnWidths();
+        });
+        this.resizeObserver.observe(this.$refs.container);
+      }
     });
   },
   // Cleanup to prevent memory leaks
   beforeUnmount() {
     this.filteredItems.length = 0;
     this.table = null;
+    if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+    if (this.rafId) cancelAnimationFrame(this.rafId);
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
   },
 };
 
@@ -182,11 +234,6 @@ if (!document.querySelector('#history-table-styles')) {
         flex:1;
         min-height: 150px;
         border-top:1px solid var(--border-color);
-        /*
-        border-radius: var(--spacing-sm);
-        border: 1px solid var(--border-color);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-        */
       }
 
       .table-title{
@@ -197,52 +244,77 @@ if (!document.querySelector('#history-table-styles')) {
         background-color:var(--bg-tertiary);
       }
 
-      .table-header{
-        display:flex;
-        flex-direction:row;
-        align-items:center;
-        justify-content:space-between;
-        text-transform:uppercase;
-        font-weight:600;
-        background-color:var(--bg-table-header);
-        padding:0 var(--spacing-sm);
-        min-width:100%;
-      }
-      .table-header:last-child{max-width:2rem;}
-
       .table-content{
         font-weight: 500;
         font-size: var(--font-size-md);
-        border-collapse:collapse;
         text-transform: uppercase;
         white-space: nowrap;
         overflow-y:auto;
+        overflow-x: hidden;
         flex:1;
         position: relative;
         min-height:100px;
         min-width: 100%;
       }
-      .table-content-scrollarea{
-        position: relative;
+
+      .history-table {
         width: 100%;
+        border-collapse: collapse;
+      }
+
+      .history-table-header {
+        table-layout: fixed;
+      }
+
+      .history-table-body {
+        table-layout: auto;
+      }
+
+      .table-header{
+        background-color:var(--bg-table-header);
+        text-transform:uppercase;
+        font-weight:600;
+      }
+
+      .history-table th {
+        padding: 0 var(--spacing-sm);
+        background-color: var(--bg-table-header);
+        color: var(--text-primary);
+        font-weight: 600;
+        text-transform: uppercase;
+        text-align: center;
+        border: 1px solid var(--border-color);
+      }
+
+      .filter-column {
+        width: 3rem !important;
+        min-width: 3rem !important;
+        max-width: 3rem !important;
       }
 
       .table-row{
-        display:flex;
-        flex-direction:row;
-        justify-content:space-between;
-        align-items:center;
         background-color:var(--bg-table-row-odd);
-        padding:0 var(--spacing-sm);
         line-height:16px;
       }
-      .table-row:last-of-type{ border-bottom:none; }
       .table-row.even-row { background-color: var(--bg-table-row-even); }
       .table-row:hover { background-color: var(--bg-hover); } 
+
+      .history-table td {
+        padding: 0 var(--spacing-sm);
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        height: 16px;
+      }
+
       .ng-res{ color: var(--accent-ng) !important; }
       .ok-res { color: var(--accent-ok) !important; }
-      .row-spacer{width:100%;}
+      .row-spacer{padding:0;margin:0; width:100%;}
       .res-cell{width:1rem;}
+      .res-cell-container {
+        text-align: center !important;
+      }
       .filter-icon{ cursor:pointer; }
       .filter-icon:hover{ color:var(--accent-ng); }
     </style>
