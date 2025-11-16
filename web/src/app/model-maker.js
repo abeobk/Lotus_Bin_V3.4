@@ -92,7 +92,6 @@ if (!document.querySelector('#model-maker-styles')) {
     .model-maker-container{
         display:flex;
         flex-direction:column;
-        border-top:1px solid var(--border-color);
         background-color: var(--bg-);
         height:100%;
     }
@@ -108,9 +107,8 @@ if (!document.querySelector('#model-maker-styles')) {
         flex-direction:row;
         align-items:center;
         height:2.5rem;
-        background-color: var(--bg-tertiary);
-        box-shadow: 0 2px 4px var(--shadow-color);
-        z-index:1;
+        background-color: var(--bg-secondary);
+        border-bottom:1px solid var(--border-color);
     }
     .all-group-container{
         display:flex;
@@ -162,12 +160,15 @@ if (!document.querySelector('#model-maker-styles')) {
         white-space: nowrap;
     }
 
-    .action-button:hover{
-        background-color: var(--bg-tertiary);
-    }
+
     .action-button.active{
-        background-color: var(--bg-tertiary);
+        background-color: transparent;
+        border:none;
+        box-shadow:none;
         color: var(--accent-ok);
+    }
+    .action-button:hover{
+        background-color: var(--bg-hover);
     }
 
     .robot-poses-container{

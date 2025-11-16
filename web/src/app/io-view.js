@@ -19,7 +19,7 @@ const IOViewer = {
   // Template
   template: /*html*/ `
     <div class="io-view-container">
-      <div class="io-view-title">{{title}}</div>
+      <div class="io-view-title"><i class="fa fa-tags"></i> {{title}}</div>
       <div class="io-map-container">
         <div class="io-column">
             <div class="io-header">
@@ -144,14 +144,13 @@ if (!document.querySelector('#io-view-styles')) {
     <style id="io-view-styles">
       .io-view-container{
         display:flex;
-        min-width:fit-content;
-        max-width:fit-content;
+        min-width: fit-content;
         flex-direction:column;
         background-color: var(--bg-primary);
-        border: 1px solid var(--border-color);
         flex:1;
         height:fit-content;
         overflow:hidden;
+        border: 1px solid var(--border-color);
         border-radius: var(--spacing-sm);
         box-shadow: 0 2px 4px var(--shadow-color);
       }
@@ -161,7 +160,7 @@ if (!document.querySelector('#io-view-styles')) {
         height:100%;
       }
       .io-view-title{
-        background-color:var(--bg-tertiary);
+        background-color:var(--bg-secondary);
         padding: var(--spacing-xs);
         font-weight:600;
         font-size:var(--font-size-lg);

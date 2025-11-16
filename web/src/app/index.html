@@ -25,8 +25,10 @@
             <!---->
             <button :class="{'active': crrSection === 'IO'}" @click="activateSection('IO')"><i
                     class="fa fa-microchip"></i></button>
-            <button :class="{'active': crrSection === 'STATS'}" @click="activateSection('STATS')"><i
-                    class="fa fa-chart-pie"></i></button>
+            <button v-show="showImgTab" :class="{'active': crrSection === 'IMG'}" @click="activateSection('IMG')"><i
+                    class="fa fa-image"></i></button>
+            <button v-show="showStatTab" :class="{'active': crrSection === 'STATS'}"
+                @click="activateSection('STATS')"><i class="fa fa-chart-pie"></i></button>
             <button :class="{'active': crrSection === 'LOG'}" @click="activateSection('LOG')"><i
                     class="fa fa-list"></i></button>
             <!--log-->
@@ -42,14 +44,27 @@
                 <!------------------------->
                 <!--SECTION: CYCLE RESULT-->
                 <!------------------------->
-                <section v-show="crrSection==='MAIN' || crrSection==='IO' || crrSection=='LOG'" class="section--main">
+                <section v-show="crrSection==='MAIN' || crrSection==='IO' || crrSection=='LOG' || crrSection=='IMG'"
+                    class="section--main">
                     <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
                     </cycle-info-card>
-                    <div class= "section--main__result-container">
+                    <div class="section--main__result-container">
                         <div v-for="(table,index) in resultTables" :key="index">
                             <result-table :table="table"></result-table>
                         </div>
+                    </div>
+                </section>
+
+                <!----------------------->
+                <!--SECTION: IMG VIEWER-->
+                <!----------------------->
+                <section v-show="showImgTab && crrSection==='IMG'" class="section--img">
+                    <h3 class="section-title"><i class="fa fa-image"></i>&nbsp;IMAGE VIEWER</h3>
+                    <div class="img-container">
+                        <img-viewer v-for="(img, index) in imgViewers" :key="'IMG-'+index"
+                            :ref="`imgViewer-${img.name}`">
+                        </img-viewer>
                     </div>
                 </section>
 
@@ -57,7 +72,7 @@
                 <!--SECTION: MAIN-->
                 <!----------------->
                 <section v-show="crrSection==='MAIN'" class="section--history">
-                    <h3 class="section-title"><i class="fa fa-table"></i>&nbsp;PRODUCTION HISTORY</h3>
+                    <h3 class="section-title history"><i class="fa fa-table"></i>&nbsp;PRODUCTION HISTORY</h3>
                     <stat-view ref="statView"></stat-view>
                     <history-table ref="historyTable" @show-ng-only="handleShowNGOnly"></history-table>
                 </section>
@@ -66,13 +81,14 @@
                 <!--SECTION: IO VIEWER-->
                 <!---------------------->
                 <section v-show="crrSection==='IO'" class="section--io">
-                    <h3 class="section-title io"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
+                    <h3 class="section-title"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
                     <div class="io-container">
                         <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index"
                             :ref="`ioViewer-${iomap.name}`">
                         </io-viewer>
                     </div>
                 </section>
+
 
                 <!---------------------->
                 <!--SECTION: IO VIEWER-->
@@ -97,13 +113,14 @@
     <script src="./log-viewer.js"></script>
     <script src="./stat-view.js"></script>
     <script src="./io-view.js"></script>
+    <script src="./img-view.js"></script>
     <script src="./history-table.js"></script>
     <script src="./model-maker.js"></script>
 
     <script>
 
         const { createApp } = Vue;
-        const sections = ['MAIN', 'LOG', 'IO', 'STATS', "MODEL"];
+        const sections = ['MAIN', 'LOG', 'IO', 'IMG', 'STATS', "MODEL"];
         const app = createApp({
             components: {
                 'cycle-info-card': window.CycleInfoCard,
@@ -111,6 +128,7 @@
                 'log-viewer': window.LogViewer,
                 'stat-view': window.StatView,
                 'io-viewer': window.IOViewer,
+                'img-viewer': window.ImgViewer,
                 'history-table': window.HistoryTable,
                 'model-maker': window.ModelMaker,
             },
@@ -144,7 +162,16 @@
                         // { name: 'R3.PLC', iomap: null },
                     ],
 
+                    imgViewers: [
+                        { name: 'View1', src: '' },
+                        // { name: 'View2', src: '' },
+                        // { name: 'View3', src: '' }
+                    ],
+
                     sectionMainExpanded: true,
+                    //show / hide
+                    showStatTab: false,
+                    showImageTab: false,
                 }
             },
             computed: {
@@ -189,6 +216,7 @@
                     // }
                     this.adjustLogSplitter();
                 },
+
                 toggleSection(section) {
                     if (section === 'MAIN') {
                         this.sectionMainExpanded = !this.sectionMainExpanded;
@@ -280,6 +308,75 @@
                         this.$refs[`ioViewer-${viewer.name}`][0].setOutputPin(pinname, value);
                     }
                 },
+                //IMG VIEWER
+                setImageViewers(titles) {
+                    //set image viewers by titles array
+                    this.imgViewers = [];
+                    titles.forEach((title, index) => {
+                        this.imgViewers.push({ name: title, src: '' });
+                    });
+                    //clear previous img viewer ref
+                    Object.keys(this.$refs).forEach(refKey => {
+                        if (refKey.startsWith('imgViewer-')) {
+                            delete this.$refs[refKey];
+                        }
+                    });
+                    this.$forceUpdate();
+                },
+
+                async fetchImage(url) {
+                    try {
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return await response.blob();
+                    } catch (error) {
+                        console.error('Failed to fetch image:', error);
+                        return null;
+                    }
+                },
+
+                async setImage(data) {
+                    // Update single image viewer by id with base64 data or URL
+                    if (data.id === undefined) return;
+                    if (this.imgViewers[data.id] === undefined) return;
+                    const viewer = this.imgViewers[data.id];
+
+                    this.$nextTick(async () => {
+                        const refKey = `imgViewer-${viewer.name}`;
+                        const ref = this.$refs[refKey];
+                        if (!ref) return;
+                        const iv = ref[0];
+                        if (!iv) return;
+
+                        if (data.data) {
+                            // Base64 data
+                            iv.setImageBase64(data.title || viewer.name, data.data);
+                        }
+                        else if (data.url) {
+                            try{
+                                const response = await fetch(data.url);
+                                await iv.setImageFromResponse(data.title || viewer.name, response);
+                            }catch(err){
+                                console.error('Failed to fetch image from URL:', err);
+                            }
+                        }
+                    });
+                },
+
+                clearImages() {
+                    // Clear all image viewers by setting empty source
+                    this.$nextTick(() => {
+                        for (const viewer of this.imgViewers) {
+                            const refKey = `imgViewer-${viewer.name}`;
+                            if (this.$refs[refKey] && this.$refs[refKey][0]) {
+                                this.$refs[refKey][0].setImage(viewer.name, '');
+                            }
+                        }
+                    });
+                },
+
                 //LOGS
                 addLogEntries(entries) {
                     this.$refs.logViewer.addEntries(entries);
@@ -333,6 +430,17 @@
                         this.activateSection('MAIN');
                     }
                 },
+
+                //SHOW / HIDE TABS
+                setShow(data) {
+                    if (data['key'] === 'STATS') {
+                        this.showStatTab = data['value'];
+                    }
+                    else if (data['key'] === 'IMG') {
+                        this.showImgTab = data['value'];
+                    }
+                    this.$forceUpdate();
+                },
             },
             mounted() {
                 this.initTheme();
@@ -352,6 +460,11 @@
                 //---test code---
                 this.setPlcPinmap(SampleData.generatePinmaps());
                 this.addLogEntries(SampleData.generateLogs());
+                this.showImgTab = true;
+                this.clearImages();
+                this.setImage({ id: 0, data: SampleData.generateImage() });
+                // this.setImage({ id: 1, data: SampleData.generateImage() });
+                // this.setImage({ id: 2, data: SampleData.generateImage() });
 
                 setInterval(() => {
                     this.cycleInfo = SampleData.generateCycleInfo();

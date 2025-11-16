@@ -79,7 +79,7 @@ if (!document.querySelector('#result-table-styles')) {
     <style id="result-table-styles">
       .result-table-container {
         overflow: auto;
-        background-color: var(--bg-primary);
+        background-color: var(--bg-secondary);
         border-radius: var(--spacing-sm);
         border:1px solid var(--border-color);
         box-shadow: 0 2px 4px var(--shadow-color);
@@ -90,7 +90,7 @@ if (!document.querySelector('#result-table-styles')) {
         text-transform:uppercase;
         font-weight:600;
         padding-left:0.5rem;
-        background-color:var(--bg-tertiary);
+        background-color:var(--bg-secondary);
       }
 
       .result-table {
@@ -105,6 +105,8 @@ if (!document.querySelector('#result-table-styles')) {
 
       .header-row {
         background-color: var(--bg-table-header);
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
         color: var(--text-primary);
       }
 

@@ -2,7 +2,7 @@
 // C# API
 const API = {
   init() {
-    if(!window.chrome.webview)return;
+    if (!window.chrome.webview) return;
     window.chrome.webview.addEventListener('message', (event) => {
       const type = event.data['type'];
       const value = event.data['value'];
@@ -66,6 +66,7 @@ const API = {
         case 'set_auto_mode':
           app.setMode(true);
           break;
+
         case 'set_manual_mode':
           app.setMode(false);
           break;
@@ -74,18 +75,39 @@ const API = {
         case 'make_model_set_state':
           app.setMakeModelState(value);
           break;
+
+        //set image viewer
+        // value = ['title1', 'title2'] 
+        case 'set_image_viewers':
+          app.setImageViewers(value);
+          break;
+        //set image
+        case 'clear_images':
+          app.clearImages();
+          break;
+        // value = { id: 0, data: 'base64 string' }
+        case 'set_image':
+          app.setImage(value);
+          break;
+
+        //show /hide tabs
+        // value = { key: 'STATS'/'IMG', value: true/false }
+        case 'set_show':
+          app.setShow(value);
+          break;
       }
 
       event = null; //free memory
     });
 
+    CSharpUtils.sendMessage({ type: 'init_begin' }); //signal begin initialization
     //load display state from C# when loaded
     CSharpUtils.sendMessage({ type: 'get_mode' }); //pinmap and pin state
     CSharpUtils.sendMessage({ type: 'get_pinmap' }); //pinmap and pin state
     CSharpUtils.sendMessage({ type: 'get_cycle_info' }); //model, body, seq
     CSharpUtils.sendMessage({ type: 'get_result' }); //latest get results
     CSharpUtils.sendMessage({ type: 'get_history' }); //last results + counter
-    CSharpUtils.sendMessage({ type: 'make_model_get_state' }); //last results + counter
+    CSharpUtils.sendMessage({ type: 'make_model_get_state' }); 
   },
 };
 

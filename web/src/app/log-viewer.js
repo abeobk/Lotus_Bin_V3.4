@@ -415,8 +415,8 @@ if (!document.querySelector('#log-viewer-styles')) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background-color: var(--bg-tertiary);
-        box-shadow: 0 2px 4px var(--shadow-color);
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
         overflow: hidden;
         min-height:1.7rem;
         max-height:1.7rem;
@@ -426,7 +426,7 @@ if (!document.querySelector('#log-viewer-styles')) {
       .level-filter, .text-filter {
         padding: var(--spacing-xs) var(--spacing-sm);
         border:none;
-        background-color: var(--bg-tertiary);
+        background-color: var(--bg-secondary);
         color: var(--text-primary);
         font-size: var(--font-size-sm);
         height:100%;
@@ -436,7 +436,6 @@ if (!document.querySelector('#log-viewer-styles')) {
       .text-filter { 
         flex:1; 
         border-radius: var(--spacing-xs);
-        border: 1px solid var(--border-color);
         height:1.5rem;
       }
 
@@ -445,7 +444,7 @@ if (!document.querySelector('#log-viewer-styles')) {
         border: 1px solid var(--accent-active);
       }
       .scroll-status {width: 0rem; font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
-      .scroll-status.active {width:2rem; color: var(--text-primary); overflow:hidden; border:none; box-shadow:none; }
+      .scroll-status.active {width:2rem; background-color:transparent; color: var(--text-primary); overflow:hidden; border:none; box-shadow:none; }
       .scroll-status:hover { color: var(--accent-active); }
       .log-content { position: relative; }
       .log-spacer { width: 100%; }

@@ -283,7 +283,7 @@ if (!document.querySelector('#history-table-styles')) {
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
-        border: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
       }
 
       .filter-column {
