@@ -43,7 +43,7 @@ const ModelMaker = {
             </div>
           </div>
 
-          <div v-show="state.poses && state.poses.length > 0" class="model-maker__poses">
+          <div v-show="state.poses && state.poses.length > 0" class="model-maker__pose-container">
               <div class="model-maker__pose" v-for="(pose, pIndex) in state.poses" :key="'P-'+pIndex" :class="{ 'model-maker__pose--even': pIndex % 2 === 0 }">
                   <span class="model-maker__pose-name"><i class="fa fa-location-dot"></i> {{pose.name}}</span>
                   <span class="model-maker__pose-value">{{pose.value}}</span>
@@ -189,7 +189,7 @@ if (!document.querySelector('#model-maker-styles')) {
         color: var(--accent-ok);
     }
 
-    .model-maker__poses {
+    .model-maker__pose-container {
         border-top: 1px solid var(--border-color);
         display: flex;
         flex-direction: column;
@@ -200,7 +200,7 @@ if (!document.querySelector('#model-maker-styles')) {
         display: flex;
         flex-direction: row;
         padding: 0 var(--spacing-sm);
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-table-row-odd);
         border-bottom: 1px solid var(--border-color);
     }
 
