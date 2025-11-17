@@ -75,6 +75,20 @@ const API = {
         case 'make_model_set_state':
           app.setMakeModelState(value);
           break;
+        case 'make_model_clear_state':
+          app.clearMakeModelState();
+          break;
+
+        //cycle test
+        case 'cycle_test_set_state':
+          app.setCycleTestState(value);
+          break;
+        case 'cycle_test_set_models':
+          app.setCycleTestModels(value);
+          break;
+        case 'cycle_test_clear_state':
+          app.clearCycleTestState();
+          break;
 
         //set image viewer
         // value = ['title1', 'title2'] 
@@ -108,6 +122,7 @@ const API = {
     CSharpUtils.sendMessage({ type: 'get_result' }); //latest get results
     CSharpUtils.sendMessage({ type: 'get_history' }); //last results + counter
     CSharpUtils.sendMessage({ type: 'make_model_get_state' }); 
+    CSharpUtils.sendMessage({ type: 'cycle_test_get_state' }); 
   },
 };
 

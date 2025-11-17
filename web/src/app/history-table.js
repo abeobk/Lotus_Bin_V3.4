@@ -5,9 +5,10 @@ const HistoryTable = {
   data() {
     return {
       table: {
-        title: 'Production History',cols:[],rows:[],
+        title: 'Production History',
+        cols: [],
+        rows: [],
       },
-      colWidths: [],
       filteredItems: [],
       filteredTotalHeight: 0,
       topPadding: 0,
@@ -20,69 +21,62 @@ const HistoryTable = {
       scrollTimeout: null,
       rafId: null, // Add for requestAnimationFrame
       scrollTop: 0,
-      headerWidths: [], // Store header column widths
-      resizeObserver: null, // ResizeObserver instance
     };
   },
 
   computed: {},
 
   template: /*html*/ `
-  <div class="history-table-container">
-    <table class="history-table history-table-header" ref="headerTable">
-      <thead>
-        <tr class="table-header">
-          <th v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex"
-              :style="{ width: headerWidths[colIndex] ? headerWidths[colIndex] + 'px' : 'auto' }">
+  <div class="history-table">
+    <div class="history-table__content" ref="container" @scroll="handleScroll">
+      <table class="history-table__table" ref="bodyTable">
+        <thead>
+          <th v-for="(col,colIndex) in table.cols.filter(c=>c!=='res')" :key="'C-'+colIndex">
             <span v-if="col=='time'"><i class="fa fa-clock"></i> {{col}}</span>
             <span v-else-if="col=='model'"><i class="fa fa-car"></i> {{col}}</span>
             <span v-else-if="col=='body'"><i class="fa fa-tag"></i> {{col}}</span>
             <span v-else-if="col=='seq'"><i class="fa fa-hashtag"></i> {{col}}</span>
-            <span v-else-if="col!=='res'">{{col}}</span>
+            <span v-else>{{col}}</span>
           </th>
-          <th class="filter-column" :style="{ width: headerWidths[table.cols.length] ? headerWidths[table.cols.length] + 'px' : '3rem' }">
-            <i class="fa fa-filter filter-icon" @click="toggleFilter"></i>
+          <th class="history-table__filter-column">
+            <span><i class="fa fa-filter history-table__filter-icon" @click="toggleFilter"></i></span>
           </th>
-        </tr>
-      </thead>
-    </table>
-    <div class="table-content" ref="container" @scroll="handleScroll">
-      <table class="history-table history-table-body" ref="bodyTable">
+        </thead>
         <tbody>
-          <tr class="row-spacer" :style="{ height: topPadding + 'px' }"></tr>
+          <tr class="history-table__spacer" :style="{ height: topPadding + 'px' }"></tr>
           <tr v-for="(row, rowIndex) in getVisibleRows()" 
             :key="'R-'+visibleStart+rowIndex"
-            class="table-row"
-            :class="{ 'even-row': rowIndex % 2 === 0 }"
+            class="history-table__row"
+            :class="{ 'history-table__row--even': rowIndex % 2 === 0 }"
           >
-            <td v-for="(col,colIndex) in table.cols" :key="'C-'+colIndex" class="table-cell">
-              <span v-if="col!=='res'">{{row[col]}}</span>
-            </td>
-            <td class="table-cell res-cell-container filter-column">
-              <i class="fa res-cell" :class="{
-                'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
-                'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
-                'fa-spinner fa-spin': !row.res || !row.res || row.res === '',
-                'ng-res': row.res && row.res.toLowerCase() === 'ng',
-                'ok-res': row.res && row.res.toLowerCase() === 'ok',
-              }"></i>
-            </td>
-          </tr>
-          <tr class="row-spacer" :style="{ height: bottomPadding + 'px' }"></tr>
-        </tbody>
-      </table>
+            <td v-for="(col,colIndex) in table.cols.filter(c=>c!=='res')" :key="'C-'+colIndex" class="history-table__cell">
+                <span>{{row[col]}}</span>
+              </td>
+              <td class="history-table__cell history-table__cell--res history-table__filter-column">
+                <i class="fa history-table__res-icon" :class="{
+                  'fa-circle-check': row.res && row.res.toLowerCase() === 'ok', 
+                  'fa-circle-exclamation': row.res && row.res.toLowerCase() === 'ng',
+                  'fa-spinner fa-spin': !row.res || !row.res || row.res === '',
+                  'history-table__res-icon--ng': row.res && row.res.toLowerCase() === 'ng',
+                  'history-table__res-icon--ok': row.res && row.res.toLowerCase() === 'ok',
+                }"></i>
+              </td>
+            </tr>
+            <tr class="history-table__spacer" :style="{ height: bottomPadding + 'px' }"></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-`,
+  `,
 
-  methods: {
-    updateTable(data) {
-      this.table = data;
-      //change time column text
-      this.showNGOnly = false; // Reset filter when new data is loaded
-      this.$emit('show-ng-only', this.showNGOnly);
-      this.filterItem();
-      this.$nextTick(() => {
+    methods: {
+      updateTable(data) {
+        this.table = data;
+        //change time column text
+        this.showNGOnly = false; // Reset filter when new data is loaded
+        this.$emit('show-ng-only', this.showNGOnly);
+        this.filterItem();
+        this.$nextTick(() => {
         this.render();
         //scroll to top
         this.scrollToTop();
@@ -134,7 +128,7 @@ const HistoryTable = {
 
       // Cache line height once after first visible row is rendered
       if (this.cachedLineHeight === null) {
-        const dataRow = container.querySelector('tbody tr.table-row');
+        const dataRow = container.querySelector('tbody tr.history-table__row');
         if (dataRow) {
           this.cachedLineHeight = dataRow.offsetHeight;
         }
@@ -156,36 +150,17 @@ const HistoryTable = {
       const totalHeight = this.filteredItems.length * lineHeight;
       this.topPadding = startIndex * lineHeight;
       const visibleHeight = (endIndex - startIndex) * lineHeight;
-      this.bottomPadding = Math.max(0, totalHeight - this.topPadding - visibleHeight);
-      
+      this.bottomPadding = Math.max(
+        0,
+        totalHeight - this.topPadding - visibleHeight
+      );
+
       this.visibleStart = startIndex;
       this.visibleEnd = endIndex;
-      
-      // Sync header widths with body column widths
-      this.syncColumnWidths();
-      
+
       //keep scroll position after render to prevent jump
       this.$nextTick(() => {
         container.scrollTop = this.scrollTop;
-      });
-    },
-
-    syncColumnWidths() {
-      // Get actual widths from body table cells
-      this.$nextTick(() => {
-        const bodyTable = this.$refs.bodyTable;
-        if (!bodyTable) return;
-
-        const firstRow = bodyTable.querySelector('tbody tr.table-row');
-        if (!firstRow) return;
-
-        const cells = firstRow.querySelectorAll('td');
-        const widths = [];
-        cells.forEach(cell => {
-          widths.push(cell.offsetWidth);
-        });
-
-        this.headerWidths = widths;
       });
     },
 
@@ -198,17 +173,9 @@ const HistoryTable = {
     },
   },
   mounted() {
-    if(window.chrome.webview)return;
+    if (window.chrome.webview) return;
     this.$nextTick(() => {
       this.updateTable(SampleData.generateHistoryData());
-      
-      // Setup ResizeObserver to sync column widths on resize
-      if (this.$refs.container) {
-        this.resizeObserver = new ResizeObserver(() => {
-          this.syncColumnWidths();
-        });
-        this.resizeObserver.observe(this.$refs.container);
-      }
     });
   },
   // Cleanup to prevent memory leaks
@@ -217,10 +184,6 @@ const HistoryTable = {
     this.table = null;
     if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
     if (this.rafId) cancelAnimationFrame(this.rafId);
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-      this.resizeObserver = null;
-    }
   },
 };
 
@@ -228,55 +191,34 @@ const HistoryTable = {
 if (!document.querySelector('#history-table-styles')) {
   const styles = /*css*/ `
     <style id="history-table-styles">
-      .history-table-container {
+      .history-table {
         display: flex;
         flex-direction: column;
-        flex:1;
+        flex: 1;
         min-height: 150px;
-        border-top:1px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
       }
 
-      .table-title{
-        text-align:left;
-        text-transform:uppercase;
-        font-weight:600;
-        padding-left:0.5rem;
-        background-color:var(--bg-tertiary);
-      }
-
-      .table-content{
+      .history-table__content {
         font-weight: 500;
         font-size: var(--font-size-md);
         text-transform: uppercase;
         white-space: nowrap;
-        overflow-y:auto;
+        overflow-y: auto;
         overflow-x: hidden;
-        flex:1;
+        flex: 1;
         position: relative;
-        min-height:100px;
+        min-height: 100px;
         min-width: 100%;
       }
 
-      .history-table {
+      .history-table__table {
         width: 100%;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 0;
       }
 
-      .history-table-header {
-        table-layout: fixed;
-      }
-
-      .history-table-body {
-        table-layout: auto;
-      }
-
-      .table-header{
-        background-color:var(--bg-table-header);
-        text-transform:uppercase;
-        font-weight:600;
-      }
-
-      .history-table th {
+      .history-table__table th {
         padding: 0 var(--spacing-sm);
         background-color: var(--bg-table-header);
         color: var(--text-primary);
@@ -284,39 +226,80 @@ if (!document.querySelector('#history-table-styles')) {
         text-transform: uppercase;
         text-align: center;
         border-bottom: 1px solid var(--border-color);
+        border-right: 1px solid var(--border-color);
+        position: sticky;
+        height: 1.8rem;
+        top: 0;
+        z-index: 10;
       }
 
-      .filter-column {
+      .history-table__table th:last-child {
+        border-right: none;
+      }
+
+      .history-table__filter-column {
         width: 3rem !important;
         min-width: 3rem !important;
         max-width: 3rem !important;
       }
 
-      .table-row{
-        background-color:var(--bg-table-row-odd);
-        line-height:16px;
+      .history-table__row {
+        background-color: var(--bg-table-row-odd);
+        line-height: 16px;
       }
-      .table-row.even-row { background-color: var(--bg-table-row-even); }
-      .table-row:hover { background-color: var(--bg-hover); } 
 
-      .history-table td {
+      .history-table__row--even {
+        background-color: var(--bg-table-row-even);
+      }
+
+      .history-table__row:hover {
+        background-color: var(--bg-hover);
+      }
+
+      .history-table__cell {
         padding: 0 var(--spacing-sm);
         text-align: center;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
         height: 16px;
+        border-right: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
       }
 
-      .ng-res{ color: var(--accent-ng) !important; }
-      .ok-res { color: var(--accent-ok) !important; }
-      .row-spacer{padding:0;margin:0; width:100%;}
-      .res-cell{width:1rem;}
-      .res-cell-container {
+      .history-table__cell:last-child {
+        border-right: none;
+      }
+
+      .history-table__cell--res {
         text-align: center !important;
       }
-      .filter-icon{ cursor:pointer; }
-      .filter-icon:hover{ color:var(--accent-ng); }
+
+      .history-table__res-icon {
+        width: 1rem;
+      }
+
+      .history-table__res-icon--ng {
+        color: var(--accent-ng) !important;
+      }
+
+      .history-table__res-icon--ok {
+        color: var(--accent-ok) !important;
+      }
+
+      .history-table__spacer {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+      }
+
+      .history-table__filter-icon {
+        cursor: pointer;
+      }
+
+      .history-table__filter-icon:hover {
+        color: var(--accent-ng);
+      }
     </style>
   `;
   document.head.insertAdjacentHTML('beforeend', styles);

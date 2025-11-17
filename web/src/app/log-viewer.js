@@ -37,31 +37,31 @@ const LogViewer = {
   // Template
   template: /*html*/ `
     <div class="log-viewer">
-      <div v-show="showControllers" class="log-viewer-controls">
-        <i class = "fa fa-list log-icon"></i>
+      <div v-show="showControllers" class="log-viewer__controls">
+        <i class = "fa fa-list log-viewer__icon"></i>
         <span style="font-weight: 600;padding-right: 1rem"> SYSTEM LOG</span>
         <input 
           type="text" 
           v-model="textFilter" 
           @input="filterChanged"
           placeholder="Filter text..." 
-          class="text-filter"
+          class="log-viewer__filter-text"
           title="Log filter input"
         >
-        <select v-model="levelFilter" @change="filterChanged" class="level-filter" title="Filter log level">
+        <select v-model="levelFilter" @change="filterChanged" class="log-viewer__filter-level" title="Filter log level">
           <option value="LOG">LOG</option>
           <option value="WARN">WARN</option>
           <option value="ERROR">ERROR</option>
           <option value="ALL">ALL</option>
         </select>
 
-        <button class="scroll-status" :class="{ active: autoScrollPaused }" @click="resumeAutoScroll" title="Scroll to bottom">
+        <button class="log-viewer__scroll-btn" :class="{ 'log-viewer__scroll-btn--active': autoScrollPaused }" @click="resumeAutoScroll" title="Scroll to bottom">
           <i class="fa fa-angle-double-down"></i>
         </button>
       </div>
-      <div v-show="showControllers && crrEntry" class="selected-entry-container">
+      <div v-show="showControllers && crrEntry" class="log-viewer__selected">
         <div style="display:flex;flex-direction:row;margin:0;padding:0;">
-            <span class="log-level" :class="'level-' + crrEntry.l">
+            <span class="log-viewer__level" :data-level="crrEntry.l">
             <i class="fa" :class="{
               'fa-info-circle': crrEntry.l=== 'Normal',
               'fa-bug': crrEntry.l=== 'Debug',
@@ -73,28 +73,28 @@ const LogViewer = {
               'fa-skull': crrEntry.l=== 'Fatal',
             }"></i>
           </span>
-          <span class="log-time">{{ crrEntry.t}}</span>
-          <button class="close-button" @click="crrEntry=''"><i class="fa fa-times"></i></button>
+          <span class="log-viewer__time">{{ crrEntry.t}}</span>
+          <button class="log-viewer__close" @click="crrEntry=''"><i class="fa fa-times"></i></button>
         </div>
-        <span class="selected-entry">{{ crrEntry.m}}</span>
+        <span class="log-viewer__selected-message">{{ crrEntry.m}}</span>
       </div>
       
       <div ref="container" 
-        class="log-container"
+        class="log-viewer__container"
         @scroll="handleScroll"
         @wheel="handleUserScroll"
       >
-        <div class="log-content" :style="{ height: getTotalHeight() + 'px' }">
-          <div class="log-spacer" :style="{ height: offsetY + 'px' }"></div>
+        <div class="log-viewer__content" :style="{ height: getTotalHeight() + 'px' }">
+          <div class="log-viewer__spacer" :style="{ height: offsetY + 'px' }"></div>
           <div
             v-for="(entry, index) in getVisibleLogs()"
             :key="visibleStart + index"
             :ref="'entry-' + entry.id"
-            class="log-entry"
-            :class="'log-level-' + entry.l"
+            class="log-viewer__entry"
+            :data-level="entry.l"
           >
-            <span class="log-time">{{ (entry.t.split(' ')[1]) }}</span>
-            <span class="log-level" :class="'level-' + entry.l">
+            <span class="log-viewer__time">{{ (entry.t.split(' ')[1]) }}</span>
+            <span class="log-viewer__level" :data-level="entry.l">
               <i class="fa" :class="{
                 'fa-info-circle': entry.l=== 'Normal',
                 'fa-bug': entry.l=== 'Debug',
@@ -106,7 +106,7 @@ const LogViewer = {
                 'fa-skull': entry.l=== 'Fatal'
               }"></i>
             </span>
-            <span class="log-message"
+            <span class="log-viewer__message"
              @dblclick="setCurrentEntry(entry)">{{ entry.m }}</span>
           </div>
         </div>
@@ -392,64 +392,96 @@ if (!document.querySelector('#log-viewer-styles')) {
       .log-viewer {
         display: flex;
         max-height: 100%;
-        min-height:0;
+        min-height: 0;
         flex-direction: column;
         background-color: var(--bg-secondary);
         overflow: hidden;
-        user-select:text;
-        cursor:text;
+        user-select: text;
+        cursor: text;
       }
-      .log-viewer::selection{background-color:var(--bg-tertiary);color:var(--text-primary);}
 
-      .log-container {
+      .log-viewer::selection {
+        background-color: var(--bg-tertiary);
+        color: var(--text-primary);
+      }
+
+      .log-viewer__container {
         height: 100%;
-        min-height:0;
+        min-height: 0;
         overflow-x: hidden;
         overflow-y: auto;
         background-color: var(--bg-primary);
         position: relative;
       }
 
-      .log-viewer-controls {
+      .log-viewer__controls {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-title);
         border-bottom: 1px solid var(--border-color);
         overflow: hidden;
-        min-height:1.7rem;
-        max-height:1.7rem;
+        min-height: 1.7rem;
+        max-height: 1.7rem;
         z-index: 10;
       }
 
-      .level-filter, .text-filter {
+      .log-viewer__filter-level,
+      .log-viewer__filter-text {
         padding: var(--spacing-xs) var(--spacing-sm);
-        border:none;
-        background-color: var(--bg-secondary);
+        border: none;
+        background-color: var(--bg-title);
         color: var(--text-primary);
         font-size: var(--font-size-sm);
-        height:100%;
+        height: 100%;
       }
 
-      .level-filter { min-width: fit-content; }
-      .text-filter { 
-        flex:1; 
+      .log-viewer__filter-level {
+        min-width: fit-content;
+      }
+
+      .log-viewer__filter-text {
+        flex: 1;
         border-radius: var(--spacing-xs);
-        height:1.5rem;
+        height: 1.5rem;
       }
 
-      .text-filter:focus, .level-filter:focus {
+      .log-viewer__filter-text:focus,
+      .log-viewer__filter-level:focus {
         outline: none;
         border: 1px solid var(--accent-active);
       }
-      .scroll-status {width: 0rem; font-size: var(--font-size-sm); color: var(--text-muted); overflow:hidden; }
-      .scroll-status.active {width:2rem; background-color:transparent; color: var(--text-primary); overflow:hidden; border:none; box-shadow:none; }
-      .scroll-status:hover { color: var(--accent-active); }
-      .log-content { position: relative; }
-      .log-spacer { width: 100%; }
 
-      .log-entry {
+      .log-viewer__scroll-btn {
+        width: 0rem;
+        font-size: var(--font-size-sm);
+        color: var(--text-muted);
+        overflow: hidden;
+      }
+
+      .log-viewer__scroll-btn--active {
+        width: 2rem;
+        background-color: transparent;
+        color: var(--text-primary);
+        overflow: hidden;
+        border: none;
+        box-shadow: none;
+      }
+
+      .log-viewer__scroll-btn:hover {
+        color: var(--accent-active);
+      }
+
+      .log-viewer__content {
+        position: relative;
+      }
+
+      .log-viewer__spacer {
+        width: 100%;
+      }
+
+      .log-viewer__entry {
         display: flex;
         align-items: flex-start;
         padding: 0 var(--spacing-sm);
@@ -458,19 +490,18 @@ if (!document.querySelector('#log-viewer-styles')) {
         font-size: var(--font-size-sm);
       }
 
-      .log-entry:hover { background-color: var(--bg-hover); }
+      .log-viewer__entry:hover { background-color: var(--bg-hover); }
 
-      /* Log level border colors */
-      .log-entry.log-level-Normal { border-left-color: var(--primary-color); }
-      .log-entry.log-level-Debug,
-      .log-entry.log-level-Trace{ border-left-color: var(--text-muted); }
-      .log-entry.log-level-Warn{ border-left-color: var(--yellow); }
-      .log-entry.log-level-Info{ border-left-color: var(--blue); }
-      .log-entry.log-level-Success{ border-left-color: var(--green); }
-      .log-entry.log-level-Error{ border-left-color: var(--red); }
-      .log-entry.log-level-Fatal{ border-left-color: var(--magenta); }
+      .log-viewer__entry[data-level="Normal"] { border-left-color: var(--primary-color); }
+      .log-viewer__entry[data-level="Debug"],
+      .log-viewer__entry[data-level="Trace"] { border-left-color: var(--text-muted); }
+      .log-viewer__entry[data-level="Warn"] { border-left-color: var(--yellow); }
+      .log-viewer__entry[data-level="Info"] { border-left-color: var(--blue); }
+      .log-viewer__entry[data-level="Success"] { border-left-color: var(--green); }
+      .log-viewer__entry[data-level="Error"] { border-left-color: var(--red); }
+      .log-viewer__entry[data-level="Fatal"] { border-left-color: var(--magenta); }
 
-      .log-time {
+      .log-viewer__time {
         flex: 0 0 auto;
         width: fit-content;
         color: var(--text-muted);
@@ -478,33 +509,33 @@ if (!document.querySelector('#log-viewer-styles')) {
         font-weight: 500;
       }
 
-      .log-level {
-        width:1rem;
+      .log-viewer__level {
+        width: 1rem;
         margin-right: var(--spacing-sm);
         text-align: center;
       }
 
-      .log-message {
+      .log-viewer__level[data-level="Normal"] { color: var(--text-primary); }
+      .log-viewer__level[data-level="Debug"],
+      .log-viewer__level[data-level="Trace"] { color: var(--text-muted); }
+      .log-viewer__level[data-level="Warn"] { color: var(--yellow); }
+      .log-viewer__level[data-level="Info"] { color: var(--blue); }
+      .log-viewer__level[data-level="Success"] { color: var(--accent-ok); }
+      .log-viewer__level[data-level="Error"] { color: var(--accent-ng); }
+      .log-viewer__level[data-level="Fatal"] { color: var(--magenta); }
+
+      .log-viewer__message {
         flex: 1;
         color: var(--text-primary);
         white-space: pre;
       }
-      .log-icon{
+
+      .log-viewer__icon {
         padding: 0 var(--spacing-sm);
       }
 
-      /* Log level text colors */
-      .level-Normal{ color: var(--text-primary); }
-      .level-Debug,
-      .level-Trace{ color: var(--text-muted); }
-      .level-Warn{ color: var(--yellow); }
-      .level-Info{ color: var(--blue); }
-      .level-Success{ color: var(--accent-ok); }
-      .level-Error{ color: var(--accent-ng); }
-      .level-Fatal{ color: var(--magenta); }
-
-      .selected-entry-container{
-        margin:0;
+      .log-viewer__selected {
+        margin: 0;
         padding: var(--spacing-xs) var(--spacing-sm);
         background-color: var(--bg-secondary);
         border-bottom: 1px solid var(--border-color);
@@ -512,7 +543,7 @@ if (!document.querySelector('#log-viewer-styles')) {
         font-size: var(--font-size-lg);
       }
 
-      .selected-entry {
+      .log-viewer__selected-message {
         color: var(--text-primary);
         white-space: pre-wrap;
         word-wrap: break-word;
@@ -520,19 +551,20 @@ if (!document.querySelector('#log-viewer-styles')) {
         height: fit-content;
       }
 
-      .close-button{
+      .log-viewer__close {
         background-color: transparent;
         border: none;
         color: var(--text-muted);
-        padding:0;
-        margin:0;
-        width:1.5rem;
-        height:1.5rem;
-        margin-left:auto;
+        padding: 0;
+        margin: 0;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: auto;
       }
-      .close-button:hover{ 
-        color: var(--red); 
-        background-color:transparent;
+
+      .log-viewer__close:hover {
+        color: var(--red);
+        background-color: transparent;
       }
 
     </style>

@@ -18,34 +18,34 @@ const IOViewer = {
 
   // Template
   template: /*html*/ `
-    <div class="io-view-container">
-      <div class="io-view-title"><i class="fa fa-tags"></i> {{title}}</div>
-      <div class="io-map-container">
-        <div class="io-column">
-            <div class="io-header">
-                <span class="io-badge" :class="{ active: readFlashTimeout}">R</span>
+    <div class="io-view">
+      <div class="io-view__title"><i class="fa fa-tags"></i> {{title}}</div>
+      <div class="io-view__map">
+        <div class="io-view__column">
+            <div class="io-view__header">
+                <span class="io-view__badge" :data-state="readFlashTimeout ? 'active' : ''">R</span>
                 <span>INPUT</span>
             </div>
-            <div id="io-input" class="io-column-content">
-                <div class="pin-row" v-for="pin in ioInputs" :key="pin.Name"
+            <div id="io-input" class="io-view__content">
+                <div class="io-view__pin" v-for="pin in ioInputs" :key="pin.Name"
+                    :class = "{ 'io-view__pin--even': pin.Idx % 2 === 0 }"
                     @dblclick="onInputPinDblClick(pin)">
-                    <span class="pin-badge"
-                        :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">{{pin.Index}}</span>
+                    <span class="io-view__badge" :data-state="getBadgeState(pin)">{{pin.Index}}</span>
                     <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
                 </div>
             </div>
         </div>
 
-        <div class="io-column">
-            <div class="io-header">
-                <span class="io-badge" :class="{ active: writeFlashTimeout}">W</span>
+        <div class="io-view__column">
+            <div class="io-view__header">
+                <span class="io-view__badge" :data-state="writeFlashTimeout ? 'active' : ''">W</span>
                 <span>OUTPUT</span>
             </div>
-            <div id="io-output" class="io-column-content">
-                <div class="pin-row" v-for="pin in ioOutputs" :key="pin.Name"
+            <div id="io-output" class="io-view__content">
+                <div class="io-view__pin" v-for="pin in ioOutputs" :key="pin.Name"
+                    :class = "{ 'io-view__pin--even': pin.Idx % 2 === 0 }"
                     @dblclick="onOutputPinDblClick(pin)">
-                    <span class="pin-badge"
-                        :class="{ active: pin.isActive, err: pin.isErr, manual: pin.isManual }">{{pin.Index}}</span>
+                    <span class="io-view__badge" :data-state="getBadgeState(pin)">{{pin.Index}}</span>
                     <span>{{pin.Text !== "" ? pin.Text : pin.Name}}</span>
                 </div>
             </div>
@@ -56,6 +56,13 @@ const IOViewer = {
 
   // Methods
   methods: {
+    getBadgeState(pin) {
+      let state = '';
+      if(pin.isManual) state += 'manual';
+      if(pin.isActive) state += (state ? '-active' : 'active');
+      if(pin.isErr) state += (state ? '-err' : 'err');
+      return state;
+    },
     setIOMap(title, iomap) {
       if (!iomap) return;
       this.title = title;
@@ -64,8 +71,9 @@ const IOViewer = {
       const err_suffix = ['_ERR', '_NG'];
       this.ioInputs = iomap
         .filter((pin) => pin.Function == 'DI')
-        .map((pin) => ({
+        .map((pin,index) => ({
           ...pin,
+          Idx:index,
           isErr: err_keys.some(
             (key) =>
               pin.Name.toUpperCase() === key ||
@@ -76,8 +84,9 @@ const IOViewer = {
         }));
       this.ioOutputs = iomap
         .filter((pin) => pin.Function == 'DO')
-        .map((pin) => ({
+        .map((pin,index) => ({
           ...pin,
+          Idx:index,
           isErr: err_keys.some(
             (key) =>
               pin.Name.toUpperCase() === key ||
@@ -142,54 +151,60 @@ const IOViewer = {
 if (!document.querySelector('#io-view-styles')) {
   const styles = /*css*/ `
     <style id="io-view-styles">
-      .io-view-container{
-        display:flex;
+      .io-view {
+        display: flex;
         min-width: fit-content;
-        flex-direction:column;
+        flex-direction: column;
         background-color: var(--bg-primary);
-        flex:1;
-        height:fit-content;
-        overflow:hidden;
+        flex: 1;
+        height: fit-content;
+        overflow: hidden;
         border: 1px solid var(--border-color);
         border-radius: var(--spacing-sm);
         box-shadow: 0 2px 4px var(--shadow-color);
       }
-      .io-map-container{
-        display:flex;
-        flex-direction:row;
-        height:100%;
-      }
-      .io-view-title{
-        background-color:var(--bg-secondary);
-        padding: var(--spacing-xs);
-        font-weight:600;
-        font-size:var(--font-size-lg);
-        border-bottom:1px solid var(--border-color);
-        text-align:center;
+
+      .io-view__map {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
       }
 
-      .io-column{
-        display:flex;
-        flex-direction:column;
-        width:100%;
-        overflow:hidden;
+      .io-view__title {
+        background-color: var(--bg-title);
+        padding: var(--spacing-xs);
+        font-weight: 600;
+        font-size: var(--font-size-lg);
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+      }
+
+      .io-view__column {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        overflow: hidden;
         background-color: var(--bg-primary);
-        min-height:fit-content;
-       }
-       .io-column:first-of-type{ border-right:1px solid var(--border-color); }
+        min-height: fit-content;
+      }
+
+      .io-view__column:first-of-type {
+        border-right: 1px solid var(--border-color);
+      }
       
-      .io-header{
-        display:flex;
-        flex-direction:row;
-        align-items:center;
-        background-color:var(--bg-table-header);
+      .io-view__header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: var(--bg-table-header);
         padding: var(--spacing-xs);
         gap: var(--spacing-md);
-        border-bottom:1px solid var(--border-color);
-        font-weight:600;
-        font-size:var(--font-size-lg);
+        border-bottom: 1px solid var(--border-color);
+        font-weight: 600;
+        font-size: var(--font-size-lg);
       }
-      .io-badge, .pin-badge {
+
+      .io-view__badge {
         display: flex;
         min-width: var(--badge-size);
         max-width: var(--badge-size);
@@ -197,23 +212,50 @@ if (!document.querySelector('#io-view-styles')) {
         max-height: var(--badge-size);
         font-size: var(--font-size-sm);
         border: 1px solid var(--border-color);
-        background-color: var(--bg-secondary);
+        background-color: var(--bg-io-badge);
         border-radius: 1rem;
         font-weight: 600;
         align-items: center;
         justify-content: center;
       }
 
-      .io-badge.active{ animation: io-flash 0.05s 1; }
+      .io-view__badge[data-state="active"] {
+        animation: io-view-flash 0.05s 1;
+      }
 
-      @keyframes io-flash {
+      .io-view__badge[data-state="active"],
+      .io-view__badge[data-state="manual-active"] {
+          background-color: var(--blue);
+          color: var(--base03);
+          border: none;
+          animation: io-view-pulse 0.5s 2;
+      }
+
+      .io-view__badge[data-state="active-err"] {
+          background-color: var(--accent-ng);
+          animation: io-view-pulse-err 0.5s 2;
+      }
+
+      .io-view__badge[data-state="manual"],
+      .io-view__badge[data-state="manual-active"] {
+        animation: io-view-pulse-manual 0.5s 1;
+      }
+
+      .io-view__badge[data-state="manual-err"],
+      .io-view__badge[data-state="manual-active-err"] {
+        animation: io-view-pulse-manual-err 0.5s 1;
+      }
+
+      @keyframes io-view-flash {
           0% { background-color: var(--bg-primary); }
           100% { background-color: var(--accent-active); }
       }
 
-      .io-column-content{ overflow-y:auto; }
+      .io-view__content {
+        overflow-y: auto;
+      }
 
-      .pin-row {
+      .io-view__pin {
           display: flex;
           flex-direction: row;
           padding: 0 var(--spacing-sm);
@@ -222,48 +264,41 @@ if (!document.querySelector('#io-view-styles')) {
           font-weight: 600;
           gap: var(--spacing-sm);
           overflow: hidden;
-          align-items:center;
+          align-items: center;
           border-bottom: 1px solid var(--border-color);
-          background-color: var(--bg-secondary);
+          background-color: var(--bg-table-row-odd);
       }
 
-      .pin-row:hover { background-color: var(--bg-tertiary); }
-
-      .pin-badge.active {
-          background-color: var(--blue);
-          color: var(--base03);
-          border: none;
-          animation: pulse-pin 0.5s 2;
+      .io-view__pin:last-child {
+        border-bottom: none;
       }
 
-      .pin-badge.active.err {
-          background-color: var(--accent-ng);
-          animation: pulse-err-pin 0.5s 2;
+      .io-view__pin--even {
+        background-color: var(--bg-table-row-even);
       }
 
-      .pin-badge.manual { animation: manual-pulse-pin 0.5s 1; }
-      .pin-badge.err.manual { animation: manual-pulse-err-pin 0.5s 1; }
-      .pin-badge.active.manual { animation: manual-pulse-pin 0.5s 1; }
-      .pin-badge.active.err.manual { animation: manual-pulse-err-pin 0.5s 1; }
+      .io-view__pin:hover {
+        background-color: var(--bg-hover);
+      }
 
-      @keyframes pulse-pin {
+      @keyframes io-view-pulse {
           0% { box-shadow: 0 0 0 0 var(--blue, 0.1); }
-          100% { box-shadow: 0 0 0 4px #0000; }
+          100% { box-shadow: 0 0 0 8px #0000; }
       }
 
-      @keyframes pulse-err-pin {
+      @keyframes io-view-pulse-err {
           0% { box-shadow: 0 0 0 0 var(--accent-ng, 0.1); }
-        100% { box-shadow: 0 0 0 4px #0000; }
+        100% { box-shadow: 0 0 0 8px #0000; }
       }
 
-      @keyframes manual-pulse-pin {
-          0% { box-shadow: 0 0 0 0 var(--accent-active, 0.1); }
-          100% { box-shadow: 0 0 0 4px #0000; }
+      @keyframes io-view-pulse-manual {
+          0% { box-shadow: 0 0 0 0px var(--accent-active, 1.0); }
+          100% { box-shadow: 0 0 0 32px #0000; }
       }
 
-      @keyframes manual-pulse-err-pin {
-          0% { box-shadow: 0 0 0 0 var(--accent-ng, 0.1); }
-        100% { box-shadow: 0 0 0 4px #0000; }
+      @keyframes io-view-pulse-manual-err {
+          0% { box-shadow: 0 0 0 0px var(--accent-ng, 1.0); }
+        100% { box-shadow: 0 0 0 32px #0000; }
       }
     </style>
   `;

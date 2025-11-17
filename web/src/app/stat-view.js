@@ -7,9 +7,9 @@ const StatView = {
     return {
       okcnt: 0,
       ngcnt: 0,
-      total:0,
-      okpercent:0,
-      hourlyData:[],
+      total: 0,
+      okpercent: 0,
+      hourlyData: [],
     };
   },
   //template
@@ -18,6 +18,7 @@ const StatView = {
         <div class="pie-chart-area">
             <span class="ratio-text">{{okcnt}}/{{okcnt+ngcnt}}</span>
             <div class="pie-chart-canvas">
+                <span class="percent-text">{{okpercent}}%</span>
                 <canvas id="pieChart"></canvas>
             </div>
         </div>
@@ -32,11 +33,12 @@ const StatView = {
       this.okcnt = okcnt;
       this.ngcnt = ngcnt;
       this.total = okcnt + ngcnt;
-      this.okpercent = this.total > 0 ? ((okcnt / this.total) * 100).toFixed(2) : 0;
+      this.okpercent =
+        this.total > 0 ? ((okcnt / this.total) * 100).toFixed(2) : 0;
       ChartUtils.renderPieChart('pieChart', okcnt, ngcnt);
     },
     renderHourlyChart(hourlyData, showNGOnly = false) {
-      if(!hourlyData)return;
+      if (!hourlyData) return;
       this.hourlyData = hourlyData;
       ChartUtils.renderHourlyChart(
         'hourlyChart',
@@ -47,7 +49,7 @@ const StatView = {
     },
     showNGOnly(showNG) {
       this.renderHourlyChart(this.hourlyData, showNG);
-    }
+    },
   },
   mounted() {
     //test view
@@ -64,7 +66,7 @@ const StatView = {
       this.renderHourlyChart(this.hourlyData, false);
       this.renderPieChart(this.okcnt, this.ngcnt);
     });
-  }
+  },
 };
 
 //inject style
@@ -74,23 +76,22 @@ if (!document.querySelector('#stat-view-styles')) {
          .stat-view-container{
             display:flex;
             flex-direction:row;
-            height:120px;
+            height:144px;
             background-color:var(--bg-secondary);
-            padding:var(--spacing-sm);
-            /*
-            border:1px solid var(--border-color);
-            border-radius:var(--spacing-sm);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            */
          } 
          .pie-chart-area{
             display:flex;
             flex-direction:column;
             width:20%;
-            padding:spacing(--spacing-sm);
+            padding: var(--spacing-sm);
             min-height:0;
+            border-right:1px solid var(--border-color);
          }
          .pie-chart-canvas{
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
             height:80%;!important;
             width:100%;!important;
          }
@@ -101,14 +102,16 @@ if (!document.querySelector('#stat-view-styles')) {
             flex-shrink:0;
          }
          .percent-text{
+            position:absolute;
             font-size:1rem;
-            color:var(--text-muted);
-            text-align:center;
-            flex-shrink:0;
+            font-weight:600;
+            color:var(--text-primary);
+            pointer-events:none;
          }
          .hourly-chart-area{
             height:100%;
             width:80%;
+            padding: var(--spacing-sm);
          }
 
         </style>

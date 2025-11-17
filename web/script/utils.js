@@ -67,11 +67,6 @@ const ChartUtils = {
             ctx.save();
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            // // Draw total number
-            ctx.fillStyle = '#9aa';
-            const percentage = total > 0 ? ((okcnt / total) * 100).toFixed(2) : 0;
-            ctx.font = '1rem Segoe UI';
-            ctx.fillText(percentage + '%', centerX, centerY);
             ctx.restore();
           },
         },

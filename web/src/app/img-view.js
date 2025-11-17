@@ -25,9 +25,9 @@ const ImgViewer = {
 
   // Template
   template: /*html*/ `
-    <div class="img-view-container">
-      <div class="img-view-title">{{title}}</div>
-      <div class="img-canvas-container" 
+    <div class="img-view">
+      <div class="img-view__title">{{title}}</div>
+      <div class="img-view__canvas-container" 
            ref="canvasContainer"
            @mousedown="startPan"
            @mousemove="pan"
@@ -35,11 +35,11 @@ const ImgViewer = {
            @mouseleave="endPan"
            @wheel="handleWheel"
            @dblclick="fitToContainer">
-        <div v-if="!imageData" class="img-placeholder">
+        <div v-if="!imageData" class="img-view__placeholder">
           <i class="fa fa-image"></i>
           <span>No Image</span>
         </div>
-        <div v-else-if="imageError" class="img-error">
+        <div v-else-if="imageError" class="img-view__error">
           <i class="fa fa-exclamation-triangle"></i>
           <span>Failed to load image</span>
         </div>
@@ -282,10 +282,10 @@ const ImgViewer = {
 if (!document.querySelector('#img-view-styles')) {
   const styles = /*css*/ `
     <style id="img-view-styles">
-      .img-view-container {
+      .img-view {
         display: flex;
         flex-direction: column;
-        flex:1;
+        flex: 1;
         background-color: var(--bg-primary);
         border-radius: var(--spacing-sm);
         border: 1px solid var(--border-color);
@@ -293,15 +293,15 @@ if (!document.querySelector('#img-view-styles')) {
         overflow: hidden;
       }
 
-      .img-view-title {
-        background-color: var(--bg-secondary);
+      .img-view__title {
+        background-color: var(--bg-title);
         font-weight: 600;
         font-size: var(--font-size-lg);
         text-align: center;
         border-bottom: 1px solid var(--border-color);
       }
 
-      .img-canvas-container {
+      .img-view__canvas-container {
         position: relative;
         flex: 1;
         overflow: hidden;
@@ -311,17 +311,17 @@ if (!document.querySelector('#img-view-styles')) {
         justify-content: center;
       }
 
-      .img-canvas-container canvas {
+      .img-view__canvas-container canvas {
         display: block;
         cursor: grab;
       }
 
-      .img-canvas-container canvas:active {
+      .img-view__canvas-container canvas:active {
         cursor: grabbing;
       }
       
-      .img-placeholder,
-      .img-error {
+      .img-view__placeholder,
+      .img-view__error {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -331,18 +331,18 @@ if (!document.querySelector('#img-view-styles')) {
         font-size: var(--font-size-lg);
       }
 
-      .img-placeholder i,
-      .img-error i {
+      .img-view__placeholder i,
+      .img-view__error i {
         font-size: 48px;
         opacity: 0.5;
       }
 
-      .img-error {
+      .img-view__error {
         color: var(--accent-ng);
       }
 
-      .img-placeholder span,
-      .img-error span {
+      .img-view__placeholder span,
+      .img-view__error span {
         font-weight: 600;
       }
     </style>

@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <div id="app" class="app-container">
+    <div id="app" class="app">
         <nav>
             <!--MAIN-->
             <button :class="{'active': crrSection === 'MAIN'}" @click="debugCnt++; activateSection('MAIN')"><i
@@ -29,22 +29,23 @@
                     class="fa fa-image"></i></button>
             <button v-show="showStatTab" :class="{'active': crrSection === 'STATS'}"
                 @click="activateSection('STATS')"><i class="fa fa-chart-pie"></i></button>
-            <button :class="{'active': crrSection === 'LOG'}" @click="activateSection('LOG')"><i
-                    class="fa fa-list"></i></button>
-            <!--log-->
+            <button :class="{'active': crrSection === 'TEST'}" v-show="!isAutoMode"
+                @click="activateSection('TEST'); send_CycleTestButtonClick()"><i class="fa fa-flask"></i></button>
             <button :class="{'active': crrSection === 'MODEL'}" v-show="!isAutoMode"
                 @click="activateSection('MODEL'); send_MakeModelButtonClick()"><i class="fa fa-cube"></i></button>
+            <button :class="{'active': crrSection === 'LOG'}" @click="activateSection('LOG')"><i
+                    class="fa fa-list"></i></button>
             <div style="flex:1"></div>
             <button @click="send_SettingButtonClick()"><i class="fa fa-gear"></i></button>
             <button @click="toggleTheme()"><i class="fa fa-adjust"></i></button>
         </nav>
 
-        <div class="split-container-vertical" id="vertical-split">
-            <div class="split-panel-top">
+        <div class="split" id="vertical-split">
+            <div class="split__panel--top">
                 <!------------------------->
                 <!--SECTION: CYCLE RESULT-->
                 <!------------------------->
-                <section v-show="crrSection==='MAIN' || crrSection==='IO' || crrSection=='LOG' || crrSection=='IMG'"
+                <section v-show="crrSection==='MAIN' || crrSection==='IO' || crrSection=='LOG' || crrSection=='IMG' || crrSection==='TEST'"
                     class="section--main">
                     <cycle-info-card :status="cycleInfo.status" :model="cycleInfo.model" :tag="cycleInfo.tag"
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
@@ -60,8 +61,8 @@
                 <!--SECTION: IMG VIEWER-->
                 <!----------------------->
                 <section v-show="showImgTab && crrSection==='IMG'" class="section--img">
-                    <h3 class="section-title"><i class="fa fa-image"></i>&nbsp;IMAGE VIEWER</h3>
-                    <div class="img-container">
+                    <h3 class="section__title"><i class="fa fa-image"></i>&nbsp;IMAGE VIEWER</h3>
+                    <div class="section__img-container">
                         <img-viewer v-for="(img, index) in imgViewers" :key="'IMG-'+index"
                             :ref="`imgViewer-${img.name}`">
                         </img-viewer>
@@ -72,7 +73,7 @@
                 <!--SECTION: MAIN-->
                 <!----------------->
                 <section v-show="crrSection==='MAIN'" class="section--history">
-                    <h3 class="section-title history"><i class="fa fa-table"></i>&nbsp;PRODUCTION HISTORY</h3>
+                    <h3 class="section__title section__title--history"><i class="fa fa-table"></i>&nbsp;PRODUCTION HISTORY</h3>
                     <stat-view ref="statView"></stat-view>
                     <history-table ref="historyTable" @show-ng-only="handleShowNGOnly"></history-table>
                 </section>
@@ -81,24 +82,31 @@
                 <!--SECTION: IO VIEWER-->
                 <!---------------------->
                 <section v-show="crrSection==='IO'" class="section--io">
-                    <h3 class="section-title"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
-                    <div class="io-container">
+                    <h3 class="section__title"><i class="fa fa-microchip"></i>&nbsp;IO MAP</h3>
+                    <div class="section__io-container">
                         <io-viewer v-for="(iomap, index) in ioViewers" :key="'IO-'+index"
                             :ref="`ioViewer-${iomap.name}`">
                         </io-viewer>
                     </div>
                 </section>
 
+                <!--------------------->
+                <!--SECTION: TEST    -->
+                <!--------------------->
+                <section v-show="crrSection==='TEST'" class="section--test">
+                    <cycle-test ref="cycleTest"></cycle-test>
+                </section>
 
-                <!---------------------->
-                <!--SECTION: IO VIEWER-->
-                <!---------------------->
+                <!------------------------>
+                <!--SECTION: MODEL MAKER-->
+                <!------------------------>
                 <section v-show="crrSection==='MODEL'" class="section--model">
                     <model-maker ref="modelMaker"></model-maker>
                 </section>
+
             </div>
 
-            <div class="split-panel-bottom">
+            <div class="split__panel--bottom">
                 <section class="section--log">
                     <log-viewer ref="logViewer"></log-viewer>
                 </section>
@@ -116,11 +124,12 @@
     <script src="./img-view.js"></script>
     <script src="./history-table.js"></script>
     <script src="./model-maker.js"></script>
+    <script src="./cycle-test.js"></script>
 
     <script>
 
         const { createApp } = Vue;
-        const sections = ['MAIN', 'LOG', 'IO', 'IMG', 'STATS', "MODEL"];
+        const sections = ['MAIN', 'LOG', 'IO', 'IMG', 'STATS', "MODEL", "TEST"];
         const app = createApp({
             components: {
                 'cycle-info-card': window.CycleInfoCard,
@@ -131,6 +140,7 @@
                 'img-viewer': window.ImgViewer,
                 'history-table': window.HistoryTable,
                 'model-maker': window.ModelMaker,
+                'cycle-test': window.CycleTest,
             },
 
             data() {
@@ -202,8 +212,8 @@
                 activateSection(section) {
                     if (sections.includes(section)) {
                         this.crrSection = section;
-                        //dont save MODEL section to local storage
-                        if (this.crrSection != 'MODEL') {
+                        //dont save MODEL or TEST section to local storage
+                        if (this.crrSection != 'MODEL' && this.crrSection != 'TEST') {
                             localStorage.setItem('crrSection', section);
                         }
                     }
@@ -241,7 +251,7 @@
                 initVerticalSplit() {
                     this.loadSavedSplitSizes();
                     // Initialize vertical split (top/bottom panels)
-                    this.splitter = Split(['#vertical-split .split-panel-top', '#vertical-split .split-panel-bottom'], {
+                    this.splitter = Split(['#vertical-split .split__panel--top', '#vertical-split .split__panel--bottom'], {
                         sizes: [80, 20],              // Top panel 60%, bottom panel 40%
                         minSize: [100, 100],          // Minimum sizes in pixels
                         gutterSize: 3,                // Splitter height
@@ -416,17 +426,26 @@
                 send_MakeModelButtonClick() {
                     CSharpUtils.sendMessage({ type: 'model_button_click' });
                 },
+                send_CycleTestButtonClick() {
+                    CSharpUtils.sendMessage({ type: 'cycle_test_button_click' });
+                },
                 send_SettingButtonClick() {
                     CSharpUtils.sendMessage({ type: 'setting_button_click' });
                 },
                 //CYCLE INFO
                 //MAKE MODEL
                 setMakeModelState(value) { this.$refs.modelMaker.setState(value); },
+                clearMakeModelState() { this.$refs.modelMaker.clearState(); },
+
+                //cycle test
+                setCycleTestState(value) { this.$refs.cycleTest.setState(value); },
+                setCycleTestModels(value) { this.$refs.cycleTest.setModels(value); },
+                clearCycleTestState() { this.$refs.cycleTest.clearState(); },
 
                 //mode
                 setMode(auto) {
                     this.isAutoMode = auto;
-                    if (this.isAutoMode && this.crrSection === 'MODEL') {
+                    if (this.isAutoMode && (this.crrSection === 'MODEL' || this.crrSection === 'TEST')) {
                         this.activateSection('MAIN');
                     }
                 },

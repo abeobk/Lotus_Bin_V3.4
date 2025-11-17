@@ -12,8 +12,8 @@ const CycleInfoCard = {
   //template
   template: /*html*/ `
     <div class="cycle-info-card">
-        <div class="cycle-info-item border-right" style="max-width:3rem;">
-            <div class="cycle-info-icon">
+        <div class="cycle-info-card__item cycle-info-card__item--border" style="max-width:3rem;">
+            <div class="cycle-info-card__icon">
                 <i class="fa" :class="{
                     'fa-circle-check': status.toLowerCase() === 'ok', 
                     'fa-circle-exclamation': status.toLowerCase() === 'ng', 
@@ -21,18 +21,18 @@ const CycleInfoCard = {
                 }"></i>
             </div>
         </div>
-        <div class="cycle-info-item border-right">
-            <div class="cycle-info-icon"><i class="fa fa-car"></i></div>
-            <div class="content-container">{{ model }}</div>
-            <div class="model-tag">{{ tag }}</div>
+        <div class="cycle-info-card__item cycle-info-card__item--border">
+            <div class="cycle-info-card__icon"><i class="fa fa-car"></i></div>
+            <div class="cycle-info-card__content">{{ model }}</div>
+            <div class="cycle-info-card__tag">{{ tag }}</div>
         </div>
-        <div class="cycle-info-item border-right">
-            <div class="cycle-info-icon"><i class="fa fa-tag"></i></div>
-            <div class="content-container">{{ vin }}</div>
+        <div class="cycle-info-card__item cycle-info-card__item--border">
+            <div class="cycle-info-card__icon"><i class="fa fa-tag"></i></div>
+            <div class="cycle-info-card__content">{{ vin }}</div>
         </div>
-        <div class="cycle-info-item">
-            <div class="cycle-info-icon"><i class="fa fa-hashtag"></i></div>
-            <div class="content-container">{{ seq }}</div>
+        <div class="cycle-info-card__item">
+            <div class="cycle-info-card__icon"><i class="fa fa-hashtag"></i></div>
+            <div class="cycle-info-card__content">{{ seq }}</div>
         </div>
     </div>
     `,
@@ -47,8 +47,9 @@ if (!document.querySelector('#cycle-info-card-styles')) {
           .cycle-info-card {
               display: flex;
               flex-direction: row;
-              background: var(--bg-secondary);
+              background: var(--bg-title);
               margin: var(--spacing-sm);
+              margin-top:0px;
               padding: var(--spacing-sm);
               margin-bottom: 0px;
               border-radius: var(--spacing-sm);
@@ -58,7 +59,7 @@ if (!document.querySelector('#cycle-info-card-styles')) {
               box-shadow: 0 2px 4px var(--shadow-color);
           }
 
-          .cycle-info-item {
+          .cycle-info-card__item {
               display: flex;
               flex-direction: row;
               gap: var(--spacing-sm);
@@ -73,22 +74,26 @@ if (!document.querySelector('#cycle-info-card-styles')) {
               align-items: center;
           }
 
-          .cycle-info-icon {
-              margin-left:var(--spacing-sm);
-              margin-right:var(--spacing-sm);
+          .cycle-info-card__item--border {
+              border-right: 1px solid var(--border-color);
           }
 
-          .content-container {
+          .cycle-info-card__icon {
+              margin-left: var(--spacing-sm);
+              margin-right: var(--spacing-sm);
+          }
+
+          .cycle-info-card__content {
               flex: 1;
               text-align: left;
           }
 
-          .model-tag{
-            background: var(--yellow);
-            color: var(--bg-primary);
-            border-radius: var(--spacing-xs);
-            padding: 0 var(--spacing-sm);
-            font-size: 0.8em;
+          .cycle-info-card__tag {
+              background: var(--yellow);
+              color: var(--bg-primary);
+              border-radius: var(--spacing-xs);
+              padding: 0 var(--spacing-sm);
+              font-size: 0.8em;
           }
         </style>
       `;
