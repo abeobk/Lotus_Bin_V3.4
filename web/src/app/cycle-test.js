@@ -21,15 +21,15 @@ const CycleTest = {
         <div class="cycle-test__top-bar">
           <span class="cycle-test__title"> <i class="fa fa-flask"></i> CYCLE TEST</span>
           <span style="flex:1"></span>
-          <span style="font-weight:600">SELECT MODEL</span>
+          <button title="Refresh" @click="refreshButtonClick"><i class="fa fa-refresh"></i></button>
           <select class="cycle-test__model-select" v-model="selectedModel" @change="modelChanged">
             <option v-for="model in state.models" :key="model" :value="model">{{model}}</option>
           </select>
           <button title="Set Model" @click="setModelClick"><i class="fa fa-check"></i></button>
-          <button title="Refresh" @click="refreshButtonClick"><i class="fa fa-refresh"></i></button>
+          <button title="Save" @click="saveButtonClick"><i class="fa fa-save"></i></button>
         </div>
 
-        <div class="cycle-test__body">
+        <div class="cycle-test__body" v-show="state.models.includes(selectedModel)">
           <div class="cycle-test__groups">
             <div v-for="(group, gIndex) in state.groups" 
                 :key="'G-'+gIndex" 
@@ -54,12 +54,11 @@ const CycleTest = {
   // Methods
   methods: {
     setState(data) {
-      if (!data) return;
-      this.state = data;
+      this.state = data || { groups: []};
+      this.setModels(data.models)
     },
     setModels(data) {
-      if (!data) return;
-      this.state.models = data;
+      this.state.models = data || ['<NO MODELS>'];
     },
 
     actionClick(action) {
@@ -74,9 +73,8 @@ const CycleTest = {
         value: this.selectedModel,
       });
     },
-    refreshButtonClick() {
-      CSharpUtils.sendMessage({ type: 'cycle_test_refresh' });
-    },
+    refreshButtonClick() { CSharpUtils.sendMessage({ type: 'cycle_test_refresh' }); },
+    saveButtonClick() { CSharpUtils.sendMessage({ type: 'cycle_test_save' }); },
     modelChanged() {
       // Optional: notify when model selection changes
     },
@@ -120,6 +118,7 @@ if (!document.querySelector('#cycle-test-styles')) {
         background-color: var(--bg-title);
         border-bottom: 1px solid var(--border-color);
         padding: 0 var(--spacing-sm);
+        gap: var(--spacing-sm);
     }
 
     .cycle-test__model-select {

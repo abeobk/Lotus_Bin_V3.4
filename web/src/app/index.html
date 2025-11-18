@@ -51,9 +51,7 @@
                         :vin="cycleInfo.vin" :seq="cycleInfo.seq">
                     </cycle-info-card>
                     <div class="section--main__result-container">
-                        <div v-for="(table,index) in resultTables" :key="index">
-                            <result-table :table="table"></result-table>
-                        </div>
+                        <result-table v-for="(table,index) in resultTables" :key="index" :table="table"></result-table>
                     </div>
                 </section>
 
@@ -174,8 +172,8 @@
 
                     imgViewers: [
                         { name: 'View1', src: '' },
-                        // { name: 'View2', src: '' },
-                        // { name: 'View3', src: '' }
+                        { name: 'View2', src: '' },
+                        { name: 'View3', src: '' }
                     ],
 
                     sectionMainExpanded: true,
@@ -427,7 +425,7 @@
                     CSharpUtils.sendMessage({ type: 'model_button_click' });
                 },
                 send_CycleTestButtonClick() {
-                    CSharpUtils.sendMessage({ type: 'cycle_test_button_click' });
+                    // CSharpUtils.sendMessage({ type: 'cycle_test_button_click' });
                 },
                 send_SettingButtonClick() {
                     CSharpUtils.sendMessage({ type: 'setting_button_click' });

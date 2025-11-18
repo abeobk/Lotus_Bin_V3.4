@@ -47,6 +47,7 @@ const HistoryTable = {
           <tr v-for="(row, rowIndex) in getVisibleRows()" 
             :key="'R-'+visibleStart+rowIndex"
             class="history-table__row"
+            @dblclick="rowDblClick(row)"
             :class="{ 'history-table__row--even': rowIndex % 2 === 0 }"
           >
             <td v-for="(col,colIndex) in table.cols.filter(c=>c!=='res')" :key="'C-'+colIndex" class="history-table__cell">
@@ -112,6 +113,13 @@ const HistoryTable = {
       this.rafId = requestAnimationFrame(() => {
         this.render();
         this.rafId = null;
+      });
+    },
+
+    rowDblClick(row) {
+      CSharpUtils.sendMessage({
+        type: 'history_table_row_dblclick',
+        value: row,
       });
     },
 
@@ -264,7 +272,6 @@ if (!document.querySelector('#history-table-styles')) {
         white-space: nowrap;
         height: 16px;
         border-right: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
       }
 
       .history-table__cell:last-child {

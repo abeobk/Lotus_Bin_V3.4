@@ -2843,6 +2843,16 @@ Construct Json object from string array value
 </summary>
             <param name="arr">Value</param>
         </member>
+        <member name="M:LotusAPI.Json.op_Implicit(System.Enum[])~LotusAPI.Json">
+            <summary>
+Construct Json object from array of enum objects
+</summary>
+        </member>
+        <member name="M:LotusAPI.Json.op_Implicit(LotusAPI.Json[])~LotusAPI.Json">
+            <summary>
+Construct Json object from array of json objects
+</summary>
+        </member>
         <member name="M:LotusAPI.Json.op_Implicit(System.Double[])~LotusAPI.Json">
             <summary>
 Construct Json object from double array value
@@ -2872,6 +2882,12 @@ Construct Json object from int32 array value
 Construct Json object from bool array value
 </summary>
             <param name="arr">Value</param>
+        </member>
+        <member name="M:LotusAPI.Json.op_Implicit(System.Enum)~LotusAPI.Json">
+            <summary>
+Construct Json object from enum value
+</summary>
+            <param name="value">Value</param>
         </member>
         <member name="M:LotusAPI.Json.op_Implicit(System.String)~LotusAPI.Json">
             <summary>

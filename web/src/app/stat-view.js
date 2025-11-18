@@ -76,13 +76,13 @@ if (!document.querySelector('#stat-view-styles')) {
          .stat-view-container{
             display:flex;
             flex-direction:row;
-            height:144px;
+            height:128px;
             background-color:var(--bg-secondary);
          } 
          .pie-chart-area{
             display:flex;
             flex-direction:column;
-            width:20%;
+            width:128px;
             padding: var(--spacing-sm);
             min-height:0;
             border-right:1px solid var(--border-color);
@@ -110,7 +110,7 @@ if (!document.querySelector('#stat-view-styles')) {
          }
          .hourly-chart-area{
             height:100%;
-            width:80%;
+            width:100%;
             padding: var(--spacing-sm);
          }
 

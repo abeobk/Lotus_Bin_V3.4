@@ -79,6 +79,9 @@ if (!document.querySelector('#result-table-styles')) {
     <style id="result-table-styles">
       .result-table {
         overflow: auto;
+        flex: 1 1 min-content; /* allow to shrink to fit content */
+        min-width:min-content;
+        max-height:min-content;
         background-color: var(--bg-secondary);
         border-radius: var(--spacing-sm);
         border: 1px solid var(--border-color);
@@ -94,6 +97,8 @@ if (!document.querySelector('#result-table-styles')) {
       }
 
       .result-table__table {
+        min-width:min-content;
+        table-layout: auto;
         width: 100%;
         font-weight: 500;
         font-size: 1rem;
@@ -129,9 +134,9 @@ if (!document.querySelector('#result-table-styles')) {
       .result-table__cell {
         color: var(--text-primary);
         text-align: right;
+        while-space: nowrap;
         padding: 0 0.5rem;
         width: 7rem;
-        border-bottom: 1px solid var(--border-color);
         border-right: 1px solid var(--border-color);
       }
 

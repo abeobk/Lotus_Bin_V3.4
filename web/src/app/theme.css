@@ -345,8 +345,11 @@ section {
 
 .section--main__result-container {
     display: flex;
-    flex-direction: column;
-    margin: var(--spacing-sm);
+    /* flex-direction: column; */
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+    padding: var(--spacing-sm);
     gap: var(--spacing-sm);
 }
 
