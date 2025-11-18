@@ -1364,6 +1364,12 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="M:ATMC.Common.TitleBar.SetStatusItems(Abeo.Controls.ZeroCode.FlatStatusBar,Abeo.Controls.ZeroCode.StatusItemPanel.StyleEnum,System.Boolean)">
+            <summary>
+            Steal from statusbar
+            </summary>
+            <param name="statusbar"></param>
+        </member>
         <member name="F:ATMC.Common.TitleBar.components">
             <summary> 
             Required designer variable.
