@@ -461,6 +461,86 @@
             <returns>List of actions</returns>
             <exception cref="T:System.Exception">key not found</exception>
         </member>
+        <member name="T:ATMC.Common.BinPicking.RegionManager">
+            <summary>
+            Manages a collection of guarded points in 3D space to prevent picking operations from occurring too close to recently accessed locations.
+            Points are automatically expired after a configurable number of cycles.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.RegionManager.Add(LotusAPI.Math.Point3f)">
+            <summary>
+            Adds a 3D point to the guard list, preventing picking operations near this location.
+            If a point already exists within the configured Radius, its cycle count is reset to MaxCycles.
+            Otherwise, a new guarded point is added with MaxCycles remaining.
+            </summary>
+            <param name="point">The 3D point to add to the guard list.</param>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.RegionManager.Add(LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Adds a robot pose to the guard list by extracting its translation component.
+            </summary>
+            <param name="pose">The robot pose whose position will be added to the guard list.</param>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.RegionManager.IsPointValid(LotusAPI.Math.Point3f)">
+            <summary>
+            Checks if a given 3D point is valid for picking operations.
+            Returns false if the point is within the configured Radius of any guarded point,
+            indicating the location is too close to a recently accessed area.
+            </summary>
+            <param name="point">The 3D point to validate.</param>
+            <returns>True if the point is safe to pick from; false if it's too close to a guarded location.</returns>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.RegionManager.IsPointValid(LotusAPI.Robotics.RobotPoseEx)">
+            <summary>
+            Checks if a given robot pose is valid for picking operations.
+            </summary>
+            <param name="pose">The robot pose to validate.</param>
+            <returns>True if the pose position is safe to pick from; false if it's too close to a guarded location.</returns>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.RegionManager.NextCycle">
+            <summary>
+            Advances to the next cycle, decrementing the remaining cycle count for all guarded points.
+            Points that reach zero or fewer cycles are automatically removed from the guard list,
+            making those locations available for picking operations again.
+            This method should be called after each picking cycle completes.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.PickingTrajectory.SetPickPose(LotusAPI.Robotics.RobotArmSim,LotusAPI.Math.Matrix44d,System.Double[])">
+            <summary>
+            Sets the start pose for the picking trajectory.
+            throw if inverse kinematics fails
+            </summary>
+            <param name="robot">The robot arm simulation instance.</param>
+            <param name="H_pose">The homogeneous transformation matrix representing the pose.</param>
+            <param name="qs0">The initial joint angles.</param>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.PickingTrajectory.SetApproachPose(LotusAPI.Robotics.RobotArmSim,LotusAPI.Math.Matrix44d,System.Double[])">
+            <summary>
+            Sets the approach pose for the picking trajectory
+            throw if inverse kinematics fails
+            </summary>
+            <param name="robot">The robot arm simulation instance.</param>
+            <param name="H_approach">The homogeneous transformation matrix representing the approach pose.</param>
+            <param name="qs0">The initial joint angles.</param>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.PickingTrajectory.GenerateTrajectory(LotusAPI.Robotics.RobotArmSim,System.Int32,System.Int32)">
+            <summary>
+            Generates the picking trajectory by interpolating between the start, approach, and pick poses.
+            The trajectory consists of joint interpolations to the approach pose followed by linear interpolations to the pick pose.
+            throw if StartPose, ApproachPose, or PickPose is null
+            throw if inverse kinematics fails during interpolation
+            </summary>
+            <param name="robot">robot model</param>
+            <param name="approach_step">number of approach steps</param>
+            <param name="pick_step">number of pick steps</param>
+        </member>
+        <member name="M:ATMC.Common.BinPicking.PickingTrajectory.IsNearSingular(System.Double)">
+            <summary>
+             Checks if the linear trajectory is near a singularity based on rapid joint angle changes.
+            </summary>
+            <param name="max_angle_step">max angle step</param>
+            <returns>true if the trajectory is near singularity</returns>
+        </member>
         <member name="F:ATMC.Common.BodyShop.FormMeasureConfig.components">
             <summary>
             Required designer variable.
