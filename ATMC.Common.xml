@@ -541,6 +541,15 @@
             <param name="max_angle_step">max angle step</param>
             <returns>true if the trajectory is near singularity</returns>
         </member>
+        <member name="M:ATMC.Common.BinPicking.PickingTrajectory.CollideWithObstacle(LotusAPI.Robotics.RobotArmSim,System.Collections.Generic.List{LotusAPI.MV.CollisionObject},System.String[])">
+            <summary>
+            Checks if the picking trajectory collides with any obstacles in the environment.
+            </summary>
+            <param name="robot">The robot arm simulation instance.</param>
+            <param name="obstacles">A list of collision objects representing obstacles.</param>
+            <param name="joints">Optional array of joint names to consider for collision checking. Defaults to all joints.</param>
+            <returns>True if a collision is detected along the trajectory; false otherwise.</returns>
+        </member>
         <member name="F:ATMC.Common.BodyShop.FormMeasureConfig.components">
             <summary>
             Required designer variable.
