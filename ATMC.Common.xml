@@ -1139,6 +1139,113 @@
             Convert to string
             </summary>
         </member>
+        <member name="T:ATMC.Common.FastRegistrationConfig">
+            <summary>
+            Coarse to fine registration config
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.Finder">
+            <summary>
+            3D Pattern finder
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.FinderEnable">
+            <summary>
+            Enable/disable 3D pattern finder
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.Aligner">
+            <summary>
+            Coarse aligner
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.ShiftOffset">
+            <summary>
+            Shift offset
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.MaxFitness">
+            <summary>
+            Maximum fitness value
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.MinOverlap">
+            <summary>
+            Minimum overlap ratio (0~1)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.OverlapRadius">
+            <summary>
+            Overlap radius (model->scene)
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.ShiftLimit">
+            <summary>
+            Shift limit
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.ScanPoses">
+            <summary>
+            Scan poses
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.Model">
+            <summary>
+            Model cloud file = {prefix}model{suffix}.ply
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.CadModel">
+            <summary>
+            Cad model mesh file = {prefix}cad{suffix}.stl
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.FastRegistrationConfig.Valid">
+            <summary>
+            Check if data is valid or not
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.FastRegistrationConfig.AssertFile(System.String)">
+            <summary>
+            Check if file exist
+            </summary>
+            <param name="file">file path</param>
+            <exception cref="T:System.Exception">throw exception if file does not exist</exception>
+        </member>
+        <member name="M:ATMC.Common.FastRegistrationConfig.Init(System.String,System.String,System.String)">
+            <summary>
+            Initialize registration model
+            model file name      =   [prefix]_model_[suffix].ply
+            cad file name        =   [prefix]_cad_[suffix].stl
+            robot pose file name =   [prefix]_scan_poses.json
+            Ex.: 
+               - prefix: front, rear, left, right ...
+               - suffix: base, uf, cc
+            </summary>
+            <param name="model_dir">Model directory</param>
+            <param name="prefix">prefix</param>
+            <param name="suffix">suffix</param>
+        </member>
+        <member name="M:ATMC.Common.FastRegistrationConfig.Align(LotusAPI.MV.Pointcloud,LotusAPI.Math.Matrix44d,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Find a match using 3D finder
+            </summary>
+            <param name="scene">scene cloud</param>
+            <param name="initial_matrix">initial matrix</param>
+            <returns>Registration result</returns>
+        </member>
+        <member name="M:ATMC.Common.FastRegistrationConfig.AlignLinear(LotusAPI.MV.Pointcloud,System.Int32,LotusAPI.Math.Matrix44d,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Find a match using 3D finder
+            </summary>
+            <param name="scene">scene cloud</param>
+            <param name="initial_matrix">initial matrix</param>
+            <returns>Registration result</returns>
+        </member>
+        <member name="M:ATMC.Common.FastRegistrationConfig.ToString">
+            <summary>
+            Convert to string
+            </summary>
+        </member>
         <member name="P:ATMC.Common.RegistrationResult.Fitness">
             <summary>
             Registration fitness
