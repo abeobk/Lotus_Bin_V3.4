@@ -279,17 +279,31 @@
         <member name="M:LotusAPI.Data.DbEngine.ExecuteReader(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
             <summary>
             Executes a query and returns a data reader
+            ⚠️ The reader must be disposed using 'using' statement to properly close the connection
             </summary>
             <param name="sql">The SQL command text</param>
             <param name="parameters">Optional parameters for the SQL command</param>
             <returns>A data reader for reading the query results</returns>
+            <example>
+            <code>
+            using (var db = new DbEngine("...", SqlDialect.SQLite)) {
+                using (var reader = db.ExecuteReader("SELECT * FROM users")) {
+                    while (reader.Read()) {
+                        // Process data
+                    }
+                } // Reader closes connection automatically here
+            }
+            </code>
+            </example>
         </member>
         <member name="M:LotusAPI.Data.DbEngine.ExecuteReaderAsync(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
             <summary>
             Executes a query asynchronously and returns a data reader
+            ⚠️ The reader must be disposed using 'using' statement to properly close the connection
             </summary>
             <param name="sql">The SQL command text</param>
             <param name="parameters">Optional parameters for the SQL command</param>
+            <param name="keepConnectionOpen">If true, keeps connection open after reader is disposed (for transactions)</param>
             <returns>Task containing a data reader for reading the query results</returns>
         </member>
         <member name="M:LotusAPI.Data.DbEngine.Query(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
@@ -468,6 +482,11 @@
         <member name="P:LotusAPI.Data.DbEngine.ColumnDefinition.AutoIncrement">
             <summary>
             Whether the column should auto-increment (for integer primary keys)
+            </summary>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ColumnDefinition.ConvertDefaultValue(System.String,LotusAPI.Data.SqlDialect)">
+            <summary>
+            Converts default value to dialect-specific syntax
             </summary>
         </member>
         <member name="M:LotusAPI.Data.DbEngine.ColumnDefinition.GetDefinitionSql(LotusAPI.Data.SqlDialect)">
