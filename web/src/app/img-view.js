@@ -20,6 +20,8 @@ const ImgViewer = {
       imageLoaded: false,
       imageError: false,
       imageData: null, // Store ImageBitmap or HTMLImageElement
+      resizeObserver: null,
+      onCanvasContextMenu: null,
     };
   },
 
@@ -249,9 +251,8 @@ const ImgViewer = {
   mounted() {
     // Prevent context menu on canvas
     if (this.$refs.canvas) {
-      this.$refs.canvas.addEventListener('contextmenu', (e) =>
-        e.preventDefault()
-      );
+      this.onCanvasContextMenu = (e) => e.preventDefault();
+      this.$refs.canvas.addEventListener('contextmenu', this.onCanvasContextMenu);
       this.$refs.canvas.style.cursor = 'grab';
     }
 
@@ -267,13 +268,19 @@ const ImgViewer = {
   },
 
   beforeUnmount() {
+    if(this.$refs.canvas && this.onCanvasContextMenu) {
+      this.$refs.canvas.removeEventListener('contextmenu', this.onCanvasContextMenu);
+      this.onCanvasContextMenu = null;
+    }
     // Clean up resize observer
     if (this.resizeObserver) {
       this.resizeObserver.disconnect();
+      this.resizeObserver = null;
     }
     // Close ImageBitmap to free GPU memory
     if (this.imageData && this.imageData.close) {
       this.imageData.close();
+      this.imageData = null;
     }
   },
 };

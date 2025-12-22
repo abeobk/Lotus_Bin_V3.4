@@ -171,7 +171,7 @@ const SampleData = {
     };
   },
 
-  generateLogs(){
+  generateLogs(nlogs=5){
     //generate 1000 rows of test logs
     const levels = ['Normal', 'Debug', 'Trace', 'Warn', 'Info', 'Success', 'Error', 'Fatal'];
     const messages = [
@@ -201,7 +201,7 @@ const SampleData = {
       'Debug: Configuration loaded.'];
 
       //generate randomly 1-5 logs
-      return Array.from({ length: 5000 }, () => ({
+      return Array.from({ length: nlogs}, () => ({
         l: levels[Math.floor(Math.random() * levels.length)],
         m: messages[Math.floor(Math.random() * messages.length)],
         t: new Date().toISOString().replace('T', ' ').split('.')[0],

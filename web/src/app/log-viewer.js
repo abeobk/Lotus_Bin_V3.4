@@ -16,6 +16,10 @@ const LogViewer = {
       totalEntries: 0,
 
       // Auto scroll
+      topScroll: 0,
+      lastTopScroll: 0,
+      progScroll: false,
+      progScrollTimer: null,
       autoScroll: true,
       autoScrollPaused: false,
       autoScrollTimer: null,
@@ -144,6 +148,9 @@ const LogViewer = {
         remove.length = 0;
       }
       this.$nextTick(() => {
+        if (this.autoScroll && !this.autoScrollPaused) {
+          this.markProgrammaticScroll(200);
+        }
         this.render();
       });
     },
@@ -185,9 +192,7 @@ const LogViewer = {
 
       // Auto scroll to bottom if enabled and update visible range
       this.$nextTick(() => {
-        if (this.autoScroll && !this.autoScrollPaused) {
-          this.updateVisibleRange();
-        }
+        this.updateVisibleRange();
       });
     },
 
@@ -280,17 +285,34 @@ const LogViewer = {
       this.pauseAutoScroll(10000);
     },
 
+    markProgrammaticScroll(timeout = 200) {
+      this.progScroll = true;
+      if (this.progScrollTimer) {
+        clearTimeout(this.progScrollTimer);
+      }
+      this.progScrollTimer = setTimeout(() => {
+        this.progScroll = false;
+        this.progScrollTimer = null;
+      }, timeout);
+    },
+
     // Handle scroll events
     handleScroll(event) {
-      const scrollDown = event.target.scrollTop > (this.scrollTop || 0);
-      if (!scrollDown && !this.autoScrollPaused) {
+      const scrollTop = event.target.scrollTop;
+      const last = this.lastScrollTop || 0;
+
+      const scrollDown = scrollTop > last + 1;
+      const scrollUp = scrollTop < last - 1;
+
+      if (scrollUp && !this.autoScrollPaused && !this.progScroll) {
         this.pauseAutoScroll();
+        this.lastScrollTop = scrollTop;
         return;
       }
-      this.scrollTop = event.target.scrollTop;
+
+      this.lastScrollTop = scrollTop;
       this.updateVisibleRange();
-      // Check if user scrolled near the bottom
-      const container = event.target;
+
       if (scrollDown && this.visibleEnd >= this.filteredLogs.length - 2) {
         this.resumeAutoScroll();
       }
@@ -299,13 +321,13 @@ const LogViewer = {
     // Handle user-initiated scroll (mouse wheel)
     handleUserScroll(e) {
       //scroll up
-      if (e.deltaY < 0 && !this.autoScrollPaused) {
+      if (e.deltaY < -3 && !this.autoScrollPaused) {
         this.pauseAutoScroll();
       }
     },
 
     // Pause auto scroll for 30 seconds
-    pauseAutoScroll(timeout = 60000) {
+    pauseAutoScroll(timeout = 30000) {
       this.autoScrollPaused = true;
 
       // Clear existing timer
@@ -317,7 +339,7 @@ const LogViewer = {
       this.autoScrollTimer = setTimeout(() => {
         this.crrEntry = ''; //close current entry
         this.resumeAutoScroll();
-      }, timeout || 60000);
+      }, timeout || 30000);
     },
 
     // Resume auto scroll
@@ -334,7 +356,9 @@ const LogViewer = {
     scrollToBottom() {
       const container = this.$refs.container;
       if (container) {
+        this.markProgrammaticScroll(200);
         container.scrollTop = container.scrollHeight;
+        this.lastScrollTop = container.scrollTop;
       }
     },
 
@@ -352,8 +376,8 @@ const LogViewer = {
   // Lifecycle hooks
   mounted() {
     // Wait for container to be ready
-    const container = this.$refs.container;
     const waitForContainer = () => {
+      const container = this.$refs.container;
       this.$nextTick(() => {
         if (!container || container.clientHeight <= 0) {
           requestAnimationFrame(waitForContainer);
@@ -368,7 +392,7 @@ const LogViewer = {
 
   // Cleanup
   beforeUnmount() {
-    clearEntryRefs();
+    this.clearEntryRefs();
     // Clear all timers
     if (this.autoScrollTimer) {
       clearTimeout(this.autoScrollTimer);
@@ -377,6 +401,10 @@ const LogViewer = {
     if (this.showEntryTimeout) {
       clearTimeout(this.showEntryTimeout);
       this.showEntryTimeout = null;
+    }
+    if(this.progScrollTimer){
+      clearTimeout(this.progScrollTimer);
+      this.progScrollTimer = null;
     }
     this.internalLogs.length = 0;
     this.filteredLogs.length = 0;

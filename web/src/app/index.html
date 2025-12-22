@@ -425,7 +425,7 @@
                     CSharpUtils.sendMessage({ type: 'model_button_click' });
                 },
                 send_CycleTestButtonClick() {
-                    // CSharpUtils.sendMessage({ type: 'cycle_test_button_click' });
+                    CSharpUtils.sendMessage({ type: 'cycle_test_refresh' });
                 },
                 send_SettingButtonClick() {
                     CSharpUtils.sendMessage({ type: 'setting_button_click' });
@@ -476,7 +476,7 @@
                 }
                 //---test code---
                 this.setPlcPinmap(SampleData.generatePinmaps());
-                this.addLogEntries(SampleData.generateLogs());
+                this.addLogEntries(SampleData.generateLogs(1000));
                 this.showImgTab = true;
                 this.clearImages();
                 this.setImage({ id: 0, data: SampleData.generateImage() });
@@ -487,6 +487,7 @@
                     this.cycleInfo = SampleData.generateCycleInfo();
                     this.setResultTable(SampleData.generateResultTables());
                     this.setHistory(SampleData.generateHistoryData(50));
+                    // this.addLogEntries(SampleData.generateLogs(5));
                 }, 1000);
 
                 //---------------

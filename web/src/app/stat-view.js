@@ -66,7 +66,7 @@ const StatView = {
       this.renderHourlyChart(this.hourlyData, false);
       this.renderPieChart(this.okcnt, this.ngcnt);
     });
-  },
+  }
 };
 
 //inject style
