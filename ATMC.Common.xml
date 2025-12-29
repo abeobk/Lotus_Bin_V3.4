@@ -598,6 +598,21 @@
             Cycle end
             </summary>
         </member>
+        <member name="M:ATMC.Common.BodyCycleContext_`2.Reset">
+            <summary>
+            Reset cycle
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BodyCycleContext_`2.Start">
+            <summary>
+            Cycle start
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.BodyCycleContext_`2.End">
+            <summary>
+            Cycle end
+            </summary>
+        </member>
         <member name="F:ATMC.Common.CycleInfoView.components">
             <summary> 
             Required designer variable.
