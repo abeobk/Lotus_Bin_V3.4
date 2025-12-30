@@ -194,7 +194,7 @@ b513d9a39af2ee145f12c1ba03f9982960c47029 *./web/css/font-awesome.min.css
 1710af5a4bc7e485628993e0b49d4ba218ef41d1 *./web/css/styles.css
 4f3c160791857d5e18bc04fb1f27a01f0c16d434 *./web/css/styles.min.css
 245ff1c1612a3475c1255e1cdaf44bbd4f8fd696 *./web/css/theme.css
-bf067901b9ace282eb6eedc3c410b32587788662 *./web/script/api.js
+e7f8e1ec8b15b2c06327e63c1472004d0ece20e3 *./web/script/api.js
 67df7673867ff5f294eaa8f1f1eb58c9b86bd673 *./web/script/chart.js
 b6eeed0d12425e58a6a830b547bb326b0b6888fc *./web/script/clusterize.min.js
 d3ce990cad912f186f5d6187d4290ea5d188ef24 *./web/script/counter-component.js
@@ -208,7 +208,7 @@ bb88c77c7735d219189e05a392b01ce5105e56bc *./web/src/app/db-viewer-clusterized.js
 116a30539659b0bd9ff96bf0be9b31004a2e7e66 *./web/src/app/db-viewer.js
 daa95fbdf13d606261fcbf074ba625ee20a05c56 *./web/src/app/history-table.js
 1510505a327a902fb2bb61c001394d980d0c5879 *./web/src/app/img-view.js
-fa708081f11c0bac3071eb6063ab0f0fd03043b5 *./web/src/app/index.html
+61984e108b873ebd2a2930a0df99eaf263fb5ecb *./web/src/app/index.html
 97d782e04f014d1ca467d43f3ffb24dc18c3d307 *./web/src/app/io-view.js
 2d9487e3c07d68b64a83afd8445c12c577d3f189 *./web/src/app/log-viewer-fixed-height.js
 5b86ede8f49dc5d8707989598b4ba43f9ccc4814 *./web/src/app/log-viewer-var-height.js
@@ -219,6 +219,7 @@ cfb5a1342650690622cb3a4c813f1495c09a96b2 *./web/src/app/model-maker.js
 d61ad7cb488803e99b02bb484e24cc861a7bb381 *./web/src/app/stat-view.js
 241a51d83d6758cbbf167ac36dedc24efce0cbb5 *./web/src/app/template.js
 dd4302468719b237b10966894a26368cc3192407 *./web/src/app/theme.css
+999004c85102de6ee855b709bc32556b7c111d01 *./web/src/app/user-op.js
 c69f52f7ca80fa3a5fe38e7d66843e5379763f03 *./web/src/dashboard/index.html
 3b5f1966c35897bb12673c3d6a41664811afad7e *./web/src/test/dashboard1.html
 6b239fe7697163da0862269a588ccf4aa1fdb157 *./web/src/test/multi-panel.html

@@ -90,6 +90,11 @@ const API = {
           app.clearCycleTestState();
           break;
 
+        //user op
+        case 'user_op_set_state':
+          app.setUserOpState(value);
+          break;
+
         //set image viewer
         // value = ['title1', 'title2'] 
         case 'set_image_viewers':
@@ -122,7 +127,6 @@ const API = {
     CSharpUtils.sendMessage({ type: 'get_result' }); //latest get results
     CSharpUtils.sendMessage({ type: 'get_history' }); //last results + counter
     CSharpUtils.sendMessage({ type: 'make_model_get_state' }); 
-    CSharpUtils.sendMessage({ type: 'cycle_test_get_state' }); 
   },
 };
 

@@ -33,6 +33,8 @@
                 @click="activateSection('TEST'); send_CycleTestButtonClick()"><i class="fa fa-flask"></i></button>
             <button :class="{'active': crrSection === 'MODEL'}" v-show="!isAutoMode"
                 @click="activateSection('MODEL'); send_MakeModelButtonClick()"><i class="fa fa-cube"></i></button>
+            <button :class="{'active': crrSection === 'USEROP'}" v-show="showUserOpTab"
+                @click="activateSection('USEROP'); send_UserOpButtonClick()"><i class="fa fa-user"></i></button>
             <button :class="{'active': crrSection === 'LOG'}" @click="activateSection('LOG')"><i
                     class="fa fa-list"></i></button>
             <div style="flex:1"></div>
@@ -102,6 +104,13 @@
                     <model-maker ref="modelMaker"></model-maker>
                 </section>
 
+                <!------------------->
+                <!--SECTION: USER OP-->
+                <!------------------->
+                <section v-show="showUserOpTab && crrSection==='USEROP'" class="section--test">
+                    <user-op ref="userOp"></user-op>
+                </section>
+
             </div>
 
             <div class="split__panel--bottom">
@@ -123,11 +132,12 @@
     <script src="./history-table.js"></script>
     <script src="./model-maker.js"></script>
     <script src="./cycle-test.js"></script>
+    <script src="./user-op.js"></script>
 
     <script>
 
         const { createApp } = Vue;
-        const sections = ['MAIN', 'LOG', 'IO', 'IMG', 'STATS', "MODEL", "TEST"];
+        const sections = ['MAIN', 'LOG', 'IO', 'IMG', 'STATS', "MODEL", "USEROP", "TEST"];
         const app = createApp({
             components: {
                 'cycle-info-card': window.CycleInfoCard,
@@ -139,6 +149,7 @@
                 'history-table': window.HistoryTable,
                 'model-maker': window.ModelMaker,
                 'cycle-test': window.CycleTest,
+                'user-op': window.UserOp,
             },
 
             data() {
@@ -180,6 +191,7 @@
                     //show / hide
                     showStatTab: false,
                     showImageTab: false,
+                    showUserOpTab: false,
                 }
             },
             computed: {
@@ -208,10 +220,11 @@
                 isFullLog() { return this.crrSection === 'LOG'; },
 
                 activateSection(section) {
+                    const prevSection = this.crrSection;
                     if (sections.includes(section)) {
                         this.crrSection = section;
                         //dont save MODEL or TEST section to local storage
-                        if (this.crrSection != 'MODEL' && this.crrSection != 'TEST') {
+                        if (this.crrSection != 'MODEL' && this.crrSection != 'USEROP' && this.crrSection != 'TEST') {
                             localStorage.setItem('crrSection', section);
                         }
                     }
@@ -222,7 +235,7 @@
                     // if (section === 'MODEL') {
                     //     CSharpUtils.sendMessage({ type: 'make_model_get_state' });
                     // }
-                    this.adjustLogSplitter();
+                    this.adjustLogSplitter(prevSection);
                 },
 
                 toggleSection(section) {
@@ -256,24 +269,82 @@
                         cursor: 'row-resize',         // Cursor style
                         direction: 'vertical',        // Split direction
                         onDragEnd: (sizes) => {
-                            if (this.isFullLog()) {
-                                this.fullLogSplitterSizes = sizes;
-                                localStorage.setItem('fullLogSplitterSizes', JSON.stringify(sizes));
-                            }
-                            else {
-                                this.logSplitterSizes = sizes;
-                                localStorage.setItem('logSplitterSizes', JSON.stringify(sizes));
-                            }
+                            // In LOG mode, resizing is locked and we don't persist snap sizes.
+                            if (this.isFullLog()) return;
+                            this.logSplitterSizes = sizes;
+                            localStorage.setItem('logSplitterSizes', JSON.stringify(sizes));
                         }
                     });
                     this.adjustLogSplitter();
                 },
-                // Adjust splitter sizes based on current section
-                adjustLogSplitter() {
-                    this.splitter.setSizes(this.isFullLog() ? this.fullLogSplitterSizes : this.logSplitterSizes);
+                setLogSplitterLocked(locked) {
+                    const gutter = document.querySelector('#vertical-split .gutter.gutter-vertical');
+                    if (!gutter) return;
+                    gutter.style.pointerEvents = locked ? 'none' : '';
+                    gutter.style.cursor = locked ? 'default' : 'row-resize';
+                },
+
+                snapLogSplitterToMainContent() {
                     this.$nextTick(() => {
-                        this.$refs.logViewer.updateVisibleRange(); // Refresh log viewer layout;
-                        this.$refs.logViewer.scrollToBottom(); // Refresh log viewer layout;
+                        requestAnimationFrame(() => {
+                            if (!this.splitter) return;
+                            const splitEl = document.querySelector('#vertical-split');
+                            const mainEl = document.querySelector('#vertical-split .section--main');
+                            if (!splitEl || !mainEl) return;
+
+                            const splitHeight = splitEl.clientHeight;
+                            if (!splitHeight) return;
+
+                            const minTopPx = 100;
+                            const minBottomPx = 100;
+
+                            const desiredTopPx = mainEl.scrollHeight;
+                            const clampedTopPx = Math.max(minTopPx, Math.min(desiredTopPx, splitHeight - minBottomPx));
+                            const topPct = (clampedTopPx / splitHeight) * 100;
+
+                            this.splitter.setSizes([topPct, 100 - topPct]);
+
+                            this.$nextTick(() => {
+                                this.$refs.logViewer.updateVisibleRange();
+                                this.$refs.logViewer.scrollToBottom();
+                            });
+                        });
+                    });
+                },
+
+                // Adjust splitter sizes based on current section
+                adjustLogSplitter(prevSection) {
+                    if (!this.splitter) return;
+
+                    const enteringLog = this.crrSection === 'LOG' && prevSection !== 'LOG';
+                    const leavingLog = this.crrSection !== 'LOG' && prevSection === 'LOG';
+
+                    // store/restore sizes around LOG snap
+                    if (enteringLog) {
+                        // If we're entering LOG at startup (no prev), prefer persisted normal sizes.
+                        const baseSizes = (prevSection == null)
+                            ? (this.logSplitterSizes || [80, 20])
+                            : (this.splitter.getSizes ? this.splitter.getSizes() : (this.logSplitterSizes || [80, 20]));
+
+                        this._preLogSplitterSizes = baseSizes;
+                        this.setLogSplitterLocked(true);
+                        this.snapLogSplitterToMainContent();
+                        return;
+                    }
+
+                    if (leavingLog) {
+                        this.setLogSplitterLocked(false);
+                        this.splitter.setSizes(this._preLogSplitterSizes || this.logSplitterSizes || [80, 20]);
+                        this._preLogSplitterSizes = null;
+                    }
+                    else if (this.crrSection !== 'LOG') {
+                        // normal mode = user-resizable + persisted
+                        this.splitter.setSizes(this.logSplitterSizes);
+                    }
+
+                    this.$nextTick(() => {
+                        this.$refs.logViewer.updateVisibleRange();
+                        this.$refs.logViewer.scrollToBottom();
                     });
                 },
 
@@ -427,6 +498,9 @@
                 send_CycleTestButtonClick() {
                     CSharpUtils.sendMessage({ type: 'cycle_test_refresh' });
                 },
+                // send_UserOpButtonClick() {
+                //     CSharpUtils.sendMessage({ type: 'user_op_refresh' });
+                // },
                 send_SettingButtonClick() {
                     CSharpUtils.sendMessage({ type: 'setting_button_click' });
                 },
@@ -439,6 +513,9 @@
                 setCycleTestState(value) { this.$refs.cycleTest.setState(value); },
                 setCycleTestModels(value) { this.$refs.cycleTest.setModels(value); },
                 clearCycleTestState() { this.$refs.cycleTest.clearState(); },
+
+                //user op state
+                setUserOpState(value) { this.$refs.userOp.setState(value); },
 
                 //mode
                 setMode(auto) {
@@ -455,6 +532,9 @@
                     }
                     else if (data['key'] === 'IMG') {
                         this.showImgTab = data['value'];
+                    }
+                    else if (data['key'] === 'USEROP') {
+                        this.showUserOpTab = data['value'];
                     }
                     this.$forceUpdate();
                 },
@@ -475,9 +555,12 @@
                     return;
                 }
                 //---test code---
+                this.showImgTab = true;
+                this.showStatTab= true;
+                this.showUserOpTab = true;
+
                 this.setPlcPinmap(SampleData.generatePinmaps());
                 this.addLogEntries(SampleData.generateLogs(1000));
-                this.showImgTab = true;
                 this.clearImages();
                 this.setImage({ id: 0, data: SampleData.generateImage() });
                 // this.setImage({ id: 1, data: SampleData.generateImage() });
