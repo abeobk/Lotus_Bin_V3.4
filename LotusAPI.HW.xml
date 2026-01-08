@@ -4,6 +4,16 @@
         <name>LotusAPI.HW</name>
     </assembly>
     <members>
+        <member name="P:LotusAPI.HW.SealerProfiler.IsValid">
+            <summary>
+            Check if device is connected and is calibratedw
+            </summary>
+        </member>
+        <member name="M:LotusAPI.HW.SealerProfiler.ApplyROI">
+            <summary>
+            Similar to Invalidate() but also Apply new ROI
+            </summary>
+        </member>
         <member name="M:LotusAPI.HW.PhoXiManager.Init(System.Int32,System.String)">
             <summary>
             Initialize and connect all scanners
