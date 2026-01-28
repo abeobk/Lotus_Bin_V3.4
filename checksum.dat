@@ -122,6 +122,7 @@ f92280f2f5622e8d80633610dab6b01a7a4ba8cd *./RobotModels/KAWASAKI_BX300L.arm
 825f899e70e3a1cd474d12722989ed4a64f398ba *./RobotModels/KAWASAKI_RS050N.arm
 fd588882c5eb18c4ef204b6045b4f619a022b630 *./RobotModels/OMRON_TM20.arm
 6d23e18eb110138fd3456d17278cecf1488b07f5 *./RobotModels/YASKAWA_GP225.arm
+d7077f2f1283e7f976b216fb610dae7b117d1a7b *./RobotModels/YASKAWA_MH165.arm
 3246e57c6ac8de4690edd328ca17540fe4425836 *./RobotSimulator.exe
 bd11f8e5fd781106ab00ea779ff823f665ec7abe *./RobotStudio.Services.RobApi.Desktop.dll
 2a6bfa09dffedaff6fb6ad8585eb0b35c3fe185e *./RobotStudio.Services.RobApi.dll
