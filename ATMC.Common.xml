@@ -572,6 +572,14 @@
             Shift limit
             </summary>
         </member>
+        <member name="M:ATMC.Common.BodyShop.BodyModelConfig.CalcGauge(System.String,LotusAPI.MV.Pointcloud)">
+            <summary>
+            Calc gauge matrix for the gauge with name, return null if not found or failed to calc
+            </summary>
+            <param name="gauge_name">Gauge name</param>
+            <param name="scene">Input scene</param>
+            <returns>gauge matrix, null if fails</returns>
+        </member>
         <member name="M:ATMC.Common.CoarseToFineICPAligner.Align(LotusAPI.MV.Pointcloud,LotusAPI.Math.Matrix44d,System.Single)">
             <summary>
             Compute alignment
