@@ -1681,6 +1681,14 @@
             <param name="cloud">input cloud</param>
             <returns>Robot pose</returns>
         </member>
+        <member name="M:ATMC.Common.Utils.GetRobotPose(LotusAPI.MV.Pointcloud,System.String)">
+            <summary>
+            Get robot pose info
+            </summary>
+            <param name="cloud">input cloud</param>
+            <param name="pose_name">pose info name, default is "RobotPose_"</param>
+            <returns>Robot pose</returns>
+        </member>
         <member name="M:ATMC.Common.VideoViewer.SetPosition(System.Double)">
             <summary>
             Set frame position

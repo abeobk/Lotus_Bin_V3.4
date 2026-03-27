@@ -2,8 +2,8 @@
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
 d889eb1d045d8c3711c45a81edb2705228075fff *./ATMC.App.MultiPosAdj.exe
 957f871d2d5c336dc212725147e280194712b8ae *./ATMC.App.PosAdj.exe
-1c77aedfbf98f4f71eb757f87e18e8b374e8dc3c *./ATMC.Common.dll
-2aa46fb055b62227ea644b13147eda1ae44c9154 *./ATMC.Common.xml
+f159c8bbd1d747d6e203e53639954caf411e55d6 *./ATMC.Common.dll
+049349a32b7010271c180e1ab6ea6e4af7369b43 *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 899b607769f77d1d0fc3cbf9375b064b16580404 *./ATMC.WorkCellConfigurator.exe
 83381f278f713316be0ef308262890c07db322f3 *./Abeo.Controls.dll
@@ -53,7 +53,7 @@ b249dcf06dc09feab21243f49f31809d392c691f *./LotusAPI.HW.OpcPlc.xml
 fcece773c66ca5884a07ecc85945a820ea82362b *./LotusAPI.Robotics.Fanuc.dll
 cbc0c1ea43de88883a115c6dfeed6c8d5bd17cc9 *./LotusAPI.Robotics.Fanuc.xml
 de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
-35ffddcdf1dc48e61254a494808918aefef18db5 *./LotusAPI.Robotics.dll
+e8390a18b11d4ba87dd9130fe8cda7502cec4359 *./LotusAPI.Robotics.dll
 05b6854840022b3a12955fc793c34c9786dd3154 *./LotusAPI.Robotics.xml
 6f06c618653507dafff03b01ce2da48adceb0374 *./LotusAPI.Settings.dll
 4133060e474c910c7ae3efe100edc4cb25c42858 *./LotusAPI.Sim.dll
