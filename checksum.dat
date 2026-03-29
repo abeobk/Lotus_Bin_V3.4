@@ -2,7 +2,7 @@
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
 d889eb1d045d8c3711c45a81edb2705228075fff *./ATMC.App.MultiPosAdj.exe
 957f871d2d5c336dc212725147e280194712b8ae *./ATMC.App.PosAdj.exe
-c9c5f603bc90587620cd2df98066b8a8151b6be2 *./ATMC.Common.dll
+f94260d980e3bfcb8bac3a18f517f649267aa851 *./ATMC.Common.dll
 049349a32b7010271c180e1ab6ea6e4af7369b43 *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 899b607769f77d1d0fc3cbf9375b064b16580404 *./ATMC.WorkCellConfigurator.exe
@@ -53,7 +53,7 @@ b249dcf06dc09feab21243f49f31809d392c691f *./LotusAPI.HW.OpcPlc.xml
 fcece773c66ca5884a07ecc85945a820ea82362b *./LotusAPI.Robotics.Fanuc.dll
 cbc0c1ea43de88883a115c6dfeed6c8d5bd17cc9 *./LotusAPI.Robotics.Fanuc.xml
 de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
-e8390a18b11d4ba87dd9130fe8cda7502cec4359 *./LotusAPI.Robotics.dll
+37506fb4649f8680313c0a4a97f7b24009acae0f *./LotusAPI.Robotics.dll
 05b6854840022b3a12955fc793c34c9786dd3154 *./LotusAPI.Robotics.xml
 6f06c618653507dafff03b01ce2da48adceb0374 *./LotusAPI.Settings.dll
 4133060e474c910c7ae3efe100edc4cb25c42858 *./LotusAPI.Sim.dll
@@ -179,7 +179,7 @@ e611f2c45ed206cb03e9954893644f9e45d8199b *./lotus_ml.dll
 c1bd8ba585068b566dbd70425fda22b94737656a *./lotus_ml_v142_x64.dll
 8d99132e20b15034a4b299bf239429e1969b52ab *./lotus_mv_v142_x64.dll
 ae97ee97279b3c045e0b5e134ad0dd576dc33b78 *./lotus_sim_v142_x64.dll
-b60bd84589a8fa4b044d5fa6f220bfcd082f18b7 *./lotus_v142_x64.dll
+fd120133dc37028424788546382c002b27759f18 *./lotus_v142_x64.dll
 69b9a48fb2cee1f4698a69c64d98ebc9eb6111f6 *./opencv_ffmpeg410_64.dll
 9271ca2d144c81d07944869f9e0e617ced854e60 *./opencv_img_hash410.dll
 03147574c2bba76c1c3a568e7b11867d8a884d9a *./opencv_world410.dll
