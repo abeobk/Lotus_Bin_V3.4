@@ -2645,5 +2645,23 @@
             Get node by name
             </summary>
         </member>
+        <member name="T:ATMC.Common.WorkCell.WorkCell.HwErrWatcher">
+            <summary>
+            Usage: 
+            HwErrWatcher err_watcher = new HwErrWatcher();
+            err_watcher.SetBitNames("Err1", "Err2", "Err3");
+            err_watcher.SetBit("Err1", true);
+            bool has_error = err_watcher.HasError();
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.WorkCell.OriginCalibManager.Init(System.String,ATMC.Common.WorkCell.WorkCell)">
+            <summary>
+            Initialize origin calibration manager, load reference pointcloud and setup ICP aligner for each scanner. The reference pointcloud should be named as "ref_[scanner_name].ply" and placed in the setting_dir. For example, if the scanner node name is "Scanner1", the reference pointcloud should be "ref_Scanner1.ply". If the reference pointcloud is not found, the scanner will not have origin calibration. You can call GetOriginCalibResult to get the current origin calibration result for each scanner.
+            </summary>
+            <param name="setting_dir"></param>
+            <param name="wc"></param>
+            <exception cref="T:System.Exception">throw if WorkCell is null</exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ATMC.Common.WorkCell.WorkCell.OriginCalibManager.Calib(System.String,System.Double,System.Double)" -->
     </members>
 </doc>
