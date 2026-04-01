@@ -2661,6 +2661,6 @@
             <param name="setting_dir"></param>
             <param name="wc"></param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:ATMC.Common.WorkCell.WorkCell.OriginCalibManager.Calib(System.String,System.Double,System.Double)" -->
+        <!-- Badly formed XML comment ignored for member "M:ATMC.Common.WorkCell.WorkCell.OriginCalibManager.Calib(System.String,System.Boolean,System.Double,System.Double)" -->
     </members>
 </doc>
