@@ -1,0 +1,1084 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Abeo.Controls</name>
+    </assembly>
+    <members>
+        <member name="P:Abeo.Controls.AdvancedDataGrid.DataSource">
+            <summary>
+            Get/Set the data table associated with the control
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedDataGrid.SetDataSource(System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            Set data source
+            </summary>
+            <param name="full_dt">Full data table</param>
+            <param name="display_dt">Data table for display</param>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedDataGrid.SetDataSource(System.Data.DataTable)">
+            <summary>
+            Set data source
+            </summary>
+            <param name="dt">Data table</param>
+        </member>
+        <member name="F:Abeo.Controls.AdvancedDataGrid._colorMap">
+            <summary>
+            List of color map
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.AdvancedDataGrid.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedDataGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedDataGrid.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.AdvancedImageView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedImageView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedImageView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.AdvancedPropertyGridView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedPropertyGridView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.AdvancedPropertyGridView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Common.DirectoryListView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.DirectoryListView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Common.DirectoryListView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Common.FormObjectEditor.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.FormObjectEditor.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Common.FormObjectEditor.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Common.FormSelectItem.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.FormSelectItem.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Common.FormSelectItem.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Abeo.Controls.Common.ObjectEditor">
+            <summary>
+            Object Editor used in property view, will return same object
+            </summary>
+        </member>
+        <member name="T:Abeo.Controls.Common.PropertyEditor_`1">
+            <summary>
+            Property editor for object of type T, return a modified copy of an object
+            </summary>
+            <typeparam name="T">object type</typeparam>
+        </member>
+        <member name="M:Abeo.Controls.Common.ObjectListBox.Refresh">
+            <summary>
+            Refresh selected item
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Common.ObjectListBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.ObjectListBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Common.ObjectListBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Abeo.Controls.Common.ObjectListControl.SaveEvent">
+            <summary>
+            Override default save behavior
+            </summary>
+        </member>
+        <member name="E:Abeo.Controls.Common.ObjectListControl.LoadEvent">
+            <summary>
+            Override Load behavior
+            </summary>
+        </member>
+        <member name="E:Abeo.Controls.Common.ObjectListControl.ReloadEvent">
+            <summary>
+            Reload event
+            </summary>
+        </member>
+        <member name="E:Abeo.Controls.Common.ObjectListControl.AfterLoadEvent">
+            <summary>
+            After load event, only available with default load
+            </summary>
+        </member>
+        <member name="E:Abeo.Controls.Common.ObjectListControl.AfterSaveEvent">
+            <summary>
+            After save event, only available with default save
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.ObjectListControl.Refresh">
+            <summary>
+            Refresh selected item
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Common.ObjectListControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.ObjectListControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Common.ObjectListControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Common.FormObjectListEditor_`1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Common.FormObjectListEditor_`1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Common.FormObjectListEditor_`1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Abeo.Controls.Common.ObjectListEditor_`1">
+            <summary>
+            Edit a list of object in property view, return the same reference to list of object
+            </summary>
+            <typeparam name="T">element type</typeparam>
+        </member>
+        <member name="M:Abeo.Controls.DataVisualization.ChartEx.PlotPieChart(System.Data.DataTable)">
+            <summary>
+            Plot pie chart
+            </summary>
+            <param name="dt">Data table
+            Table name => chart title
+            Columns[0] => Label names
+            Columns[2] => Values
+            </param>
+        </member>
+        <member name="M:Abeo.Controls.DataVisualization.ChartEx.PlotColumnChart(System.Data.DataTable,System.Boolean)">
+            <summary>
+            Plot columns chart
+            </summary>
+            <param name="dt">Data table
+            Table name => chart title
+            Columns[0] => Label names
+            Columns[2] => Values
+            </param>
+            <param name="first_column_x">Indicate that first columns is X axis labels</param>
+        </member>
+        <member name="F:Abeo.Controls.ColorPalette.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ColorPalette.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ColorPalette.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Design.ItemListSelector.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Design.ItemListSelector.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Design.ItemListSelector.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Design.RoundCornersDesigner.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Design.RoundCornersDesigner.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Design.RoundCornersDesigner.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Design.ColorPalettePicker.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Design.ColorPalettePicker.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Design.ColorPalettePicker.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Dialogs.FormWorkingProgress.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Dialogs.FormWorkingProgress.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Dialogs.FormWorkingProgress.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Dialogs.SplashWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Dialogs.SplashWindow.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Dialogs.SplashWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Editors.IntegerEditor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Editors.IntegerEditor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Editors.IntegerEditor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatControlBase.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatControlBase.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatControlBase.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatDataGridView.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatDataGridView.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatDataGridView.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatFlowPanel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatFlowPanel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatFlowPanel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ListViewColumnSorter.ColumnToSort">
+            <summary>
+            Specifies the column to be sorted
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ListViewColumnSorter.OrderOfSort">
+            <summary>
+            Specifies the order in which to sort (i.e. 'Ascending').
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ListViewColumnSorter.ObjectCompare">
+            <summary>
+            Case insensitive comparer object
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ListViewColumnSorter.#ctor">
+            <summary>
+            Class constructor. Initializes various elements
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ListViewColumnSorter.Compare(System.Object,System.Object)">
+            <summary>
+            This method is inherited from the IComparer interface. It compares the two objects passed using a case insensitive comparison.
+            </summary>
+            <param name="x">First object to be compared</param>
+            <param name="y">Second object to be compared</param>
+            <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
+        </member>
+        <member name="P:Abeo.Controls.ListViewColumnSorter.SortColumn">
+            <summary>
+            Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.ListViewColumnSorter.Order">
+            <summary>
+            Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatBannerPanel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatBannerPanel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatBannerPanel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatPropertyGrid.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatPropertyGrid.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatPropertyGrid.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatVerticalScrollBar.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatVerticalScrollBar.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatVerticalScrollBar.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Abeo.Controls.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.camera_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.cancel_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.chart_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.clear_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.clipboard_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.close_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.copy_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.cut_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.db_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.down_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.edit_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.export_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.fast_bwd_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.fast_fwd_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.file_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.folder_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.generic_icon_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.help_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.home_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.hwcard_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.image_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.import_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.left_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.load_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.log_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.maximize_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.maximize_241">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.minus_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.model_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.normal_size_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.ok_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.password_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.paste_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.pause_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.play_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.plus_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.replace_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.reset_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.right_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.running_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.running_32">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.save_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.setting_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.stop_playing_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.topmost_16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.topmost_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.topmost_241">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.up_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.user_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.win_resize_16">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Properties.Resources.win_resize_24">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundCheckBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Roundable.RoundCheckBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Roundable.RoundCheckBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.Roundable.RoundControlBase.Dock">
+            LAYOUT
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundControlBase.m_brContentBack">
+            APPERANCE
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundControlBase.m_penBorder">
+            BORDER
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundControlBase.m_img">
+             IMAGES
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundControlBase.m_rectBounds">
+            GEOMETRIES
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundControlBase.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Roundable.RoundControlBase.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Roundable.RoundControlBase.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.Roundable.RoundMultichoiceBox.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.Roundable.RoundMultichoiceBox.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.Roundable.RoundMultichoiceBox.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.FlatStatusBar.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.FlatStatusBar.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.FlatStatusBar.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.PanelDialogResultButtons.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.PanelDialogResultButtons.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.PanelDialogResultButtons.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.PanelCollectionEditButtons.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.PanelCollectionEditButtons.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.PanelCollectionEditButtons.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.TabHeader.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.TabHeader.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.TabHeader.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.StatusItemPanel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.StatusItemPanel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.StatusItemPanel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.MoveWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.MoveWindow.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.MoveWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.ZeroCode.ResizeAnimator.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.ResizeAnimator.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.ZeroCode.ResizeAnimator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatButton.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatButton.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatButton.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatCheckedButton.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatCheckedButton.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatCheckedButton.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatExclusiveCheckedButton.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatExclusiveCheckedButton.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatExclusiveCheckedButton.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatLabel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatLabel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatLabel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatPanel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatPanel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatPanel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.FlatTheme.BackColor">
+            <summary>
+            BACK COLOR
+            </summary>
+        </member>
+        <member name="P:Abeo.Controls.FlatTheme.ForeColorMouseOver">
+            <summary>
+            FORE COLOR
+            </summary>
+        </member>
+        <member name="F:Abeo.Controls.FlatTheme.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Abeo.Controls.FlatTheme.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Abeo.Controls.FlatTheme.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
