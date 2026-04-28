@@ -1,0 +1,989 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpcLabs.BaseLib</name>
+    </assembly>
+    <members>
+        <member name="T:OpcLabs.BaseLib.Collections.Generic.InverterComparer`1">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Collections.Generic.ReferenceEqualityComparer`1">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Collections.Generic.UInt32Comparer">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.DiagnosticsSwitches">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs">
+            <summary>
+            Provides data for the log entry event handlers.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.#ctor(System.String,System.String)">
+            <summary>
+            Creates an information type entry with the given message text for the event log, using the specified event source.
+            </summary>
+            <param name="source">The application event source.</param>
+            <param name="message">The string to write to the event log.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.#ctor(System.String,System.String,System.Diagnostics.EventLogEntryType)">
+            <summary>
+            Creates an error, warning, information, success audit, or failure audit entry with the given message text for the 
+            event log, using the specified event source.
+            </summary>
+            <param name="source">The application event source.</param>
+            <param name="message">The string to write to the event log.</param>
+            <param name="entryType">One of the <see cref="T:System.Diagnostics.EventLogEntryType"/> values.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.#ctor(System.String,System.String,System.Diagnostics.EventLogEntryType,System.Int32)">
+            <summary>
+            Creates an entry with the given message text and application-defined event identifier for the event log, using the 
+            specified event source.
+            </summary>
+            <param name="source">The application event source.</param>
+            <param name="message">The string to write to the event log.</param>
+            <param name="entryType">One of the <see cref="T:System.Diagnostics.EventLogEntryType"/> values.</param>
+            <param name="eventId">The application-specific identifier for the event.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.#ctor(System.String,System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)">
+            <summary>
+            Creates an entry with the given message text, application-defined event identifier, and application-defined 
+            category for the event log, using the specified event source. The <paramref name="category"/> can be used by the 
+            Event Viewer to filter events in the log.
+            </summary>
+            <param name="source">The application event source.</param>
+            <param name="message">The string to write to the event log.</param>
+            <param name="entryType">One of the <see cref="T:System.Diagnostics.EventLogEntryType"/> values.</param>
+            <param name="eventId">The application-specific identifier for the event.</param>
+            <param name="category">The application-specific subcategory associated with the message.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.#ctor(System.String,System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16,System.Byte[])">
+            <summary>
+            Creates an entry with the given message text, application-defined event identifier, and application-defined 
+            category for the event log (using the specified event source) and appends binary data to it.
+            </summary>
+            <param name="source">The application event source.</param>
+            <param name="message">The string to write to the event log.</param>
+            <param name="entryType">One of the <see cref="T:System.Diagnostics.EventLogEntryType"/> values.</param>
+            <param name="eventId">The application-specific identifier for the event.</param>
+            <param name="category">The application-specific subcategory associated with the message.</param>
+            <param name="rawData">An array of bytes that holds the binary data associated with the entry.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.IsValidEventSource(System.String)">
+            <summary>
+            Determines whether the given event source string is valid, i.e. not a null reference and not empty.
+            </summary>
+            <param name="source">The name of the event source.</param>
+            <returns><c>true</c> iff the event source string is valid.</returns>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.Category">
+            <summary>
+            The application-specific subcategory associated with the message. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.EntryType">
+            <summary>
+            Entry type. One of the <see cref="T:System.Diagnostics.EventLogEntryType"/> values. 
+            </summary>
+            <remarks>
+            Specifies the event type of an event log entry.
+            </remarks>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.EventId">
+            <summary>
+            The application-specific identifier for the event. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.Message">
+            <summary>
+            The message text.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.RawData">
+            <summary>
+            An array of bytes that holds the binary data associated with the entry. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.Source">
+            <summary>
+            The name of the event source.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.LogEntryEventArgs.Timestamp">
+            <summary>
+            Date and time of the log entry message.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.NotifyingEventSource">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.Resource1">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.Resource1.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.Resource1.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Diagnostics.Resource1.NotABooleanSwitch">
+            <summary>
+              Looks up a localized string similar to The switch name denotes an existing switch that is not a boolean switch..
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.SymbolicCounters">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.TraceUtilities">
+            <exclude/>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Diagnostics.TraceUtilities.WriteSeparatorLine">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.ValidatingConverter`2">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.ValidatingConverterWithWarnings`2">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Net.NetworkCredentialSurrogate">
+            <exclude/>  
+            <summary>For XML serialization.</summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Reflected">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Sign">
+            <summary>
+            None, positive, or negative sign.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.BaseLib.Sign.Negative">
+            <summary>
+            Negative sign.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.BaseLib.Sign.None">
+            <summary>
+            No sign.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.BaseLib.Sign.Positive">
+            <summary>
+            Positive sign.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.ArrayUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.ConvertUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.Resource1">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Utilities.Resource1.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Utilities.Resource1.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Utilities.Resource1.ConvertUtilities_CheckedChangeType_ExceptionDetail_Object_Type">
+            <summary>
+              Looks up a localized string similar to Attempting to change an object of type &apos;{0}&apos; to type &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Utilities.Resource1.ConvertUtilities_CheckedChangeType_OverflowExceptionDetail">
+            <summary>
+              Looks up a localized string similar to The specified original number was {0}..
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.TypeCodeUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Graphs.NamespaceDoc">
+            <summary>
+            This namespace contains classes that work with graphs.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.NamespaceDoc">
+            <summary>
+            This namespace contains commonly used fundamental and supporting classes.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.UriUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.SystemAssemblyNames">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.AssemblyNames">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.PublicKeyTokens">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.ActivatorUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.ArrayExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.AssemblyExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.AssemblyLoader">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Diagnostics.Call">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Cls">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.BitmapUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.IServiceProviderExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.MathUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.CookieManager">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Instrumentation">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.DictionaryEntry`2">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.DictionaryExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.ExceptionExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.ICollectionExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.ListExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.Resource1">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.ArrayExtension_Add_NotSingleDimensional">
+            <summary>
+              Looks up a localized string similar to Attempt to add to an array that is not single-dimensional..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.AssemblyExtension_SafeCreateInstance_TypeLoadFailure">
+            <summary>
+              Looks up a localized string similar to Failed to load type &apos;{0}&apos; from assembly &apos;{1}&apos;..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.DictionaryExtension_ExistingKey">
+            <summary>
+              Looks up a localized string similar to Attempt to add existing key into a dictionary..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.DictionaryExtension_NonExistingKey">
+            <summary>
+              Looks up a localized string similar to Attempt to remove non-existing key from a dictionary..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.ExceptionExtension_AddDetail_NoInternalMessage">
+            <summary>
+              Looks up a localized string similar to Cannot add detail to an exception of type &apos;{0}&apos; that has no internal message..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.ExceptionExtension_InternalMessageNotAvailable">
+            <summary>
+              Looks up a localized string similar to The InternalMessage logical extension property of the Exception type is not available..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.HashSetExtension_ExistingItem">
+            <summary>
+              Looks up a localized string similar to Attempt to add existing item into a hash set..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.HashSetExtension_NonExistingItem">
+            <summary>
+              Looks up a localized string similar to Attempt to remove non-existing item from a hash set..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.KeyedCollectionExtension_ExistingItem">
+            <summary>
+              Looks up a localized string similar to Attempt to add existing item into a keyed collection..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Extensions.Resource1.ListExtension_ExistingItem">
+            <summary>
+              Looks up a localized string similar to The item already exists in the list..
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.TimeoutUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.XmlSerializerExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.HandleManager`1">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.HashSetExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.IEnumerableExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.NoContract">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.AssemblyUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.StringUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.TypeUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.MemberNotFoundException">
+            <tocexclude/>  
+            <summary>
+            An exception thrown when the member with the specified name has not been found.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.BaseLib.MemberNotFoundException.#ctor(System.String)">
+             <overloads>
+             <summary>
+             Initializes a new instance of the class.
+             </summary>
+             </overloads>
+            
+             <param name="memberName">The name of the member that has not been found.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.MemberNotFoundException.#ctor(System.String,System.String)">
+            <param name="message">The message that describes the error.</param>
+            <param name="memberName">The name of the member that has not been found.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.MemberNotFoundException.#ctor(System.String,System.Exception,System.String)">
+            <param name="message">The message that describes the error.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference 
+            (<b>Nothing</b> in Visual Basic) if no inner exception is specified.</param>
+            <param name="memberName">The name of the member that has not been found.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.MemberNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:OpcLabs.BaseLib.MemberNotFoundException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/> with information about the 
+            exception.</summary>
+            <param name="info"><inheritdoc/>  </param>
+            <param name="context"><inheritdoc/>  </param>
+        </member>
+        <member name="P:OpcLabs.BaseLib.MemberNotFoundException.MemberName">
+            <summary>
+            The name of the member that has not been found.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Graphs.ITreeEnumerable`1">
+            <summary>
+            Exposes the tree enumerator, which supports iteration over a tree of nodes of a specified type.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Graphs.ITreeEnumerable`1.GetTreeEnumerator">
+            <summary>
+            Returns a tree enumerator that iterates through the tree.
+            </summary>
+            <returns>An <see cref="T:OpcLabs.BaseLib.Graphs.ITreeEnumerator`1"/> that can be used to iterate through the tree.</returns>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Graphs.ITreeEnumerator`1">
+            <summary>
+            Supports iteration over a generic tree.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Graphs.ITreeEnumerator`1.GetChildEnumerator">
+            <summary>
+            Returns a tree enumerator that iterates through the child nodes of current node.
+            </summary>
+            <returns>An <see cref="T:OpcLabs.BaseLib.Graphs.ITreeEnumerator`1"/> that can be used to iterate through the child nodes.</returns>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.KeyedCollectionExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.MacroExpander">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.MarshalUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.MemberInfoExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.ObjectUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.OleAutomation">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.ParameterStrings">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.PeriodicWorker">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.PlatformRegistry">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Resource1">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.AssemblyLoader_AddUseLegacyV2RuntimeActivationPolicyTrue">
+            <summary>
+              Looks up a localized string similar to In order to load the required mixed mode assembly, please add useLegacyV2RuntimeActivationPolicy=&quot;true&quot; attribute to the &apos;startup&apos; element in the configuration file. For more details, see documentation for this attribute on MSDN..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.AssemblyLoader_LoadExtended_NullSimpleName">
+            <summary>
+              Looks up a localized string similar to Attempt to extended load of assembly with a null simple name..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.Cls_ArrayRankNotPositive">
+            <summary>
+              Looks up a localized string similar to CLS-compliant arrays must have a fixed number of dimensions, greater than zero..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.Cls_CannotConvertObjectToClsCompliantType">
+            <summary>
+              Looks up a localized string similar to Cannot convert object to CLS-compliant type..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.Cls_CannotDetermineArrayElementType">
+            <summary>
+              Looks up a localized string similar to Cannot determine array element type when converting to CLS-compliant type..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.Cls_ConvertToClsArray_AllArrayDimensionsMustHaveZeroLowerBound">
+            <summary>
+              Looks up a localized string similar to All dimensions of a CLS-compliant array must have a zero lower bound..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.Cls_NoClsCompliantTypeForArrayElements">
+            <summary>
+              Looks up a localized string similar to There is no CLS-compliant type for the array elements..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.HandleManager_NonExistingHandle">
+            <summary>
+              Looks up a localized string similar to Attempt to free non-existing handle from the manager..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.BaseLib.Resource1.MemberNotFoundException_DefaultMessage">
+            <summary>
+              Looks up a localized string similar to The member with the specified name has not been found..
+            </summary>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Utilities.RuntimeEnvironmentUtilities">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.SerializationInfoExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.StreamExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.StringBuilderExtension">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.StringExtension">
+            <exclude/>  
+        </member>
+        <member name="T:JetBrains.Annotations.LocalizationRequiredAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that marked element should be localized or not.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Annotations.LocalizationRequiredAttribute.#ctor(System.Boolean)">
+            <tocexclude/>
+            <summary>
+            Initializes a new instance of the <see cref="T:JetBrains.Annotations.LocalizationRequiredAttribute"/> class.
+            </summary>
+            <param name="required"><c>true</c> if a element should be localized; otherwise, <c>false</c>.</param>
+        </member>
+        <member name="M:JetBrains.Annotations.LocalizationRequiredAttribute.Equals(System.Object)">
+            <tocexclude/>
+            <summary>
+            Returns whether the value of the given object is equal to the current <see cref="T:JetBrains.Annotations.LocalizationRequiredAttribute"/>.
+            </summary>
+            <param name="obj">The object to test the value equality of. </param>
+            <returns>
+            <c>true</c> if the value of the given object is equal to that of the current; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:JetBrains.Annotations.LocalizationRequiredAttribute.GetHashCode">
+            <tocexclude/>
+            <summary>
+            Returns the hash code for this instance.
+            </summary>
+            <returns>A hash code for the current <see cref="T:JetBrains.Annotations.LocalizationRequiredAttribute"/>.</returns>
+        </member>
+        <member name="P:JetBrains.Annotations.LocalizationRequiredAttribute.Required">
+            <tocexclude/>
+            <summary>
+            Gets a value indicating whether a element should be localized.
+            <value><c>true</c> if a element should be localized; otherwise, <c>false</c>.</value>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.StringFormatMethodAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that marked method builds string by format pattern and (optional) arguments. 
+            Parameter, which contains format string, should be given in constructor.
+            The format string should be in <see cref="M:System.String.Format(System.IFormatProvider,System.String,System.Object[])"/> -like form
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.StringFormatMethodAttribute.myFormatParameterName">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.StringFormatMethodAttribute.#ctor(System.String)">
+            <tocexclude/>
+            <summary>
+            Initializes new instance of StringFormatMethodAttribute
+            </summary>
+            <param name="formatParameterName">Specifies which parameter of an annotated method should be treated as format-string</param>
+        </member>
+        <member name="P:JetBrains.Annotations.StringFormatMethodAttribute.FormatParameterName">
+            <tocexclude/>
+            <summary>
+            Gets format parameter name
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.InvokerParameterNameAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the function argument should be string literal and match one  of the parameters of the caller function.
+            For example, <see cref="T:System.ArgumentNullException"/> has such parameter.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionMethodAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked method is assertion method, i.e. it halts control flow if one of the conditions is satisfied. 
+            To set the condition, mark one of the parameters with <see cref="T:JetBrains.Annotations.AssertionConditionAttribute"/> attribute
+            </summary>
+            <seealso cref="T:JetBrains.Annotations.AssertionConditionAttribute"/>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionConditionAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates the condition parameter of the assertion method. 
+            The method itself should be marked by <see cref="T:JetBrains.Annotations.AssertionMethodAttribute"/> attribute.
+            The mandatory argument of the attribute is the assertion type.
+            </summary>
+            <seealso cref="T:JetBrains.Annotations.AssertionConditionType"/>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionAttribute.myConditionType">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AssertionConditionAttribute.#ctor(JetBrains.Annotations.AssertionConditionType)">
+            <tocexclude/>
+            <summary>
+            Initializes new instance of AssertionConditionAttribute
+            </summary>
+            <param name="conditionType">Specifies condition type</param>
+        </member>
+        <member name="P:JetBrains.Annotations.AssertionConditionAttribute.ConditionType">
+            <tocexclude/>
+            <summary>
+            Gets condition type
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.AssertionConditionType">
+            <tocexclude/>
+            <summary>
+            Specifies assertion type. If the assertion method argument satisifes the condition, then the execution continues. 
+            Otherwise, execution is assumed to be halted
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_TRUE">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked parameter should be evaluated to true
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_FALSE">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked parameter should be evaluated to false
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_NULL">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked parameter should be evaluated to null value
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.AssertionConditionType.IS_NOT_NULL">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked parameter should be evaluated to not null value
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.TerminatesProgramAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked method unconditionally terminates control flow execution.
+            For example, it could unconditionally throw exception
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.CanBeNullAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the value of marked element could be <c>null</c> sometimes, so the check for <c>null</c> is necessary before its usage
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.NotNullAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the value of marked element could never be <c>null</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.CannotApplyEqualityOperatorAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the value of marked type (or its derivatives) cannot be compared using '==' or '!=' operators.
+            There is only exception to compare with <c>null</c>, it is permitted
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.BaseTypeRequiredAttribute">
+            <tocexclude/>
+            <summary>
+            When applied to target attribute, specifies a requirement for any type which is marked with 
+            target attribute to implement or inherit specific type or types
+            </summary>
+            <example>
+            <code>
+            [BaseTypeRequired(typeof(IComponent)] // Specify requirement
+            public class ComponentAttribute : Attribute 
+            {}
+            
+            [Component] // ComponentAttribute requires implementing IComponent interface
+            public class MyComponent : IComponent
+            {}
+            </code>
+            </example>
+        </member>
+        <member name="F:JetBrains.Annotations.BaseTypeRequiredAttribute.myBaseTypes">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.BaseTypeRequiredAttribute.#ctor(System.Type)">
+            <tocexclude/>
+            <summary>
+            Initializes new instance of BaseTypeRequiredAttribute
+            </summary>
+            <param name="baseType">Specifies which types are required</param>
+        </member>
+        <member name="P:JetBrains.Annotations.BaseTypeRequiredAttribute.BaseTypes">
+            <tocexclude/>
+            <summary>
+            Gets enumerations of specified base types
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.UsedImplicitlyAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that the marked symbol is used implicitly (e.g. via reflection, in external library),
+            so this symbol will not be marked as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags,JetBrains.Annotations.ImplicitUseTargetFlags)">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseTargetFlags)">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.UsedImplicitlyAttribute.UseKindFlags">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.UsedImplicitlyAttribute.TargetFlags">
+            <tocexclude/>
+            <summary>
+            Gets value indicating what is meant to be used
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.MeansImplicitUseAttribute">
+            <tocexclude/>
+            <summary>
+            Should be used on attributes and causes ReSharper to not mark symbols marked with such attributes as unused (as well as by other usage inspections)
+            </summary>
+        </member>
+        <member name="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags,JetBrains.Annotations.ImplicitUseTargetFlags)">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.MeansImplicitUseAttribute.#ctor(JetBrains.Annotations.ImplicitUseTargetFlags)">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.MeansImplicitUseAttribute.UseKindFlags">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.MeansImplicitUseAttribute.TargetFlags">
+            <tocexclude/>
+            <summary>
+            Gets value indicating what is meant to be used
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseKindFlags">
+            <tocexclude/>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Default">
+            <tocexclude/>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Access">
+            <tocexclude/>
+            <summary>
+            Only entity marked with attribute considered used
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.Assign">
+            <tocexclude/>
+            <summary>
+            Indicates implicit assignment to a member
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedWithFixedConstructorSignature">
+            <tocexclude/>
+            <summary>
+            Indicates implicit instantiation of a type with fixed constructor signature.
+            That means any unused constructor parameters won't be reported as such.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseKindFlags.InstantiatedNoFixedConstructorSignature">
+            <tocexclude/>
+            <summary>
+            Indicates implicit instantiation of a type
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.ImplicitUseTargetFlags">
+            <tocexclude/>
+            <summary>
+            Specify what is considered used implicitly when marked with <see cref="T:JetBrains.Annotations.MeansImplicitUseAttribute"/> or <see cref="T:JetBrains.Annotations.UsedImplicitlyAttribute"/>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Default">
+            <tocexclude/>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Itself">
+            <tocexclude/>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.Members">
+            <tocexclude/>
+            <summary>
+            Members of entity marked with attribute are considered used
+            </summary>
+        </member>
+        <member name="F:JetBrains.Annotations.ImplicitUseTargetFlags.WithMembers">
+            <tocexclude/>
+            <summary>
+            Entity marked with attribute and all its members considered used
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PublicAPIAttribute">
+            <tocexclude/>
+            <summary>
+            This attribute is intended to mark publicly available API which should not be removed and so is treated as used.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Annotations.PublicAPIAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.PublicAPIAttribute.#ctor(System.String)">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.InstantHandleAttribute">
+            <tocexclude/>
+            <summary>
+            Tells code analysis engine if the parameter is completely handled when the invoked method is on stack. 
+            If the parameter is delegate, indicates that delegate is executed while the method is executed.
+            If the parameter is enumerable, indicates that it is enumerated while the method is executed.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PureAttribute">
+            <tocexclude/>
+            <summary>
+            Indicates that method doesn't contain observable side effects.
+            The same as <see cref="T:System.Diagnostics.Contracts.PureAttribute"/>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Annotations.PathReferenceAttribute">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.PathReferenceAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.PathReferenceAttribute.#ctor(System.String)">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.PathReferenceAttribute.BasePath">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcModelTypeAttribute">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcControllerAttribute">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AspMvcControllerAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AspMvcControllerAttribute.#ctor(System.String)">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.AspMvcControllerAttribute.AnonymousProperty">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcMasterAttribute">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcViewAttribute">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcAreaAttribute">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AspMvcAreaAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AspMvcAreaAttribute.#ctor(System.String)">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.AspMvcAreaAttribute.AnonymousProperty">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcActionAttribute">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AspMvcActionAttribute.#ctor">
+            <tocexclude/>
+        </member>
+        <member name="M:JetBrains.Annotations.AspMvcActionAttribute.#ctor(System.String)">
+            <tocexclude/>
+        </member>
+        <member name="P:JetBrains.Annotations.AspMvcActionAttribute.AnonymousProperty">
+            <tocexclude/>
+        </member>
+        <member name="T:JetBrains.Annotations.AspMvcTemplateAttribute">
+            <tocexclude/>
+        </member>
+        <member name="T:System.Diagnostics.Contracts.ContractArgumentValidatorAttribute">
+            <summary>
+            Enables factoring legacy if-then-throw into separate methods for reuse and full control over
+            thrown exception and arguments
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.Contracts.ContractAbbreviatorAttribute">
+            <summary>
+            Enables writing abbreviations for contracts that get copied to other methods
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.Contracts.ContractOptionAttribute">
+            <summary>
+            Allows setting contract and tool options at assembly, type, or method granularity.
+            </summary>
+        </member>
+        <member name="T:System.Diagnostics.Contracts.ValidatedNotNullAttribute">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.TimePlus">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Graphs.TreeTraversalEnumerable`1">
+            <summary>
+            <see cref="T:OpcLabs.BaseLib.Graphs.TreeTraversalEnumerable`1"/> is an "adapter" that converts <see cref="T:OpcLabs.BaseLib.Graphs.ITreeEnumerable`1"/> to 
+            <see cref="T:System.Collections.Generic.IEnumerable`1"/> by flattening the tree.
+            </summary>
+            <typeparam name="T">The type of objects to enumerate.</typeparam>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Graphs.TreeTraversalEnumerable`1.#ctor(OpcLabs.BaseLib.Graphs.ITreeEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the class with given underlying tree.
+            </summary>
+            <param name="treeEnumerable">The tree enumerable to be flattened.</param>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Graphs.TreeTraversalEnumerable`1.GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="M:OpcLabs.BaseLib.Graphs.TreeTraversalEnumerable`1.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc/>
+        </member>
+        <member name="T:OpcLabs.BaseLib.Graphs.TreeTraversalEnumerator`1">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.Extensions.TypeExtension">
+            <exclude/>  
+        </member>
+    </members>
+</doc>

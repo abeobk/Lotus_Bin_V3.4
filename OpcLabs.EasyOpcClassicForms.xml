@@ -1,0 +1,1808 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpcLabs.EasyOpcClassicForms</name>
+    </assembly>
+    <members>
+        <member name="T:OpcLabs.BaseLib.AssemblyNames">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.BaseLib.PublicKeyTokens">
+            <exclude/>  
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AssemblyNames">
+            <exclude/>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.NamespaceDoc">
+            <summary>
+            This namespace contains classes for OPC Alarms&amp;Events browsing in Windows Forms.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.NamespaceDoc">
+            <summary>
+            This namespace contains classes that facilitate easy work with OPC Alarms&amp;Events from Windows Forms applications.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog">
+            <summary>
+            Displays a dialog box from which the user can select OPC-A&amp;E event areas or sources.
+            </summary>
+            <remarks>
+            <para>This is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has made a selection. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.DefaultMultiSelect">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.MultiSelect"/> property. Equals to <c>true</c>.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.MultiSelect">
+            <summary>
+            Determines whether the dialog allows the user to select multiple nodes as output.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.ServerDescriptor">
+            <summary>
+            Contains information necessary to identify and connect to an OPC server, such as the server's ProgID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.NodeDescriptor">
+            <summary>Contains information necessary to identify an OPC Alarms&amp;Events node (area or source), such as its 
+            QualifiedName.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.AreaElements">
+            <summary>
+            Contains information gathered about OPC event areas (in OPC event server's area space).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.NodeElements">
+            <summary>
+            Contains information gathered about OPC nodes (areas or sources in OPC event server's area space).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.SourceElements">
+            <summary>
+            Contains information gathered about OPC event sources (in OPC event server's area space).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.NodeDescriptors">
+            <summary>
+            Collection of node descriptor objects.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAreaOrSourceDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog">
+            <summary>
+            Displays a dialog box from which the user can select OPC-A&amp;E event attributes.
+            </summary>
+            <remarks>
+            <para>This is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has made a selection. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.DefaultAttributeId">
+            <summary>
+            The default event attribute Id.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.DefaultMultiSelect">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.MultiSelect"/> property. Equals to <c>true</c>.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.DefaultCategoryId">
+            <summary>
+            The default event category Id.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.ResetAttributeIds">
+            <summary>
+            Empties the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.AttributeIds"/> collection.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.ShouldSerializeAttributeIds">
+            <summary>
+            Determines whether the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.AttributeIds"/> collection is empty.
+            </summary>
+            <returns><c>true</c> if the property has changed from its default value; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.MultiSelect">
+            <summary>
+            Determines whether the dialog allows the user to select multiple attributes as output.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.ServerDescriptor">
+            <summary>
+            Contains information necessary to identify and connect to an OPC server, such as the server's ProgID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.CategoryId">
+            <summary>
+            Event category ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.AttributeId">
+            <summary>
+            Event attribute ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.AttributeIds">
+            <summary>
+            A collection of attribute Ids. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.AttributeElements">
+            <summary>
+            A collection of attribute elements (<see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.AEAttributeElement"/>), keyed by their Attribute Ids.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.AttributeElement">
+            <summary>
+            Contains information gathered about an OPC event attribute.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AEAttributeDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog">
+            <summary>
+            Displays a dialog box from which the user can select from OPC-A&amp;E event categories provided by the OPC server.
+            </summary>
+            <remarks>
+            <para>This is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has made a selection. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.DefaultCategoryId">
+            <summary>
+            The default event category Id.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.DefaultMultiSelect">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.MultiSelect"/> property. Equals to <c>true</c>.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.ResetCategoryIds">
+            <summary>
+            Empties the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.CategoryIds"/> collection.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.ShouldSerializeCategoryIds">
+            <summary>
+            Determines whether the <see cref="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.CategoryIds"/> collection is empty.
+            </summary>
+            <returns><c>true</c> if the property has changed from its default value; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.DefaultEventTypes">
+            <summary>
+            The default event types (corresponds to <see cref="F:OpcLabs.EasyOpc.AlarmsAndEvents.AEEventTypes.All"/>).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.MultiSelect">
+            <summary>
+            Determines whether the dialog allows the user to select multiple categories as output.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.ServerDescriptor">
+            <summary>
+            Contains information necessary to identify and connect to an OPC server, such as the server's ProgID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.EventTypes">
+            <summary>
+            Type of event, or multiple event types combined.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.CategoryId">
+            <summary>
+            Event category ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.CategoryIds">
+            <summary>
+            A collection of event category Ids.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.CategoryElements">
+            <summary>
+            A collection of category elements (<see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.AECategoryElement"/>), keyed by their Category Ids.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.CategoryElement">
+            <summary>
+            Contains information gathered about an OPC event category.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog">
+            <summary>
+            Displays a dialog box from which the user can select OPC-A&amp;E category available on a specified event condition.
+            </summary>
+            <remarks>
+            <para>This is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has made a selection. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.DefaultCategoryId">
+            <summary>
+            The default event category Id.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.DefaultConditionName">
+            <summary>
+            The default event condition name.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.ServerDescriptor">
+            <summary>
+            Contains information necessary to identify and connect to an OPC server, such as the server's ProgID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.CategoryId">
+            <summary>
+            Event category ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.ConditionName">
+            <summary>
+            Event condition name. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.ConditionElement">
+            <summary>
+            Contains information gathered about an OPC event condition.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.AlarmsAndEvents.Forms.Browsing.AECategoryConditionDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.NamespaceDoc">
+            <summary>
+            This namespace contains classes for OPC Data Access browsing in Windows Forms.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Design.VarTypeEditor">
+            <exclude/>  
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Design.VarTypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <exclude/>  
+            <inheritdoc cref="M:System.Drawing.Design.UITypeEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)"/>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Design.VarTypeEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <exclude/>  
+            <inheritdoc/>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Forms.Browsing.NamespaceDoc">
+            <summary>
+            This namespace contains classes for browsing using OPC "Classic" specifications in Windows Forms.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType">
+            <summary>
+            One of element types used in OPC browsing, such as a computer, server, Data Access node, etc.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.None">
+            <summary>
+            No element.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.Computer">
+            <summary>
+            A computer element.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.Server">
+            <summary>
+            An OPC server element.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.DANode">
+            <summary>
+            An OPC Data Access node, i.e. a branch or leaf (item).
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.DAProperty">
+            <summary>
+            An OPC Data Access (item) property.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.DAAccessPath">
+            <summary>
+            An OPC Data Access (OPC-DA) access path.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AECategory">
+            <summary>
+            An OPC Alarms&amp;Events event category.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AEAttribute">
+            <summary>
+            An OPC Alarms&amp;Events event attribute.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AECategoryCondition">
+            <summary>
+            An OPC Alarms&amp;Events event condition (available on specific event category).
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AECategorySubcondition">
+            <summary>
+            An OPC Alarms&amp;Events event subcondition (available on specific event category).
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AESourceCondition">
+            <summary>
+            An OPC Alarms&amp;Events event condition (available on specific event source).
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AESourceSubcondition">
+            <summary>
+            An OPC Alarms&amp;Events event subcondition (available on specific event source).
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.AENode">
+            <summary>
+            An OPC Alarms&amp;Events node, i.e. an area or an event source.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.ComputerAndServerBrowsePresentation.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them are being browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog">
+            <summary>
+            Displays a dialog box from which the user can select a computer and an OPC server residing on it. 
+            </summary>
+            <remarks>
+            <para>This is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has made a selection. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.DefaultManualNodes">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.ManualNodes"/> property. Equals to <c>true</c>.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.DefaultServerFamilies">
+            <summary>
+            Default server families to be browsed. Equals to <see cref="F:OpcLabs.EasyOpc.ServerFamilies.All"/>.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.ManualNodes">
+            <summary>
+            Determines whether the user will be allowed to add computers and OPC servers manually.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.ServerDescriptor">
+            <summary>
+            Identifies the computer and the OPC server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.ComputerElement">
+            <summary>
+            Gets the information about the computer selected in the dialog box. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcComputerAndServerDialog.ServerElement">
+            <summary>
+            Gets the information about the OPC server selected in the dialog box. 
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.DataAccess.Forms.NamespaceDoc">
+            <summary>
+            This namespace contains classes that facilitate easy work with OPC Data Access from Windows Forms applications.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.ServerBrowsePresentation.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them are being browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog">
+            <summary>
+            Displays a dialog with various OPC nodes from which the user can select. 
+            This dialog can be configured to serve many different purposes.
+            </summary>
+            <remarks>
+            <para>This is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has made a selection. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultAnchorElementType">
+            <summary>
+            Default anchor element type. Equals to <see cref="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.None"/>.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultAttributeId">
+            <summary>
+            Default event attribute Id.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultCategoryId">
+            <summary>
+            Default event category Id.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultConditionName">
+            <summary>
+            Default event condition name.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultMachineName">
+            <summary>
+            Default machine name.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultManualNodes">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ManualNodes"/> property.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultSelectElementType">
+            <summary>
+            Default select element type. Equals to <see cref="F:OpcLabs.EasyOpc.Forms.Browsing.OpcElementType.DANode"/>.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultServerClass">
+            <summary>
+            Default server class.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultEnabledServerFamilies">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.EnabledServerFamilies"/> property. Equals to 
+            <see cref="F:OpcLabs.EasyOpc.ServerFamilies.All"/>.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DefaultSubconditionName">
+            <summary>
+            Default event subcondition name.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AnchorElementType">
+            <summary>
+            Type of the anchor element. Determines the part of the selection that is given on input and cannot be changed by the 
+            user.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ManualNodes">
+            <summary>
+            Determines whether the user will be allowed to add nodes (such as computers and OPC servers) manually.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.SelectElementType">
+            <summary>
+            The type of the element that the user needs to select in order to finalize the dialog.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.EnabledServerFamilies">
+            <summary>
+            The server family or families that can appear in the dialog.
+            </summary>
+            <remarks>
+            The dialog further narrows the server families choice using a knowledge about the type of node to be selected.
+            </remarks>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.MachineName">
+            <summary>
+            Gets or sets the name of computer that is to be browsed for OPC servers.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ServerClass">
+            <summary>
+            Contains ProgID or {CLSID} of the OPC server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DANodeDescriptor">
+            <summary>
+            Contains information necessary to identify an OPC Data Access node, such as its Item Id.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DAPropertyId">
+            <summary>
+            The identifying number assigned by the OPC server to the property.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DAAccessPath">
+            <summary>
+            Specifies the access path for the OPC item.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AECategoryId">
+            <summary>
+            Event category ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AEAttributeId">
+            <summary>
+            Event attribute ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AEConditionName">
+            <summary>
+            Event condition name.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AESubconditionName">
+            <summary>
+            The name assigned to the event sub-condition.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AENodeDescriptor">
+            <summary>
+            Contains information necessary to identify an OPC Alarms&amp;Events node (area or source)
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ServerDescriptor">
+            <summary>
+            Contains information necessary to identify the OPC server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ComputerElement">
+            <summary>
+            Contains information gathered about a computer.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ServerElement">
+            <summary>
+            Contains information gathered about an OPC server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DANodeElement">
+            <summary>
+            Contains information gathered about an OPC node (branch or leaf in OPC server's address space).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.DAPropertyElement">
+            <summary>
+            Contains information gathered about an OPC property.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AECategoryElement">
+            <summary>
+            Contains information gathered about an OPC event category.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AEAttributeElement">
+            <summary>
+            Contains information gathered about an OPC event attribute.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AEConditionElement">
+            <summary>
+            Contains information gathered about an OPC event condition.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AESubconditionElement">
+            <summary>
+            Contains information about an OPC event subcondition.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.AENodeElement">
+            <summary>
+            Contains information gathered about an OPC node (area or source in OPC event server's area space).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcBrowseDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AccessPathColumnTitle">
+            <summary>
+              Looks up a localized string similar to Access Path.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceBrowsePresentation_BranchFilterLabel">
+            <summary>
+              Looks up a localized string similar to Area filter:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceBrowsePresentation_LeafFilterLabel">
+            <summary>
+              Looks up a localized string similar to Source filter:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceNodePresentation_GetInfoText_Area">
+            <summary>
+              Looks up a localized string similar to Area.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceNodePresentation_GetInfoText_Root">
+            <summary>
+              Looks up a localized string similar to Root.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceNodePresentation_GetInfoText_Separator">
+            <summary>
+              Looks up a localized string similar to , .
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceNodePresentation_GetInfoText_Source">
+            <summary>
+              Looks up a localized string similar to Source.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreaOrSourceNodePresentation_GetTypeName_AENodeBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-A&amp;E Node.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreasAndSourcesNodePresentation_FlagsLabel">
+            <summary>
+              Looks up a localized string similar to Flags:		.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAreasAndSourcesNodePresentation_QualifiedNameLabel">
+            <summary>
+              Looks up a localized string similar to Qualified name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAttributeBrowsePresentation_CategoryDescriptionFormat">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot;.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAttributeBrowsePresentation_CategoryIdFormat">
+            <summary>
+              Looks up a localized string similar to {0} (0x{0:X8}), .
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEAttributeNodePresentation_GetTypeName_AEAttributeBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-A&amp;E Event Attribute.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AECategoryConditionBrowsePresentation_CategoryDescriptionFormat">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot;.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AECategoryConditionBrowsePresentation_CategoryIdFormat">
+            <summary>
+              Looks up a localized string similar to {0} (0x{0:X8}), .
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AECategoryNodePresentation_AttributesLabel">
+            <summary>
+              Looks up a localized string similar to Attributes:		.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AECategoryNodePresentation_ConditionsLabel">
+            <summary>
+              Looks up a localized string similar to Conditions:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AECategoryNodePresentation_GetTypeName_AECategoryBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-A&amp;E Event Category.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AEConditionNodePresentation_GetTypeName_AEConditionBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-A&amp;E Event Condition.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.AESubconditionNodePresentation_GetTypeName_AESubconditionBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC A&amp;E Event Subcondition.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.attributes_display">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.CannotObtainEventCategoryDetails">
+            <summary>
+              Looks up a localized string similar to Cannot obtain event category details..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Chat_orange">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.ComputersNodeName">
+            <summary>
+              Looks up a localized string similar to Computers.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.ConditionNameColumnTitle">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAAccessPathNodePresentation_GetTypeName_DAAccessPathBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-DA Access Path.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_BrowsePathLabel">
+            <summary>
+              Looks up a localized string similar to Browse path:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_FlagsLabel">
+            <summary>
+              Looks up a localized string similar to Flags:		.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetInfoText_Branch">
+            <summary>
+              Looks up a localized string similar to Branch.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetInfoText_Hint">
+            <summary>
+              Looks up a localized string similar to Hint.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetInfoText_Item">
+            <summary>
+              Looks up a localized string similar to Item.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetInfoText_Leaf">
+            <summary>
+              Looks up a localized string similar to Leaf.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetInfoText_Root">
+            <summary>
+              Looks up a localized string similar to Root.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetInfoText_Separator">
+            <summary>
+              Looks up a localized string similar to , .
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_GetTypeName_DANodeBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-DA Node.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAItemNodePresentation_ItemIdLabel">
+            <summary>
+              Looks up a localized string similar to Item ID:		.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAPropertyNodePresentation_GetTypeName_DAPropertyBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC-DA Property.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DAPropertyNodePresentation_PropertyAccessItemIdLabel">
+            <summary>
+              Looks up a localized string similar to Property access item ID:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DataTypeColumnTitle">
+            <summary>
+              Looks up a localized string similar to Data Type.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.DescriptionColumnTitle">
+            <summary>
+              Looks up a localized string similar to Description.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.File_Types_Default_Document">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.flag_orange">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.flag_orange_icon">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.GetBrowseStateIcon_UnknownIconGuid">
+            <summary>
+              Looks up a localized string similar to Icon GUID unknown to this node presentation..
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.ItemIdColumnTitle">
+            <summary>
+              Looks up a localized string similar to Item ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.NameColumnTitle">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.network_transmit_receive">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAreasAndSourcesDialog_AreaTreeLabel">
+            <summary>
+              Looks up a localized string similar to &amp;Areas:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAreasAndSourcesDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAreasAndSourcesDialog_NodeListLabel">
+            <summary>
+              Looks up a localized string similar to &amp;Nodes (areas and sources):.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAreasAndSourcesDialog_RootElementText">
+            <summary>
+              Looks up a localized string similar to (root).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAreasAndSourcesDialog_ServerClassLabel">
+            <summary>
+              Looks up a localized string similar to Server class:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAreasAndSourcesDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC-A&amp;E Areas and Sources.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_AttributeIdLabel">
+            <summary>
+              Looks up a localized string similar to Attribute ID:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_AttributeListLabel">
+            <summary>
+              Looks up a localized string similar to Available event attributes:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_EventCategoryLabel">
+            <summary>
+              Looks up a localized string similar to Event category:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_NodeInformationLabel">
+            <summary>
+              Looks up a localized string similar to Information about the event attribute:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_ServerClassLabel">
+            <summary>
+              Looks up a localized string similar to Server class:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAEAttributesDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC-A&amp;E Attributes.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_CategoryIdLabel">
+            <summary>
+              Looks up a localized string similar to Category ID:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_CategoryListLabel">
+            <summary>
+              Looks up a localized string similar to Available event categories:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_EventTypesLabel">
+            <summary>
+              Looks up a localized string similar to Event types:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_NodeInformationLabel">
+            <summary>
+              Looks up a localized string similar to Information about the event category:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_ServerClassLabel">
+            <summary>
+              Looks up a localized string similar to Server class:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoriesDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC-A&amp;E Categories.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_ConditionListLabel">
+            <summary>
+              Looks up a localized string similar to Available conditions:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_EventCategoryLabel">
+            <summary>
+              Looks up a localized string similar to Event category:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_NodeInformationLabel">
+            <summary>
+              Looks up a localized string similar to Information about the event condition:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_ServerClassLabel">
+            <summary>
+              Looks up a localized string similar to Server class:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_Subconditions">
+            <summary>
+              Looks up a localized string similar to Sub-conditions:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcAECategoryConditionDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC-A&amp;E Condition of an Event Category.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcBrowseDialog_ElementTypeFallbackDescriptionFormat">
+            <summary>
+              Looks up a localized string similar to {{{0}}}.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcBrowseDialog_TitleFormat">
+            <summary>
+              Looks up a localized string similar to Browse for: {0}.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcBrowsePresentation_NameCaption">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcComputerAndServerDialog_NodeInformationLabel">
+            <summary>
+              Looks up a localized string similar to Information about the computer or server:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcComputerAndServerDialog_ServerFamiliesLabel">
+            <summary>
+              Looks up a localized string similar to Server families:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcComputerAndServerDialog_ServerListLabel">
+            <summary>
+              Looks up a localized string similar to Available servers:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcComputerAndServerDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for Computer and OPC Server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_BranchTreeLabel">
+            <summary>
+              Looks up a localized string similar to &amp;Branches (folders):.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_ItemIDBoxLabel">
+            <summary>
+              Looks up a localized string similar to Item ID:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_LeafListLabel">
+            <summary>
+              Looks up a localized string similar to &amp;Leaves (items):.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_RootElementText">
+            <summary>
+              Looks up a localized string similar to (root).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_ServerClassLabel">
+            <summary>
+              Looks up a localized string similar to Server class:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAItemDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC-DA Item.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAPropertyDialog_ItemIDLabel">
+            <summary>
+              Looks up a localized string similar to Item ID:		.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAPropertyDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAPropertyDialog_PropertyListLabel">
+            <summary>
+              Looks up a localized string similar to Available properties:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAPropertyDialog_ServerClassLabel">
+            <summary>
+              Looks up a localized string similar to Server class:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcDAPropertyDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC-DA Property.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_ClsidLabel">
+            <summary>
+              Looks up a localized string similar to CLSID:			.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_ImplementsLabel">
+            <summary>
+              Looks up a localized string similar to Implements:		.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_MachineNameLabel">
+            <summary>
+              Looks up a localized string similar to Machine name:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_NodeInformationLabel">
+            <summary>
+              Looks up a localized string similar to Information about the server:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_ProgIdLabel">
+            <summary>
+              Looks up a localized string similar to ProgID:			.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_ServerFamiliesLabel">
+            <summary>
+              Looks up a localized string similar to Server families:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_ServerListLabel">
+            <summary>
+              Looks up a localized string similar to Available servers:.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_Title">
+            <summary>
+              Looks up a localized string similar to Browse for OPC Server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_VendorLabel">
+            <summary>
+              Looks up a localized string similar to Vendor:			.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.OpcServerDialog_VersionIndependentProgIdLabel">
+            <summary>
+              Looks up a localized string similar to Version-independent ProgID:	.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Places_folder_blue">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Places_folder_green">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Places_folder_green_square_little_filled_black">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Places_folder_orange">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Places_folder_orange_square_little_filled_black">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Properties">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.PropertyIdColumnTitle">
+            <summary>
+              Looks up a localized string similar to Property ID.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.PropertyNameColumnTitle">
+            <summary>
+              Looks up a localized string similar to Name.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.route">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.ServerNodePresentation_GetTypeName_ServerBrowseNode">
+            <summary>
+              Looks up a localized string similar to OPC Server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.tag_blue">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.tag_green">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Properties.Resources.Wheel">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Forms.NamespaceDoc">
+            <summary>
+            This namespace contains classes that facilitate easy work with OPC (in general) from Windows Forms applications.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog">
+            <summary>
+            Displays a dialog box from which the user can select an OPC Data Access item. 
+            </summary>
+            <remarks>
+            <para>OpcDAItemDialog is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has chosen an OPC item. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur except 
+            to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user action) 
+            before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.DefaultMultiSelect">
+            <summary>
+            Default value of the <see cref="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.MultiSelect"/> property. Equals to <c>false</c>.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ResetNodeDescriptor">
+            <summary>
+            Sets the <see cref="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeDescriptor"/> back to its default.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ResetNodeDescriptors">
+            <summary>
+            Sets the <see cref="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeDescriptors"/> back to its default.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ResetServerDescriptor">
+            <summary>
+            Sets the <see cref="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ResetServerDescriptor"/> back to its default.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ShouldSerializeNodeDescriptor">
+            <summary>
+            Determines whether <see cref="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeDescriptor"/> is in its default state.
+            </summary>
+            <returns><c>true</c> if the property has changed from its default value; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ShouldSerializeNodeDescriptors">
+            <summary>
+            Determines whether <see cref="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeDescriptors"/> is in its default state.
+            </summary>
+            <returns><c>true</c> if the property has changed from its default value; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ShouldSerializeServerDescriptor">
+            <summary>
+            Determines whether <see cref="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ServerDescriptor"/> is in its default state.
+            </summary>
+            <returns><c>true</c> if the property has changed from its default value; <c>false</c> otherwise.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.DefaultNodeDescriptor">
+            <summary>
+            The default node descriptor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.DefaultServerDescriptor">
+            <summary>
+            The default server descriptor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.MultiSelect">
+            <summary>
+            Determines whether the dialog allows the user to select multiple nodes as output.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.Server">
+            <summary>
+            Gets or sets OPC server that is to be browsed for OPC items.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ServerDescriptor">
+            <summary>
+            Gets or sets OPC server that is to be browsed for OPC items.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeDescriptor">
+            <summary>
+            Contains information necessary to identify an OPC Data Access node, such as its Item Id.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeDescriptors">
+            <summary>
+            Array of node descriptor objects.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.SelectedNode">
+            <summary>
+            Gets the information about the OPC item selected in the dialog box. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeElement">
+            <summary>
+            Gets the information about the OPC item selected in the dialog box. 
+            </summary>
+            <remarks>
+            The NodeElement is fully filled if the user has directly selected the item. The NodeElement is partially filled
+            (only with the ItemId property) if the user has entered the node identification manually.
+            </remarks>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.NodeElements">
+            <summary>
+            Contains information gathered about OPC nodes selected by the user.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAItemDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog">
+            <summary>
+            Displays a dialog box from which the user can select an OPC Data Access property. 
+            </summary>
+            <remarks>
+            <para>OpcDAPropertyDialog is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has chosen an OPC property. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur 
+            except to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user 
+            action) before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.Server">
+            <summary>
+            Gets or sets OPC server where the OPC item is located.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.ServerDescriptor">
+            <summary>
+            Gets or sets OPC server where the OPC item is located.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.ItemId">
+            <summary>
+            Gets or sets Id of the OPC item that is to be browsed for OPC properties.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.NodeDescriptor">
+            <summary>
+            Gets or sets the OPC node (usually given by its Item ID) that is to be browsed for OPC properties.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.PropertyId">
+            <summary>
+            The identifying number assigned by the OPC server to the property.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.SelectedProperty">
+            <summary>
+            Gets the information about the OPC property selected in the dialog box. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.PropertyElement">
+            <summary>
+            Gets the information about the OPC property selected in the dialog box. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.DataAccess.Forms.Browsing.DAPropertyDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="T:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog">
+            <summary>
+            Displays a dialog box from which the user can select an OPC "Classic" server. 
+            </summary>
+            <remarks>
+            <para>OpcServerDialog is a modal dialog box; therefore, when shown, it blocks the rest of the application until the 
+            user has chosen an OPC server. When a dialog box is displayed modally, no input (keyboard or mouse click) can occur 
+            except to objects on the dialog box. The program must hide or close the dialog box (usually in response to some user 
+            action) before input to the calling program can occur. </para>
+            </remarks>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.DefaultMachineName">
+            <summary>
+            Default machine name.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.DefaultServerClass">
+            <summary>
+            Default server class.
+            </summary>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.DefaultServerFamilies">
+            <summary>
+            Default server families. Equals to <see cref="F:OpcLabs.EasyOpc.ServerFamilies.All"/>.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.#ctor">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog"/> class. 
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Initializes an instance of the <see cref="T:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog"/> class with Designer support. 
+            </summary>
+            <param name="container">The component container to which the new instance will be added.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.Reset">
+            <summary>
+            Resets all properties to their default values.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.RunDialog(System.IntPtr)">
+            <summary>
+            Specifies a common dialog box.
+            </summary>
+            <param name="hwndOwner">A value that represents the window handle of the owner window for the common dialog box.
+            </param>
+            <returns><b>true</b> if the dialog box was successfully run; otherwise, <b>false</b>.</returns>
+        </member>
+        <member name="F:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.ServerFamilies">
+            <summary>
+            The server family or families. Determines e.g. whether OPC Data Access servers, OPC Alarms&amp;Events servers, 
+            other servers, or a combination of them will be browsed.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.MachineName">
+            <summary>
+            Gets or sets the name of computer that is to be browsed for OPC servers.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.ServerClass">
+            <summary>
+            Contains ProgID or {CLSID} of the OPC server.
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.SelectedServer">
+            <summary>
+            Gets the information about the OPC server selected in the dialog box. 
+            </summary>
+        </member>
+        <member name="P:OpcLabs.EasyOpc.Forms.Browsing.OpcServerDialog.ServerElement">
+            <summary>
+            Gets the information about the OPC server selected in the dialog box. 
+            </summary>
+        </member>
+    </members>
+</doc>
