@@ -7,7 +7,6 @@ f06213bd60c3061219eaaa05c4e23f7392faf807 *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 899b607769f77d1d0fc3cbf9375b064b16580404 *./ATMC.WorkCellConfigurator.exe
 9ff16a36a603118a6b4e9cff0f774fd59064cbb6 *./Abeo.Controls.dll
-d360eaf992702b2b1ce18eeacd3e8fb17b1c274b *./Abeo.Controls.pdb
 7264b7f7b73867382e62b8bd9e9bca59e030e646 *./Abeo.Controls.xml
 0134e802afbc82c0d2ee371a6f2cc6a15870d839 *./AbeoImageAnnotator.exe
 a7899035f2a88e7444ec98ceb0c3c7397e0e8687 *./AbeoJsonEditor.exe
@@ -28,7 +27,6 @@ e1f962ca096329a56b930863e3663027703aef6b *./GCBase_MD_VC141_v3_1_Basler_pylon.dl
 2a8a89de387ff22cd29b6792d2aa91f3433e620c *./GenApi_MD_VC141_v3_1_Basler_pylon.dll
 8959f6db5f78aa7a311f1222520aeef21ff3c558 *./GenTL_v140.dll
 8fcf9ea98cc52e042b7f1a0000749df421287cfa *./Google.Protobuf.dll
-1919f00053e9de6ed391019b6a788fbe3cb730ca *./Google.Protobuf.pdb
 ff95a1388ef482528bdaa3c2e3c3f2b09ff5f708 *./Google.Protobuf.xml
 7de025a64d0ceba125263bd68493ab87331c76b5 *./HRRpcProxy_x64.dll
 8793958a52d794d9d1a2e8456bc722237b0a57ba *./ICSharpCode.TextEditor.dll
@@ -48,7 +46,6 @@ a0ee8f8955e7a2b8a0893c12461b88a1e3ce7caa *./LotusAPI.Controls.xml
 c27ab8c419daf59e9c5d5b5b1fd1d7316f949d59 *./LotusAPI.DNN.dll
 6ccb2578a5622ccb1689a1cb6b1f21a4ae93fb4b *./LotusAPI.DNN.xml
 3c3abaff817f70eac4cc9c5bccc6bbeaf1395ed4 *./LotusAPI.Data.dll
-165566645f9140249470eec48f9d740aa455f330 *./LotusAPI.Data.pdb
 0506573076fd7437719f460dd8a02fa76fe83f61 *./LotusAPI.Data.xml
 508d2d70e212857f10a660c6241bc89000189746 *./LotusAPI.HW.ABPLC.dll
 a6fae5f049ded3e700108bf9b9481c91966bdecf *./LotusAPI.HW.FujiPLC.dll
@@ -68,7 +65,6 @@ de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
 5be9de9a2c035f5d2b4ebe4993f85ba767c22102 *./LotusAPI.Sim.dll
 2b84cf2a9c9617741b4d940c29544fafb838b7ca *./LotusAPI.Sim.xml
 0961561e39ce3a40da55b2f1cdca8948a66c2aac *./LotusAPI.Utils.dll
-b7227b17ee211047ecb759fd10a8fcfa8e26a3e3 *./LotusAPI.Utils.pdb
 2c37d519f73a2262ea1826b1737641dff60a741c *./LotusAPI.Utils.xml
 01773d8254b03bc10116e62f2014bc66f6cc8baa *./LotusAPI.dll
 3d2fee72a1b8a814853aea91975a4753bcea98ec *./LotusAPI.xml
@@ -94,7 +90,6 @@ fbd2af5be5b7d13dd7826f9ea4c92698b39d9510 *./PatternSearch2D.exe
 dec8ce37b89fb8daf28f76a6f8361d379152b295 *./PhotoneoAIK.dll
 73a4f14619176a06d20cb9f9441f5b372788c9b5 *./PostgresTest.exe
 06c330fcbe3e63807617c68febcb6185efb938e8 *./PostgresTest.exe.config
-76738b8dc6a56f9d6103c95e6ebd64c27c68d9ff *./PostgresTest.pdb
 e55f8da107f133ce0d539fc158611f96991b6949 *./ProducerGEV.cti
 d589e1bf7a2a3611dab0432da14e92945d02a190 *./ProducerU3V.cti
 55441d7947d85ed694dd0776715b7974c67b4043 *./PylonBase_v7_2.dll
@@ -158,7 +153,6 @@ d87680e1a96549cf45506d17566ec08c27a770d8 *./System.Buffers.dll
 dea2fbc063a20a1c4dc60f57494b26ad5e186dcf *./System.Buffers.xml
 f151cd6210630a0766edfc06945c2557e913318a *./System.Data.SQLite.dll
 59eb40c6d9af70caf24f00558906fc6b1ad1ece0 *./System.Data.SQLite.dll.config
-b87e46c7a964c18916f870bf38c5122c17ce254e *./System.Data.SQLite.pdb
 9c881d549ebceaab34ed5fe52538f83aa185dc2f *./System.IO.Pipelines.dll
 22b12c1edd3f0149e7562d0b3f7101cb1c3b63a1 *./System.IO.Pipelines.xml
 96c87b7148805a0adcd4b9e23162deb06d7a4702 *./System.Memory.dll
