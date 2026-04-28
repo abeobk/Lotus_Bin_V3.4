@@ -64,7 +64,7 @@ de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
 3d2fee72a1b8a814853aea91975a4753bcea98ec *./LotusAPI.xml
 a8372165ff6bac756dc2d02c6932f369c234f0a2 *./MathParser_MD_VC140_v3_0.dll
 76d8be1b1be69e9c11ad9ea18d644059fd901277 *./MathParser_MD_VC141_v3_1_Basler_pylon.dll
-9e134910bb02e162765d0b893fa3cd4860acce86 *./Microsoft.Bcl.AsyncInterfaces.dll
+7d8264be4fcb17f81acb8b1add980cd96a6fd856 *./Microsoft.Bcl.AsyncInterfaces.dll
 40a8a356d807d71c102c91d68ad1a0ad6e3fdda6 *./Microsoft.Bcl.AsyncInterfaces.xml
 0610b72313fdff4460272e6ce4674b92642cf430 *./Microsoft.Web.WebView2.Core.dll
 40d9fa748288dc149e4db5968323d46d0f50fbaa *./Microsoft.Web.WebView2.Core.xml
@@ -75,8 +75,8 @@ a8372165ff6bac756dc2d02c6932f369c234f0a2 *./MathParser_MD_VC140_v3_0.dll
 74b8819ffe48a0a36d5d1fabf95c47ae6ded703a *./MySql.Data.dll
 9e9f4e438023e7f2d835614c12e74fc5ae25e83f *./NodeMapData_MD_VC140_v3_0.dll
 a683257ed6a8f5b1d88bd5266d421a632a47f156 *./NodeMapData_MD_VC141_v3_1_Basler_pylon.dll
-f8323dcee4a0c18d86797ecb179a49b2618106d2 *./Npgsql.dll
-d9180f99a1bff672cbb0185f3bcda76f85b79f06 *./Npgsql.xml
+64d1fadeee350e7dbc2f809c8d68c42ce4feaa29 *./Npgsql.dll
+6ed37f601e4314966761323f2cae317205ef4145 *./Npgsql.xml
 5efdea22ce8c904478a76d8eb238589901b78870 *./ParameterCollection1.dll
 fbd2af5be5b7d13dd7826f9ea4c92698b39d9510 *./PatternSearch2D.exe
 19c2ff2ebd25ad8388fbb1789757df219189899b *./PhoXi_API_msvc14_Release_1.13.1.dll
@@ -145,7 +145,7 @@ bac34c8a68c12051c6f5395c5a759d7ab519a8ba *./System.Buffers.dll
 f151cd6210630a0766edfc06945c2557e913318a *./System.Data.SQLite.dll
 f05ce2a5891b62c968d30fad13d37fbeb42a4389 *./System.Memory.dll
 cf44e6557fde93288ff2567a002a69279965caba *./System.Memory.xml
-81580d6788f5ccf418e89f8a5fd7f720d60bd811 *./System.Numerics.Vectors.dll
+3d216458740ad5cb05bc5f7c3491cde44a1e5df0 *./System.Numerics.Vectors.dll
 1a937009a92b034edb168cfac0ec1c353be8f58e *./System.Numerics.Vectors.xml
 847ec2fefaddbd2420e20065193497fa1ef2b489 *./System.Runtime.CompilerServices.Unsafe.dll
 651f46f13468f4a1dc398a3f7ab457049fb94020 *./System.Runtime.CompilerServices.Unsafe.xml
