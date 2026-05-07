@@ -52,6 +52,9 @@
         <member name="F:LotusAPI.Data.SqlDialect.MySQL">
             <summary>MySQL database engine</summary>
         </member>
+        <member name="F:LotusAPI.Data.SqlDialect.PostgreSQL">
+            <summary>PostgreSQL database engine</summary>
+        </member>
         <member name="T:LotusAPI.Data.SqlOperationType">
             <summary>
             Specifies the type of SQL operation being performed
@@ -138,6 +141,18 @@
             <code>
             // Create a new MySQL database engine
             var db = DbEngine.CreateMySqlEngine("Server=localhost;Database=mydb;Uid=root;Pwd=password;");
+            </code>
+            </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.CreatePostgresEngine(System.String)">
+            <summary>
+            Creates a new PostgreSQL database engine with the specified connection string
+            </summary>
+            <param name="connectionString">The connection string for the PostgreSQL database</param>
+            <returns>A new DbEngine instance for PostgreSQL</returns>
+            <example>
+            <code>
+            var db = DbEngine.CreatePostgresEngine("Host=localhost;Database=mydb;Username=postgres;Password=pass;");
             </code>
             </example>
         </member>
@@ -249,7 +264,7 @@
             </code>
             </example>
         </member>
-        <member name="M:LotusAPI.Data.DbEngine.ExecuteScalar(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteScalar(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
             <summary>
             Executes a query and returns the first column of the first row
             </summary>
@@ -737,6 +752,12 @@
             <param name="columns">Column definitions</param>
             <exception cref="T:System.ArgumentException">Thrown when tableName is null or empty, or columns collection is null or empty</exception>
         </member>
+        <member name="M:LotusAPI.Data.DbEngine.NormalizeIdentifier(System.String)">
+            <summary>
+            Normalizes an identifier to lowercase. All table, column, view, and database
+            names are folded to lowercase before SQL emission and catalog lookups.
+            </summary>
+        </member>
         <member name="M:LotusAPI.Data.DbEngine.FormatIdentifier(System.String,LotusAPI.Data.SqlDialect)">
             <summary>
             Formats an identifier (table or column name) according to the specified dialect
@@ -1071,11 +1092,6 @@
             Validates that the query is well-formed and ready to execute
             </summary>
             <exception cref="T:System.InvalidOperationException">Thrown when the query is not properly configured</exception>
-        </member>
-        <member name="M:LotusAPI.Data.QueryEngine.FormatSqlValue(System.Object)">
-            <summary>
-            Safely formats a SQL value according to its type
-            </summary>
         </member>
         <member name="F:LotusAPI.Data.DialogSelectSampleRange.components">
             <summary>
