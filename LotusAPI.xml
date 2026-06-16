@@ -1556,7 +1556,7 @@ Gets pattern count stat.
 \return Structured light pattern info.
 
 </member>
-        <member name="M:Lotus.Mv.Sl3dDecoder.calcDepth(cv.Mat_&lt;System.Single&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.Int32,cv.Rect_&lt;System.Int32&gt;,System.Int32)">
+        <member name="M:Lotus.Mv.Sl3dDecoder.calcDepth(cv.Mat_&lt;System.Single&gt;!System.Runtime.CompilerServices.IsConst*!System.Runtime.CompilerServices.IsImplicitlyDereferenced,System.Int32,cv.Rect_&lt;System.Int32&gt;)">
 **
 </member>
         <member name="M:Lotus.Mv.Sl3dDecoder.isCalibrated">
