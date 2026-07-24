@@ -42,7 +42,7 @@ cc9fa50e441bfaba51462d872f530e2c01af0ddf *./K4os.Compression.LZ4.dll
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
 511f9906d89a38bb45d5edb09653b5af7bbe2099 *./LotusAPI.App.exe
-96be05c49ba8831b1b064ffb3582e4055536aece *./LotusAPI.Controls.dll
+35ff726bdf75b41a6b529bc666bd47d2b55f70dc *./LotusAPI.Controls.dll
 a0ee8f8955e7a2b8a0893c12461b88a1e3ce7caa *./LotusAPI.Controls.xml
 c27ab8c419daf59e9c5d5b5b1fd1d7316f949d59 *./LotusAPI.DNN.dll
 6ccb2578a5622ccb1689a1cb6b1f21a4ae93fb4b *./LotusAPI.DNN.xml
@@ -66,8 +66,8 @@ de205304f0d14782738299001aca0f9f3acff64f *./LotusAPI.Robotics.HRLib.dll
 cbe0784a76d8956db1dccd1b7dc2eb708088350e *./LotusAPI.Sim.dll
 3fa7077272c55e85141236d90d302975e3d14b2e *./LotusAPI.Sim.dll.config
 2b84cf2a9c9617741b4d940c29544fafb838b7ca *./LotusAPI.Sim.xml
-b4774ba6f31d82370f90589a2d2e832211d42240 *./LotusAPI.Utils.dll
-2c37d519f73a2262ea1826b1737641dff60a741c *./LotusAPI.Utils.xml
+033b80ac8673a4ee76dc75bf906ee4c9a4457e9f *./LotusAPI.Utils.dll
+80f1a6c313e863246880fd65b063e068b687f12d *./LotusAPI.Utils.xml
 b9e89fff25311b2e04b18652fef7f7c6626f2c9f *./LotusAPI.dll
 7af72da8a9f1226593d0251ec36695c6ba766e7f *./LotusAPI.xml
 a8372165ff6bac756dc2d02c6932f369c234f0a2 *./MathParser_MD_VC140_v3_0.dll

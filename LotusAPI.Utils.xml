@@ -992,6 +992,18 @@
              └── Server
             </example>
         </member>
+        <member name="M:LotusAPI.OS.Node.RequestStop">
+            <summary>
+            Requests cancellation without blocking the caller. This method is safe to call
+            from code running inside the node's main task, including data callbacks.
+            </summary>
+        </member>
+        <member name="M:LotusAPI.OS.Node.StopAsync">
+            <summary>
+            Requests cancellation and asynchronously waits for the node's main task to stop.
+            Call RequestStop instead when stopping from inside the node's own callback.
+            </summary>
+        </member>
         <member name="T:LotusAPI.OS.Publisher">
             <summary>
             Publisher node that broadcasts data to multiple subscribers using named pipes.
