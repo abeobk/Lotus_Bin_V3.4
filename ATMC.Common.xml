@@ -710,6 +710,23 @@
             Return true if valid
             </summary>
         </member>
+        <member name="F:ATMC.Common.LaserSealer.FormSmartSealerModelConfig.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.FormSmartSealerModelConfig.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.FormSmartSealerModelConfig.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="F:ATMC.Common.LaserSealer.FormModelConfigurator.components">
             <summary>
             Required designer variable.
@@ -726,6 +743,135 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.UpdateHeightMap(System.Collections.Generic.List{LotusAPI.HW.LaserProfiler.ProfileData},LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f)">
+            <summary>
+            Update data and height map partially
+            </summary>
+            <param name="dq">Laser profile data queue</param>
+            <param name="pc">Pointcloud whose color channel will be updated</param>
+            <param name="height_range">Height range</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.GetRobotPathInterval(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Double)">
+            <summary>
+            Given a robot path as a sequence of timed tool positions, find a position that match with the given time 
+            </summary>
+            <param name="robot_path">Robot path</param>
+            <param name="t_ms">time</param>
+            <returns>The robot path interval, null if failed</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.GetPathCloud(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming})">
+            <summary>
+            Get robot path pointcloud
+            </summary>
+            <param name="robot_path">Robot path</param>
+            <returns>Robot path pointcloud</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.GetSealerPathCloud(System.Double,LotusAPI.MV.Pointcloud,System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Single[])">
+            <summary>
+            Get Sealer path pointcloud
+            </summary>
+            <param name="fps">Sealer laser fps</param>
+            <param name="profile_cloud">Sealer profile cloud</param>
+            <param name="robot_path">Robot path list</param>
+            <param name="filtered_ok_chain">Filtered ok chain</param>
+            <returns>Sealer ok cloud</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.ShowProfileInspectionResult(System.Int32,System.Int32,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},LotusAPI.Controls.Graph.GraphView,ATMC.Common.LaserSealer.SmartSealerModelConfigBase)">
+            <summary>
+            SHow profile inspection result on graph
+            </summary>
+            <param name="row">row index</param>
+            <param name="col_offset">column offset</param>
+            <param name="seg">profile</param>
+            <param name="specs">specs</param>
+            <param name="graph">graph</param>
+            <param name="model">model</param>
+            <returns></returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.InspectProfile(LotusAPI.Math.Point2f[],ATMC.Common.LaserSealer.SmartSealerSpec)">
+            <summary>
+            Inspect a sealer profile
+            </summary>
+            <param name="seg">profile</param>
+            <param name="spec">sealer inspection spec</param>
+            <returns></returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.InspectProfile(System.Int32,System.Int32,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Boolean)">
+            <summary>
+            Inspect a sealer profile with multiple specs, return the best result
+            </summary>
+            <param name="seg">sealer profile</param>
+            <param name="specs">inspection specs</param>
+            <param name="model">model config</param>
+            <returns></returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
+            <summary>
+            Sealer inspection
+            </summary>
+            <param name="fps">Sealer fps</param>
+            <param name="end_pos">End position (-1 => inspect all)</param>
+            <param name="pc">Sealer data  cloud</param>
+            <param name="model">Model config</param>
+            <param name="align_pos">Starting position</param>
+            <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.FindAlignPos(System.Double,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Boolean)">
+            <summary>
+            Find alignment position
+            </summary>
+            <param name="fps">Sealer FPS</param>
+            <param name="pc">Sealer cloud</param>
+            <param name="model">Model config</param>
+            <param name="use_align_range">enable/disable align range</param>
+            <returns>Starting position if found, -1 otherwise</returns>
+        </member>
+        <member name="F:ATMC.Common.LaserSealer.SmartSealerUtils.ColorMap">
+            <summary>
+            color height map
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f,ATMC.Common.LaserSealer.SmartSealerModelConfigBase)">
+            <summary>
+            Calculate height map
+            </summary>
+            <param name="fps">Sealer fps</param>
+            <param name="pc">Sealer data cloud</param>
+            <param name="height_range">Height range</param>
+            <param name="model">Model config</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.Inspect(System.Double,LotusAPI.MV.Pointcloud,System.Int32)">
+            <summary>
+            Inspect pointcloud
+            </summary>
+            <param name="fps">FPS</param>
+            <param name="pc">Input cloud</param>
+            <param name="end_pos">End position</param>
+            <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f)">
+            <summary>
+            Calc height map
+            </summary>
+            <param name="fps">FPS</param>
+            <param name="pc">Input cloud</param>
+            <param name="height_range">Height range</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.GetAlignOffset(System.Int32)">
+            <summary>
+            Get align offset
+            </summary>
+            <param name="align_pos">Align pos</param>
+            <returns>Align offset</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.FindSpecs(System.Int32,System.Int32)">
+            <summary>
+            Find a spec list that match a row and align position
+            </summary>
+            <param name="row"></param>
+            <param name="align_pos"></param>
+            <returns></returns>
         </member>
         <member name="M:ATMC.Common.LaserSealer.SealerModelConfigBase.InitSurfaceRef(System.Double)">
             <summary>
@@ -951,6 +1097,71 @@
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources._3d_object_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.address_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.border_left_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.border_left_24px1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.border_right_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.border_right_24px1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.border_vertical_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.border_vertical_24px1">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.cinema_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.delete_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.geography_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.rectangular_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.verified_account_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:ATMC.Common.RegistrationConfig.CoarseAligner">
