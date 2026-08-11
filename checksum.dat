@@ -2,11 +2,11 @@
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
 d889eb1d045d8c3711c45a81edb2705228075fff *./ATMC.App.MultiPosAdj.exe
 957f871d2d5c336dc212725147e280194712b8ae *./ATMC.App.PosAdj.exe
-e516d093fba0b41c6ea72f1eed449fa7869fd28b *./ATMC.Common.dll
-fd0725bc52bdff0cb30337ea9172cf6f8edc6ea9 *./ATMC.Common.xml
+457061b652b9a775e56f346dd3a80ea45f08e541 *./ATMC.Common.dll
+12f8890463834094d43e54ddfe37533146343730 *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 899b607769f77d1d0fc3cbf9375b064b16580404 *./ATMC.WorkCellConfigurator.exe
-fdd8a3cc8aa79e2eaf5be790fd631871c61464d4 *./Abeo.Controls.dll
+06f511e747a0798af6ce6eb88b0fe8a16688b518 *./Abeo.Controls.dll
 7264b7f7b73867382e62b8bd9e9bca59e030e646 *./Abeo.Controls.xml
 e18ff6f3a2a652c1a885346aa0aa85f1a1a051a3 *./AbeoImageAnnotator.exe
 a7899035f2a88e7444ec98ceb0c3c7397e0e8687 *./AbeoJsonEditor.exe
