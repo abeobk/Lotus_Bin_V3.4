@@ -754,7 +754,7 @@
         </member>
         <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.GetRobotPathInterval(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Double)">
             <summary>
-            Given a robot path as a sequence of timed tool positions, find a position that match with the given time 
+            Given a robot path as a sequence of timed tool positions, find a position that match with the given time
             </summary>
             <param name="robot_path">Robot path</param>
             <param name="t_ms">time</param>
@@ -777,7 +777,35 @@
             <param name="filtered_ok_chain">Filtered ok chain</param>
             <returns>Sealer ok cloud</returns>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.ShowProfileInspectionResult(System.Int32,System.Int32,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},LotusAPI.Controls.Graph.GraphView,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.UpdateSealerPathCloud(System.Double,System.Collections.Generic.List{LotusAPI.HW.LaserProfiler.ProfileData},LotusAPI.MV.Pointcloud,System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Single[])">
+             <summary>
+             Progressive version of GetSealerPathCloud, working like UpdateHeightMap: call it with
+             each new profile batch (dq) and it transforms whatever rows the robot path now covers,
+             in place, into the persistent cloud 'pc' — every row is transformed exactly once per cycle.
+            
+             'pc' must be a W×H organized cloud with the same layout/size as the profile cloud,
+             allocated once per cycle exactly like Result.Init does:
+               new Pointcloud(GObject.CreateEmptyObject(size, new Vector3f(0, float.NaN, 0), false, true))
+            
+             Cell state: 255 = empty/invalid, PENDING(1) = raw profile stored, waiting for robot-path
+             coverage (vertex = (x, NaN, y), so the NaN-Y convention keeps it undrawable), 0 = transformed
+             world point. Pending rows are re-checked on every call, so profiles that arrive before the
+             robot path covers their time are picked up later instead of being lost.
+            
+             Live calls (filtered_ok_chain == null): points are colored white and the last path segment
+             is held back — its end still moves as the robot advances, and FixRobotPath may still adjust
+             the newest positions.
+             Final call at cycle end (pass FilteredOKChain; dq may be null): remaining rows are flushed
+             to the end of the path, every point is recolored red/gray/green by the chain, and rows the
+             chain does not cover are dropped — same output rules as GetSealerPathCloud.
+            
+             Usage (FormMain):
+               UpdateDisplay:   SmartSealerUtils.UpdateSealerPathCloud(Global.LZ_FPS, dq, r.SealerCloud, r.RobotPath);
+               DisplayResult:   SmartSealerUtils.UpdateSealerPathCloud(Global.LZ_FPS, null, r.SealerCloud, r.RobotPath, inspect_res.FilteredOKChain);
+               then _pcv.Add(r.SealerCloud, Color.White, Global.Setting.CloudDisplayStep) as before.
+             </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.ShowProfileInspectionResult(System.Int32,System.Int32,LotusAPI.Math.Line2f,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},LotusAPI.Controls.Graph.GraphView,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
             <summary>
             SHow profile inspection result on graph
             </summary>
@@ -798,7 +826,7 @@
             <param name="spec">sealer inspection spec</param>
             <returns></returns>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.InspectProfile(System.Int32,System.Int32,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32,System.Boolean)">
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.InspectProfile(System.Int32,System.Int32,LotusAPI.Math.Line2f,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
             <summary>
             Inspect a sealer profile with multiple specs, return the best result
             </summary>
@@ -807,7 +835,7 @@
             <param name="model">model config</param>
             <returns></returns>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32,System.Int32)">
             <summary>
             Sealer inspection
             </summary>
@@ -817,6 +845,11 @@
             <param name="model">Model config</param>
             <param name="align_pos">Starting position</param>
             <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.FindBaseLine_(System.Int32,System.Int32,LotusAPI.Math.Point2f[],ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32,System.Single@)">
+            <summary>
+            Compute baseline
+            </summary>
         </member>
         <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.FindAlignPos(System.Double,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Boolean)">
             <summary>
@@ -1114,6 +1147,11 @@
             </summary>
         </member>
         <member name="P:ATMC.Common.Properties.Resources.address_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.baseline_x32">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
