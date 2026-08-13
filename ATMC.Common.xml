@@ -744,14 +744,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.UpdateHeightMap(System.Collections.Generic.List{LotusAPI.HW.LaserProfiler.ProfileData},LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f)">
-            <summary>
-            Update data and height map partially
-            </summary>
-            <param name="dq">Laser profile data queue</param>
-            <param name="pc">Pointcloud whose color channel will be updated</param>
-            <param name="height_range">Height range</param>
-        </member>
         <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.GetRobotPathInterval(System.Collections.Generic.List{ATMC.Common.LaserSealer.ToolPositionTiming},System.Double)">
             <summary>
             Given a robot path as a sequence of timed tool positions, find a position that match with the given time
@@ -805,7 +797,41 @@
                then _pcv.Add(r.SealerCloud, Color.White, Global.Setting.CloudDisplayStep) as before.
              </summary>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.ShowProfileInspectionResult(System.Int32,System.Int32,LotusAPI.Math.Line2f,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},LotusAPI.Controls.Graph.GraphView,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.Inspect(System.Double,LotusAPI.MV.Pointcloud,System.Int32)">
+            <summary>
+            Inspect pointcloud
+            </summary>
+            <param name="fps">FPS</param>
+            <param name="pc">Input cloud</param>
+            <param name="end_pos">End position</param>
+            <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.FindBaseLine_(System.Int32,System.Int32,LotusAPI.Math.Point2f[],System.Int32,System.Single@)">
+            <summary>
+            Compute baseline
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.InspectProfile(System.Int32,System.Int32,LotusAPI.Math.Line2f,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},System.Int32)">
+            <summary>
+            Inspect a sealer profile with multiple specs, return the best result
+            </summary>
+            <param name="seg">sealer profile</param>
+            <param name="specs">inspection specs</param>
+            <param name="model">model config</param>
+            <returns></returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,System.Int32,System.Int32)">
+            <summary>
+            Sealer inspection
+            </summary>
+            <param name="fps">Sealer fps</param>
+            <param name="end_pos">End position (-1 => inspect all)</param>
+            <param name="pc">Sealer data  cloud</param>
+            <param name="model">Model config</param>
+            <param name="align_pos">Starting position</param>
+            <returns>Inspection result</returns>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.ShowProfileInspectionResult(System.Int32,System.Int32,LotusAPI.Math.Line2f,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},LotusAPI.Controls.Graph.GraphView,System.Int32)">
             <summary>
             SHow profile inspection result on graph
             </summary>
@@ -818,78 +844,33 @@
             <param name="align_pos">align position</param>
             <returns></returns>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.InspectProfile(LotusAPI.Math.Point2f[],ATMC.Common.LaserSealer.SmartSealerSpec)">
-            <summary>
-            Inspect a sealer profile
-            </summary>
-            <param name="seg">profile</param>
-            <param name="spec">sealer inspection spec</param>
-            <returns></returns>
-        </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.InspectProfile(System.Int32,System.Int32,LotusAPI.Math.Line2f,LotusAPI.Math.Point2f[],System.Collections.Generic.List{ATMC.Common.LaserSealer.SmartSealerSpec},ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32)">
-            <summary>
-            Inspect a sealer profile with multiple specs, return the best result
-            </summary>
-            <param name="seg">sealer profile</param>
-            <param name="specs">inspection specs</param>
-            <param name="model">model config</param>
-            <returns></returns>
-        </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.Inspect(System.Double,System.Int32,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32,System.Int32)">
-            <summary>
-            Sealer inspection
-            </summary>
-            <param name="fps">Sealer fps</param>
-            <param name="end_pos">End position (-1 => inspect all)</param>
-            <param name="pc">Sealer data  cloud</param>
-            <param name="model">Model config</param>
-            <param name="align_pos">Starting position</param>
-            <returns>Inspection result</returns>
-        </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.FindBaseLine_(System.Int32,System.Int32,LotusAPI.Math.Point2f[],ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Int32,System.Single@)">
-            <summary>
-            Compute baseline
-            </summary>
-        </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.FindAlignPos(System.Double,LotusAPI.MV.Pointcloud,ATMC.Common.LaserSealer.SmartSealerModelConfigBase,System.Boolean)">
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.FindAlignPos(LotusAPI.MV.Pointcloud)">
             <summary>
             Find alignment position
             </summary>
             <param name="fps">Sealer FPS</param>
             <param name="pc">Sealer cloud</param>
             <param name="model">Model config</param>
-            <param name="use_align_range">enable/disable align range</param>
             <returns>Starting position if found, -1 otherwise</returns>
         </member>
-        <member name="F:ATMC.Common.LaserSealer.SmartSealerUtils.ColorMap">
+        <member name="F:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.ColorMap">
             <summary>
             color height map
             </summary>
         </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerUtils.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f,ATMC.Common.LaserSealer.SmartSealerModelConfigBase)">
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.UpdateHeightMap(System.Collections.Generic.List{LotusAPI.HW.LaserProfiler.ProfileData},LotusAPI.MV.Pointcloud)">
+            <summary>
+            Update data and height map partially
+            </summary>
+            <param name="dq">Laser profile data queue</param>
+            <param name="pc">Pointcloud whose color channel will be updated</param>
+        </member>
+        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud)">
             <summary>
             Calculate height map
             </summary>
             <param name="fps">Sealer fps</param>
             <param name="pc">Sealer data cloud</param>
-            <param name="height_range">Height range</param>
-            <param name="model">Model config</param>
-        </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.Inspect(System.Double,LotusAPI.MV.Pointcloud,System.Int32)">
-            <summary>
-            Inspect pointcloud
-            </summary>
-            <param name="fps">FPS</param>
-            <param name="pc">Input cloud</param>
-            <param name="end_pos">End position</param>
-            <returns>Inspection result</returns>
-        </member>
-        <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.CalcHeightMap(System.Double,LotusAPI.MV.Pointcloud,LotusAPI.Math.Range2f)">
-            <summary>
-            Calc height map
-            </summary>
-            <param name="fps">FPS</param>
-            <param name="pc">Input cloud</param>
             <param name="height_range">Height range</param>
         </member>
         <member name="M:ATMC.Common.LaserSealer.SmartSealerModelConfigBase.GetAlignOffset(System.Int32)">
@@ -1147,6 +1128,11 @@
             </summary>
         </member>
         <member name="P:ATMC.Common.Properties.Resources.address_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.align_roi_x32">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
