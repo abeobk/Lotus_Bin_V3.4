@@ -1182,12 +1182,32 @@
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:ATMC.Common.Properties.Resources.depth_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:ATMC.Common.Properties.Resources.geography_24px">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:ATMC.Common.Properties.Resources.opened_folder_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:ATMC.Common.Properties.Resources.rectangular_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.save_24px">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:ATMC.Common.Properties.Resources.search_24px">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>
@@ -1844,6 +1864,23 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="F:ATMC.Common.ThermalSealer.FormThermalSealerConfigurator.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.ThermalSealer.FormThermalSealerConfigurator.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:ATMC.Common.ThermalSealer.FormThermalSealerConfigurator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="M:ATMC.Common.TitleBar.SetStatusItems(Abeo.Controls.ZeroCode.FlatStatusBar,Abeo.Controls.ZeroCode.StatusItemPanel.StyleEnum,System.Boolean)">
             <summary>
             Steal from statusbar
@@ -2184,6 +2221,11 @@
             <param name="name">Pin name</param>
             <returns>Pin</returns>
         </member>
+        <member name="M:ATMC.Common.PLCManager.GetDOPinOptional(System.String)">
+            <summary>
+            Get DO pin, return null if failed to find pin
+            </summary>
+        </member>
         <member name="M:ATMC.Common.PLCManager.GetDOPin(System.Enum)">
             <summary>
             Get DO pin, throw if failed to find pin
@@ -2197,6 +2239,11 @@
             </summary>
             <param name="name">Pin name</param>
             <returns>Pin</returns>
+        </member>
+        <member name="M:ATMC.Common.PLCManager.GetDIPinOptional(System.String)">
+            <summary>
+            Get DI pin, return null if failed to find pin
+            </summary>
         </member>
         <member name="M:ATMC.Common.PLCManager.GetDIPin(System.Enum)">
             <summary>
