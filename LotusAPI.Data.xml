@@ -226,6 +226,11 @@
             </code>
             </example>
         </member>
+        <member name="T:LotusAPI.Data.DbEngine.EngineTransaction">
+            <summary>
+            Wraps the provider transaction so that completing it releases the engine lock
+            </summary>
+        </member>
         <member name="M:LotusAPI.Data.DbEngine.Execute(System.String,System.Collections.Generic.Dictionary{System.String,System.Object},System.Boolean)">
             <summary>
             Executes a query and returns the number of rows affected
@@ -434,6 +439,11 @@
         <member name="M:LotusAPI.Data.DbEngine.CloseConnection">
             <summary>
             Explicitly closes the database connection if it is open
+            </summary>
+        </member>
+        <member name="T:LotusAPI.Data.DbEngine.LockedDataReader">
+            <summary>
+            Forwards to the provider reader and releases the engine lock when closed or disposed
             </summary>
         </member>
         <member name="M:LotusAPI.Data.DbEngine.GetParameterPrefix">
