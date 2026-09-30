@@ -422,6 +422,10 @@
             <summary>
             Executes a series of operations within a transaction with automatic commit/rollback
             </summary>
+            <remarks>
+            Do not pass an async lambda: it compiles to async void, so the transaction commits at the
+            first await. Use <see cref="M:LotusAPI.Data.DbEngine.ExecuteInTransactionAsync(System.Func{LotusAPI.Data.DbEngine,System.Threading.Tasks.Task})"/> for asynchronous operations.
+            </remarks>
             <param name="action">The action containing database operations to perform</param>
             <returns>True if the transaction was committed successfully, otherwise false</returns>
             <example>
@@ -435,6 +439,28 @@
             });
             </code>
             </example>
+        </member>
+        <member name="M:LotusAPI.Data.DbEngine.ExecuteInTransactionAsync(System.Func{LotusAPI.Data.DbEngine,System.Threading.Tasks.Task})">
+             <summary>
+             Executes a series of asynchronous operations within a transaction with automatic commit/rollback
+             </summary>
+             <remarks>
+             Other threads wait until the transaction completes. Await the operations inside the action
+             one at a time: running them in parallel (e.g. Task.WhenAll) would use the single connection concurrently.
+             </remarks>
+             <param name="action">The asynchronous action containing database operations to perform</param>
+             <returns>Task containing true if the transaction was committed successfully, otherwise false</returns>
+             <example>
+             <code>
+             bool ok = await db.ExecuteInTransactionAsync(async db => {
+                 await db.ExecuteAsync("INSERT INTO orders (customer_id, total) VALUES (@id, @total)",
+                     new Dictionary&lt;string, object&gt; { { "@id", 123 }, { "@total", 99.95 } });
+            
+                 await db.ExecuteAsync("UPDATE inventory SET stock = stock - 1 WHERE product_id = @pid",
+                     new Dictionary&lt;string, object&gt; { { "@pid", 456 } });
+             });
+             </code>
+             </example>
         </member>
         <member name="M:LotusAPI.Data.DbEngine.CloseConnection">
             <summary>
