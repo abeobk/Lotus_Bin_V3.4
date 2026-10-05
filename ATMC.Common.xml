@@ -2936,6 +2936,21 @@
             Get node by name
             </summary>
         </member>
+        <member name="M:ATMC.Common.WorkCell.WorkCell.PlcHelper.GetPrefix(System.String)">
+            <summary>
+            pin name = 'R1.START' => prefix = 'R1'
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.WorkCell.PlcHelper.GetPinName(System.String)">
+            <summary>
+            pin name = 'R1.START' => pin name = 'START'
+            </summary>
+        </member>
+        <member name="M:ATMC.Common.WorkCell.WorkCell.PlcHelper.GetPlcName(System.String)">
+            <summary>
+            'R1.START' => 'R1.PLC', 'START' => 'PLC'
+            </summary>
+        </member>
         <member name="T:ATMC.Common.WorkCell.WorkCell.HwErrWatcher">
             <summary>
             Usage: 

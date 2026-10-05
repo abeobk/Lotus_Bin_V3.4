@@ -2,8 +2,8 @@
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
 d889eb1d045d8c3711c45a81edb2705228075fff *./ATMC.App.MultiPosAdj.exe
 957f871d2d5c336dc212725147e280194712b8ae *./ATMC.App.PosAdj.exe
-9e2cbda09a59499b3473ecc259a2a6f4b297652b *./ATMC.Common.dll
-301b76741358f29929cb382f8d024a4f99d62b2d *./ATMC.Common.xml
+e24637f42ee8ed794220ccf0ceb603b3f263f899 *./ATMC.Common.dll
+6985f47c61fd3cdb3709e243e88acd8528efa19f *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 899b607769f77d1d0fc3cbf9375b064b16580404 *./ATMC.WorkCellConfigurator.exe
 9a78e92bd2aaac7f002b5b800e3f712490316b78 *./Abeo.Controls.dll
@@ -42,7 +42,7 @@ cc9fa50e441bfaba51462d872f530e2c01af0ddf *./K4os.Compression.LZ4.dll
 9442877445e4fb491279dd1c119bfd9cfa8923dd *./Log_MD_VC140_v3_0.dll
 cfd72834dcfb6431455db1c5f861d6b992e22546 *./Log_MD_VC141_v3_1_Basler_pylon.dll
 511f9906d89a38bb45d5edb09653b5af7bbe2099 *./LotusAPI.App.exe
-475737a411ceb4e54258ec82459ce4d92a0b2cf9 *./LotusAPI.Controls.dll
+166c649c0f9a4ecc5a502847ffa13e5aac6e3f04 *./LotusAPI.Controls.dll
 a0ee8f8955e7a2b8a0893c12461b88a1e3ce7caa *./LotusAPI.Controls.xml
 c27ab8c419daf59e9c5d5b5b1fd1d7316f949d59 *./LotusAPI.DNN.dll
 6ccb2578a5622ccb1689a1cb6b1f21a4ae93fb4b *./LotusAPI.DNN.xml
