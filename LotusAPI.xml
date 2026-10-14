@@ -530,6 +530,9 @@ Train model
             <param name="mask">Model mask</param>
             <param name="model_origin">Origin point in model image</param>
         </member>
+        <member name="F:LotusAPI.MV.AbeoScan.m_online">
+1 while the scanner is connected, guards OnDeviceDisconnectedEvent. 
+</member>
         <member name="M:LotusAPI.MV.AbeoScan.LoadProfile(System.String)">
             <summary>
 Load profile from scanner memory
@@ -1372,6 +1375,11 @@ Algorithm result interface
 Algorithm interface
 </summary>
         </member>
+        <member name="M:LotusAPI.HW.CameraDevice.destroyNative_(System.Boolean)">
+Release the native camera.
+\param notify false from the finalizer: unregister before disconnecting so no event is raised
+
+</member>
         <member name="F:LotusAPI.HW.CameraDevice.m_ptr">
 The camera. 
 </member>
