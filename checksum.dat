@@ -2,7 +2,7 @@
 9a6152c3635508fbb58c90bc5363eac41fad42a1 *./ATMC.App.DBViewer.exe
 d889eb1d045d8c3711c45a81edb2705228075fff *./ATMC.App.MultiPosAdj.exe
 957f871d2d5c336dc212725147e280194712b8ae *./ATMC.App.PosAdj.exe
-2c852556ebce6431d624084aff51e88c2b631825 *./ATMC.Common.dll
+155f4da5da27047e21b160dce747d23819be3586 *./ATMC.Common.dll
 6985f47c61fd3cdb3709e243e88acd8528efa19f *./ATMC.Common.xml
 b4af60d038059d8c8533115607e3192a46e0f765 *./ATMC.Common.xml.bak
 899b607769f77d1d0fc3cbf9375b064b16580404 *./ATMC.WorkCellConfigurator.exe
@@ -53,7 +53,7 @@ a6fae5f049ded3e700108bf9b9481c91966bdecf *./LotusAPI.HW.FujiPLC.dll
 df6a83e694855751b5b9b85e7f90e2c891496998 *./LotusAPI.HW.FujiPLC.xml
 4567e93389ec8d9ffa855d20d68c6824d7090fa8 *./LotusAPI.HW.OpcPlc.dll
 b249dcf06dc09feab21243f49f31809d392c691f *./LotusAPI.HW.OpcPlc.xml
-51087f87a649db9adccad80343b22a220ff677c2 *./LotusAPI.HW.dll
+b825d991a1d0c3a3a30a74ea0d8a3f7ab82d6958 *./LotusAPI.HW.dll
 9fd2fbcdcb7b5a0b5f3b43dd2d8239c1be4c5a77 *./LotusAPI.HW.xml
 7b5fff163484f7703a7ee0961264a6d744d148dd *./LotusAPI.Robotics.ABB.dll
 7b426ec1ccec0ef2e6b00a81f51336de37d5de6e *./LotusAPI.Robotics.ABB.xml
