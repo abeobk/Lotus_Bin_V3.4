@@ -802,6 +802,13 @@
             <param name="dialect">SQL dialect to use</param>
             <returns>The formatted identifier</returns>
         </member>
+        <member name="M:LotusAPI.Data.DbEngine.ConvertTimeString(System.String)">
+            <summary>
+            Convert datetime to time string for current dialect
+            </summary>
+            <param name="datetime">Datetime</param>
+            <returns>Timestring</returns>
+        </member>
         <member name="T:LotusAPI.Data.QueryEngine">
             <summary>
             Builds SQL queries using a fluent interface
