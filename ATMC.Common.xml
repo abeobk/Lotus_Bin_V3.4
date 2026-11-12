@@ -1630,6 +1630,11 @@
             Alinged cloud
             </summary>
         </member>
+        <member name="P:ATMC.Common.RegistrationResult.GaugeAligned">
+            <summary>
+            Gauge aligned cloud
+            </summary>
+        </member>
         <member name="P:ATMC.Common.RegistrationResult.SceneImgs">
             <summary>
             Scene images
